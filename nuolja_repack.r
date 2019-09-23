@@ -1,8 +1,13 @@
+## require nuolja_repack.r plots_and_subplots.csv and transect_description.csv
+
 ## geosphere INSTALL
 list.of.packages <- c("geosphere")
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
 if(length(new.packages)) install.packages(new.packages)
 library(geosphere);
+
+
+
 
 plotdiv <- read.csv(file="plots_and_subplots.csv");
 transect_desc <- read.csv(file="transect_description.csv")[,1:6][];
@@ -13,7 +18,8 @@ dirs <- list.dirs(getwd(), full.names = FALSE)[-1];
 
 ## this writes to csv file based on name
 exportCSV <- function(filenames, filename){
-	data <- lapply(filenames, function(x){
+	if(length(filenames)==0) return(NULL)
+	data = lapply(filenames, function(x){
 			       historical = function(y){
 				       if(y %in% "so" || y %in% "s") return(c("s"));
 				       if(y %in% "os" || y %in% "o") return(c("o"));
@@ -39,7 +45,6 @@ exportCSV <- function(filenames, filename){
 			       return(entries);
 } 
 	);
-
 
 
 	# Brute forces point form from file fineds closest points
@@ -79,7 +84,6 @@ exportCSV <- function(filenames, filename){
 		return(target);
 	}
 	# transect_desc
-
 	for(i in 1:length(data)){
 		if(length(data[[i]][!is.na(data[[i]])]) > 0){
 			for(j in 1:nrow(data[[i]])){

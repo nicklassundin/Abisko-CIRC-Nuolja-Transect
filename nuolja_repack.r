@@ -103,8 +103,6 @@ exportCSV <- function(filenames, filename){
 	write.csv(result,filename, row.names=FALSE)
 }
 
-
-
 ## work start exportCSV(paths to all files, name of result file);
 for(i in 1:length(paths)){
 	exportCSV(list.files(paths[i], pattern = "*.csv", full.names = TRUE), paste(gsub(" ", "_",dirs[i]), ".csv", sep=""));

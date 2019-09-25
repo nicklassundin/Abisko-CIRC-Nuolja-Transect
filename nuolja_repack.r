@@ -1,56 +1,71 @@
-## require nuolja_repack.r plots_and_subplots.csv and transect_description.csv
+# INSTRUCTIONS
+# 1. Put nuolja_repack.r and transect_description.csv into the parent directory of the 'Snow Data YYYY' directories 
+# 2. Run Rscript nuolja_repack.r file
+# 3. The script will create one file for each child directory.
 
-## geosphere INSTALL
+
+
+
+## Install geosphere package if not already install on client
 list.of.packages <- c("geosphere")
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
 if(length(new.packages)) install.packages(new.packages)
 library(geosphere);
 
-
-
-
-plotdiv <- read.csv(file="plots_and_subplots.csv");
+## load transect_description.csv used as reference file for the transect line
 transect_desc <- read.csv(file="transect_description.csv")[,1:6][];
 transect_desc <- data.matrix(transect_desc);
+###
 
+## Build paths for the directories
 paths <- list.dirs(getwd(),full.names = TRUE)[-1]
 dirs <- list.dirs(getwd(), full.names = FALSE)[-1];
 
-## this writes to csv file based on name
+## this writes to csv file based on name called at the end of the document
 exportCSV <- function(filenames, filename){
 	if(length(filenames)==0) return(NULL)
+
+	# Parsing the data from the file 
 	data = lapply(filenames, function(x){
+
+				## filter to Historical perspective
 			       historical = function(y){
 				       if(y %in% "so" || y %in% "s") return(c("s"));
 				       if(y %in% "os" || y %in% "o") return(c("o"));
 			       }
+			       ## filter out 
 			       concurrent = function(z){
 				       tmp = tolower(as.vector(z));
 				       if(tmp %in% "r") tmp = "o";
 				       return(tmp);
 			       }
+			       # filter out none numerical used for coordinates who use the E & N notation.
 			       filter = function(y){
 				       if(is.numeric(y)) return(y);
 				       return(as.double(gsub("[^0-9\\.]", "", y)));
 			       }
+
+				## Active reading, filtering and end unlist
 			       entries = read.delim(x, header=FALSE, sep=",")
 			       if(dim(entries)[2] < 5) return(NA);
+			       entries[,1] = lapply(as.character(entries[,1]), function(x) return(strsplit(x,"-")[[1]][2]));
 			       entries[,2] = lapply(entries[,2], filter);
 			       entries[,3] = lapply(entries[,3], filter);
 			       entries[,5] = vapply(entries[,5], paste, collapse = ", ", character(1L));
 			       entries[,5] = (vapply(lapply(entries[,5], concurrent), paste, collapse = ', ', character(1L)))
 			       hist = data.matrix(lapply(entries[,5], historical));
+			       # unlisting to be able to bind it to 'entries'
 			       hist <- vapply(hist, paste, collapse = ", ", character(1L))
 			       entries = cbind(entries[,1:5], hist);
+			       # return full structure
 			       return(entries);
 } 
 	);
 
-
 	# Brute forces point form from file fineds closest points
 	# assumes that transect is never turning >45 degrees
 	closest <- function(e, chart, i=1){
-		# print(c(e, i))
+		# evaluating distance between three different point undtil closest two point are found and return interval number (subsection) including what section the subsection belongs to 
 		sect <- function(n){
 			return(transect_desc[n,3]);
 		}
@@ -71,11 +86,11 @@ exportCSV <- function(filenames, filename){
 		}
 	};
 
+	# initating result data.frame
 	result <- data.frame();
 
+	## inserts new entry to target and return target
 	insert <- function(target, entry, sect){
-		# print(entry)
-		# print(length(entry))
 		if(is.null(target)){
 			target <- cbind(t(sect), entry[1:6]);
 		}else{
@@ -83,7 +98,7 @@ exportCSV <- function(filenames, filename){
 		}
 		return(target);
 	}
-	# transect_desc
+	# Accumulative build result row by row, with insert(,,);
 	for(i in 1:length(data)){
 		if(length(data[[i]][!is.na(data[[i]])]) > 0){
 			for(j in 1:nrow(data[[i]])){
@@ -93,8 +108,8 @@ exportCSV <- function(filenames, filename){
 		} 
 	}
 
-
-	colnames(result) <- c("section", "subsectio", "date", "latitude", "longitude", "elevation", "contemporary", "historical");
+	## naming the columns for the return file
+	colnames(result) <- c("section", "subsection", "date", "latitude", "longitude", "elevation", "contemporary", "historical");
 	rownames(result) <- 1:nrow(result);
 
 
@@ -103,7 +118,8 @@ exportCSV <- function(filenames, filename){
 	write.csv(result,filename, row.names=FALSE)
 }
 
-## work start exportCSV(paths to all files, name of result file);
+## work start exportCSV(paths to all files, name of result file) for each directory path
+# it will grab all csv files in the directories 
 for(i in 1:length(paths)){
 	exportCSV(list.files(paths[i], pattern = "*.csv", full.names = TRUE), paste(gsub(" ", "_",dirs[i]), ".csv", sep=""));
 }

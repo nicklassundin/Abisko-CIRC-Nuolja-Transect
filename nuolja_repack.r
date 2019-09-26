@@ -45,10 +45,11 @@ exportCSV <- function(filenames, filename){
 				       return(as.double(gsub("[^0-9\\.]", "", y)));
 			       }
 
-				## Active reading, filtering and end unlist
-			       entries = read.delim(x, header=FALSE, sep=",")
+				## Active reading, filtering and end unlist (removes every column beond 7)
+			       entries = read.delim(x, header=FALSE, sep=",")[,1:5]
 			       if(dim(entries)[2] < 5) return(NA);
-			       entries[,1] = lapply(as.character(entries[,1]), function(x) return(strsplit(x,"-")[[1]][2]));
+			       dates = lapply(as.character(entries[,1]), function(x) return(strsplit(x,"-")[[1]][2]));
+			       dates = as.Date(vapply(dates, paste, collapse = ", ", character(1L)), "%Y%m%d");
 			       entries[,2] = lapply(entries[,2], filter);
 			       entries[,3] = lapply(entries[,3], filter);
 			       entries[,5] = vapply(entries[,5], paste, collapse = ", ", character(1L));
@@ -56,7 +57,8 @@ exportCSV <- function(filenames, filename){
 			       hist = data.matrix(lapply(entries[,5], historical));
 			       # unlisting to be able to bind it to 'entries'
 			       hist <- vapply(hist, paste, collapse = ", ", character(1L))
-			       entries = cbind(entries[,1:5], hist);
+			       entries = cbind(entries, hist);
+				entries = cbind(entries[,1], cbind(dates, entries[,-1]));
 			       # return full structure
 			       return(entries);
 } 
@@ -92,9 +94,9 @@ exportCSV <- function(filenames, filename){
 	## inserts new entry to target and return target
 	insert <- function(target, entry, sect){
 		if(is.null(target)){
-			target <- cbind(t(sect), entry[1:6]);
+			target <- cbind(t(sect), entry);
 		}else{
-			target <- rbind(target, cbind(t(sect), entry[1:6]));
+			target <- rbind(target, cbind(t(sect), entry));
 		}
 		return(target);
 	}
@@ -102,14 +104,19 @@ exportCSV <- function(filenames, filename){
 	for(i in 1:length(data)){
 		if(length(data[[i]][!is.na(data[[i]])]) > 0){
 			for(j in 1:nrow(data[[i]])){
-				clos <- closest(c(data[[i]][j,3], data[[i]][[j,2]]), cbind(transect_desc[,5], transect_desc[,4]));
+				clos <- closest(c(data[[i]][j,4], data[[i]][[j,3]]), cbind(transect_desc[,5], transect_desc[,4]));
+				# TODO add remaining points missing as "o"
+				##
+				##
+				##
+				##
 				result <- insert(result, data[[i]][j,], clos);
 			}
 		} 
 	}
 
 	## naming the columns for the return file
-	colnames(result) <- c("section", "subsection", "date", "latitude", "longitude", "elevation", "contemporary", "historical");
+	colnames(result) <- c("plot", "subplot", "id", "date", "latitude", "longitude", "elevation", "contemporary", "historical");
 	rownames(result) <- 1:nrow(result);
 
 
@@ -123,3 +130,6 @@ exportCSV <- function(filenames, filename){
 for(i in 1:length(paths)){
 	exportCSV(list.files(paths[i], pattern = "*.csv", full.names = TRUE), paste(gsub(" ", "_",dirs[i]), ".csv", sep=""));
 }
+
+# warnings()[1]
+print("nuolja_repack.r : DONE : CSV files built");

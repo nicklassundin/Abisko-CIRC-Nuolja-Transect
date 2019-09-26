@@ -1,5 +1,5 @@
 ## Script will create sub files for all Snow_Data_YYYY.csv in current directory
-## name convention will be YYYY_[historical/contemporary]_[section/subsection].csv
+## name convention will be YYYY_[historical/contemporary]_[plot/subplot].csv
 
 
 
@@ -14,9 +14,6 @@ files <- list.files(getwd(), pattern = "*.csv", full.names = TRUE);
 files <- subset(files, grepl("Snow_Data_*", files));
 #############
 
-## parsing date and returning it
-getDate <- function(x) return(strsplit(x, "-")[[1]][2])
-# getDate("NS-19210312-001")
 
 data <- lapply(files, function(x) read.delim(x, header=TRUE, sep=","));
 
@@ -53,14 +50,14 @@ genPercen <- function(entries, keys){
 	# print(result)
 	return(result)
 }
-# genPercen(data.table(data[[1]])[section==20], keyset$historical)
-# genPercen(data.table(data[[1]])[section==20], keyset$contemporary)
-# data.table(data[[1]])[section==20][,"historical"]
-genPercen(data.table(data[[1]])[section==20][,"historical"], keyset$historical)
-genPercen(data.table(data[[1]])[section==20][,"contemporary"], keyset$contemporary)
+# genPercen(data.table(data[[1]])[plot==20], keyset$historical)
+# genPercen(data.table(data[[1]])[plot==20], keyset$contemporary)
+# data.table(data[[1]])[plot==20][,"historical"]
+# genPercen(data.table(data[[1]])[plot==20][,"historical"], keyset$historical)
+# genPercen(data.table(data[[1]])[plot==20][,"contemporary"], keyset$contemporary)
 
 
-subCalc <- function(entries, type, section){
+subCalc <- function(entries, type, plot){
 	days = unique(entries$date);
 	entries = data.table(entries);
 	n = 0;
@@ -71,44 +68,44 @@ subCalc <- function(entries, type, section){
 	}else if(type %in% "contemporary"){
 		keys = keyset$contemporary;
 	}
-	if(section %in% "section") {
+	if(plot %in% "plot") {
 		n = 20;
-		if(type %in% "historical") getSubE = function(e,x,y) return(e[date==y ][ section==x][,"historical"]);
-		if(type %in% "contemporary") getSubE = function(e,x,y) return(e[date==y ][ section==x][,"contemporary"]);
+		if(type %in% "historical") getSubE = function(e,x,y) return(e[date==y ][ plot==x][,"historical"]);
+		if(type %in% "contemporary") getSubE = function(e,x,y) return(e[date==y ][ plot==x][,"contemporary"]);
 	}
-	if(section %in% "subsection"){
+	if(plot %in% "subplot"){
  		n = 78;
-		if(type %in% "historical") getSubE = function(e,x,y) return(e[date==y ][ subsection==x][,"historical"]);
-		if(type %in% "contemporary") getSubE = function(e,x,y) return(e[date==y ][ subsection==x][,"contemporary"]);
+		if(type %in% "historical") getSubE = function(e,x,y) return(e[date==y ][ subplot==x][,"historical"]);
+		if(type %in% "contemporary") getSubE = function(e,x,y) return(e[date==y ][ subplot==x][,"contemporary"]);
 	}
 	result <- matrix(,nrow=0,ncol=length(keys)+2);
 	for(i in 1:n){
 		for(day in days){
-
 		sub_e = getSubE(entries,i,day);
 		# print(sub_e)
 		sub_e = genPercen(sub_e, keys);
 		# print(sub_e)
 		if(is.finite(sub_e[1])){
-			result = rbind(result, c(as.integer(day), i, sub_e));
+			result = rbind(result, c(day, i, sub_e));
 		}
 		}
 	}
 	result = data.table(result);
-	colnames(result) <- c("date", section, keys);
+	colnames(result) <- c("date", plot, keys);
 	# print(colnames(result))
 	return(result)
 }
 
 buildCSV <- function(dataset, filename){
-	print(filename)
-	write.csv(subCalc(dataset, "contemporary", "section"), paste(filename, "_contemporary_section.csv", sep=""), row.names=FALSE);
-	write.csv(subCalc(dataset, "contemporary", "subsection"), paste(filename, "_contemporary_subsection.csv", sep=""), row.names=FALSE)
-	write.csv(subCalc(dataset, "historical", "section"), paste(filename, "_historical_section.csv", sep=""), row.names=FALSE);
-	write.csv(subCalc(dataset, "historical", "subsection"), paste(filename, "_historical_subsection.csv", sep=""), row.names=FALSE)
+	# print(filename)
+	write.csv(subCalc(dataset, "contemporary", "plot"), paste(filename, "_contemporary_plot.csv", sep=""), row.names=FALSE);
+	write.csv(subCalc(dataset, "contemporary", "subplot"), paste(filename, "_contemporary_subplot.csv", sep=""), row.names=FALSE)
+	write.csv(subCalc(dataset, "historical", "plot"), paste(filename, "_historical_plot.csv", sep=""), row.names=FALSE);
+	write.csv(subCalc(dataset, "historical", "subplot"), paste(filename, "_historical_subplot.csv", sep=""), row.names=FALSE)
 }
 
 for(i in 1:length(files)){
 	buildCSV(data[[i]], filenames[i]);
+	print("Done");
 }
 

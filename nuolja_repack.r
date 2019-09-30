@@ -24,7 +24,6 @@ dirs <- list.dirs(getwd(), full.names = FALSE)[-1];
 ## this writes to csv file based on name called at the end of the document
 exportCSV <- function(filenames, filename){
 	if(length(filenames)==0) return(NULL)
-
 	# Parsing the data from the file 
 	data = lapply(filenames, function(x){
 
@@ -41,22 +40,24 @@ exportCSV <- function(filenames, filename){
 			       }
 			       # filter out none numerical used for coordinates who use the E & N notation.
 			       filter = function(y){
-				       if(is.numeric(y)) return(y);
-				       return(as.double(gsub("[^0-9\\.]", "", y)));
+				       return(lapply(y, function(x) as.double(gsub("[^0-9\\.]", "", y))));
+			       }
+
+			       delist = function(y){
+				       return(vapply(y, paste, collapse = ', ', character(1L)));
 			       }
 
 				## Active reading, filtering and end unlist (removes every column beond 7)
 			       entries = read.delim(x, header=FALSE, sep=",")[,1:5]
 			       if(dim(entries)[2] < 5) return(NA);
 			       dates = lapply(as.character(entries[,1]), function(x) return(strsplit(x,"-")[[1]][2]));
-			       dates = as.Date(vapply(dates, paste, collapse = ", ", character(1L)), "%Y%m%d");
-			       entries[,2] = lapply(entries[,2], filter);
-			       entries[,3] = lapply(entries[,3], filter);
-			       entries[,5] = vapply(entries[,5], paste, collapse = ", ", character(1L));
-			       entries[,5] = (vapply(lapply(entries[,5], concurrent), paste, collapse = ', ', character(1L)))
+			       dates = as.Date(delist(dates), "%Y%m%d");
+			       entries[,2] = delist(lapply(entries[,2], filter));
+			       entries[,3] = delist(lapply(entries[,3], filter));
+			       entries[,5] = delist(lapply(entries[,5], concurrent));
 			       hist = data.matrix(lapply(entries[,5], historical));
 			       # unlisting to be able to bind it to 'entries'
-			       hist <- vapply(hist, paste, collapse = ", ", character(1L))
+			       hist <- delist(hist)
 			       entries = cbind(entries, hist);
 				entries = cbind(entries[,1], cbind(dates, entries[,-1]));
 			       # return full structure
@@ -71,6 +72,7 @@ exportCSV <- function(filenames, filename){
 		sect <- function(n){
 			return(transect_desc[n,3]);
 		}
+		e = as.double(e);
 		d1 = distm(e, chart[i,], fun=distHaversine);
 		d2 = distm(e, chart[i+1,], fun=distHaversine);
 		d3 = distm(e, chart[i+2,], fun=distHaversine);

@@ -60,7 +60,9 @@ genPercen <- function(entries, keys){
 subCalc <- function(entries, type, plot){
 	days = unique(entries$date);
 	entries = data.table(entries);
+	print(days)
 	n = 0;
+	ne = 0;
 	keys = NA;
 	getSubE = function(e,x,y) return(NA);
 	if(type %in% "historical"){
@@ -70,11 +72,13 @@ subCalc <- function(entries, type, plot){
 	}
 	if(plot %in% "plot") {
 		n = 20;
+		ne = 4;
 		if(type %in% "historical") getSubE = function(e,x,y) return(e[date==y ][ plot==x][,"historical"]);
 		if(type %in% "contemporary") getSubE = function(e,x,y) return(e[date==y ][ plot==x][,"contemporary"]);
 	}
 	if(plot %in% "subplot"){
  		n = 78;
+		ne = 1;
 		if(type %in% "historical") getSubE = function(e,x,y) return(e[date==y ][ subplot==x][,"historical"]);
 		if(type %in% "contemporary") getSubE = function(e,x,y) return(e[date==y ][ subplot==x][,"contemporary"]);
 	}
@@ -82,6 +86,13 @@ subCalc <- function(entries, type, plot){
 	for(i in 1:n){
 		for(day in days){
 		sub_e = getSubE(entries,i,day);
+		# print(type)
+		# print(sub_e)
+		# print(nrow(sub_e))
+		while(nrow(sub_e)<=ne){
+			sub_e = rbind(sub_e, list("o"));
+		}
+		# print(type)
 		# print(sub_e)
 		sub_e = genPercen(sub_e, keys);
 		# print(sub_e)

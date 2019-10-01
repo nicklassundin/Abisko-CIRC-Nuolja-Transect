@@ -18,8 +18,8 @@ files <- subset(files, grepl("Snow_Data_*", files));
 data <- lapply(files, function(x) read.delim(x, header=TRUE, sep=","));
 
 keyset  <- list(
-contemporary = c("s", "so", "o", "os"),
-historical = c("s", "o"))
+		contemporary = c("s", "so", "o", "os"),
+		historical = c("s", "o"))
 
 match <- function(entries, key){
 	entries = vapply(entries, paste, collapse = ", ", character(1L));
@@ -60,9 +60,8 @@ genPercen <- function(entries, keys){
 subCalc <- function(entries, type, plot){
 	days = unique(entries$date);
 	entries = data.table(entries);
-	print(days)
-	n = 0;
-	ne = 0;
+	n = 0;		# number of plots 
+	ne = 0; 	# how many plots should exist 
 	keys = NA;
 	getSubE = function(e,x,y) return(NA);
 	if(type %in% "historical"){
@@ -77,28 +76,21 @@ subCalc <- function(entries, type, plot){
 		if(type %in% "contemporary") getSubE = function(e,x,y) return(e[date==y ][ plot==x][,"contemporary"]);
 	}
 	if(plot %in% "subplot"){
- 		n = 78;
+		n = 78;
 		ne = 1;
 		if(type %in% "historical") getSubE = function(e,x,y) return(e[date==y ][ subplot==x][,"historical"]);
 		if(type %in% "contemporary") getSubE = function(e,x,y) return(e[date==y ][ subplot==x][,"contemporary"]);
 	}
 	result <- matrix(,nrow=0,ncol=length(keys)+2);
-	for(i in 1:n){
+	for(plot in 1:n){
 		for(day in days){
-		sub_e = getSubE(entries,i,day);
-		# print(type)
-		# print(sub_e)
-		# print(nrow(sub_e))
-		while(nrow(sub_e)<=ne){
-			sub_e = rbind(sub_e, list("o"));
-		}
-		# print(type)
-		# print(sub_e)
-		sub_e = genPercen(sub_e, keys);
-		# print(sub_e)
-		if(is.finite(sub_e[1])){
-			result = rbind(result, c(day, i, sub_e));
-		}
+			sub_e = getSubE(entries,plot,day);
+			# enter the 'open ground' points between	
+			while(nrow(sub_e)<ne){
+				sub_e = rbind(sub_e, list("o"));
+			}
+			sub_e = genPercen(sub_e, keys);
+			result = rbind(result, c(day, plot, sub_e));
 		}
 	}
 	result = data.table(result);
@@ -120,3 +112,5 @@ for(i in 1:length(files)){
 	print("Done");
 }
 
+# print(data[[1]]);
+# print(subCalc(data[[1]], "contemporary", "plot")[date=="2018-05-06"]);

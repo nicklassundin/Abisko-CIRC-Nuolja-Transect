@@ -29,8 +29,8 @@ exportCSV <- function(filenames, filename){
 
 				## filter to Historical perspective
 			       historical = function(y){
-				       if(y %in% "so" || y %in% "s") return(c("s"));
-				       if(y %in% "os" || y %in% "o") return(c("o"));
+				       if(y %in% "so" || y %in% "s"|| y %in% "os") return(c("s"));
+				       if(y %in% "o") return(c("o"));
 			       }
 			       ## filter out 
 			       concurrent = function(z){

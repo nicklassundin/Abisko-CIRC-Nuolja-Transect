@@ -82,15 +82,15 @@ subCalc <- function(entries, type, plot){
 		if(type %in% "contemporary") getSubE = function(e,x,y) return(e[date==y ][ subplot==x][,"contemporary"]);
 	}
 	result <- matrix(,nrow=0,ncol=length(keys)+2);
-	for(plot in 1:n){
+	for(x in 1:n){
 		for(day in days){
-			sub_e = getSubE(entries,plot,day);
+			sub_e = getSubE(entries,x,day);
 			# enter the 'open ground' points between	
 			while(nrow(sub_e)<ne){
 				sub_e = rbind(sub_e, list("o"));
 			}
 			sub_e = genPercen(sub_e, keys);
-			result = rbind(result, c(day, plot, sub_e));
+			result = rbind(result, c(day, x, sub_e));
 		}
 	}
 	result = data.table(result);

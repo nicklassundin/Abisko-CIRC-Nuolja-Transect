@@ -109,8 +109,5 @@ buildCSV <- function(dataset, filename){
 
 for(i in 1:length(files)){
 	buildCSV(data[[i]], filenames[i]);
-	print("Done");
 }
-
-# print(data[[1]]);
-# print(subCalc(data[[1]], "contemporary", "plot")[date=="2018-05-06"]);
+print("Done");

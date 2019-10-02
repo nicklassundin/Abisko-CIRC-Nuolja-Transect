@@ -71,13 +71,13 @@ subCalc <- function(entries, type, plot){
 	}
 	if(plot %in% "plot") {
 		n = 20;
-		ne = 4;
+		ne = 16;
 		if(type %in% "historical") getSubE = function(e,x,y) return(e[date==y ][ plot==x][,"historical"]);
 		if(type %in% "contemporary") getSubE = function(e,x,y) return(e[date==y ][ plot==x][,"contemporary"]);
 	}
 	if(plot %in% "subplot"){
 		n = 78;
-		ne = 1;
+		ne = 4;
 		if(type %in% "historical") getSubE = function(e,x,y) return(e[date==y ][ subplot==x][,"historical"]);
 		if(type %in% "contemporary") getSubE = function(e,x,y) return(e[date==y ][ subplot==x][,"contemporary"]);
 	}
@@ -86,11 +86,17 @@ subCalc <- function(entries, type, plot){
 		for(day in days){
 			sub_e = getSubE(entries,x,day);
 			# enter the 'open ground' points between	
+			# if(nrow(sub_e)>ne){
+			# 	print(plot)
+			# 	print(day)
+			# 	print(ne)
+			# 	print(sub_e)
+			# } 
 			while(nrow(sub_e)<ne){
 				sub_e = rbind(sub_e, list("o"));
 			}
-			sub_e = genPercen(sub_e, keys);
-			result = rbind(result, c(day, x, sub_e));
+			perc = genPercen(sub_e, keys);
+			result = rbind(result, c(day, x, perc));
 		}
 	}
 	result = data.table(result);
@@ -111,3 +117,6 @@ for(i in 1:length(files)){
 	buildCSV(data[[i]], filenames[i]);
 }
 print("Done");
+
+# print(data[[1]])
+# print(subCalc(data[[1]], "historical", "plot"), nrow=300)

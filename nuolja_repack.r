@@ -70,27 +70,49 @@ exportCSV <- function(filenames, filename){
 	closest <- function(e, chart, i=1){
 		# evaluating distance between three different point undtil closest two point are found and return interval number (subsection) including what section the subsection belongs to 
 		sect <- function(n){
-			return(transect_desc[n,3]);
+			return(c(transect_desc[n,3], transect_desc[n,1]));
+		}
+		distance = function(e0, e1){
+			d = distm(c(e0[2], e0[1]), c(e1[2],e1[1]), fun=distHaversine);
+			d = sqrt(d^2 + (e0[3]-e1[3])^2);
+			return(d)
 		}
 		e = as.double(e);
-		d1 = distm(e, chart[i,], fun=distHaversine);
-		d2 = distm(e, chart[i+1,], fun=distHaversine);
-		d3 = distm(e, chart[i+2,], fun=distHaversine);
+		# print(distm(chart[i,], chart[i+1,]))
+		# print(distm(chart[i+1,], chart[i+2,]))
+		d1 = distance(e[1:3], chart[i,1:3]);
+		d2 = distance(e[1:3], chart[i+1,1:3]);
+		d3 = distance(e[1:3], chart[i+2,1:3]);
 		# TODO new
-		if(d1 < d2) return(c(sect(i), i));
-		if(d2 < d3) return(c(sect(i+1), i+1));
-		if(nrow(chart) >= i+2+2){
-			return(closest(e, chart, i+2));
-		}else{
-			if(nrow(chart)>= i+2+1){
-				return(closest(e, chart, i+1));
+		# print(c(d1,d2,d3))
+		# print(i)
+		if(d2 < d1 && d2 < d3){
+			if(d1 < d3){
+				return(sect(i))
 			}else{
-				return(c(sect(i+2), i+2));
-			}
+				return(sect(i+1))
+			}	
+		}else if(d1<d2 && d1<d3){
+			return(sect(i)) 
 		}
+		if(nrow(chart) > i+2){
+			return(closest(e, chart, i+1));
+		}else{
+				return(sect(i+1));
+		}
+
 	};
 
-	# initating result data.frame
+
+# print(transect_desc)
+	# print(closest(c(18.72170622, 68.36592477, 940.493), transect_desc[,4:6]))
+	# print(closest(c(18.72191662, 68.36588181, 940.474), transect_desc[,4:6]))
+	# print(closest(c(18.72198154, 68.36584654, 939.241),  transect_desc[,4:6]))
+	# print(closest(c(18.72223583, 68.36577933, 939.002),  transect_desc[,4:6]))
+	# print(closest(c(18.72223583, 68.36577933, 936.35),  transect_desc[,4:6]))
+	# print(closest(c(18.72267322, 68.36569396, 936.02),  transect_desc[,4:6]))
+# fdsfdsf
+	# # initating result data.frame
 	result <- data.frame();
 
 	## inserts new entry to target and return target
@@ -106,12 +128,8 @@ exportCSV <- function(filenames, filename){
 	for(i in 1:length(data)){
 		if(length(data[[i]][!is.na(data[[i]])]) > 0){
 			for(j in 1:nrow(data[[i]])){
-				clos <- closest(c(data[[i]][j,4], data[[i]][[j,3]]), cbind(transect_desc[,5], transect_desc[,4]));
-				# TODO add remaining points missing as "o"
-				##
-				##
-				##
-				##
+				clos <- closest(data[[i]][j,3:5], transect_desc[,4:6]);
+				
 				result <- insert(result, data[[i]][j,], clos);
 			}
 		} 

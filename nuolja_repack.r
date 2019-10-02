@@ -26,7 +26,6 @@ exportCSV <- function(filenames, filename){
 	if(length(filenames)==0) return(NULL)
 	# Parsing the data from the file 
 	data = lapply(filenames, function(x){
-
 				## filter to Historical perspective
 			       historical = function(y){
 				       if(y %in% "so" || y %in% "s"|| y %in% "os") return(c("s"));
@@ -46,7 +45,6 @@ exportCSV <- function(filenames, filename){
 			       delist = function(y){
 				       return(vapply(y, paste, collapse = ', ', character(1L)));
 			       }
-
 				## Active reading, filtering and end unlist (removes every column beond 7)
 			       entries = read.delim(x, header=FALSE, sep=",")[,1:5]
 			       if(dim(entries)[2] < 5) return(NA);
@@ -73,19 +71,17 @@ exportCSV <- function(filenames, filename){
 			return(c(transect_desc[n,3], transect_desc[n,1]));
 		}
 		distance = function(e0, e1){
+			# reverse latitude and longitude because distm takes longitude, latitude
 			d = distm(c(e0[2], e0[1]), c(e1[2],e1[1]), fun=distHaversine);
+			# spacial distance calculated 
 			d = sqrt(d^2 + (e0[3]-e1[3])^2);
 			return(d)
 		}
 		e = as.double(e);
-		# print(distm(chart[i,], chart[i+1,]))
-		# print(distm(chart[i+1,], chart[i+2,]))
 		d1 = distance(e[1:3], chart[i,1:3]);
 		d2 = distance(e[1:3], chart[i+1,1:3]);
 		d3 = distance(e[1:3], chart[i+2,1:3]);
 		# TODO new
-		# print(c(d1,d2,d3))
-		# print(i)
 		if(d2 < d1 && d2 < d3){
 			if(d1 < d3){
 				return(sect(i))
@@ -103,16 +99,7 @@ exportCSV <- function(filenames, filename){
 
 	};
 
-
-# print(transect_desc)
-	# print(closest(c(18.72170622, 68.36592477, 940.493), transect_desc[,4:6]))
-	# print(closest(c(18.72191662, 68.36588181, 940.474), transect_desc[,4:6]))
-	# print(closest(c(18.72198154, 68.36584654, 939.241),  transect_desc[,4:6]))
-	# print(closest(c(18.72223583, 68.36577933, 939.002),  transect_desc[,4:6]))
-	# print(closest(c(18.72223583, 68.36577933, 936.35),  transect_desc[,4:6]))
-	# print(closest(c(18.72267322, 68.36569396, 936.02),  transect_desc[,4:6]))
-# fdsfdsf
-	# # initating result data.frame
+	# initating result data.frame
 	result <- data.frame();
 
 	## inserts new entry to target and return target
@@ -151,5 +138,4 @@ for(i in 1:length(paths)){
 	exportCSV(list.files(paths[i], pattern = "*.csv", full.names = TRUE), paste(gsub(" ", "_",dirs[i]), ".csv", sep=""));
 }
 
-# warnings()[1]
 print("nuolja_repack.r : DONE : CSV files built");

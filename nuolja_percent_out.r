@@ -64,7 +64,7 @@ genPercen <- function(entries, p, startvalue=list(historical="o", contemporary="
 			# print(d0)
 			# print(p1)
 			# print(d1)
-				
+
 			pn0 = dist2Line(pn, rbind(p0,p1));
 			# print(pn0)
 			perc = pn0[1]/d01;
@@ -84,7 +84,7 @@ genPercen <- function(entries, p, startvalue=list(historical="o", contemporary="
 		value = 0;
 		if(k %in% startvalue$contemporary) value = value + (1 - sum(percent[,10]));
 		# filt = filter[filter %in% k]
-		
+
 		for(i in 1:nrow(percent)){
 			if(percent[i,]$contemporary %in% k){
 				value = value + percent[i,10];
@@ -93,13 +93,13 @@ genPercen <- function(entries, p, startvalue=list(historical="o", contemporary="
 		values = c(values, as.double(value))
 	}
 	cont = values;	
-	
+
 	values = c();
 	for(k in keyset$historical){
 		value = 0;
 		if(k %in% startvalue$historical) value = value + (1 - sum(percent[,10]));
 		# filt = filter[filter %in% k]
-		
+
 		for(i in 1:nrow(percent)){
 			if(percent[i,]$historical %in% k){
 				value = value + percent[i,10];
@@ -125,7 +125,7 @@ genPercen <- function(entries, p, startvalue=list(historical="o", contemporary="
 subCalc <- function(entries, filename){
 	days = unique(entries$date);
 	entries = data.table(entries);
-	
+
 	getSubE = function(e,x,y) return(e[date==y][ subplot==x]);
 	contemporary = matrix(,nrow=0,ncol=7) 
 	historical = matrix(,nrow=0,ncol=5);
@@ -146,6 +146,42 @@ subCalc <- function(entries, filename){
 	# print(colnames(result))
 	write.csv(contemporary, paste(filename, "_contemporary_subplot.csv", sep=""), row.names=FALSE);
 	write.csv(historical, paste(filename, "_historical_subplot.csv", sep=""), row.names=FALSE);
+	plot_cont = matrix(,nrow=0, ncol=6);
+	plot_hist = matrix(,nrow=0, ncol=4);
+	for(day in days){
+		for(i in 1:20){
+			row_cont = contemporary[ as.vector(contemporary[,"plot"])==i,];
+			row = c(day, i)
+			for(j in 4:7){
+				sum = sum(as.double(row_cont[,j]))/nrow(row_cont);
+				# print("--------------------")
+				# print(row_cont[,j])
+				# print(nrow(row_cont))
+				row = c(row, sum);
+				# print(row)
+			}
+			# print(row_cont)
+			plot_cont = rbind(plot_cont, row)  	
+			
+			row_hist = contemporary[ as.vector(contemporary[,"plot"])==i,];
+			row = c(day, i)
+			for(j in 4:5){
+				# sum = sum(as.double(row_cont[,j]))/nrow(row_cont);
+				# print("--------------------")
+				# print(row_cont[,j])
+				# print(nrow(row_cont))
+				row = c(row, sum);
+				# print(row)
+			}
+			# print(row_cont)
+			plot_hist = rbind(plot_hist, row);
+		}
+	}
+	colnames(plot_cont) <- c("date", "plot", keyset$contemporary);
+	colnames(plot_hist) <- c("date", "plot", keyset$historical);
+
+	write.csv(plot_cont, paste(filename, "_contemporary_plot.csv", sep=""), row.names=FALSE);
+	write.csv(plot_hist, paste(filename, "_historical_plot.csv", sep=""), row.names=FALSE);
 }
 
 buildCSV <- function(dataset, filename){

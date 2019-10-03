@@ -136,7 +136,7 @@ subCalc <- function(entries, filename){
 			# print(sub_e)
 			perc = genPercen(sub_e, p, default);
 			contemporary = rbind(contemporary, c(day, transect_desc[p,3], p, perc$contemporary));
-			historical = rbind(historical, c(day, p, perc$historical));
+			historical = rbind(historical, c(day, transect_desc[p,3], p, perc$historical));
 			default = perc$default;	
 		}
 	}

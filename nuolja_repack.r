@@ -13,7 +13,7 @@ if(length(new.packages)) install.packages(new.packages)
 library(geosphere);
 
 ## load transect_description.csv used as reference file for the transect line
-transect_desc <- read.csv(file="transect_description.csv")[,1:6][];
+transect_desc <- read.csv(file="transect_description.csv")[,1:6];
 transect_desc <- data.matrix(transect_desc);
 ###
 
@@ -71,25 +71,22 @@ exportCSV <- function(filenames, filename){
 			return(c(transect_desc[n,3], transect_desc[n,1]));
 		}
 		distance = function(e0, e1){
+			# print(e0)
+			# print(e1)
 			# reverse latitude and longitude because distm takes longitude, latitude
-			d = distm(c(e0[2], e0[1]), c(e1[2],e1[1]), fun=distHaversine);
-			# spacial distance calculated 
-			d = sqrt(d^2 + (e0[3]-e1[3])^2);
+			d = dist2Line(c(e0[2], e0[1]), cbind(e1[,2],e1[,1]));
+			# d = sqrt(d^2 + (e0[3]-e1[3])^2);
 			return(d)
 		}
 		e = as.double(e);
-		d1 = distance(e[1:3], chart[i,1:3]);
-		d2 = distance(e[1:3], chart[i+1,1:3]);
-		d3 = distance(e[1:3], chart[i+2,1:3]);
-		# TODO new
-		if(d2 < d1 && d2 < d3){
-			if(d1 < d3){
+		d1 = distance(e[1:2], chart[i:(i+1),1:2]);
+		d01 = distm(c(chart[i,2], chart[i,1]), c(chart[i+1,2], chart[i+1,1]))
+		# print(d1[1])
+		# print(d01)
+		# print(d1[1] < d01)
+		# fsdfsdf	
+		if(d1[1] < d01){
 				return(sect(i))
-			}else{
-				return(sect(i+1))
-			}	
-		}else if(d1<d2 && d1<d3){
-			return(sect(i)) 
 		}
 		if(nrow(chart) > i+2){
 			return(closest(e, chart, i+1));

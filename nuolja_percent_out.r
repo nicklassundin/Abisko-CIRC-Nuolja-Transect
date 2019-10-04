@@ -18,6 +18,10 @@ transect_desc <- read.csv(file="transect_description.csv")[,1:6];
 transect_desc <- data.matrix(transect_desc);
 #############
 
+delist = function(y){
+	return(vapply(y, paste, collapse = ', ', character(1L)));
+}
+
 
 data <- lapply(files, function(x) read.delim(x, header=TRUE, sep=","));
 
@@ -37,164 +41,176 @@ match <- function(entries, key){
 }
 # match(data.frame(data[[1]])$contemporary, "os")
 
-
-genPercen <- function(entries, p, startvalue=list(historical="o", contemporary="o")){
-	# print(entries)
-	# print("start percent call")
-	name = colnames(entries);
-	if(nrow(entries) == 0){
-		entries = data.table(NA, NA, NA, NA, 0, 0, 0, contemporary=startvalue$contemporary, historical=startvalue$historical)	
+percSeg <- function(ds){
+	# print(ds)
+	ds = unlist(ds)
+	result = c();
+	for(i in 2:(length(ds))){
+		result = c(result, signif(abs(ds[i]-ds[i-1])/(max(ds)-min(ds)), 10));
 	}
-	# print(entries)
-	distance = function(entries){
-		if(nrow(entries)<1) return(NA);
-		points = cbind(entries[,6], entries[,5])
-		p0 = c(transect_desc[p,5], transect_desc[p,4]);
-		p1 = c(transect_desc[p+1,5], transect_desc[p+1,4]);
-		p_m = p0 - (p0-p1)/2;
-		d01 = distm(p0, p1)
-		result = c(1)
-		for(i in 1:nrow(points)){
-			pn = points[i,]
-			d0 = distm(pn, p0);
-			d1 = distm(pn, p1);
-			# print("-----------------")
-			# print(pn)
-			# print(p0)
-			# print(d0)
-			# print(p1)
-			# print(d1)
-
-			pn0 = dist2Line(pn, rbind(p0,p1));
-			# print(pn0)
-			perc = pn0[1]/d01;
-
-			if(abs(perc[1,1]) > 1){
-				perc = 0;
-			}
-			result[i] = result[i] - perc;
-			result = c(result, perc);
-		}
-		return(cbind(entries, result[-1]))
-	}
-	percent = distance(entries);
-	# print(percent)
-	values = c();
-	for(k in keyset$contemporary){
-		value = 0;
-		if(k %in% startvalue$contemporary) value = value + (1 - sum(percent[,10]));
-		# filt = filter[filter %in% k]
-
-		for(i in 1:nrow(percent)){
-			if(percent[i,]$contemporary %in% k){
-				value = value + percent[i,10];
-			}
-		}
-		values = c(values, as.double(value))
-	}
-	cont = values;	
-
-	values = c();
-	for(k in keyset$historical){
-		value = 0;
-		if(k %in% startvalue$historical) value = value + (1 - sum(percent[,10]));
-		# filt = filter[filter %in% k]
-
-		for(i in 1:nrow(percent)){
-			if(percent[i,]$historical %in% k){
-				value = value + percent[i,10];
-			}
-		}
-		values = c(values, as.double(value))
-	}
-	hist = values;
-	result = list(historical=hist, contemporary=cont, default=list(
-								       historical=percent$historical[nrow(percent)],
-								       contemporary = percent$contemporary[nrow(percent)]
-								       ));
-	# print(result)
-	return(result);
+	return(result)	
 }
-# genPercen(data.table(data[[1]])[plot==20], keyset$historical)
-# genPercen(data.table(data[[1]])[plot==20], keyset$contemporary)
-# data.table(data[[1]])[plot==20][,"historical"]
-# genPercen(data.table(data[[1]])[plot==20][,"historical"], keyset$historical)
-# genPercen(data.table(data[[1]])[plot==20][,"contemporary"], keyset$contemporary)
+# print(percSeg(c(10,5,3,2,0)))
+# print(percSeg(c(15,10,8,7,5)))
+# print(percSeg(c(10,5,0)))
+
+sumPerc = function(m){
+	default = c(m[nrow(m),3], m[nrow(m),2])
+	resolve = function(keys, mat, values){
+		percent = c()
+		for(k in keys){
+			value = values[mat %in% k,1];
+			if(nrow(value)==0){
+				percent = c(percent, 0);
+			}else{
+				percent = c(percent, sum(value)); 
+			}
+		}
+		if(sum(percent) > 1){
+			# print("............")
+			# print(percent)
+			# print(sum(percent))
+			# print(m)
+	
+		}
+		return(percent)
+	}
+	return(list(
+		    contemporary=resolve(keyset$contemporary, m$contemporary, m[,1]), 
+		    historical=resolve(keyset$historical, m$historical, m[,1]),
+		    default = default
+		    ))
+}
 
 
-subCalc <- function(entries, filename){
+
+
+subCalc <- function(entries, filename, vs){
+	# print(entries[1:10,])
+	# print(vs[1:10,])
+	plots = unique(max(entries[,1]))
+	type = colnames(entries)[1];
 	days = unique(entries$date);
 	entries = data.table(entries);
-
-	getSubE = function(e,x,y) return(e[date==y][ subplot==x]);
-	contemporary = matrix(,nrow=0,ncol=7) 
-	historical = matrix(,nrow=0,ncol=5);
+	entries = entries[order(entries$proj_factor)]
+	getSubE = function(e,x,y){
+		e = e[as.vector(e[,1] == x),];
+		return(e[date==y]);
+	} 
+	contemporary = matrix(,nrow=0,ncol=6) 
+	historical = matrix(,nrow=0,ncol=4);
 	for(day in days){
-		default = list(historical="o", contemporary="o");
-		for(p in 1:78){
+		default = data.table("o", "o") 
+		colnames(default) <- c("contemporary", "historical")
+		for(p in 1:plots){
+			# print("START")
 			sub_e = getSubE(entries, p, day);
+			
+			v0 = vs[vs[,1] == p,]
+			v1 = vs[vs[,1] == (p+1),]
+			if(is.vector(v0)){
+				d0 = distm(v0[2:3], vs[1,2:3])
+			}else{
+				d0 = distm(v0[1,2:3], vs[1,2:3])
+			}
+			# print("MID")
+			# print(v1)
+			# print(p)
+			if(is.vector(v1)){
+				d1 = distm(v1[2:3], vs[1,2:3])
+			}else{
+				n = nrow(v1);
+				# print(n)
+				if(n==0){
+					d1 = distm(v1[n,2:3], vs[1:2:3])
+				}else{
+					d1 = distm(v1[n,2:3], vs[1,2:3])
+				}
+			}
+			# print(d0)
+			# print(d1)
+			if(is.na(sub_e[1,2])){
+				dn = cbind(d0, d1)
+			}else{
+				dn = cbind(cbind(d0, t(sub_e[,2])), d1)
+			}
 			# print(sub_e)
-			perc = genPercen(sub_e, p, default);
-			contemporary = rbind(contemporary, c(day, transect_desc[p,3], p, perc$contemporary));
-			historical = rbind(historical, c(day, transect_desc[p,3], p, perc$historical));
+			# print(dn)
+			# print(v0)
+			# print(v1)
+			percent = percSeg(dn)
+
+
+			# print(default)
+			m = rbind(default, sub_e[,8:9]);
+			# print(percent)		
+			if(sum(percent)>1.01){
+				print("------------------------")
+				# print(sub_e)	
+				# print(dn)
+				# print(nrow(m))
+				# print(length(percent))
+				# print(m)
+				# print(sum(percent))
+				# print(sub_e)
+				# print(sub_e[,2])
+				# print(percent)
+				# print(dn)
+			}
+
+			m = cbind(percent, m);
+			# print(m)
+			perc = sumPerc(m)
+			# print(perc$contemporary)	
+			
+
+			# print("END")
+			
+			
+			contemporary = rbind(contemporary, c(day, vs[p,1], perc$contemporary));
+			historical = rbind(historical, c(day, vs[p,1], perc$historical));
 			default = perc$default;	
+			# print("-------")
+			# print(default)
+			# print("<<<<<<<<<<<")
 		}
 	}
 	# result = data.table(result);
-	colnames(contemporary) <- c("date", "plot", "subplot", keyset$contemporary);
-	colnames(historical) <- c("date", "plot", "subplot", keyset$historical);
+	plotname = colnames(entries)[1];
+	colnames(contemporary) <- c("date", plotname, keyset$contemporary);
+	colnames(historical) <- c("date", plotname, keyset$historical);
 	# print(colnames(result))
-	write.csv(contemporary, paste(filename, "_contemporary_subplot.csv", sep=""), row.names=FALSE);
-	write.csv(historical, paste(filename, "_historical_subplot.csv", sep=""), row.names=FALSE);
-	plot_cont = matrix(,nrow=0, ncol=6);
-	plot_hist = matrix(,nrow=0, ncol=4);
-	for(day in days){
-		for(i in 1:20){
-			row_cont = contemporary[ as.vector(contemporary[,"plot"])==i,];
-			row = c(day, i)
-			for(j in 4:7){
-				sum = sum(as.double(row_cont[,j]))/nrow(row_cont);
-				# print("--------------------")
-				# print(row_cont[,j])
-				# print(nrow(row_cont))
-				row = c(row, sum);
-				# print(row)
-			}
-			# print(row_cont)
-			plot_cont = rbind(plot_cont, row)  	
-			
-			row_hist = contemporary[ as.vector(contemporary[,"plot"])==i,];
-			row = c(day, i)
-			for(j in 4:5){
-				# sum = sum(as.double(row_cont[,j]))/nrow(row_cont);
-				# print("--------------------")
-				# print(row_cont[,j])
-				# print(nrow(row_cont))
-				row = c(row, sum);
-				# print(row)
-			}
-			# print(row_cont)
-			plot_hist = rbind(plot_hist, row);
-		}
+	# print(contemporary[1:20,])
+	write = function(data, file, t){
+		name = paste(file, paste(type, ".csv", sep=""), sep="");
+		print(paste("Write to : ", name))
+		write.csv(data, name, row.names=FALSE);
 	}
-	colnames(plot_cont) <- c("date", "plot", keyset$contemporary);
-	colnames(plot_hist) <- c("date", "plot", keyset$historical);
 
-	write.csv(plot_cont, paste(filename, "_contemporary_plot.csv", sep=""), row.names=FALSE);
-	write.csv(plot_hist, paste(filename, "_historical_plot.csv", sep=""), row.names=FALSE);
+
+	write(contemporary, paste(filename, "_contemporary_", sep=""), type);
+	write(historical, paste(filename, "_historical_", sep=""), type);
+	print(paste("DONE -", type))
 }
 
 buildCSV <- function(dataset, filename){
-	# print(filename)
-	# write.csv(subCalc(dataset, "contemporary"), paste(filename, "_contemporary_plot.csv", sep=""), row.names=FALSE);
-	subplot = subCalc(dataset, filename);
-	# write.csv(subCalc(dataset, "historical"), paste(filename, "_historical_subplot.csv", sep=""), row.names=FALSE)
+	subplot = subCalc(dataset[-1], filename, transect_desc[,c(1,5,4)]);
+	plotcoord = matrix(,nrow=0,ncol=3)
+	for(i in 1:20){
+				  tmp = transect_desc[transect_desc[,3]==i,]
+				  # print(tmp)
+				  res = tmp[1,c(3,5,4)]
+				res = tmp[1, c(3,5,4)];
+				  if(i==20){
+					res = rbind(res, c(i+1, tmp[nrow(tmp), c(5,4)]))
+				  }
+				  plotcoord = rbind(plotcoord, res)
+	}
+	plot = subCalc(dataset[-2], filename, plotcoord);
 }
 
 for(i in 1:length(files)){
 	buildCSV(data[[i]], filenames[i]);
 }
-print("Done");
-
 # print(data[[1]])
 # print(subCalc(data[[1]], "historical", "plot"), nrow=300)

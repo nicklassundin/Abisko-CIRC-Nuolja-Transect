@@ -21,6 +21,33 @@ transect_desc <- data.matrix(transect_desc);
 paths <- list.dirs(getwd(),full.names = TRUE)[-1]
 dirs <- list.dirs(getwd(), full.names = FALSE)[-1];
 
+
+
+projection = function(x){
+	t0 = as.vector(c(transect_desc[1,5], transect_desc[1,4]))
+	t1 = as.vector(c(transect_desc[nrow(transect_desc),5], transect_desc[nrow(transect_desc),4]));
+	x = as.double(x);
+	dist2Line = dist2Line(c(x[2], x[1]), rbind(t0,t1));
+	return(distm(dist2Line[2:3], t0));
+}
+
+subplot_dist = t(apply(transect_desc, 1, function(x){
+	return(c(x[c(3,1)], distm(x[c(5,4)], transect_desc[1,c(5,4)])));	
+}))
+# subplot_dist
+section = function(x){
+	# print(x)
+	prc = NA;
+	for(i in 1:(nrow(subplot_dist)-1)){
+		p0 = subplot_dist[i,3];
+		p1 = subplot_dist[i+1,3];
+		if(p0 - x <= 0.00001 && p1 - x >= 0.00001){
+			return(c(subplot_dist[i,c(1,2)]));
+		} 
+	}
+	return(subplot_dist[78,c(1,2)])
+}
+
 ## this writes to csv file based on name called at the end of the document
 exportCSV <- function(filenames, filename){
 	if(length(filenames)==0) return(NULL)
@@ -67,33 +94,9 @@ exportCSV <- function(filenames, filename){
 	# assumes that transect is never turning >45 degrees
 	closest <- function(e, chart, i=1){
 		# evaluating distance between three different point undtil closest two point are found and return interval number (subsection) including what section the subsection belongs to 
-		sect <- function(n){
-			return(c(transect_desc[n,3], transect_desc[n,1]));
-		}
-		distance = function(e0, e1){
-			# print(e0)
-			# print(e1)
-			# reverse latitude and longitude because distm takes longitude, latitude
-			d = dist2Line(c(e0[2], e0[1]), cbind(e1[,2],e1[,1]));
-			# d = sqrt(d^2 + (e0[3]-e1[3])^2);
-			return(d)
-		}
-		e = as.double(e);
-		d1 = distance(e[1:2], chart[i:(i+1),1:2]);
-		d01 = distm(c(chart[i,2], chart[i,1]), c(chart[i+1,2], chart[i+1,1]))
-		# print(d1[1])
-		# print(d01)
-		# print(d1[1] < d01)
-		# fsdfsdf	
-		if(d1[1] < d01){
-				return(sect(i))
-		}
-		if(nrow(chart) > i+2){
-			return(closest(e, chart, i+1));
-		}else{
-				return(sect(i+1));
-		}
-
+		proj = projection(e[1:2])
+		d = proj[1,1]
+		return(c(section(d), d));
 	};
 
 	# initating result data.frame
@@ -113,14 +116,14 @@ exportCSV <- function(filenames, filename){
 		if(length(data[[i]][!is.na(data[[i]])]) > 0){
 			for(j in 1:nrow(data[[i]])){
 				clos <- closest(data[[i]][j,3:5], transect_desc[,4:6]);
-				
+				# print(clos)	
 				result <- insert(result, data[[i]][j,], clos);
 			}
 		} 
 	}
 
 	## naming the columns for the return file
-	colnames(result) <- c("plot", "subplot", "id", "date", "latitude", "longitude", "elevation", "contemporary", "historical");
+	colnames(result) <- c("plot", "subplot", "proj_factor", "id", "date", "latitude", "longitude", "elevation", "contemporary", "historical");
 	rownames(result) <- 1:nrow(result);
 
 

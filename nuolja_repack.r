@@ -136,7 +136,7 @@ exportCSV <- function(filenames, filename){
 	# print(tmp)
 	# tmp = tmp[tmp$date == "2019-05-10",]
 	# print(tmp)
-	if(nrow(tmp)>1)plot(tmp[c(3,5)],type="p", pch=as.character(tmp$historical))
+	# if(nrow(tmp)>1)plot(tmp[c(3,5)],type="p", pch=as.character(tmp$historical))
 	# if(nrow(tmp)>1)plot(tmp[c(6,7)],type="b", pch=as.character(tmp$plot))
 	write.csv(result,filename, row.names=FALSE)
 }

@@ -3,7 +3,8 @@
 # 2. Run Rscript nuolja_repack.r file
 # 3. The script will create one file for each child directory.
 
-
+# colnames = c("plot", "subplot", "proj_factor", "transect_dist", "id", "date", "latitude", "longitude", "elevation", "contemporary", "historical");
+colnames = c("plot", "subplot", "proj_factor", "id", "date", "latitude", "longitude", "elevation", "contemporary", "historical");
 
 
 ## Install geosphere package if not already install on client
@@ -12,40 +13,28 @@ new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"
 if(length(new.packages)) install.packages(new.packages)
 library(geosphere);
 
-## load transect_description.csv used as reference file for the transect line
-transect_desc <- read.csv(file="transect_description.csv")[,1:6];
-transect_desc <- data.matrix(transect_desc);
-###
+source("nuolja_help.r")
 
 ## Build paths for the directories
 paths <- list.dirs(getwd(),full.names = TRUE)[-1]
 dirs <- list.dirs(getwd(), full.names = FALSE)[-1];
 
 
+# Generate list of distance between start point and each pole
+# also it sets order of column to "plot, subplot "
+# transect_desc = data.frame(transect_desc);
 
-projection = function(x){
-	t0 = as.vector(c(transect_desc[1,5], transect_desc[1,4]))
-	t1 = as.vector(c(transect_desc[nrow(transect_desc),5], transect_desc[nrow(transect_desc),4]));
-	x = as.double(x);
-	dist2Line = dist2Line(c(x[2], x[1]), rbind(t0,t1));
-	return(distm(dist2Line[2:3], t0));
-}
-
-subplot_dist = t(apply(transect_desc, 1, function(x){
-	return(c(x[c(3,1)], distm(x[c(5,4)], transect_desc[1,c(5,4)])));	
-}))
-# subplot_dist
 section = function(x){
-	# print(x)
+	# print(typeof(x))
 	prc = NA;
-	for(i in 1:(nrow(subplot_dist)-1)){
-		p0 = subplot_dist[i,3];
-		p1 = subplot_dist[i+1,3];
-		if(p0 - x <= 0.00001 && p1 - x >= 0.00001){
-			return(c(subplot_dist[i,c(1,2)]));
+	for(i in 1:(nrow(transect_desc)-1)){
+		p0 = as.numeric(transect_desc[i,3]);
+		p1 = as.numeric(transect_desc[i+1,3]);
+		if((p0 - x) <= 0.0 && (p1 - x) >= 0.0){
+			return(c(transect_desc[i,c(1,2)]));
 		} 
 	}
-	return(subplot_dist[78,c(1,2)])
+	return(transect_desc[78,c(1,2)])
 }
 
 ## this writes to csv file based on name called at the end of the document
@@ -53,49 +42,50 @@ exportCSV <- function(filenames, filename){
 	if(length(filenames)==0) return(NULL)
 	# Parsing the data from the file 
 	data = lapply(filenames, function(x){
-				## filter to Historical perspective
-			       historical = function(y){
-				       if(y %in% "so" || y %in% "s"|| y %in% "os") return(c("s"));
-				       if(y %in% "o") return(c("o"));
-			       }
-			       ## filter out 
-			       concurrent = function(z){
-				       tmp = tolower(as.vector(z));
-				       if(tmp %in% "r") tmp = "o";
-				       return(tmp);
-			       }
-			       # filter out none numerical used for coordinates who use the E & N notation.
-			       filter = function(y){
-				       return(lapply(y, function(x) as.double(gsub("[^0-9\\.]", "", y))));
-			       }
+			      ## filter to Historical perspective
+			      historical = function(y){
+				      tmp = tolower(as.vector(y));
+				      if(tmp %in% "so" || tmp %in% "s"|| tmp %in% "os") tmp = c("s");
+				      if(tmp %in% "r") tmp = c("o");
+				      return(tmp);
+			      }
+			      ## filter out 
+			      concurrent = function(z){
+				      tmp = tolower(as.vector(z));
+				      if(tmp %in% "r") tmp = "o";
+				      if(tmp %in% "x") tmp = prev; 
+				      return(tmp);
+			      }
+			      # filter out none numerical used for coordinates who use the E & N notation.
+			      filter = function(y){
+				      return(lapply(y, function(x) as.double(gsub("[^0-9\\.]", "", y))));
+			      }
 
-			       delist = function(y){
-				       return(vapply(y, paste, collapse = ', ', character(1L)));
-			       }
-				## Active reading, filtering and end unlist (removes every column beond 7)
-			       entries = read.delim(x, header=FALSE, sep=",")[,1:5]
-			       if(dim(entries)[2] < 5) return(NA);
-			       dates = lapply(as.character(entries[,1]), function(x) return(strsplit(x,"-")[[1]][2]));
-			       dates = as.Date(delist(dates), "%Y%m%d");
-			       entries[,2] = delist(lapply(entries[,2], filter));
-			       entries[,3] = delist(lapply(entries[,3], filter));
-			       entries[,5] = delist(lapply(entries[,5], concurrent));
-			       hist = data.matrix(lapply(entries[,5], historical));
-			       # unlisting to be able to bind it to 'entries'
-			       hist <- delist(hist)
-			       entries = cbind(entries, hist);
-				entries = cbind(entries[,1], cbind(dates, entries[,-1]));
-			       # return full structure
-			       return(entries);
+			      entries = read.delim(x, header=FALSE, sep=",")[,1:5]
+			      if(dim(entries)[2] < 5) return(NA);
+			      dates = lapply(as.character(entries[,1]), function(x) return(strsplit(x,"-")[[1]][2]));
+
+			      dates = as.Date(delist(dates), "%Y%m%d");
+			      entries[,2] = delist(lapply(entries[,2], filter));
+			      entries[,3] = delist(lapply(entries[,3], filter));
+			      entries[,5] = delist(lapply(entries[,5], concurrent));
+			      hist = data.matrix(lapply(entries[,5], historical));
+			      # unlisting to be able to bind it to 'entries'
+			      hist <- delist(hist)
+			      entries = cbind(entries, hist);
+			      entries = cbind(entries[,1], cbind(dates, entries[,-1]));
+			      # return full structure
+			      return(entries);
 } 
 	);
-
 	# Brute forces point form from file fineds closest points
 	# assumes that transect is never turning >45 degrees
 	closest <- function(e, chart, i=1){
 		# evaluating distance between three different point undtil closest two point are found and return interval number (subsection) including what section the subsection belongs to 
-		proj = projection(e[1:2])
-		d = proj[1,1]
+		proj = projection(e[1:3])
+		d = proj[1]
+		# print(proj)
+		# print(section(d))
 		return(c(section(d), d));
 	};
 
@@ -121,14 +111,33 @@ exportCSV <- function(filenames, filename){
 			}
 		} 
 	}
-
 	## naming the columns for the return file
-	colnames(result) <- c("plot", "subplot", "proj_factor", "id", "date", "latitude", "longitude", "elevation", "contemporary", "historical");
+
+	# print(result)
+
+	colnames(result) <- colnames; 
+	# result = rbind(result, transect_desc);
+
+	# result = result[order(delist(result$proj_factor)),];
 	rownames(result) <- 1:nrow(result);
 
 
+	# print(result$proj_factor)
+	# print(order(delist(result$proj_factor)))
+	# print(order(as.numeric(result$proj_factor)))
 	# result
-	filename
+	# print(result[1:30,])	
+	# print(result[-(1:180),])	
+	# plot(result[(result[,1] %in% 10),5:7])
+	tmp = result;
+	tmp = result[(result[,1] > 8),];
+	tmp = result[(result[,1] < 11),];
+	# tmp = result[(result[,1] == 10),];
+	# print(tmp)
+	# tmp = tmp[tmp$date == "2019-05-10",]
+	# print(tmp)
+	if(nrow(tmp)>1)plot(tmp[c(3,5)],type="p", pch=as.character(tmp$historical))
+	# if(nrow(tmp)>1)plot(tmp[c(6,7)],type="b", pch=as.character(tmp$plot))
 	write.csv(result,filename, row.names=FALSE)
 }
 
@@ -137,5 +146,6 @@ exportCSV <- function(filenames, filename){
 for(i in 1:length(paths)){
 	exportCSV(list.files(paths[i], pattern = "*.csv", full.names = TRUE), paste(gsub(" ", "_",dirs[i]), ".csv", sep=""));
 }
+
 
 print("nuolja_repack.r : DONE : CSV files built");

@@ -64,8 +64,10 @@ exportCSV <- function(filenames, filename){
 			      entries = read.delim(x, header=FALSE, sep=",")[,1:5]
 			      if(dim(entries)[2] < 5) return(NA);
 			      dates = lapply(as.character(entries[,1]), function(x) return(strsplit(x,"-")[[1]][2]));
-
 			      dates = as.Date(delist(dates), "%Y%m%d");
+			      # years = format(dates, "%Y");
+			      # dates = format(dates, "%j");
+			      # dates = cbind(years, dates)
 			      entries[,2] = delist(lapply(entries[,2], filter));
 			      entries[,3] = delist(lapply(entries[,3], filter));
 			      entries[,5] = delist(lapply(entries[,5], concurrent));
@@ -129,9 +131,9 @@ exportCSV <- function(filenames, filename){
 	# print(result[1:30,])	
 	# print(result[-(1:180),])	
 	# plot(result[(result[,1] %in% 10),5:7])
-	tmp = result;
-	tmp = result[(result[,1] > 8),];
-	tmp = result[(result[,1] < 11),];
+	# tmp = result;
+	# tmp = result[(result[,1] > 8),];
+	# tmp = result[(result[,1] < 11),];
 	# tmp = result[(result[,1] == 10),];
 	# print(tmp)
 	# tmp = tmp[tmp$date == "2019-05-10",]

@@ -99,6 +99,7 @@ subCalc <- function(entries, filename, vs){
 	contemporary = matrix(,nrow=0,ncol=6) 
 	historical = matrix(,nrow=0,ncol=4);
 	for(day in days){
+		doy = format(as.Date(day), "%j");
 		default = data.table("o", "o") 
 		colnames(default) <- c("contemporary", "historical")
 		for(p in 1:plots){
@@ -129,14 +130,14 @@ subCalc <- function(entries, filename, vs){
 			# print(m)
 
 			perc = sumPerc(m)
-			contemporary = rbind(contemporary, c(day, vs[p,1], perc$contemporary));
-			historical = rbind(historical, c(day, vs[p,1], perc$historical));
+			contemporary = rbind(contemporary, c(doy, vs[p,1], perc$contemporary));
+			historical = rbind(historical, c(doy, vs[p,1], perc$historical));
 			default = perc$default;	
 		}
 	}
 	plotname = colnames(entries)[1];
-	colnames(contemporary) <- c("date", plotname, keyset$contemporary);
-	colnames(historical) <- c("date", plotname, keyset$historical);
+	colnames(contemporary) <- c("DOY", plotname, keyset$contemporary);
+	colnames(historical) <- c("DOY", plotname, keyset$historical);
 	write = function(data, file, t){
 		name = paste(file, paste(type, ".csv", sep=""), sep="");
 		print(paste("Write to : ", name))

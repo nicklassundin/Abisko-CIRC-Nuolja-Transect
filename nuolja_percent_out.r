@@ -106,6 +106,9 @@ subCalc <- function(entries, filename, vs){
 			sub_e = getSubE(entries, p, day);
 			# print(p)
 			# print(sub_e)
+
+			## vs are sorted from lowest to highest
+			## take in reverse order
 			d1 = vs[vs[,1] == p,]
 			d0 = vs[vs[,1] == (p+1),]
 			# print(d0)
@@ -145,18 +148,14 @@ subCalc <- function(entries, filename, vs){
 	write(contemporary, paste(filename, "_contemporary_", sep=""), type);
 	write(historical, paste(filename, "_historical_", sep=""), type);
 	print(paste("DONE -", type))
-	if(type == "plot")print(historical[historical[ , 2] == 11, ])
+	# if(type == "plot")print(historical[historical[ , 2] == 11, ])
 	return(list(contemporary = contemporary, historical = historical));
 }
 
 
-# transect_desc
 buildCSV <- function(dataset, filename){
 	subplot = subCalc(dataset[-1], filename, transect_desc[,c(2,3)]);
 	plotcoord = matrix(,nrow=0,ncol=2)
-
-	# print(subplot)
-
 	for(i in 1:20){
 		tmp = transect_desc[transect_desc[,1]==i,]
 		res = c(i, min(tmp[,3]));

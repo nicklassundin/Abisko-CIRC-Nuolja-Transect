@@ -53,7 +53,6 @@ exportCSV <- function(filenames, filename){
 			      concurrent = function(z){
 				      tmp = tolower(as.vector(z));
 				      if(tmp %in% "r") tmp = "o";
-				      if(tmp %in% "x") tmp = prev; 
 				      return(tmp);
 			      }
 			      # filter out none numerical used for coordinates who use the E & N notation.
@@ -65,9 +64,11 @@ exportCSV <- function(filenames, filename){
 			      if(dim(entries)[2] < 5) return(NA);
 			      dates = lapply(as.character(entries[,1]), function(x) return(strsplit(x,"-")[[1]][2]));
 			      dates = as.Date(delist(dates), "%Y%m%d");
+			      ## if we want year adn DOY in this file 
 			      # years = format(dates, "%Y");
 			      # dates = format(dates, "%j");
 			      # dates = cbind(years, dates)
+			      ###########
 			      entries[,2] = delist(lapply(entries[,2], filter));
 			      entries[,3] = delist(lapply(entries[,3], filter));
 			      entries[,5] = delist(lapply(entries[,5], concurrent));
@@ -86,8 +87,6 @@ exportCSV <- function(filenames, filename){
 		# evaluating distance between three different point undtil closest two point are found and return interval number (subsection) including what section the subsection belongs to 
 		proj = projection(e[1:3])
 		d = proj[1]
-		# print(proj)
-		# print(section(d))
 		return(c(section(d), d));
 	};
 
@@ -131,15 +130,22 @@ exportCSV <- function(filenames, filename){
 	# print(result[1:30,])	
 	# print(result[-(1:180),])	
 	# plot(result[(result[,1] %in% 10),5:7])
-	# tmp = result;
-	# tmp = result[(result[,1] > 8),];
-	# tmp = result[(result[,1] < 11),];
-	# tmp = result[(result[,1] == 10),];
-	# print(tmp)
-	# tmp = tmp[tmp$date == "2019-05-10",]
-	# print(tmp)
-	# if(nrow(tmp)>1)plot(tmp[c(3,5)],type="p", pch=as.character(tmp$historical))
-	# if(nrow(tmp)>1)plot(tmp[c(6,7)],type="b", pch=as.character(tmp$plot))
+	tmp = result;
+	tmp$date = as.numeric(format(tmp$date, "%j"))
+	for(d in unique(tmp$date)){
+		# print(d)
+		# tmp = result[(result[,1] > 8),];
+		# tmp = result[(result[,1] < 11),];
+		# tmp = result[(result[,1] == 10),];
+		# print(tmp)
+		temp = tmp[tmp$date == d,];
+		# print(tmp)
+		if(nrow(temp)>1)plot(temp[c(3,5)],type="b", pch=as.character(temp$historical),
+				     ylim=range(tmp[,5]),
+		xlim=range(tmp[,3]))
+		par(new=TRUE)
+	}
+	par(new=FALSE)
 	write.csv(result,filename, row.names=FALSE)
 }
 

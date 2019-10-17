@@ -39,11 +39,11 @@ percSeg <- function(ds){
 	for(i in 2:(length(ds))){
 		# if(ds[i]-ds[i-1]<0){
 		# print("percSeg <<<<<<<<<<")
-			# print(ds[length(ds)] - ds[1])
-			# print(ds[i])
-			# print(ds)
-			# print(ds[i-1])
-			# print(ds[i]-ds[i-1])
+		# print(ds[length(ds)] - ds[1])
+		# print(ds[i])
+		# print(ds)
+		# print(ds[i-1])
+		# print(ds[i]-ds[i-1])
 		# }
 		result = c(result, abs(ds[i]-ds[i-1])/(max(ds)-min(ds)));
 	}
@@ -81,7 +81,58 @@ sumPerc = function(m){
 }
 
 
+matrixCalc <- function(entries, filename){
+	days = unique(entries$date);
+	entries = data.table(entries);
+	entries = entries[order(-entries$proj_factor)]
+	historical = data.frame();
+	contemporary = data.frame();
 
+	top = max(as.integer(round(entries$proj_factor)+1));
+	
+	for(day in days){
+		mat_entry = entries[date %in% day]
+		h_e = rep("o", top);
+		c_e = rep("o", top);
+		for(i in 2:nrow(mat_entry)){
+			# print(i)
+			tmp = mat_entry[i,]
+			index=as.integer(round(tmp$proj_factor))+1;
+			h_value = delist(tmp$historical);
+			c_value = delist(tmp$contemporary);
+			# print(value)
+			# print(index)
+			# print(length(index:length(e)))
+			# print(abs(length(e)-index+1))
+			length = 1:index;
+			# print(length(length))
+			# print(length)
+			# print(value)
+			# print(e_n)
+			h_e[length] = rep(h_value, length(length));
+			c_e[length] = rep(c_value, length(length));
+			# print(e[length])
+			# print(e)
+		}
+		# print(e)
+		# print("<<<<<<<<< >>>>>>>>>>>")
+		historical = rbind(historical, t(h_e));
+		contemporary = rbind(contemporary, t(c_e))
+	}
+	# print(t(mat[,1500:2200]))
+	name = paste(paste(filename, "_mat_historical", sep=""), ".csv", sep="");
+	print(paste("Write to : ", name))
+	row.names(historical) <- days;
+	colnames(historical) <- top:1;
+	write.csv(historical, name);
+	
+	name = paste(paste(filename, "_mat_contemporary", sep=""), ".csv", sep="");
+	print(paste("Write to : ", name))
+	row.names(contemporary) <- days;
+	colnames(contemporary) <- top:1;
+	write.csv(contemporary, name);
+	return(list(historical, contemporary))
+}
 
 subCalc <- function(entries, filename, vs){
 	# print(vs)
@@ -98,15 +149,21 @@ subCalc <- function(entries, filename, vs){
 	} 
 	contemporary = matrix(,nrow=0,ncol=6) 
 	historical = matrix(,nrow=0,ncol=4);
+
+
 	for(day in days){
 		doy = format(as.Date(day), "%j");
 		default = data.table("o", "o") 
 		colnames(default) <- c("contemporary", "historical")
+
+
 		for(p in 1:plots){
 			# print(entries)
 			sub_e = getSubE(entries, p, day);
 			# print(p)
 			# print(sub_e)
+
+
 
 			## vs are sorted from lowest to highest
 			## take in reverse order
@@ -143,30 +200,37 @@ subCalc <- function(entries, filename, vs){
 		print(paste("Write to : ", name))
 		write.csv(data, name, row.names=FALSE);
 	}
-	
+
+
+
 
 
 	write(contemporary, paste(filename, "_contemporary_", sep=""), type);
 	write(historical, paste(filename, "_historical_", sep=""), type);
 	print(paste("DONE -", type))
-	# if(type == "plot")print(historical[historical[ , 2] == 11, ])
+	# if(type == "plot")print(historical[historical[ , 2] == 10, ])
 	return(list(contemporary = contemporary, historical = historical));
 }
 
 
 buildCSV <- function(dataset, filename){
-	subplot = subCalc(dataset[-1], filename, transect_desc[,c(2,3)]);
-	plotcoord = matrix(,nrow=0,ncol=2)
-	for(i in 1:20){
-		tmp = transect_desc[transect_desc[,1]==i,]
-		res = c(i, min(tmp[,3]));
-		if(i==20){
-			res = rbind(res, c(i+1, max(tmp[,3])))
-		}
-		plotcoord = rbind(plotcoord, res)
-	}
+	
+	### TO KEEP
+	# subplot = subCalc(dataset[-1], filename, transect_desc[,c(2,3)]);
+	# plotcoord = matrix(,nrow=0,ncol=2)
+	# for(i in 1:20){
+	# 	tmp = transect_desc[transect_desc[,1]==i,]
+	# 	res = c(i, min(tmp[,3]));
+	# 	if(i==20){
+	# 		res = rbind(res, c(i+1, max(tmp[,3])))
+	# 	}
+	# 	plotcoord = rbind(plotcoord, res)
+	# }
+	# plot = subCalc(dataset[-2], filename, plotcoord);
+	#########
 
-	plot = subCalc(dataset[-2], filename, plotcoord);
+	matrixCalc(dataset[-1], filename);
+
 
 }
 

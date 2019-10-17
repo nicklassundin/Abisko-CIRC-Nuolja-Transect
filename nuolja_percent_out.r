@@ -85,21 +85,34 @@ matrixCalc <- function(entries, filename){
 	days = unique(entries$date);
 	entries = data.table(entries);
 	entries = entries[order(-entries$proj_factor)]
+	
 	historical = data.frame();
 	contemporary = data.frame();
 
-	top = max(as.integer(round(entries$proj_factor)+1));
-	
+	top = max(as.integer(round(transect_desc[,3])+1));
+	subplot = rep(1, top);
+	for(i in 1:(nrow(transect_desc)-1)){
+		tmp = transect_desc[i,]
+		index=as.integer(round(tmp[3]))+1;
+		length = 1:index;
+		subplot[-length] = rep(tmp[2], top-length(length));	
+	}
+	subplot = rev(subplot);
+	# print(top)
+	# print(subplot)	
 	for(day in days){
 		mat_entry = entries[date %in% day]
 		h_e = rep("o", top);
 		c_e = rep("o", top);
-		for(i in 2:nrow(mat_entry)){
+		
+
+		for(i in 1:nrow(mat_entry)){
 			# print(i)
 			tmp = mat_entry[i,]
 			index=as.integer(round(tmp$proj_factor))+1;
 			h_value = delist(tmp$historical);
 			c_value = delist(tmp$contemporary);
+
 			# print(value)
 			# print(index)
 			# print(length(index:length(e)))
@@ -109,26 +122,35 @@ matrixCalc <- function(entries, filename){
 			# print(length)
 			# print(value)
 			# print(e_n)
+
 			h_e[length] = rep(h_value, length(length));
 			c_e[length] = rep(c_value, length(length));
 			# print(e[length])
-			# print(e)
+			# print(length)
 		}
 		# print(e)
 		# print("<<<<<<<<< >>>>>>>>>>>")
+		# print(length(subplot))
+		# print(ncol(historical))
+		# print(ncol(contemporary))
 		historical = rbind(historical, t(h_e));
 		contemporary = rbind(contemporary, t(c_e))
 	}
+	historical = rbind(t(subplot), historical);
+	contemporary = rbind(t(subplot), contemporary);
 	# print(t(mat[,1500:2200]))
 	name = paste(paste(filename, "_mat_historical", sep=""), ".csv", sep="");
 	print(paste("Write to : ", name))
-	row.names(historical) <- days;
+	# print(subplot)	
+	# print(historical)
+	# print(nrow(historical))
+	# print(length(days))
+	row.names(historical) <- c("subplots", days);
 	colnames(historical) <- top:1;
 	write.csv(historical, name);
-	
 	name = paste(paste(filename, "_mat_contemporary", sep=""), ".csv", sep="");
 	print(paste("Write to : ", name))
-	row.names(contemporary) <- days;
+	row.names(contemporary) <- c("subplots", days);
 	colnames(contemporary) <- top:1;
 	write.csv(contemporary, name);
 	return(list(historical, contemporary))
@@ -215,6 +237,7 @@ subCalc <- function(entries, filename, vs){
 
 buildCSV <- function(dataset, filename){
 	
+	print(paste("Processing -", filename))
 	### TO KEEP
 	# subplot = subCalc(dataset[-1], filename, transect_desc[,c(2,3)]);
 	# plotcoord = matrix(,nrow=0,ncol=2)
@@ -237,3 +260,8 @@ buildCSV <- function(dataset, filename){
 for(i in 1:length(files)){
 	buildCSV(data[[i]], filenames[i]);
 }
+
+
+print(paste("Completed Processing :", files))
+
+warnings()

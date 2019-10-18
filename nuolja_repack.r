@@ -145,7 +145,7 @@ exportCSV <- function(filenames, filename){
 		# print(tmp)
 		if(nrow(temp)>1){
 			plot(temp[c(3,5)],type="b", pch=as.character(temp$historical),
-				     ylim=range(tmp[,5]),
+				     ylim=rev(range(tmp[,5])),
 			xlim=range(tmp[,3]))
 		}
 		par(new=TRUE)

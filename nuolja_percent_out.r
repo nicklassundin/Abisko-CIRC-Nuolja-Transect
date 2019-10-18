@@ -257,7 +257,6 @@ buildCSV <- function(dataset, filename){
 # previous = NA;
 for(i in 1:length(files)){
 	temp = buildCSV(data[[i]], filenames[i]);
-	matplot(temp)
 	# previous = temp;
 }
 

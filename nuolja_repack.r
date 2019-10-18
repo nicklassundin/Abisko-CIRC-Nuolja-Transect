@@ -3,6 +3,7 @@
 # 2. Run Rscript nuolja_repack.r file
 # 3. The script will create one file for each child directory.
 
+
 # colnames = c("plot", "subplot", "proj_factor", "transect_dist", "id", "date", "latitude", "longitude", "elevation", "contemporary", "historical");
 colnames = c("plot", "subplot", "proj_factor", "id", "date", "latitude", "longitude", "elevation", "contemporary", "historical");
 
@@ -146,7 +147,7 @@ exportCSV <- function(filenames, filename){
 		if(nrow(temp)>1){
 			plot(temp[c(3,5)],type="b", pch=as.character(temp$historical),
 				     ylim=rev(range(tmp[,5])),
-			xlim=rev(range(tmp[,3])))
+			xlim=range(tmp[,3]))
 		}
 		par(new=TRUE)
 	}

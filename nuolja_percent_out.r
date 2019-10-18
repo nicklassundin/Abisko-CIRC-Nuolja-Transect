@@ -97,7 +97,7 @@ matrixCalc <- function(entries, filename){
 		length = 1:index;
 		subplot[-length] = rep(tmp[2], top-length(length));	
 	}
-	subplot = rev(subplot);
+	subplot = subplot;
 	# print(top)
 	# print(subplot)	
 	for(day in days){
@@ -138,20 +138,16 @@ matrixCalc <- function(entries, filename){
 	}
 	historical = rbind(t(subplot), historical);
 	contemporary = rbind(t(subplot), contemporary);
-	# print(t(mat[,1500:2200]))
+	
 	name = paste(paste(filename, "_mat_historical", sep=""), ".csv", sep="");
 	print(paste("Write to : ", name))
-	# print(subplot)	
-	# print(historical)
-	# print(nrow(historical))
-	# print(length(days))
 	row.names(historical) <- c("subplots", days);
-	colnames(historical) <- top:1;
+	colnames(historical) <- 1:top;
 	write.csv(historical, name);
 	name = paste(paste(filename, "_mat_contemporary", sep=""), ".csv", sep="");
 	print(paste("Write to : ", name))
 	row.names(contemporary) <- c("subplots", days);
-	colnames(contemporary) <- top:1;
+	colnames(contemporary) <- 1:top;
 	write.csv(contemporary, name);
 	return(list(historical, contemporary))
 }
@@ -214,6 +210,8 @@ subCalc <- function(entries, filename, vs){
 			default = perc$default;	
 		}
 	}
+
+
 	plotname = colnames(entries)[1];
 	colnames(contemporary) <- c("DOY", plotname, keyset$contemporary);
 	colnames(historical) <- c("DOY", plotname, keyset$historical);
@@ -252,13 +250,15 @@ buildCSV <- function(dataset, filename){
 	# plot = subCalc(dataset[-2], filename, plotcoord);
 	#########
 
-	matrixCalc(dataset[-1], filename);
-
+	return(matrixCalc(dataset[-1], filename));
 
 }
 
+# previous = NA;
 for(i in 1:length(files)){
-	buildCSV(data[[i]], filenames[i]);
+	temp = buildCSV(data[[i]], filenames[i]);
+
+	# previous = temp;
 }
 
 

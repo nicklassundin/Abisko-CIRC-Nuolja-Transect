@@ -18,7 +18,8 @@ source("nuolja_help.r")
 ## Build paths for the directories
 paths <- list.dirs(getwd(),full.names = TRUE)[-1]
 dirs <- list.dirs(getwd(), full.names = FALSE)[-1];
-
+paths <- paths[grepl("/Snow Data", paths)]
+dirs <- dirs[grepl("Snow Data", dirs)]
 
 # Generate list of distance between start point and each pole
 # also it sets order of column to "plot, subplot "
@@ -39,6 +40,8 @@ section = function(x){
 
 ## this writes to csv file based on name called at the end of the document
 exportCSV <- function(filenames, filename){
+	print(paste("Directory :", filename));
+	print(paste("Processing :", filenames));
 	if(length(filenames)==0) return(NULL)
 	# Parsing the data from the file 
 	data = lapply(filenames, function(x){
@@ -152,7 +155,7 @@ exportCSV <- function(filenames, filename){
 ## work start exportCSV(paths to all files, name of result file) for each directory path
 # it will grab all csv files in the directories 
 for(i in 1:length(paths)){
-	exportCSV(list.files(paths[i], pattern = "*.csv", full.names = TRUE), paste(gsub(" ", "_",dirs[i]), ".csv", sep=""));
+	exportCSV(list.files(paths[i], pattern = "*.csv", full.names = TRUE), paste(gsub(" ", "_",dirs[[i]]), ".csv", sep=""));
 }
 
 

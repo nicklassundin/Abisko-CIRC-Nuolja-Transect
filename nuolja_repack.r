@@ -161,6 +161,8 @@ exportCSV <- function(filenames, filename){
 pdf("Snow_Data_Plot.pdf",width=20,height=5);
 for(i in 1:length(paths)){
 	exportCSV(list.files(paths[i], pattern = "*.csv", full.names = TRUE), gsub(" ", "_",dirs[[i]]));
+	print(paste("Completed -", dirs[[i]]));
+	print(paste("Location -", getwd()));
 }
 
 

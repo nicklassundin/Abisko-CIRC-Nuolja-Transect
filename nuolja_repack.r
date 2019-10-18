@@ -143,19 +143,23 @@ exportCSV <- function(filenames, filename){
 		# print(tmp)
 		temp = tmp[tmp$date == d,];
 		# print(tmp)
-		if(nrow(temp)>1)plot(temp[c(3,5)],type="b", pch=as.character(temp$historical),
+		if(nrow(temp)>1){
+			plot(temp[c(3,5)],type="b", pch=as.character(temp$historical),
 				     ylim=range(tmp[,5]),
-		xlim=range(tmp[,3]))
+			xlim=range(tmp[,3]))
+		}
 		par(new=TRUE)
 	}
 	par(new=FALSE)
-	write.csv(result,filename, row.names=FALSE)
+	write.csv(result,paste(filename, ".csv", sep=""), row.names=FALSE)
 }
 
 ## work start exportCSV(paths to all files, name of result file) for each directory path
 # it will grab all csv files in the directories 
+
+pdf("Snow_Data_Plot.pdf",width=20,height=5);
 for(i in 1:length(paths)){
-	exportCSV(list.files(paths[i], pattern = "*.csv", full.names = TRUE), paste(gsub(" ", "_",dirs[[i]]), ".csv", sep=""));
+	exportCSV(list.files(paths[i], pattern = "*.csv", full.names = TRUE), gsub(" ", "_",dirs[[i]]));
 }
 
 

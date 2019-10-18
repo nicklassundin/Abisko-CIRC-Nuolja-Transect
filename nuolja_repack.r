@@ -14,11 +14,17 @@ new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"
 if(length(new.packages)) install.packages(new.packages)
 library(geosphere);
 
-source("nuolja_help.r")
+helper <- list.files(getwd(),full.names = TRUE)
+helper <- helper[grepl("nuolja_help.r", helper)];
+
+if(length(helper) <= 0){
+	stop("File not found nuolja_help.r");
+}
+source(helper)
 
 ## Build paths for the directories
-paths <- list.dirs(getwd(),full.names = TRUE)[-1]
-dirs <- list.dirs(getwd(), full.names = FALSE)[-1];
+paths <- list.dirs(getwd(),full.names = TRUE)
+dirs <- list.dirs(getwd(), full.names = FALSE);
 paths <- paths[grepl("/Snow Data", paths)]
 dirs <- dirs[grepl("Snow Data", dirs)]
 

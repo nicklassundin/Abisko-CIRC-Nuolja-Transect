@@ -141,12 +141,12 @@ matrixCalc <- function(entries, filename){
 	
 	name = paste(paste(filename, "_mat_historical", sep=""), ".csv", sep="");
 	print(paste("Write to : ", name))
-	row.names(historical) <- c("subplots", days);
+	row.names(historical) <- c("subplots", as.character(days));
 	colnames(historical) <- 1:top;
 	write.csv(historical, name);
 	name = paste(paste(filename, "_mat_contemporary", sep=""), ".csv", sep="");
 	print(paste("Write to : ", name))
-	row.names(contemporary) <- c("subplots", days);
+	row.names(contemporary) <- c("subplots", as.character(days));
 	colnames(contemporary) <- 1:top;
 	write.csv(contemporary, name);
 	return(list(historical, contemporary))

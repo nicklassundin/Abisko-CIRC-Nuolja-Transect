@@ -8,6 +8,7 @@
 colnames = c("plot", "subplot", "proj_factor", "id", "date", "latitude", "longitude", "elevation", "contemporary", "historical");
 
 
+
 ## Install geosphere package if not already install on client
 list.of.packages <- c("geosphere")
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
@@ -23,10 +24,13 @@ if(length(helper) <= 0){
 source(helper)
 
 ## Build paths for the directories
-paths <- list.dirs(getwd(),full.names = TRUE)
-dirs <- list.dirs(getwd(), full.names = FALSE);
-paths <- paths[grepl("/Snow Data", paths)]
+paths <- list.dirs(getwd(),full.names = TRUE)[-1]
+dirs <- list.dirs(getwd(), full.names = FALSE)[-1];
+
+paths <- paths[grepl("Snow Data", paths)]
 dirs <- dirs[grepl("Snow Data", dirs)]
+# paths <- paths[!grepl("Snow Data G", paths)]
+dirs <- dirs[!grepl("Snow Data G", dirs)]
 
 # Generate list of distance between start point and each pole
 # also it sets order of column to "plot, subplot "
@@ -166,8 +170,8 @@ exportCSV <- function(filenames, filename){
 
 pdf("Snow_Data_Plot.pdf",width=20,height=5);
 for(i in 1:length(paths)){
-	exportCSV(list.files(paths[i], pattern = "*.csv", full.names = TRUE), gsub(" ", "_",dirs[[i]]));
-	print(paste("Completed -", dirs[[i]]));
+	exportCSV(list.files(paths[i], pattern = "*.csv", full.names = TRUE), gsub(" ", "_",dirs[i]));
+	print(paste("Completed -", dirs[i]));
 	print(paste("Location -", getwd()));
 }
 

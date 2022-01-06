@@ -3,7 +3,11 @@ library(geosphere);
 
 
 ## load transect_description.csv used as reference file for the transect line
-transect_desc <- read.csv(file="transect_description.csv")[,1:6];
+
+td_file <- list.files(getwd(),full.names = TRUE)
+td_file <- td_file[grepl("transect_description.csv", td_file)];
+
+transect_desc <- read.csv(file=td_file)[,1:6];
 transect_desc <- data.matrix(transect_desc);
 ###
 

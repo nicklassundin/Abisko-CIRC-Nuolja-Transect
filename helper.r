@@ -4,7 +4,7 @@ library(geosphere);
 
 ## load transect_description.csv used as reference file for the transect line
 
-td_file <- list.files(getwd(),full.names = TRUE)
+td_file <- list.files(paste(getwd(), "/descriptions", sep=""),full.names = TRUE)
 td_file <- td_file[grepl("transect_description.csv", td_file)];
 
 transect_desc <- read.csv(file=td_file)[,1:6];
@@ -25,12 +25,6 @@ projection = function(x){
 
 	h0 = transect_desc[1,6];
 	h1 = transect_desc[nrow(transect_desc),6];
-	# print("<<<<<<<<<<<<     >>>>>>>")
-	# if need to consider height
-	# ratio = dist/distm(t0,t1);
-	# h = ration*(h1-h0);
- 	# dist = cbind(dist, dist2Line[1])
-	
 	res = c(dist[1], dist2Line[1])
 	# print(dist)
 	return(res)

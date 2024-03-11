@@ -5,14 +5,14 @@
 
 library(data.table)
 library(geosphere);
-source("nuolja_help.r");
+source("helper.r");
 
 ## formating header and finding matching files in current directory to pattern "Snow_Data_*"
-filenames <- list.files(getwd(), pattern = "*.csv", TRUE);
+filenames <- list.files(paste(getwd(), "/repack", sep=""), pattern = "*.csv", TRUE);
 filenames <- subset(filenames, grepl("Snow_Data_*", filenames));
 filenames <- gsub(".csv", "", filenames);
-filenames <- gsub("[^0-9\\.]", "", filenames);
-files <- list.files(getwd(), pattern = "*.csv", full.names = TRUE);
+# filenames <- gsub("[^0-9\\.]", "", filenames);
+files <- list.files(paste(getwd(), "/repack", sep=""), pattern = "*.csv", full.names = TRUE);
 files <- subset(files, grepl("Snow_Data_*", files));
 #############
 
@@ -139,12 +139,13 @@ matrixCalc <- function(entries, filename){
 	historical = rbind(t(subplot), historical);
 	contemporary = rbind(t(subplot), contemporary);
 	
-	name = paste(paste(filename, "_mat_historical", sep=""), ".csv", sep="");
+	# name = paste(paste(filename, "_mat_historical", sep=""), ".csv", sep="");
+	name = getName(filename, "_mat_historical");
 	print(paste("Write to : ", name))
 	row.names(historical) <- c("subplots", as.character(days));
 	colnames(historical) <- 1:top;
 	write.csv(historical, name);
-	name = paste(paste(filename, "_mat_contemporary", sep=""), ".csv", sep="");
+	name = getName(filename, "_mat_contemporary")
 	print(paste("Write to : ", name))
 	row.names(contemporary) <- c("subplots", as.character(days));
 	colnames(contemporary) <- 1:top;
@@ -216,7 +217,7 @@ subCalc <- function(entries, filename, vs){
 	colnames(contemporary) <- c("DOY", plotname, keyset$contemporary);
 	colnames(historical) <- c("DOY", plotname, keyset$historical);
 	write = function(data, file, t){
-		name = paste(file, paste(type, ".csv", sep=""), sep="");
+		name = getName(file, "");
 		print(paste("Write to : ", name))
 		write.csv(data, name, row.names=FALSE);
 	}

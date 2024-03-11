@@ -40,3 +40,6 @@ transect_desc = t(apply(transect_desc, 1, function(x){
 				return(c(x[c(3,1)], projection(x[4:6])[1], x[4:6]));
 }))
 
+getName = function(sourceFileName, specification) {
+	return(paste(paste("out/", paste(sourceFileName, specification, sep=""), sep=""), ".csv", sep=""))
+}

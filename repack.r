@@ -1,8 +1,5 @@
-# INSTRUCTIONS
-# 1. Put nuolja_repack.r and transect_description.csv into the parent directory of the 'Snow Data YYYY' directories 
-# 2. Run Rscript nuolja_repack.r file
-# 3. The script will create one file for each child directory.
 
+# Repackage into files, and generate pdf with data for overview/debugging
 
 # colnames = c("plot", "subplot", "proj_factor", "transect_dist", "id", "date", "latitude", "longitude", "elevation", "contemporary", "historical");
 colnames = c("plot", "subplot", "proj_factor", "id", "date", "latitude", "longitude", "elevation", "contemporary", "historical");
@@ -16,16 +13,16 @@ if(length(new.packages)) install.packages(new.packages)
 library(geosphere);
 
 helper <- list.files(getwd(),full.names = TRUE)
-helper <- helper[grepl("nuolja_help.r", helper)];
+helper <- helper[grepl("helper.r", helper)];
 
 if(length(helper) <= 0){
-	stop("File not found nuolja_help.r");
+	stop("File not found helper.r");
 }
 source(helper)
 
 ## Build paths for the directories
-paths <- list.dirs(getwd(),full.names = TRUE)[-1]
-dirs <- list.dirs(getwd(), full.names = FALSE)[-1];
+paths <- list.dirs(paste(getwd(), "/data", sep=""),full.names = TRUE)[-1]
+dirs <- list.dirs(paste(getwd(), "/data", sep=""), full.names = FALSE)[-1];
 
 paths <- paths[grepl("Snow Data", paths)]
 dirs <- dirs[grepl("Snow Data", dirs)]
@@ -37,7 +34,6 @@ dirs <- dirs[!grepl("Snow Data G", dirs)]
 # transect_desc = data.frame(transect_desc);
 
 section = function(x){
-	# print(typeof(x))
 	prc = NA;
 	for(i in 1:(nrow(transect_desc)-1)){
 		p0 = as.numeric(transect_desc[i,3]);
@@ -121,15 +117,11 @@ exportCSV <- function(filenames, filename){
 		if(length(data[[i]][!is.na(data[[i]])]) > 0){
 			for(j in 1:nrow(data[[i]])){
 				clos <- closest(data[[i]][j,3:5], transect_desc[,4:6]);
-				# print(clos)	
 				result <- insert(result, data[[i]][j,], clos);
 			}
 		} 
 	}
 	## naming the columns for the return file
-
-	# print(result)
-
 	colnames(result) <- colnames; 
 	# result = rbind(result, transect_desc);
 
@@ -137,23 +129,10 @@ exportCSV <- function(filenames, filename){
 	rownames(result) <- 1:nrow(result);
 
 
-	# print(result$proj_factor)
-	# print(order(delist(result$proj_factor)))
-	# print(order(as.numeric(result$proj_factor)))
-	# result
-	# print(result[1:30,])	
-	# print(result[-(1:180),])	
-	# plot(result[(result[,1] %in% 10),5:7])
 	tmp = result;
 	tmp$date = as.numeric(format(tmp$date, "%j"))
 	for(d in unique(tmp$date)){
-		# print(d)
-		# tmp = result[(result[,1] > 8),];
-		# tmp = result[(result[,1] < 11),];
-		# tmp = result[(result[,1] == 10),];
-		# print(tmp)
 		temp = tmp[tmp$date == d,];
-		# print(tmp)
 		if(nrow(temp)>1){
 			plot(temp[c(3,5)],type="b", pch=as.character(temp$historical),
 				     ylim=rev(range(tmp[,5])),
@@ -168,12 +147,11 @@ exportCSV <- function(filenames, filename){
 ## work start exportCSV(paths to all files, name of result file) for each directory path
 # it will grab all csv files in the directories 
 
-pdf("Snow_Data_Plot.pdf",width=20,height=5);
+pdf("plots/Snow_Data_Plot.pdf",width=20,height=5);
 for(i in 1:length(paths)){
-	exportCSV(list.files(paths[i], pattern = "*.csv", full.names = TRUE), gsub(" ", "_",dirs[i]));
+	exportCSV(list.files(paths[i], pattern = "*.csv", full.names = TRUE), paste("repack/", gsub(" ", "_",dirs[i]), sep=""));
 	print(paste("Completed -", dirs[i]));
 	print(paste("Location -", getwd()));
 }
 
-
-print("nuolja_repack.r : DONE : CSV files built");
+print("repack.r : DONE : CSV files built");

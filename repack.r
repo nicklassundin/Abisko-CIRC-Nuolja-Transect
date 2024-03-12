@@ -50,7 +50,7 @@ exportCSV <- function(filenames, filename){
 	print(paste("Directory :", filename));
 	print(paste("Processing :", filenames));
 	if(length(filenames)==0) return(NULL)
-	# Parsing the data from the file 
+	# Parsing the data from the file
 	data = lapply(filenames, function(x){
 			      ## filter to Historical perspective
 			      historical = function(y){

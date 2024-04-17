@@ -1,6 +1,15 @@
 ## Script will create sub files for all Snow_Data_YYYY.csv in current directory
 ## name convention will be YYYY_[historical/contemporary]_[plot/subplot].csv
 
+
+# Description of what the script does:
+# 1. Read all Snow_Data_YYYY.csv files in current directory
+# 2. For each file, it will create a sub file for each plot and subplot
+# 3. For each plot and subplot, it will create a sub file for each day
+# 4. For each day, it will create a sub file for each segment
+# 5. For each segment, it will create a sub file for each segment
+
+
 library(data.table)
 library(geosphere);
 source("helper.r");

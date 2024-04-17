@@ -4,7 +4,7 @@ library(geosphere);
 
 ## load transect_description.csv used as reference file for the transect line
 
-td_file <- list.files(paste(getwd(), "/descriptions", sep=""),full.names = TRUE)
+td_file <- list.files(paste(getwd(), "/descriptions", sep=""), full.names = TRUE)
 td_file <- td_file[grepl("transect_description.csv", td_file)];
 
 transect_desc <- read.csv(file=td_file)[,1:6];

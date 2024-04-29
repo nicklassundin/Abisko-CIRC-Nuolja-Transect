@@ -147,8 +147,6 @@ subCalc <- function(entries, filename, vs){
 			## take in reverse order
 			d1 = vs[vs[,1] == p,]
 			d0 = vs[vs[,1] == (p+1),]
-			# print(d0)
-			# print(d1)
 			if(is.na(sub_e[1,2])){
 				dn = cbind(d0[2], d1[2])
 			}else{
@@ -157,7 +155,6 @@ subCalc <- function(entries, filename, vs){
 			percent = percSeg(dn)
 			m = rbind(default, sub_e[,8:9]);
 			m = cbind(percent, m);
-
 			perc = sumPerc(m)
 			contemporary = rbind(contemporary, c(doy, vs[p,1], perc$contemporary));
 			historical = rbind(historical, c(doy, vs[p,1], perc$historical));
@@ -188,6 +185,7 @@ subCalc <- function(entries, filename, vs){
 ##############################################
 buildCSV <- function(dataset, filename){
 	print(paste("Processing -", filename))
+	#print(transect_desc[1:4,c(2,3)]);
 	subplot = subCalc(dataset[-1], filename, transect_desc[,c(2,3)]);
 	plotcoord = matrix(,nrow=0,ncol=2)
 	for(i in 1:20){

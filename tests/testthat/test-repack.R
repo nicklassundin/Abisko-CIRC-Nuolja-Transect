@@ -48,12 +48,6 @@ test_that("readfile", {
 	path <- getPaths("/data");
 	path <- getDataFilesPaths(path)[1];
 	file <- readFile(path);
-	expect_that(file[1,1], equals("NS-20180510-001"));
-})
-
-constext("build data");
-
-test_that("insert", {
-	# TODO
-	expect_that(TRUE, equals(TRUE));
+	file <- delist(file[1,2])
+	expect_that(file, equals("2018-05-10"));
 })

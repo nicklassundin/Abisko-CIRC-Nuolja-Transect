@@ -52,26 +52,30 @@ test_that("noneNum", {
 # 	# expect_that(file, equals("2018-05-10"));
 # })
 
-dates <- c("S-20200724", "S-20200724-001Q", "S-20200724-002", "NS-20200724-003", "NS20200724-004");
-answer <- c("20200724", "20200724", "20200724", "20200724", "20200724");
+dates <- c("S-20200724", "S-20200724-001Q", "S-20200724-002", "NS-20200724-003", "NS20200724-004", "NS200724-004");
+answer <- "20200724";
 context("format dates")
 test_that(paste("case 1:", dates[1]), {
 	result <- formatDate(dates[1]);
-	expect_that(result, equals(as.Date(answer[1], "%Y%m%d")));
+	expect_that(result, equals(as.Date(answer, "%Y%m%d")));
 })
 test_that(paste("case 2:", dates[2]), {
 	result <- formatDate(dates[2]);
-	expect_that(result, equals(as.Date(answer[2], "%Y%m%d")));
+	expect_that(result, equals(as.Date(answer, "%Y%m%d")));
 })
 test_that(paste("case 3:", dates[3]), {
 	result <- formatDate(dates[3]);
-	expect_that(result, equals(as.Date(answer[3], "%Y%m%d")));
+	expect_that(result, equals(as.Date(answer, "%Y%m%d")));
 })
 test_that(paste("case 4:", dates[4]), {
 	result <- formatDate(dates[4]);
-	expect_that(result, equals(as.Date(answer[4], "%Y%m%d")));
+	expect_that(result, equals(as.Date(answer, "%Y%m%d")));
 })
 test_that(paste("case 5:", dates[5]), {
 	result <- formatDate(dates[5]);
-	expect_that(result, equals(as.Date(answer[5], "%Y%m%d")));
+	expect_that(result, equals(as.Date(answer, "%Y%m%d")));
+})
+test_that(paste("case 6:", dates[6]), {
+	result <- formatDate(dates[6]);
+	expect_that(result, equals(as.Date(answer, "%Y%m%d")));
 })

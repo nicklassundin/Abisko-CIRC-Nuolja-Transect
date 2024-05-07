@@ -20,6 +20,7 @@ createDir <- function(subdir){
 }
 createDir("repack")
 createDir("out")
+createDir("data")
 
 
 ## Build paths for the directories

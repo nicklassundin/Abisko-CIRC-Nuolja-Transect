@@ -101,7 +101,8 @@ insert <- function(target, entry, sect){
 }
 
 drawPlots <- function(df) {
-	df$date = as.numeric(format(df$date, "%j"))
+	df$date = as.numeric(format(as.Date(df$date, origin="1970-01-01")), "%j");
+			print(df[1:5])
 	for(d in unique(df$date)){
 		temp = df[df$date == d,];
 		if(nrow(temp)>1){

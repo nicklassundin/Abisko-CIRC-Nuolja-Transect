@@ -10,6 +10,16 @@ source("R/helper.R");
 source("R/repack.R");
 source("R/generate.R")
 
+# Creating missing directories for repack and outpu
+createDir <- function(subdir){
+	if(!file.exists(subdir)){
+		# create a new sub directory inside
+        	# the main path
+		dir.create(file.path(getwd(), subdir))
+	}
+}
+createDir("repack")
+createDir("out")
 
 
 ## Build paths for the directories
@@ -73,8 +83,8 @@ for(i in 2:length(paths)){
 	
 	subplot = subCalc(data$result[-1], dirs[i], transect_desc[,c(2,3)]);
 	filename = gsub("repack/", "", data$filename)
-	write(subplot$contemporary, paste(filename, "_contemporary_", sep=""), "subplot");
-	write(subplot$historical, paste(filename, "_historical_", sep=""), "subplot");
+	write(subplot$contemporary, paste(filename, "_contemporary", sep=""), "subplot");
+	write(subplot$historical, paste(filename, "_historical", sep=""), "subplot");
 
 	
 	plotcoord = matrix(,nrow=0,ncol=2)

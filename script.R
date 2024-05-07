@@ -18,10 +18,29 @@ dirs <- getDirs()
 
 transect_desc = loadTransectDescription();
 
+print("Run silent? (y/n)")
+answer <- readLines(file("stdin"), 1);
+silent <- answer == "y";
+promt <- TRUE;
+if(!silent) {
+	print("Want prompt for each file? (y/n)")
+	answer <- readLines(file("stdin"), 1)
+	promt <- answer == "y";
+}else{
+	promt <- FALSE;
+}
+
 ## this writes to csv file based on name called at the end of the document
 exportCSV <- function(filenames, filename){
-	# print(paste("Directory :", filename));
-	# print(paste("Processing :", filenames));
+	if(!silent){
+		print(paste("Directory :", filename));
+		if(promt) {
+			print("Do you wanna process this directory? (y/n)");
+			answer <- readLines(file("stdin"),1)
+			if(answer != "y") return(NULL);
+			print(paste("Processing :", filenames));
+		}
+	}
 	if(length(filenames)==0) return(NULL)
 	# Parsing the data from the file
 	data = lapply(filenames, readFile);
@@ -35,9 +54,11 @@ exportCSV <- function(filenames, filename){
 for(i in 2:length(paths)){
 	path = getDataFilesPaths(paths[i])
 	data <- exportCSV(path, paste("repack/", gsub(" ", "_",dirs[i]), sep=""));
-	print(paste("Completed -", dirs[i]));
-	print(paste("Location -", getwd()));
-	
+	if(is.null(data)) next;
+	if(!silent){
+		print(paste("Completed -", dirs[i]));
+		print(paste("Location -", getwd()));
+	}
 	# drawPlots(data$result);
 	write.csv(data$result, paste(data$filename, ".csv", sep=""), row.names=FALSE)
 
@@ -51,8 +72,9 @@ for(i in 2:length(paths)){
 	# TODO call old library to calculate the data
 	
 	subplot = subCalc(data$result[-1], dirs[i], transect_desc[,c(2,3)]);
-	# print(subplot$historical[1:10,]);
-	# print(subplot$contemporary[1:10,]);
+	filename = gsub("repack/", "", data$filename)
+	write(subplot$contemporary, paste(filename, "_contemporary_", sep=""), "subplot");
+	write(subplot$historical, paste(filename, "_historical_", sep=""), "subplot");
 
 	
 	plotcoord = matrix(,nrow=0,ncol=2)
@@ -66,11 +88,9 @@ for(i in 2:length(paths)){
 	}
 	plot = subCalc(data$result[-2], filename, plotcoord);
 
+	write(plot$contemporary, paste(filename, "_contemporary", sep=""), "plot");
+	write(plot$historical, paste(filename, "_historical", sep=""), "plot");
 
-	print(plot)
-
-	# write(contemporary, name, sep=""), type);
-	# write(historical, name, sep=""), type);
 }
 
 print("repack.r : DONE : CSV files built");

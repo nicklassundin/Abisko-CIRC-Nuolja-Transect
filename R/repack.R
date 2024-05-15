@@ -53,8 +53,6 @@ createDateAndFix = function(string){
 formatDate = function(x){
 	result = x;
 	l = nchar(strsplit(x, "-")[[1]][1]);
-	# print(nchar(x));
-	# print(x);
 	if(l <= 4 && nchar(x) >= 10) {
 		result = as.Date(substr(x, 2+l, 10+l), "%Y%m%d");
 	}else if(l== 8){
@@ -66,17 +64,33 @@ formatDate = function(x){
 	return(result);
 }
 
+extract_date <- function(filename) {
+	# Define the pattern to match the date in YYYYMMDD format followed by .csv
+	pattern <- "([0-9]{8})\\.csv$"
+	# Use regular expression to search for the pattern in the filename
+	match <- regmatches(filename, regexec(pattern, filename))
+	# return if match is length 0
+	if (length(match[[1]]) == 0) {
+		return(NULL)
+	}
+   	# If a match is found, extract and return the date
+  	if (!is.na(match[[1]])) {
+      		return(match[[1]][2])
+  	} else {
+		return(NULL)
+  	}
+}
+
 readFile = function(x){
+	# extract date from file name x
+	date = as.character(as.Date(extract_date(x), "%Y%m%d"));
+
 	entries = read.delim(x, header=FALSE, sep=",")[,1:5]
 	if(dim(entries)[2] < 5) return(NA);	
-	# dates = lapply(as.character(entries[,1]), function(x) return(strsplit(x,"-")[[1]][2]));
-	# dates = as.Date(delist(dates), "%Y%m%d");
-	dates = delist(lapply(as.character(entries[,1]), formatDate));
-	# print(dates)
-	## if we want year adn DOY in this file 
-	# years = format(dates, "%Y");
-	# dates = format(dates, "%j");
-	# dates = cbind(years, dates)
+
+	# print(entries[1:5,])
+	# create a vector of length if entries column filled with date
+	dates = rep(date, nrow(entries));
 	###########
 	entries[,2] = delist(lapply(entries[,2], noneNum));
 	entries[,3] = delist(lapply(entries[,3], noneNum));

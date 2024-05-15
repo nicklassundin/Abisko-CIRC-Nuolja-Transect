@@ -56,7 +56,6 @@ exportCSV <- function(filenames, filename){
 	
 	# entries = read.delim(filenames[1], header=FALSE, sep=",")[,1:5]
 	lapply(filenames, validateFile);
-	error <- readLines(file("stdin"), 1)
 
 	data = lapply(filenames, readFile);
 	# Accumulative build result row by row, with insert(,,);

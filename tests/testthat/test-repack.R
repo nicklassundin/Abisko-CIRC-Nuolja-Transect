@@ -79,3 +79,20 @@ test_that(paste("case 6:", dates[6]), {
 	result <- formatDate(dates[6]);
 	expect_that(result, equals(as.Date(answer, "%Y%m%d")));
 })
+
+test_that("extract_date function extracts date from filename", {
+		  # Test filename with date in YYYYMMDD format
+		  filename1 <- "somefile_20220510.csv"
+		  expected_date1 <- "20220510"
+		  result1 <- extract_date(filename1)
+		  expect_true(result1 == expected_date1)
+
+		  # Test filename without date
+		  filename2 <- "anotherfile.csv"
+		  expect_true(is.null(extract_date(filename2)))
+		        
+		  # Test filename with date but not in the correct format
+		  filename3 <- "file_2023_05_18.csv"
+		  expect_true(is.null(extract_date(filename3)))
+		  
+})

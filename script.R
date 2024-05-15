@@ -8,7 +8,8 @@ library(geosphere);
 library(dplyr);
 source("R/helper.R");
 source("R/repack.R");
-source("R/generate.R")
+source("R/generate.R");
+source("R/validate.R");
 
 # Creating missing directories for repack and outpu
 createDir <- function(subdir){
@@ -28,10 +29,17 @@ paths <- getPaths()
 dirs <- getDirs()
 
 transect_desc = loadTransectDescription();
-
-print("Run silent? (y/n)")
+print("Only validate? (y/n)")
 answer <- readLines(file("stdin"), 1);
-silent <- answer == "y";
+validate <- answer == "y";
+
+silent <- TRUE;
+if(!validate){
+	print("Run silent? (y/n)")
+	answer <- readLines(file("stdin"), 1);
+	silent <- answer == "y";
+}
+
 promt <- TRUE;
 if(!silent) {
 	print("Want prompt for each file? (y/n)")
@@ -45,8 +53,12 @@ if(!silent) {
 exportCSV <- function(filenames, filename){
 	if(length(filenames)==0) return(NULL)
 	# Parsing the data from the file
-	data = lapply(filenames, readFile);
+	
+	# entries = read.delim(filenames[1], header=FALSE, sep=",")[,1:5]
+	lapply(filenames, validateFile);
+	error <- readLines(file("stdin"), 1)
 
+	data = lapply(filenames, readFile);
 	# Accumulative build result row by row, with insert(,,);
 	result <- dataframeBuilder(data);
 	return(list(result=result, filename=filename));	
@@ -65,6 +77,9 @@ for(i in 2:length(paths)){
 		}
 	}
 	data <- exportCSV(path, paste("repack/", gsub(" ", "_",dirs[i]), sep=""));
+	if(validate){
+		next;
+	}
 	if(is.null(data)) next;
 	if(!silent){
 		print(paste("Completed -", dirs[i]));

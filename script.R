@@ -112,7 +112,7 @@ for(i in 2:length(paths)){
 		plotcoord = rbind(plotcoord, res)
 	}
 	plot = subCalc(data$result[-2], filename, plotcoord);
-
+	
 	write(plot$contemporary, paste(filename, "_contemporary", sep=""), "plot");
 	write(plot$historical, paste(filename, "_historical", sep=""), "plot");
 

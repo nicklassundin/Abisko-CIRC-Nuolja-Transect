@@ -43,15 +43,6 @@ if(!silent) {
 
 ## this writes to csv file based on name called at the end of the document
 exportCSV <- function(filenames, filename){
-	if(!silent){
-		print(paste("Directory :", filename));
-		if(promt) {
-			print("Do you wanna process this directory? (y/n)");
-			answer <- readLines(file("stdin"),1)
-			if(answer != "y") return(NULL);
-			print(paste("Processing :", filenames));
-		}
-	}
 	if(length(filenames)==0) return(NULL)
 	# Parsing the data from the file
 	data = lapply(filenames, readFile);
@@ -64,6 +55,15 @@ exportCSV <- function(filenames, filename){
 
 for(i in 2:length(paths)){
 	path = getDataFilesPaths(paths[i])
+	if(!silent){
+		print(paste("Directory :", dirs[i]));
+		if(promt) {
+			print("Do you wanna process this directory? (y/n)");
+			answer <- readLines(file("stdin"),1)
+			if(answer != "y") return(NULL);
+			print(paste("Processing :", paths[i]));
+		}
+	}
 	data <- exportCSV(path, paste("repack/", gsub(" ", "_",dirs[i]), sep=""));
 	if(is.null(data)) next;
 	if(!silent){

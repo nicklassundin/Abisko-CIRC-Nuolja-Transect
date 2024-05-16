@@ -3,7 +3,7 @@
 
 ## Instructions
 1. Data directories are put into data directory
-2. Run `Rscript script.r` will generate files into `/repack` directory and generate debug plot in `/plot` directory.
+2. Run `Rscript script.r` will generate files into `/repack` directory and generate out put files into `/out` directory.
 3. Options will be prompted to help validate or generate files.
 
 

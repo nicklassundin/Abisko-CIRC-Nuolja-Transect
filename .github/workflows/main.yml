@@ -5,36 +5,64 @@ on:
     branches:
       - beta  # Specify the 'beta' branch here
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
+    jobs:
+      build:
+        runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+        steps:
+          - name: Checkout repository
+            uses: actions/checkout@v2
 
-      - name: Set up R
-        uses: r-lib/actions/setup-r@v2
+          - name: Set up R
+            uses: r-lib/actions/setup-r@v2
 
-      - name: Install dependencies
-        run: |
-          Rscript -e 'install.packages("devtools")'
-          Rscript -e 'install.packages("roxygen2")'
-          Rscript -e 'install.packages("pkgdown")'
-          Rscript -e 'install.packages("remotes")'
-          Rscript -e 'remotes::install_deps(dependencies = TRUE)'
-      - name: Generate Documentation
-        run: |
-          Rscript -e 'devtools::document()'
+          - name: Install devtools
+            run: |
+              echo "Installing devtools"
+              Rscript -e 'install.packages("devtools")'
+            timeout-minutes: 10
 
-      - name: Build pkgdown site
-        run: |
-          Rscript -e 'pkgdown::build_site()'
+          - name: Install roxygen2
+            run: |
+              echo "Installing roxygen2"
+              Rscript -e 'install.packages("roxygen2")'
+            timeout-minutes: 10
 
-      - name: Deploy to GitHub Pages
-        if: success()
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs
+          - name: Install pkgdown
+            run: |
+              echo "Installing pkgdown"
+              Rscript -e 'install.packages("pkgdown")'
+            timeout-minutes: 10
+
+          - name: Install remotes
+            run: |
+              echo "Installing remotes"
+              Rscript -e 'install.packages("remotes")'
+            timeout-minutes: 10
+
+          - name: Install package dependencies
+            run: |
+              echo "Installing package dependencies"
+              Rscript -e 'remotes::install_deps(dependencies = TRUE)'
+            timeout-minutes: 10
+
+          - name: Generate Documentation
+            run: |
+              echo "Generating documentation"
+              Rscript -e 'devtools::document()'
+            timeout-minutes: 10
+
+          - name: Build pkgdown site
+            run: |
+              echo "Building pkgdown site"
+              Rscript -e 'pkgdown::build_site()'
+            timeout-minutes: 10
+
+          - name: Deploy to GitHub Pages
+            if: success()
+            uses: peaceiris/actions-gh-pages@v3
+            with:
+              github_token: ${{ secrets.GITHUB_TOKEN  }}
+              publish_dir: ./docs
+              timeout-minutes: 10
 

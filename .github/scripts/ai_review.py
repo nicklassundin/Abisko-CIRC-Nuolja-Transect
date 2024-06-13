@@ -25,8 +25,8 @@ if __name__ == "__main__":
         ai_response = send_diff_to_ai(diff)
         feedback = ai_response['choices'][0]['text'].strip()
         with open('ai_review_feedback.txt', 'w') as f:
-        f.write(feedback)
+            f.write(feedback)
     else:
         with open('ai_review_feedback.txt', 'w') as f:
-        f.write("No changes to review.")
+            f.write("No changes to review.")
 

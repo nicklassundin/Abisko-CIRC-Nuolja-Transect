@@ -9,7 +9,7 @@
 There is inconsistent date naming and one entry from 2022 is missing a valid date.
 
 ## Documentation
-The full documentation for this project is available as a GitHub Pages site. You can access the documentation [here](https://your-github-username.github.io/your-repo-name).
+The full documentation for this project is available as a GitHub Pages site. You can access the documentation [here](https://nicklassundin.github.io/Abisko-CIRC-Nuolja-Transect/).
 
 This documentation includes detailed information about the project's structure, data processing steps, and usage examples. It is generated automatically from the source code comments using `roxygen2` and `pkgdown`.
 

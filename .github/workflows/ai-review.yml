@@ -1,10 +1,6 @@
 name: AI Review Workflow
 
 on:
-  push:
-    branches:
-      - beta
-      - 'feature/*'
   pull_request:
     types: [opened, synchronize]
 

@@ -2,10 +2,16 @@
 % Please edit documentation in R/repack.R
 \name{contemporary}
 \alias{contemporary}
-\title{filter out}
+\title{Contemporary Filter}
 \usage{
 contemporary(z)
 }
+\arguments{
+\item{z}{A vector of characters to filter.}
+}
+\value{
+A character vector with contemporary perspective.
+}
 \description{
-filter out
+Filter input to identify contemporary perspective.
 }

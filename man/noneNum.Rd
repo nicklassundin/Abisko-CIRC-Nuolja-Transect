@@ -2,10 +2,16 @@
 % Please edit documentation in R/repack.R
 \name{noneNum}
 \alias{noneNum}
-\title{filter out none numerical used for coordinates who use the E & N notation.}
+\title{Filter Non-numerical Characters}
 \usage{
 noneNum(y)
 }
+\arguments{
+\item{y}{A vector of characters to filter.}
+}
+\value{
+A vector of double values after removing non-numerical characters.
+}
 \description{
-filter out none numerical used for coordinates who use the E & N notation.
+Filter out non-numerical characters from input.
 }

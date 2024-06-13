@@ -2,10 +2,16 @@
 % Please edit documentation in R/repack.R
 \name{formatDate}
 \alias{formatDate}
-\title{function that destill dates from format type NS-20190505-033 and NS20200805-033 and return the date in the format 2020-05-05}
+\title{Format Date}
 \usage{
 formatDate(x)
 }
+\arguments{
+\item{x}{A character string representing a date.}
+}
+\value{
+A Date object.
+}
 \description{
-function that destill dates from format type NS-20190505-033 and NS20200805-033 and return the date in the format 2020-05-05
+Extract and format dates from a specific string format.
 }

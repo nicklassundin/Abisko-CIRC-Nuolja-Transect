@@ -2,10 +2,20 @@
 % Please edit documentation in R/repack.R
 \name{insert}
 \alias{insert}
-\title{inserts new entry to target and return target}
+\title{Insert Entry}
 \usage{
 insert(target, entry, sect)
 }
+\arguments{
+\item{target}{A data frame representing the target.}
+
+\item{entry}{A data frame representing the entry to insert.}
+
+\item{sect}{A vector representing the section.}
+}
+\value{
+The updated target data frame.
+}
 \description{
-inserts new entry to target and return target
+Insert a new entry into a target and return the updated target.
 }

@@ -2,10 +2,16 @@
 % Please edit documentation in R/repack.R
 \name{historical}
 \alias{historical}
-\title{filter to Historical perspective}
+\title{Historical Filter}
 \usage{
 historical(y)
 }
+\arguments{
+\item{y}{A vector of characters to filter.}
+}
+\value{
+A character vector with historical perspective.
+}
 \description{
-filter to Historical perspective
+Filter input to identify historical perspective.
 }

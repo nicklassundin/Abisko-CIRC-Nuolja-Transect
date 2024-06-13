@@ -39,7 +39,7 @@ jobs:
           script: |
             const fs = require('fs');
             const feedback = fs.readFileSync('ai_review_feedback.txt', 'utf8');
-            github.issues.createCommentt({
+            github.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,

@@ -5,6 +5,8 @@ on:
     branches:
       - beta
       - 'feature/*'
+  pull_request:
+    types: [opened, synchronize]
 
 jobs:
   ai_review:

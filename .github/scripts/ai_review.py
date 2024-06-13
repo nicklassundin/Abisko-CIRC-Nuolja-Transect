@@ -15,7 +15,7 @@ def send_diff_to_ai(diff):
     response = requests.post(url, headers=headers, json=data)
     return response.json()
 if __name__ == "__main__":
-    repo_path = "path/to/your/repo"
+    repo_path = "../../"
     diff = get_diff(repo_path)
     review = send_diff_to_ai(diff)
     print(review)

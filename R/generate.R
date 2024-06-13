@@ -1,30 +1,25 @@
 ## Script will create sub files for all Snow_Data_YYYY.csv in current directory
 ## name convention will be YYYY_[historical/contemporary]_[plot/subplot].csv
 
+
+# Description of what the script does:
+# 1. Read all Snow_Data_YYYY.csv files in current directory
+# 2. For each file, it will create a sub file for each plot and subplot
+# 3. For each plot and subplot, it will create a sub file for each day
+# 4. For each day, it will create a sub file for each segment
+# 5. For each segment, it will create a sub file for each segment
+
+
 library(data.table)
 library(geosphere);
-source("helper.r");
+library("lubridate")
 
-## formating header and finding matching files in current directory to pattern "Snow_Data_*"
-filenames <- list.files(paste(getwd(), "/repack", sep=""), pattern = "*.csv", TRUE);
-filenames <- subset(filenames, grepl("Snow_Data_*", filenames));
-filenames <- gsub(".csv", "", filenames);
-# filenames <- gsub("[^0-9\\.]", "", filenames);
-files <- list.files(paste(getwd(), "/repack", sep=""), pattern = "*.csv", full.names = TRUE);
-files <- subset(files, grepl("Snow_Data_*", files));
-#############
 
-data <- lapply(files, function(x) read.delim(x, header=TRUE, sep=","));
-
-## Define key sets historical are binary meanwhile contemporary are quaternary.
-keyset  <- list(contemporary = c("s", "so", "o", "os"), historical = c("s", "o"))
-
-match <- function(entries, key){
-	entries = vapply(entries, paste, collapse = ", ", character(1L));
-	result = vapply(lapply(entries, function(x){
-				       return(identical(as.vector(x), key));
-}), paste, collapse = ', ', character(1L))
-	return(result)
+getFileNames <- function(dir = "/repack"){
+	filenames <- list.files(paste(getwd(), dir, sep=""), pattern = "*.csv", TRUE);
+	filenames <- subset(filenames, grepl("Snow_Data_*", filenames));
+	filenames <- gsub(".csv", "", filenames);
+	return(filenames)
 }
 
 percSeg <- function(ds){
@@ -58,7 +53,7 @@ sumPerc = function(m){
 }
 
 
-matrixCalc <- function(entries, filename){
+matrixCalc <- function(entries, filename, data){
 	days = unique(entries$date);
 	entries = data.table(entries);
 	entries = entries[order(-entries$proj_factor)]
@@ -75,8 +70,6 @@ matrixCalc <- function(entries, filename){
 		subplot[-length] = rep(tmp[2], top-length(length));	
 	}
 	subplot = subplot;
-	# print(top)
-	# print(subplot)	
 	for(day in days){
 		mat_entry = entries[date %in% day]
 		h_e = rep("o", top);
@@ -84,7 +77,6 @@ matrixCalc <- function(entries, filename){
 		
 
 		for(i in 1:nrow(mat_entry)){
-			# print(i)
 			tmp = mat_entry[i,]
 			index=as.integer(round(tmp$proj_factor))+1;
 			h_value = delist(tmp$historical);
@@ -111,7 +103,7 @@ matrixCalc <- function(entries, filename){
 	return(list(historical, contemporary))
 }
 
-subCalc <- function(entries, filename, vs){
+subCalc <- function(entries, filename, vs, data){
 	plots = unique(max(entries[,1]))
 	type = colnames(entries)[1];
 	days = unique(entries$date);
@@ -124,9 +116,8 @@ subCalc <- function(entries, filename, vs){
 	contemporary = matrix(,nrow=0,ncol=6) 
 	historical = matrix(,nrow=0,ncol=4);
 
-
 	for(day in days){
-		doy = format(as.Date(day), "%j");
+		doy = yday(day);
 		default = data.table("o", "o") 
 		colnames(default) <- c("contemporary", "historical")
 
@@ -138,15 +129,13 @@ subCalc <- function(entries, filename, vs){
 			## take in reverse order
 			d1 = vs[vs[,1] == p,]
 			d0 = vs[vs[,1] == (p+1),]
-			# print(d0)
-			# print(d1)
 			if(is.na(sub_e[1,2])){
 				dn = cbind(d0[2], d1[2])
 			}else{
 				dn = cbind(cbind(d0[2], t(sub_e[,2])), d1[2])
 			}
 			percent = percSeg(dn)
-			m = rbind(default, sub_e[,8:9]);
+			m = rbind(default, sub_e[,8:9], fill=TRUE);
 			m = cbind(percent, m);
 
 			perc = sumPerc(m)
@@ -160,18 +149,17 @@ subCalc <- function(entries, filename, vs){
 	plotname = colnames(entries)[1];
 	colnames(contemporary) <- c("DOY", plotname, keyset$contemporary);
 	colnames(historical) <- c("DOY", plotname, keyset$historical);
-	write = function(data, file, t){
-		name = getName(file, t);
-		print(paste("Write to : ", name))
-		write.csv(data, name, row.names=FALSE);
-	}
-
-	write(contemporary, paste(filename, "_contemporary_", sep=""), type);
-	write(historical, paste(filename, "_historical_", sep=""), type);
 	print(paste("DONE -", type))
 	return(list(contemporary = contemporary, historical = historical));
 }
 
+
+
+write = function(data, file, t){
+	name = getName(file, t);
+	print(paste("Write to : ", name))
+	write.csv(data, name, row.names=FALSE);
+}
 
 
 ##############################################
@@ -195,11 +183,30 @@ buildCSV <- function(dataset, filename){
 
 }
 
-for(i in 1:length(files)){
-	temp = buildCSV(data[[i]], filenames[i]);
-}
 
+## work start exportCSV(paths to all files, name of result file) for each directory path
+# it will grab all csv files in the directories 
 
-print(paste("Completed Processing :", files))
+# calculate <- function(data, type="plot", temporial="contemporary") {
+# 	# mutate with day of the year value from date
+# 	data <- data %>% mutate("DOY" = yday(as.Date(date, format="%Y-%m-%d")));
 
-warnings()
+# 	if(temporial == "contemporary"){
+# 		data <- data %>% mutate("s" = contemporary == "s",
+# 					"so" = contemporary == "so",
+# 					"o" = contemporary == "o",
+# 					"os" = contemporary == "os");
+# 	}else if(temporial == "historical"){
+# 		data <- data %>% mutate("o" = contemporary == "o",
+# 					"s" = contemporary == "s");
+# 	}
+# 	data <- data %>% group_by(DOY, data[type]) %>% summarise("s" = mean(s),
+# 							"so" = mean(so), 
+# 							"o" = mean(o),
+# 							"os" = mean(os));
+# 	data <- data %>% arrange(DOY, data[type])
+
+# 	return(data);
+# }
+
+# for(i in 1:length(paths)){

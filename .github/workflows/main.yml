@@ -60,5 +60,3 @@ jobs:
           echo "Building pkgdown site"
           Rscript -e 'pkgdown::build_site()'
         timeout-minutes: 10
-
-

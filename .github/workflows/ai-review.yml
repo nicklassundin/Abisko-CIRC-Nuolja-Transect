@@ -1,8 +1,10 @@
 name: AI Review Workflow
 
 on:
-  pull_request:
-    types: [opened, synchronize]
+  push:
+    branches:
+      - beta
+      - 'feature/*'
 
 jobs:
   ai_review:

@@ -54,7 +54,10 @@ if __name__ == "__main__":
             f.write(feedback)
     else:
         ai_response = send_code_to_ai(random)
-        feedback = ai_response['choices'][0]['text'].strip()
+        if 'choices' in ai_response:
+            feedback = ai_response['choices'][0]['text'].strip()
+        else:
+            feedback = "AI response did not contain 'choices'. Response: " + str(ai_response)
         with open('ai_review_feedback.txt', 'w') as f:
             f.write(feedback)
 

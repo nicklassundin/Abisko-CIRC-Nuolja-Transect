@@ -38,9 +38,10 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN  }}
           script: |
             const fs = require('fs');
+            const issue_number = context.payload.pull_request ? context.payload.pull_request.number : null;
             const feedback = fs.readFileSync('ai_review_feedback.txt', 'utf8');
             github.issues.createComment({
-              issue_number: context.issue.number,
+              issue_number: issue_number,
               owner: context.repo.owner,
               repo: context.repo.repo,
               body: feedback

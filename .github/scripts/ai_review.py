@@ -19,29 +19,26 @@ def get_random_file(repo_path):
         return None
     return random.choice(files)
 
-def send_code_to_ai(diff):
+def send_to_ai(diff, prompt):
     github_token = os.getenv('GITHUB_TOKEN')
     openai_api_key = os.getenv('OPENAI_API_KEY')
-    url = "https://api.openai.com/v1/engines/davinci-codex/completions"
+    url = "https://api.openai.com/v1/chat/completions"
     headers = {"Authorization": f"Bearer {openai_api_key}"}
     data = {
-            "prompt": f"Review the following code and suggest one or two improvements:\n{diff}",
-            "max_tokens": 150
-            }
+            "model": "gpt-3.5-turbo",
+            "messages": [{"role": "system", "content": "You are a code reviewer."},
+                         {"role": "user", "content": f"Review the following Python code:\n{code}"}],
+            "max_tokens": 150,
+            "temperature": 0.5
+                                                
+    }
     response = requests.post(url, headers=headers, json=data)
     return response.json()
+def send_code_to_ai(diff):
+    return send_to_ai(diff, "Review the following code and suggest one or two improvements:")
 
 def send_diff_to_ai(diff):
-    github_token = os.getenv('GITHUB_TOKEN')
-    openai_api_key = os.getenv('OPENAI_API_KEY')
-    url = "https://api.openai.com/v1/engines/davinci-codex/completions"
-    headers = {"Authorization": f"Bearer {openai_api_key}"}
-    data = {
-            "prompt": f"Review the following code diff:\n{diff}",
-            "max_tokens": 150
-            }
-    response = requests.post(url, headers=headers, json=data)
-    return response.json()
+    return send_to_ai(diff, "Review the following code diff:")
 
 if __name__ == "__main__":
     repo_path = "../../"

@@ -7,6 +7,29 @@ def get_diff(repo_path):
     result = subprocess.run(['git', 'diff'], cwd=repo_path, capture_output=True, text=True)
     return result.stdout
 
+def get_random_file(repo_path):
+    """Get a random file from the repository.     """
+    files = []
+    for root, _, filenames in os.walk(repo_path):
+        for filename in filenames:
+            if filename.endswith('.py'):  # Adjust the file extension as needed
+                files.append(os.path.join(root, filename))
+    if not files:
+        return None
+    return random.choice(files)
+
+def send_code_to_ai(diff):
+    github_token = os.getenv('GITHUB_TOKEN')
+    openai_api_key = os.getenv('OPENAI_API_KEY')
+    url = "https://api.openai.com/v1/engines/davinci-codex/completions"
+    headers = {"Authorization": f"Bearer {openai_api_key}"}
+    data = {
+            "prompt": f"Review the following code and suggest one or two improvements:\n{diff}",
+            "max_tokens": 150
+            }
+    response = requests.post(url, headers=headers, json=data)
+    return response.json()
+
 def send_diff_to_ai(diff):
     github_token = os.getenv('GITHUB_TOKEN')
     openai_api_key = os.getenv('OPENAI_API_KEY')
@@ -18,6 +41,7 @@ def send_diff_to_ai(diff):
             }
     response = requests.post(url, headers=headers, json=data)
     return response.json()
+
 if __name__ == "__main__":
     repo_path = "../../"
     diff = get_diff(repo_path)
@@ -27,6 +51,8 @@ if __name__ == "__main__":
         with open('ai_review_feedback.txt', 'w') as f:
             f.write(feedback)
     else:
+        ai_response = send_code_to_ai(get_random_file(repo_path))
+        feedback = ai_response['choices'][0]['text'].strip()
         with open('ai_review_feedback.txt', 'w') as f:
-            f.write("No changes to review.")
+            f.write(feedback)
 

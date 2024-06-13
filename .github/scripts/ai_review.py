@@ -21,6 +21,12 @@ def send_diff_to_ai(diff):
 if __name__ == "__main__":
     repo_path = "../../"
     diff = get_diff(repo_path)
-    review = send_diff_to_ai(diff)
-    print(review)
+    if diff:
+        ai_response = send_diff_to_ai(diff)
+        feedback = ai_response['choices'][0]['text'].strip()
+        with open('ai_review_feedback.txt', 'w') as f:
+        f.write(feedback)
+    else:
+        with open('ai_review_feedback.txt', 'w') as f:
+        f.write("No changes to review.")
 

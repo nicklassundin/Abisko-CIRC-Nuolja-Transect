@@ -3,7 +3,8 @@ name: Build and Deploy Documentation
 on:
   push:
     branches:
-      - beta  # Specify the 'beta' branch here
+      #- beta  # Specify the 'beta' branch here
+      - placeholder
 
 jobs:
   build:
@@ -16,26 +17,46 @@ jobs:
       - name: Set up R
         uses: r-lib/actions/setup-r@v2
 
-      - name: Install dependencies
+      - name: Install devtools
         run: |
-          install.packages('devtools')
-          install.packages('roxygen2')
-          install.packages('pkgdown')
-          install.packages('remotes')
-          remotes::install_deps(dependencies = TRUE)
+          echo "Installing devtools"
+          Rscript -e 'install.packages("devtools")'
+          Rscript -e 'if (!requireNamespace("devtools", quietly = TRUE)) { stop("Package devtools not found")  }'
+        timeout-minutes: 10
+
+      - name: Install roxygen2
+        run: |
+          echo "Installing roxygen2"
+          Rscript -e 'install.packages("roxygen2")'
+          Rscript -e 'if (!requireNamespace("roxygen2", quitly = TRUE)) { stop("Package roxygen2 not found") }'
+        timeout-minutes: 10
+
+      - name: Install pkgdown
+        run: |
+          echo "Installing pkgdown"
+          Rscript -e 'install.packages("pkgdown")'
+        timeout-minutes: 10
+
+      - name: Install remotes
+        run: |
+          echo "Installing remotes"
+          Rscript -e 'install.packages("remotes")'
+        timeout-minutes: 10
+
+      - name: Install package dependencies
+        run: |
+          echo "Installing package dependencies"
+          Rscript -e 'remotes::install_deps(dependencies = TRUE)'
+        timeout-minutes: 10
 
       - name: Generate Documentation
         run: |
+          echo "Generating documentation"
           Rscript -e 'devtools::document()'
-      
+        timeout-minutes: 10
+
       - name: Build pkgdown site
         run: |
+          echo "Building pkgdown site"
           Rscript -e 'pkgdown::build_site()'
-
-      - name: Deploy to GitHub Pages
-        if: success()
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs
-
+        timeout-minutes: 10

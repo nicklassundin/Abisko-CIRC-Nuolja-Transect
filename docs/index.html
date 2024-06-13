@@ -59,18 +59,112 @@
 <div class="page-header"><h1 id="nuolja-transect">Nuolja Transect<a class="anchor" aria-label="anchor" href="#nuolja-transect"></a>
 </h1></div>
 <div class="section level2">
+<h2 id="project-overview">Project Overview<a class="anchor" aria-label="anchor" href="#project-overview"></a>
+</h2>
+<p>The Nuolja Transect project involves processing data from transect surveys conducted in the Nuolja region. The key components of the project include:</p>
+<div class="section level3">
+<h3 id="data-processing">Data Processing<a class="anchor" aria-label="anchor" href="#data-processing"></a>
+</h3>
+<ul>
+<li>
+<strong>Path Functions</strong>: Functions to retrieve paths and directories within the data directory.</li>
+<li>
+<strong>Filtering Functions</strong>: Functions to filter data based on historical and contemporary perspectives.</li>
+<li>
+<strong>Date Handling Functions</strong>: Functions to extract and format dates from filenames.</li>
+<li>
+<strong>Data Reading Functions</strong>: Functions to read and process data files, inserting entries into target data structures.</li>
+</ul>
+</div>
+<div class="section level3">
+<h3 id="key-functions-and-their-purpose">Key Functions and Their Purpose<a class="anchor" aria-label="anchor" href="#key-functions-and-their-purpose"></a>
+</h3>
+<ul>
+<li>
+<strong>getPaths()</strong>: Retrieves the paths of directories within a specified directory, optionally matching a pattern.</li>
+<li>
+<strong>getDirs()</strong>: Retrieves the names of directories within a specified directory, optionally matching a pattern.</li>
+<li>
+<strong>getDataFilesPaths()</strong>: Retrieves the paths of data files within a specified directory, optionally matching a pattern.</li>
+<li>
+<strong>historical()</strong>: Filters input to identify historical perspective.</li>
+<li>
+<strong>contemporary()</strong>: Filters input to identify contemporary perspective.</li>
+<li>
+<strong>noneNum()</strong>: Filters out non-numerical characters from input.</li>
+<li>
+<strong>createDateAndFix()</strong>: Converts a string to a Date object, fixing format if necessary.</li>
+<li>
+<strong>formatDate()</strong>: Extracts and formats dates from specific string formats.</li>
+<li>
+<strong>extract_date()</strong>: Extracts the date from a filename in YYYYMMDD format.</li>
+<li>
+<strong>readFile()</strong>: Reads and processes a data file, returning a structured data frame.</li>
+<li>
+<strong>insert()</strong>: Inserts a new entry into a target data structure.</li>
+<li>
+<strong>drawPlots()</strong>: Generates and saves plots based on the provided data frame.</li>
+<li>
+<strong>dataframeBuilder()</strong>: Builds a data frame by accumulating rows from provided data.</li>
+</ul>
+</div>
+<div class="section level3">
+<h3 id="example-data">Example Data<a class="anchor" aria-label="anchor" href="#example-data"></a>
+</h3>
+<p>An example of the data format used in this project can be found in the <code>descriptions/transect_description.csv</code> file. This file contains information about the transect points, including plot numbers, coordinates (latitude and longitude), and elevations.</p>
+</div>
+</div>
+<div class="section level2">
 <h2 id="instructions">Instructions<a class="anchor" aria-label="anchor" href="#instructions"></a>
 </h2>
 <ol style="list-style-type: decimal">
-<li>Data directories are put into data directory</li>
-<li>Run <code>Rscript script.r</code> will generate files into <code>/repack</code> directory and generate out put files into <code>/out</code> directory.</li>
-<li>Options will be prompted to help validate or generate files.</li>
+<li>Place your data directories into the <code>data</code> directory.</li>
+<li>Run <code>Rscript script.r</code> to process the data. This will generate files in the <code>/repack</code> directory and output files in the <code>/out</code> directory.</li>
+<li>Follow the prompted options to validate or generate files as required.</li>
 </ol>
 </div>
 <div class="section level2">
-<h2 id="notes-about-data">Notes about data<a class="anchor" aria-label="anchor" href="#notes-about-data"></a>
+<h2 id="notes-about-data">Notes about Data<a class="anchor" aria-label="anchor" href="#notes-about-data"></a>
 </h2>
-<p>conconsistence date naming and one entry 2022 missing valid date</p>
+<ul>
+<li>There are inconsistencies in date naming within the dataset.</li>
+<li>One entry from 2022 is missing a valid date.</li>
+</ul>
+</div>
+<div class="section level2">
+<h2 id="documentation">Documentation<a class="anchor" aria-label="anchor" href="#documentation"></a>
+</h2>
+<p>The full documentation for this project is available as a GitHub Pages site. You can access it <a href="https://nicklassundin.github.io/Abisko-CIRC-Nuolja-Transect/" class="external-link">here</a>.</p>
+<p>This documentation includes detailed information about the project’s structure, data processing steps, and usage examples. It is generated automatically from the source code comments using <code>roxygen2</code> and <code>pkgdown</code>.</p>
+<div class="section level3">
+<h3 id="how-to-update-documentation">How to Update Documentation<a class="anchor" aria-label="anchor" href="#how-to-update-documentation"></a>
+</h3>
+<ol style="list-style-type: decimal">
+<li>Ensure your code is properly documented using <code>roxygen2</code> comments.</li>
+<li>Push your changes to the <code>beta</code> branch.</li>
+<li>The GitHub Actions workflow will automatically generate and deploy the updated documentation to GitHub Pages.</li>
+</ol>
+</div>
+<div class="section level3">
+<h3 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
+</h3>
+<p>To see an example of how to document your functions, check the comments in <code>script.r</code>:</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#' Title of your function</span></span>
+<span><span class="co">#'</span></span>
+<span><span class="co">#' Detailed description of your function.</span></span>
+<span><span class="co">#'</span></span>
+<span><span class="co">#' @param x Description of parameter x.</span></span>
+<span><span class="co">#' @param y Description of parameter y.</span></span>
+<span><span class="co">#' @return Description of the return value.</span></span>
+<span><span class="co">#' @export</span></span>
+<span><span class="co">#' @examples</span></span>
+<span><span class="co">#' example_function(1, 2)</span></span>
+<span><span class="va">example_function</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="co"># Your code here</span></span>
+<span>  </span>
+<span><span class="op">}</span></span></code></pre></div>
+</div>
 </div>
 </div>
   </div>

@@ -2,7 +2,7 @@ name: AI Review Workflow
 
 on:
   pull_request:
-    types: [pull, push, opened, synchronize]
+    types: [opened, synchronize]
 
 jobs:
   ai_review:

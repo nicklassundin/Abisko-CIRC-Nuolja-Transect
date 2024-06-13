@@ -20,12 +20,14 @@ jobs:
         run: |
           echo "Installing devtools"
           Rscript -e 'install.packages("devtools")'
+          Rscript -e 'if (!requireNamespace("devtools", quietly = TRUE)) { stop("Package devtools not found")  }'
         timeout-minutes: 10
 
       - name: Install roxygen2
         run: |
           echo "Installing roxygen2"
           Rscript -e 'install.packages("roxygen2")'
+          Rscript -e 'if (!requireNamespace("roxygen2", quitly = TRUE)) { stop("Package roxygen2 not found") }'
         timeout-minutes: 10
 
       - name: Install pkgdown

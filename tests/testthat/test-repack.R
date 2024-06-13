@@ -80,6 +80,7 @@ test_that(paste("case 6:", dates[6]), {
 	expect_that(result, equals(as.Date(answer, "%Y%m%d")));
 })
 
+options(warn=-1)
 test_that("extract_date function extracts date from filename", {
 		  # Test filename with date in YYYYMMDD format
 		  filename1 <- "somefile_20220510.csv"
@@ -96,3 +97,4 @@ test_that("extract_date function extracts date from filename", {
 		  expect_true(is.null(extract_date(filename3)))
 		  
 })
+options(warn=0)

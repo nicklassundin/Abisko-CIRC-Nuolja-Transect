@@ -30,7 +30,6 @@ def send_to_ai(data, prompt):
                          {"role": "user", "content": f"Review the following Python code:\n{data}"}],
             "max_tokens": 150,
             "temperature": 0.5
-                                                
     }
     response = requests.post(url, headers=headers, json=data)
     return response.json()

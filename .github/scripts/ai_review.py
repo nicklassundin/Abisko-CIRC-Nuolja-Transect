@@ -1,5 +1,6 @@
 import os
 import requests
+import random
 
 
 def get_diff(repo_path):
@@ -45,13 +46,14 @@ def send_diff_to_ai(diff):
 if __name__ == "__main__":
     repo_path = "../../"
     diff = get_diff(repo_path)
+    random = get_random_file(repo_path)
     if diff:
         ai_response = send_diff_to_ai(diff)
         feedback = ai_response['choices'][0]['text'].strip()
         with open('ai_review_feedback.txt', 'w') as f:
             f.write(feedback)
     else:
-        ai_response = send_code_to_ai(get_random_file(repo_path))
+        ai_response = send_code_to_ai(random)
         feedback = ai_response['choices'][0]['text'].strip()
         with open('ai_review_feedback.txt', 'w') as f:
             f.write(feedback)

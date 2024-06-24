@@ -49,11 +49,12 @@ def token_calc(data, prompt):
             "max_tokens": 150,
             "temperature": 0.5
     }
-    token = encoding.encode(data)
+    token_1 = encoding.encode(data['messages'][0])
+    token_2 = encoding.encode(data['messages'][1])
 
     result = {
-            "tokens": token_1,
-            "length": len(token),
+            "tokens": [token_1, token_2],
+            "length": len(token_1)+len(token_2),
             "data": data
     }
     response = requests.post(url, headers=headers, json=result)

@@ -76,12 +76,12 @@ if __name__ == "__main__":
     random = get_random_file(repo_path)
     if diff:
         ai_response = calc_token_diff_to_ai(diff) 
-        feedback = ai_response 
+        feedback = str(ai_response)
         with open('ai_review_feedback.txt', 'w') as f:
             f.write(feedback)
     else:
         ai_response = calc_token_to_ai(random)
-        feedback = ai_response
+        feedback = str(ai_response)
         with open('ai_review_feedback.txt', 'w') as f:
             f.write(feedback)
 

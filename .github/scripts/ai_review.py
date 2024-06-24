@@ -1,6 +1,7 @@
 import os
 import requests
 import random
+import tiktoken
 
 
 def get_diff(repo_path):
@@ -30,32 +31,63 @@ def send_to_ai(data, prompt):
                          {"role": "user", "content": f"Review the following Python code:\n{data}"}],
             "max_tokens": 150,
             "temperature": 0.5
-                                                
     }
     response = requests.post(url, headers=headers, json=data)
     return response.json()
 
+def token_calc(data):
+     encoding = tiktoken.encoding_for_model("gpt-4")
+     tokens = encoding.encode(data)
+     return tokens
+
 def send_code_to_ai(code):
     return send_to_ai(code, "Review the following code and suggest one or two improvements:")
+def calc_token_to_ai(code):
+    tokens = token_calc(code)
+    return {
+            "tokens": tokens,
+            "length": len(tokens)                            
+    }
 
 def send_diff_to_ai(diff):
     return send_to_ai(diff, "Review the following code diff:")
+def calc_token_diff_to_ai(code):
+    tokens = token_calc(code)
+    return {
+            "tokens": tokens,
+            "length": len(tokens)                            
+    }
 
 if __name__ == "__main__":
     repo_path = "../../"
     diff = get_diff(repo_path)
     random = get_random_file(repo_path)
     if diff:
-        ai_response = send_diff_to_ai(diff)
-        feedback = ai_response['choices'][0]['text'].strip()
+        ai_response = calc_token_diff_to_ai(diff) 
+        feedback = str(ai_response)
         with open('ai_review_feedback.txt', 'w') as f:
             f.write(feedback)
     else:
-        ai_response = send_code_to_ai(random)
-        if 'choices' in ai_response:
-            feedback = ai_response['choices'][0]['text'].strip()
-        else:
-            feedback = "AI response did not contain 'choices'. Response: " + str(ai_response)
+        ai_response = calc_token_to_ai(random)
+        feedback = str(ai_response)
         with open('ai_review_feedback.txt', 'w') as f:
             f.write(feedback)
+
+# if __name__ == "__main__":
+#     repo_path = "../../"
+#     diff = get_diff(repo_path)
+#     random = get_random_file(repo_path)
+#     if diff:
+#         ai_response = send_diff_to_ai(diff)
+#         feedback = ai_response['choices'][0]['text'].strip()
+#         with open('ai_review_feedback.txt', 'w') as f:
+#             f.write(feedback)
+#     else:
+#         ai_response = send_code_to_ai(random)
+#         if 'choices' in ai_response:
+#             feedback = ai_response['choices'][0]['text'].strip()
+#         else:
+#             feedback = "AI response did not contain 'choices'. Response: " + str(ai_response)
+#         with open('ai_review_feedback.txt', 'w') as f:
+#             f.write(feedback)
 

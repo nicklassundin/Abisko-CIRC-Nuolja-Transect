@@ -36,7 +36,7 @@ def send_to_ai(data, prompt):
     return response.json()
 
 def token_calc(data, prompt):
-    encoding = tiktoken.encoding_for_model("gpt-3.5-turbo")
+    encoding = tiktoken.encoding_for_model("gpt-4")
 
     github_token = os.getenv('GITHUB_TOKEN')
     openai_api_key = os.getenv('OPENAI_API_KEY')

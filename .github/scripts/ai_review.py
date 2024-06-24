@@ -35,40 +35,28 @@ def send_to_ai(data, prompt):
     response = requests.post(url, headers=headers, json=data)
     return response.json()
 
-def token_calc(data, prompt):
-    encoding = tiktoken.encoding_for_model("gpt-4")
-
-    github_token = os.getenv('GITHUB_TOKEN')
-    openai_api_key = os.getenv('OPENAI_API_KEY')
-    url = "https://api.openai.com/v1/chat/completions"
-    headers = {"Authorization": f"Bearer {openai_api_key}"}
-    data = {
-            "model": "gpt-3.5-turbo",
-            "messages": [{"role": "system", "content": "You are a code reviewer."},
-                         {"role": "user", "content": f"Review the following Python code:\n{data}"}],
-            "max_tokens": 150,
-            "temperature": 0.5
-    }
-    token_1 = encoding.encode(data['messages'][0]['content'])
-    token_2 = encoding.encode(data['messages'][1]['content'])
-
-    result = {
-            "tokens": [token_1, token_2],
-            "length": len(token_1)+len(token_2),
-            "data": data
-    }
-    response = requests.post(url, headers=headers, json=result)
-    return response.json()
+def token_calc(data):
+     encoding = tiktoken.encoding_for_model("gpt-4")
+     tokens = encoding.encode(data)
+     return tokens
 
 def send_code_to_ai(code):
     return send_to_ai(code, "Review the following code and suggest one or two improvements:")
 def calc_token_to_ai(code):
-    return token_calc(code, "Review the following code and suggest one or two improvements:")
+    tokens = token_calc(code)
+    return {
+            "tokens": tokens,
+            "length": len(tokens)                            
+    }
 
 def send_diff_to_ai(diff):
     return send_to_ai(diff, "Review the following code diff:")
-def calc_token_diff_to_ai(diff):
-    return token_calc(diff, "Review the following code diff:")
+def calc_token_diff_to_ai(code):
+    tokens = token_calc(code)
+    return {
+            "tokens": tokens,
+            "length": len(tokens)                            
+    }
 
 if __name__ == "__main__":
     repo_path = "../../"

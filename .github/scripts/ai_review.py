@@ -49,8 +49,8 @@ def token_calc(data, prompt):
             "max_tokens": 150,
             "temperature": 0.5
     }
-    token_1 = encoding.encode(data['messages'][0])
-    token_2 = encoding.encode(data['messages'][1])
+    token_1 = encoding.encode(data['messages'][0]['content'])
+    token_2 = encoding.encode(data['messages'][1]['content'])
 
     result = {
             "tokens": [token_1, token_2],

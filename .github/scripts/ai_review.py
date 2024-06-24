@@ -53,7 +53,7 @@ def token_calc(data, prompt):
     token_2 = encoding.encode(data['messages'][1])
 
     result = {
-            "tokens": [token_1, token_2]],
+            "tokens": [token_1, token_2],
             "length": len(token_1)+len(token_2)),
             "data": data
     }

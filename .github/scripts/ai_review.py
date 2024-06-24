@@ -54,7 +54,7 @@ def token_calc(data, prompt):
 
     result = {
             "tokens": [token_1, token_2],
-            "length": len(token_1)+len(token_2)),
+            "length": len(token_1)+len(token_2),
             "data": data
     }
     response = requests.post(url, headers=headers, json=result)

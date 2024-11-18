@@ -2,19 +2,21 @@
 % Please edit documentation in R/validate.R
 \name{validateFile}
 \alias{validateFile}
-\title{Validate each line in a file against a specific format.}
+\title{Validate All Lines in a File Against a Specific Format}
 \usage{
-validateFile(file)
+validateFile(file_path)
 }
 \arguments{
-\item{file}{A character vector representing the path to the file to be validated.}
+\item{file_path}{A character vector representing the path to the file to be validated.}
 }
 \value{
-A logical value indicating whether all lines in the file match the format pattern.
+A logical vector where each element indicates whether the corresponding line
+in the file matches the specified format pattern.
 }
 \description{
-This function reads a file and validates each line against a specific format pattern.
-It prints error messages for lines that do not match the format.
+This function reads a file line by line and validates each line against a specified
+format pattern. It prints and optionally logs error messages for lines that do
+not match the expected format.
 }
 \examples{
 validateFile("data.txt")

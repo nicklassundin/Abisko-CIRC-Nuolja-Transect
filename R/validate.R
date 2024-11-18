@@ -1,84 +1,183 @@
-#' Validate a single line against a specific format.
-#' 
-#' This function checks whether a given line matches a specific format pattern.
-#' 
+#' Validate a Single Line Against a Specific Format
+#'
+#' This function checks whether a given line matches a specified format pattern. 
+#' The pattern enforces a structure that starts with 'NS-', followed by a date-time 
+#' stamp, latitude, longitude, and an observation code.
+#'
 #' @param line A character vector representing a single line to be validated.
+#' @param file (Optional) The name of the file being processed (default is NA).
+#' @param line_number (Optional) The line number within the file (default is NA).
+#' @param log_file (Optional) A character vector specifying a file to which validation 
+#'        error messages should be logged. If NULL, logging is disabled.
 #' 
-#' @return A logical value indicating whether the line matches the format pattern.
+#' @return A logical value indicating whether the line matches the specified format pattern.
 #' 
 #' @examples
-#' validateLine("NS-20220510-001 68.37261219N 18.69783 1195.186 O")
-#' 
+#' validateLine("NS-20220510-001 68.37261219N 18.69783E 1195.186 O")
+#' validateLine("NS-20231015-034 70.12345678N 20.54321E 1500.000 os")
+#'
 #' @export
-
-# Define the regular expression pattern
-pattern <- "^NS-\\d{8}-\\d{3}[ ,]\\d+\\.\\d+N[ ,]\\d+\\.\\d+E[, ]\\d+\\.\\d+[, ][osOS]{1,2}$"
-# pattern <- "^NS-\\d{8}-\\d{3} \\d+\\.\\d{6,9}[N] \\d+\\.\\d{6,9}[E] \\d+\\.\\d+ [osOS]{1,2}$"
-
-
-validateLine <- function(line, file = NA, line_number = NA) {
+validateLine <- function(line, file = NA, line_number = NA, log_file = NULL) {
 	# Define the regular expression pattern
+	pattern <- "^NS-\\d{8}-\\d{3}[ , ]\\d+\\.\\d+N[ , ]\\d+\\.\\d+E[, ]\\d+\\.\\d+[, ][osOS]{1,2}$"
+
 	# Check if the line matches the pattern
-	printValidationError(line, file, line_number)
-	return(grepl(pattern, line))
-}
-#' Print validation error messages for lines that do not match the format.
-#' 
-#' This function prints error messages for lines that do not match the expected format.
-#' 
-#' @param line A character vector representing a single line to be validated.
-#' 
-#' @return NULL
-#' 
-#' @examples
-#' printValidationError("NS-20220510-001 68.37261219N 18.69783 1195.186 X")
-#' 
-#' @export
-printValidationError <- function(line, file, line_number) {
-	# Check if the line matches the pattern
-	if (!grepl(pattern, line)) {
-		# Print error message based on the missing information
-		if (!grepl("^NS-", line)) {
-			    cat("Error: Line does not start with 'NS-' prefix.\n")
-		  
-		} else if (!grepl("\\d{8}-\\d{3}", line)) {
-			    cat("Error: Missing or incorrect date-time format (YYYYMMDD-NNN).\n")
-		  
-		} else if (!grepl("\\d+\\.\\d{6,9}[N]", line)) {
-			    cat("Error: Missing or incorrect latitude format.\n")
-		  
-		} else if (!grepl("\\d+\\.\\d{6,9}[E]", line)) {
-			    cat("Error: Missing or incorrect longitude format.\n")
-		  
-		} else if (!grepl("\\d+\\.\\d+ [osOS]{1,2}$", line)) {
-			    cat("Error: Missing or incorrect observation code format (ends with 'O').\n")
-		  
-		}
-		cat("File: ", file, "\n")
-		cat("Line number: ", line_number, "\n")
-		cat("Line: ", line, "\n")
-			
+	validation_result <- grepl(pattern, line)
+
+	# If line is invalid and a log_file is provided, log errors
+	if (!validation_result && !is.null(log_file)) {
+		printValidationError(line, file, line_number, log_file)
+
 	}
+
+	return(validation_result)
+
 }
 
-#' Validate each line in a file against a specific format.
+#' Count and Log Errors for Each File and Type of Error
+#'
+#' This function aggregates the count of each type of validation error
+#' encountered in a file and logs the summary to a separate error count file.
+#'
+#' @param error_list A list of error messages generated during validation.
+#' @param file The name of the file being processed.
+#' @param count_log_file (Optional) A character vector specifying a file where error 
+#'        counts are logged. Default is "log/error_count_summary.txt".
 #' 
-#' This function reads a file and validates each line against a specific format pattern.
-#' It prints error messages for lines that do not match the format.
+#' @return NULL (This function is called for its side effect of logging error counts.)
+#'
+#' @examples
+#' logErrorCounts(c("Error: Missing latitude format.", "Error: Missing latitude format."), "data.txt")
+#'
+#' @export
+logErrorCounts <- function(error_list, file, count_log_file = "log/error_count_summary.txt") {
+	# Create a table to count occurrences of each error message
+	error_count <- table(unlist(error_list))
+
+	# Prepare the log entry
+	log_entry <- paste0("Error Count Summary for File: ", file, "\n")
+	log_entry <- paste0(log_entry, "----------------------------------------\n")
+	for (error in names(error_count)) {
+		log_entry <- paste0(log_entry, error, ": ", error_count[[error]], "\n")
+
+	}
+	log_entry <- paste0(log_entry, "\n\n")
+
+	# Write the error summary to the log file
+	cat(log_entry, file = count_log_file, append = TRUE)
+
+}
+
+#' Print Validation Error Messages for Invalid Lines
+#'
+#' This function prints detailed error messages for lines that do not match the expected 
+#' format pattern. Errors can be logged to a specified log file for later review.
+#'
+#' @param line A character vector representing the line to be validated.
+#' @param file (Optional) The name of the file containing the line (default is NA).
+#' @param line_number (Optional) The line number within the file (default is NA).
+#' @param log_file (Optional) A character vector specifying a file where error messages 
+#'        are logged. If NULL, messages are only printed to the console.
 #' 
-#' @param file A character vector representing the path to the file to be validated.
+#' @return NULL (This function is called for its side effect of printing/logging messages.)
 #' 
-#' @return A logical value indicating whether all lines in the file match the format pattern.
+#' @examples
+#' printValidationError("NS-20220510-001 68.37261219N 18.69783 1195.186 X", "data.txt", 5, "log/validation.txt")
+#' 
+#' @export
+printValidationError <- function(line, file = NA, line_number = NA, log_file = NULL, error_list = NULL) {
+	error_message <- NULL
+
+	if (!grepl("^NS-", line)) {
+		error_message <- "Error: Line does not start with 'NS-' prefix.\n"
+
+	} else if (!grepl("\\d{8}-\\d{3}", line)) {
+		error_message <- "Error: Missing or incorrect date-time format (YYYYMMDD-NNN).\n"
+
+	} else if (!grepl("\\d+\\.\\d{6,9}[N]", line)) {
+		error_message <- "Error: Missing or incorrect latitude format.\n"
+
+	} else if (!grepl("\\d+\\.\\d{6,9}[E]", line)) {
+		error_message <- "Error: Missing or incorrect longitude format.\n"
+
+	} else if (!grepl("\\d+\\.\\d+ [osOS]{1,2}$", line)) {
+		error_message <- "Error: Missing or incorrect observation code format (ends with 'O' or 'os').\n"
+
+	}
+
+	# Log error messages
+	if (!is.null(error_message)) {
+		# Append the error to the list if provided
+		if (!is.null(error_list)) {
+			error_list[[length(error_list) + 1]] <- error_message
+
+		}
+
+		# Print the error message
+		#cat(error_message)
+		#cat("File: ", file, "\n")
+		#cat("Line number: ", line_number, "\n")
+		#cat("Line: ", line, "\n")
+
+		# Log the error message to the file if provided
+		if (!is.null(log_file)) {
+			log_entry <- paste0(
+					    error_message, 
+					    "File: ", file, "\n",
+					    "Line number: ", line_number, "\n",
+					    "Line: ", line, "\n\n"
+
+			)
+			#cat(log_entry, file = log_file, append = TRUE)
+
+		}
+
+	}
+	return(error_list)
+
+}
+
+#' Validate All Lines in a File Against a Specific Format
+#'
+#' This function reads a file line by line and validates each line against a specified 
+#' format pattern. It prints and optionally logs error messages for lines that do 
+#' not match the expected format.
+#'
+#' @param file_path A character vector representing the path to the file to be validated.
+#' 
+#' @return A logical vector where each element indicates whether the corresponding line 
+#'         in the file matches the specified format pattern.
 #' 
 #' @examples
 #' validateFile("data.txt")
 #' 
-#' @export'
-validateFile <- function(file) {
-	# Read the file
-	lines <- readLines(file)
-	# Check if each line is valid
-	valid <- mapply(validateLine, lines, seq_along(lines), MoreArgs = list(file = file))
-	# Return the result
-	return(all(valid))
+#' @export
+validateFile <- function(file_path) {
+	log_file <- "log/validation.txt"
+	error_list <- list()
+
+	# Read the file line by line
+	lines <- readLines(file_path)
+	validation_results <- logical(length(lines))
+
+	# Validate each line and collect errors
+	for (i in seq_along(lines)) {
+		error_list <- printValidationError(
+						   lines[i], 
+						   file = file_path, 
+						   line_number = i, 
+						   log_file = log_file, 
+						   error_list = error_list
+
+		)
+		validation_results[i] <- validateLine(lines[i], file = file_path, line_number = i, log_file = log_file)
+
+	}
+
+	# Log error counts
+	logErrorCounts(error_list, file_path)
+
+	# Return validation results (TRUE for valid lines, FALSE for invalid)
+	return(validation_results)
+
 }

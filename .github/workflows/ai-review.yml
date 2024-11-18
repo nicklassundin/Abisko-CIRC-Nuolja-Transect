@@ -2,7 +2,7 @@ name: AI Review Workflow
 
 on:
   pull_request:
-    types: [opened, synchronize]
+    # types: [opened, synchronize]
 
 jobs:
   ai_review:
@@ -27,7 +27,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN  }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY  }}
         run: |
-          python .github/scripts/ai_review.py
+          # python .github/scripts/ai_review.py
+          python .github/scripts/ai_token.py
 
       - name: Post Review Comment
         if: success()

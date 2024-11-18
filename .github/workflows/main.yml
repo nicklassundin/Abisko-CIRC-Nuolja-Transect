@@ -76,3 +76,15 @@ jobs:
           echo "Building pkgdown site"
           Rscript -e 'pkgdown::build_site()'
         timeout-minutes: 10
+      - name: Create new branch for PR
+        run: |
+          git checkout -b update-branch
+          git add .
+          git commit -m "Automated update from GitHub Actions"
+          git push origin update-branch
+      - name: Create Pull Request
+        run: |
+          gh pr create --title "Automated update PR" --body "This PR was automatically created by GitHub Actions" --base master --head update-branch
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN  }}
+

@@ -48,6 +48,13 @@ The full documentation for this project is available as a GitHub Pages site. You
 This documentation includes detailed information about the project's structure, data processing steps, and usage examples. It is generated automatically from the source code comments using `roxygen2` and `pkgdown`.
 
 ### How to Update Documentation
+#### Manually
+1. Run `Rscript build.docs.R`
+2. commit 
+3. push to repository
+4. pull into master
+
+#### Github workflow
 1. Ensure your code is properly documented using `roxygen2` comments.
 2. Push your changes to the `beta` branch.
 3. The GitHub Actions workflow will automatically generate and deploy the updated documentation to GitHub Pages.

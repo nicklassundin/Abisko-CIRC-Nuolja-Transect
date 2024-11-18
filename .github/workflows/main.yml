@@ -51,9 +51,9 @@ jobs:
         timeout-minutes: 10
     
       - name: Install data.table
-          run: |
-            echo "Installing data.table"
-            Rscript -e 'install.packages("data.table")'
+        run: |
+          echo "Installing data.table"
+          Rscript -e 'install.packages("data.table")'
         timeout-minutes: 10
       - name: Generate Documentation
         run: |

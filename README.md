@@ -10,6 +10,11 @@ The Nuolja Transect project involves processing data from transect surveys condu
 - **Data Reading Functions**: Functions to read and process data files, inserting entries into target data structures.
 
 ### Key Functions and Their Purpose
+#### Validation 
+Validate the data in and log the errors into directory log/
+
+#### Operations
+
 - **getPaths()**: Retrieves the paths of directories within a specified directory, optionally matching a pattern.
 - **getDirs()**: Retrieves the names of directories within a specified directory, optionally matching a pattern.
 - **getDataFilesPaths()**: Retrieves the paths of data files within a specified directory, optionally matching a pattern.
@@ -35,6 +40,7 @@ An example of the data format used in this project can be found in the `descript
 ## Notes about Data
 - There are inconsistencies in date naming within the dataset.
 - One entry from 2022 is missing a valid date.
+- Geotaging are inconsistent throught the dataset
 
 ## Documentation
 The full documentation for this project is available as a GitHub Pages site. You can access it [here](https://nicklassundin.github.io/Abisko-CIRC-Nuolja-Transect/).

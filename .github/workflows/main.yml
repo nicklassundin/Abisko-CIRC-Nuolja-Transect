@@ -49,7 +49,12 @@ jobs:
           echo "Installing package dependencies"
           Rscript -e 'remotes::install_deps(dependencies = TRUE)'
         timeout-minutes: 10
-
+    
+      - name: Install data.table
+          run: |
+            echo "Installing data.table"
+            Rscript -e 'install.packages("data.table")'
+        timeout-minutes: 10
       - name: Generate Documentation
         run: |
           echo "Generating documentation"

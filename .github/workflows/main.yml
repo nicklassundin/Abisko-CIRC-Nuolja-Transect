@@ -3,13 +3,14 @@ name: Build and Deploy Documentation
 on:
   push:
     branches:
-      # - beta  # Specify the 'beta' branch here
-      - placeholder
+      - beta  # Specify the 'beta' branch here
+      # - placeholder
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    container:
+      image: rocker/verse:latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2

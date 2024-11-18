@@ -3,8 +3,8 @@ name: Build and Deploy Documentation
 on:
   push:
     branches:
-      - beta  # Specify the 'beta' branch here
-      # - placeholder
+      # - beta  # Specify the 'beta' branch here
+      - placeholder
 
 jobs:
   build:

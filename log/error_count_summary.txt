@@ -1,0 +1,1324 @@
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2018/Nuolja snow 20180510.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 52
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2018/Nuolja snow 20180516.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 35
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2018/Nuolja snow 20180522.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 18
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2018/Nuolja snow 20180526.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 21
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2018/Nuolja snow 20180531.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 12
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2018/Nuolja snow 20180609.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 25
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2018/Nuolja snow 20180614.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 23
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2018/Nuolja snow 20180619.csv
+----------------------------------------
+Error: Missing or incorrect latitude format.
+: 1
+Error: Missing or incorrect longitude format.
+: 1
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2018/Nuolja snow 20180625.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 9
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2018/Nuolja snow 20180630.csv
+----------------------------------------
+Error: Missing or incorrect longitude format.
+: 2
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 7
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2018/Nuolja snow 20180705.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 9
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2018/Nuolja snow 20180710.csv
+----------------------------------------
+Error: Missing or incorrect latitude format.
+: 2
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 9
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2018/Nuolja snow 20180714.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 4
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Nuolja Snow 20190505.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 111
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Nuolja Snow 20190510.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 81
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Nuolja Snow 20190517.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 105
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Nuolja Snow 20190520.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 78
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Nuolja Snow 20190526.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 48
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Nuolja Snow 20190530.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 61
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Nuolja Snow 20190605.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 47
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Nuolja Snow 20190611.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 42
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Nuolja Snow 20190616.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 47
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Nuolja Snow 20190620.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 36
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Nuolja Snow 20190625.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 27
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Nuolja Snow 20190630.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 15
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Nuolja Snow 20190704.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 18
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Nuolja Snow 20190710.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 12
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Nuolja Snow 20190715.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 11
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Nuolja Snow 20190719.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 10
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Nuolja Snow 20190727.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Nuolja Snow 20190730.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Nuolja Snow 20190804.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Nuolja Snow 20190808.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Nuolja Snow 20190814.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Nuolja Snow 20190818.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Nuolja Snow 20190824.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 8
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Nuolja Snow 20190829.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 8
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Nuolja Snow 20190902.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 4
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Nuolja Snow 20190908.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 2
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2020/Nuolja Snow 20200430.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 29
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2020/Nuolja Snow 20200510.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 51
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2020/Nuolja Snow 20200514.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 60
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2020/Nuolja Snow 20200520.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 69
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2020/Nuolja Snow 20200526.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 93
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2020/Nuolja Snow 20200530.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 121
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2020/Nuolja Snow 20200604.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 129
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2020/Nuolja Snow 20200609.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 119
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2020/Nuolja Snow 20200614.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 98
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2020/Nuolja Snow 20200619.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 90
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2020/Nuolja Snow 20200624.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 78
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2020/Nuolja Snow 20200628.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 71
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2020/Nuolja Snow 20200629.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 71
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2020/Nuolja Snow 20200703.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 60
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2020/Nuolja Snow 20200709.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 44
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2020/Nuolja Snow 20200714.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 43
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2020/Nuolja Snow 20200718.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 31
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2020/Nuolja Snow 20200724.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 15
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2020/Nuolja Snow 20200729.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 10
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2020/Nuolja Snow 20200803.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 12
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2020/Nuolja Snow 20200808.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 14
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2020/Nuolja Snow 20200814.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 11
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2020/Nuolja Snow 20200818.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 10
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2020/Nuolja Snow 20200824.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 12
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2020/Nuolja Snow 20200828.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 10
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2021/Nuolja Snow 20210510.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 59
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2021/Nuolja Snow 20210516.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 181
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2021/Nuolja Snow 20210520.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 284
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2021/Nuolja Snow 20210526.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 216
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2021/Nuolja Snow 20210531.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 190
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2021/Nuolja Snow 20210604.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 120
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2021/Nuolja Snow 20210609.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 107
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2021/Nuolja Snow 20210613.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 88
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2021/Nuolja Snow 20210618.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 62
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2021/Nuolja Snow 20210619.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 85
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2021/Nuolja Snow 20210624.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 62
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2021/Nuolja Snow 20210630.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 39
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2021/Nuolja Snow 20210704.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 21
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2021/Nuolja Snow 20210710.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 12
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2021/Nuolja Snow 20210714.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 10
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2021/Nuolja Snow 20210719.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 13
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2021/Nuolja Snow 20210724.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 12
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2021/Nuolja Snow 20210729.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 12
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2021/Nuolja Snow 20210804.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 17
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2021/Nuolja Snow 20210808.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 25
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2021/Nuolja Snow 20210813.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 19
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2021/Nuolja Snow 20210818.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 14
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2021/Nuolja Snow 20210823.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 13
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2022/Nuolja Snow 220505.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 33
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2022/Nuolja Snow 220510.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 63
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2022/Nuolja Snow 220515.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 119
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2022/Nuolja Snow 220520.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 222
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2022/Nuolja Snow 220525.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 249
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2022/Nuolja Snow 220530.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 207
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2022/Nuolja Snow 220604.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 143
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2022/Nuolja Snow 220609.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 132
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2022/Nuolja Snow 220614.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 116
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2022/Nuolja Snow 220619.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 104
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2022/Nuolja Snow 220625.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 72
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2022/Nuolja Snow 220630.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 39
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2022/Nuolja Snow 220704.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 27
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2022/Nuolja Snow 220709.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 18
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2022/Nuolja Snow 220714.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 14
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2022/Nuolja Snow 220719.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 18
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2022/Nuolja Snow 220724.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 16
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2022/Nuolja Snow 220729.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 12
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2022/Nuolja Snow 220803.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 9
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2022/Nuolja Snow 220810.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 14
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2022/Nuolja Snow 220819.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 16
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2022/Nuolja Snow 220825.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 15
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2018/Nuolja snow 20180510.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 52
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2018/Nuolja snow 20180516.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 35
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2018/Nuolja snow 20180522.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 18
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2018/Nuolja snow 20180526.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 21
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2018/Nuolja snow 20180531.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 12
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2018/Nuolja snow 20180609.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 25
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2018/Nuolja snow 20180614.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 23
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2018/Nuolja snow 20180619.csv
+----------------------------------------
+Error: Missing or incorrect latitude format.
+: 1
+Error: Missing or incorrect longitude format.
+: 1
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2018/Nuolja snow 20180625.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 9
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2018/Nuolja snow 20180630.csv
+----------------------------------------
+Error: Missing or incorrect longitude format.
+: 2
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 7
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2018/Nuolja snow 20180705.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 9
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2018/Nuolja snow 20180710.csv
+----------------------------------------
+Error: Missing or incorrect latitude format.
+: 2
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 9
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2018/Nuolja snow 20180714.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 4
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Nuolja Snow 20190505.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 111
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Nuolja Snow 20190510.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 81
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Nuolja Snow 20190517.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 105
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Nuolja Snow 20190520.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 78
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Nuolja Snow 20190526.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 48
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Nuolja Snow 20190530.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 61
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Nuolja Snow 20190605.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 47
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Nuolja Snow 20190611.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 42
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Nuolja Snow 20190616.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 47
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Nuolja Snow 20190620.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 36
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Nuolja Snow 20190625.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 27
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Nuolja Snow 20190630.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 15
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Nuolja Snow 20190704.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 18
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Nuolja Snow 20190710.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 12
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Nuolja Snow 20190715.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 11
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Nuolja Snow 20190719.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 10
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Nuolja Snow 20190727.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Nuolja Snow 20190730.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Nuolja Snow 20190804.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Nuolja Snow 20190808.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Nuolja Snow 20190814.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Nuolja Snow 20190818.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Nuolja Snow 20190824.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 8
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Nuolja Snow 20190829.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 8
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Nuolja Snow 20190902.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 4
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Nuolja Snow 20190908.csv
+----------------------------------------
+Error: Missing or incorrect observation code format (ends with 'O' or 'os').
+: 2
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2020/Nuolja Snow 20200430.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 29
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2020/Nuolja Snow 20200510.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 51
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2020/Nuolja Snow 20200514.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 60
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2020/Nuolja Snow 20200520.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 69
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2020/Nuolja Snow 20200526.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 93
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2020/Nuolja Snow 20200530.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 121
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2020/Nuolja Snow 20200604.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 129
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2020/Nuolja Snow 20200609.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 119
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2020/Nuolja Snow 20200614.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 98
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2020/Nuolja Snow 20200619.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 90
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2020/Nuolja Snow 20200624.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 78
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2020/Nuolja Snow 20200628.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 71
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2020/Nuolja Snow 20200629.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 71
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2020/Nuolja Snow 20200703.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 60
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2020/Nuolja Snow 20200709.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 44
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2020/Nuolja Snow 20200714.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 43
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2020/Nuolja Snow 20200718.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 31
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2020/Nuolja Snow 20200724.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 15
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2020/Nuolja Snow 20200729.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 10
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2020/Nuolja Snow 20200803.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 12
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2020/Nuolja Snow 20200808.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 14
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2020/Nuolja Snow 20200814.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 11
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2020/Nuolja Snow 20200818.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 10
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2020/Nuolja Snow 20200824.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 12
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2020/Nuolja Snow 20200828.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 10
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2021/Nuolja Snow 20210510.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 59
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2021/Nuolja Snow 20210516.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 181
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2021/Nuolja Snow 20210520.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 284
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2021/Nuolja Snow 20210526.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 216
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2021/Nuolja Snow 20210531.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 190
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2021/Nuolja Snow 20210604.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 120
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2021/Nuolja Snow 20210609.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 107
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2021/Nuolja Snow 20210613.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 88
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2021/Nuolja Snow 20210618.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 62
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2021/Nuolja Snow 20210619.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 85
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2021/Nuolja Snow 20210624.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 62
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2021/Nuolja Snow 20210630.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 39
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2021/Nuolja Snow 20210704.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 21
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2021/Nuolja Snow 20210710.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 12
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2021/Nuolja Snow 20210714.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 10
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2021/Nuolja Snow 20210719.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 13
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2021/Nuolja Snow 20210724.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 12
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2021/Nuolja Snow 20210729.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 12
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2021/Nuolja Snow 20210804.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 17
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2021/Nuolja Snow 20210808.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 25
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2021/Nuolja Snow 20210813.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 19
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2021/Nuolja Snow 20210818.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 14
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2021/Nuolja Snow 20210823.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 13
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2022/Nuolja Snow 220505.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 33
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2022/Nuolja Snow 220510.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 63
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2022/Nuolja Snow 220515.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 119
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2022/Nuolja Snow 220520.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 222
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2022/Nuolja Snow 220525.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 249
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2022/Nuolja Snow 220530.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 207
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2022/Nuolja Snow 220604.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 143
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2022/Nuolja Snow 220609.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 132
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2022/Nuolja Snow 220614.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 116
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2022/Nuolja Snow 220619.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 104
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2022/Nuolja Snow 220625.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 72
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2022/Nuolja Snow 220630.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 39
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2022/Nuolja Snow 220704.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 27
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2022/Nuolja Snow 220709.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 18
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2022/Nuolja Snow 220714.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 14
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2022/Nuolja Snow 220719.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 18
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2022/Nuolja Snow 220724.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 16
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2022/Nuolja Snow 220729.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 12
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2022/Nuolja Snow 220803.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 9
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2022/Nuolja Snow 220810.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 14
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2022/Nuolja Snow 220819.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 16
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2022/Nuolja Snow 220825.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.
+: 15
+
+

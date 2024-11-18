@@ -55,6 +55,12 @@ jobs:
           echo "Installing data.table"
           Rscript -e 'install.packages("data.table")'
         timeout-minutes: 10
+      - name: Install geosphere
+        run: |
+          echo "Installing geosphere"
+          Rscript -e 'install.packages("geosphere")'
+        timeout-minutes: 10
+                        
       - name: Generate Documentation
         run: |
           echo "Generating documentation"

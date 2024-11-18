@@ -29,7 +29,7 @@ jobs:
         run: |
           echo "Installing roxygen2"
           Rscript -e 'install.packages("roxygen2")'
-          Rscript -e 'if (!requireNamespace("roxygen2", quitly = TRUE)) { stop("Package roxygen2 not found") }'
+          Rscript -e 'if (!requireNamespace("roxygen2", quietly = TRUE)) { stop("Package roxygen2 not found") }'
         timeout-minutes: 10
 
       - name: Install pkgdown

@@ -60,7 +60,11 @@ jobs:
           echo "Installing geosphere"
           Rscript -e 'install.packages("geosphere")'
         timeout-minutes: 10
-                        
+      - name: Install lubridate
+        run: |
+          echo "Installing lubridate"
+          Rscript -e 'install.packages("lubridate")'
+        timeout-minutes: 10
       - name: Generate Documentation
         run: |
           echo "Generating documentation"

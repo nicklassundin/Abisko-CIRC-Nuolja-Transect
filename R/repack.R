@@ -9,7 +9,6 @@ getPaths <- function(dir = "/data", pattern = "", full.names = TRUE) {
 	paths <- list.dirs(paste(getwd(), dir, sep=""), full.names = TRUE)[-1]
 	paths <- paths[grepl(pattern, paths)]
 	return(paths)
-
 }
 
 #' @title Get Directories
@@ -23,7 +22,6 @@ getDirs <- function(dir = "/data", pattern = "", full.names = FALSE) {
 	dirs <- list.dirs(paste(getwd(), dir, sep=""), full.names = full.names)[-1]
 	dirs <- dirs[grepl(pattern, dirs)]
 	return(dirs)
-
 }
 
 #' @title Get Data Files Paths

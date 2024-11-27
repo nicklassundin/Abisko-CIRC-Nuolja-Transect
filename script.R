@@ -25,6 +25,11 @@ createDir("data")
 ## Build paths for the directories
 paths <- getPaths() 
 dirs <- getDirs()
+### filter out if dirs not ends on four numbers
+### filter out if dirs contain Archieve
+
+print(paths)
+print(dirs)
 
 transect_desc = loadTransectDescription();
 print("Only validate? (y/n)")
@@ -43,6 +48,22 @@ if(!silent) {
 	print("Want prompt for each file? (y/n)")
 	answer <- readLines(file("stdin"), 1)
 	promt <- answer == "y";
+	if (!promt) {
+		paths <- paths[grepl("Raw Data$|\\d{4}$", dirs)]
+		dirs <- dirs[grepl("Raw Data$|\\d{4}$", dirs)]
+	}else{
+		print("Use default filter (1) or custom filter (2)?")
+		answer <- readLines(file("stdin"), 1)
+		if(answer == "2"){
+			print("Enter filter regex: ")
+			filter <- readLines(file("stdin"), 1)
+			paths <- paths[grepl(filter, dirs)]
+			dirs <- dirs[grepl(filter, dirs)]
+		}else{
+			paths <- paths[grepl("Raw Data$|\\d{4}$", dirs)]
+			dirs <- dirs[grepl("Raw Data$|\\d{4}$", dirs)]
+		}
+	}
 }else{
 	promt <- FALSE;
 }

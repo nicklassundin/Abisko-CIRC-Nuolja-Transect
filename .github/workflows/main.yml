@@ -76,19 +76,3 @@ jobs:
           echo "Building pkgdown site"
           Rscript -e 'pkgdown::build_site()'
         timeout-minutes: 10
-  create-pull-request:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v5
-        with:
-          token: ${{ secrets.GITHUB_TOKEN  }}
-          commit-message: Automated build from dev to master
-          branch: beta
-          base: master
-          title: 'Merge dev to master - Automated PR'
-          body: |
-            This pull request was automatically created to merge changes from `dev` to `master` after a successful build.

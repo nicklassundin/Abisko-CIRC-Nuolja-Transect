@@ -121,6 +121,13 @@ extract_date <- function(filename) {
 	pattern <- "([0-9]{8})\\.csv$"
 	# Use regular expression to search for the pattern in the filename
 	match <- regmatches(filename, regexec(pattern, filename))
+	pattern_2 <- "([0-9]{6})\\.csv$"
+	match_2 <- regmatches(filename, regexec(pattern_2, filename))
+	
+	if (length(match[[1]]) == 0) {
+		match <- match_2;
+	}
+
 	# return if match is length 0
 	if (length(match[[1]]) == 0) {
 		return(NULL)
@@ -143,13 +150,14 @@ extract_date <- function(filename) {
 #' @return A processed data frame.
 #' @export
 readFile = function(x, valid){
+	# check if any row are valid
+	if(all(!valid)) return(NA);
 	# extract date from file name x
 	date = as.character(as.Date(extract_date(x), "%Y%m%d"));
 	# check for header
 	entries = read.delim(x, header=FALSE, sep=",")[,1:5]
 	# filter rows based on valid
 	entries = entries[valid,];
-	print(entries[1:5,])
 	if(dim(entries)[2] < 5) return(NA);	
 
 	# print(entries[1:5,])
@@ -162,6 +170,8 @@ readFile = function(x, valid){
 	hist = data.matrix(lapply(entries[,5], historical));
 	# unlisting to be able to bind it to 'entries'
 	hist <- delist(hist)
+	# print number of columns
+
 	entries = cbind(entries, hist);
 	entries = cbind(entries[,1], cbind(dates, entries[,-1]));
 	# return full structure

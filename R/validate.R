@@ -43,11 +43,6 @@ validateLine <- function(line, file = NA, line_number = NA, log_file = NULL) {
 	if (!validation_result && !is.null(log_file)) {
 		printValidationError(line, file, line_number, log_file)
 	}
-	if (!validation_result) {
-		print(line, validation_result)
-		# wait for user input
-		readLines(file("stdin"), 1)
-	}
 	return(validation_result)
 
 }
@@ -71,7 +66,7 @@ validateLine <- function(line, file = NA, line_number = NA, log_file = NULL) {
 logErrorCounts <- function(error_list, file, count_log_file = "log/error_count_summary.txt") {
 	# Create a table to count occurrences of each error message
 	error_count <- table(unlist(error_list))
-
+	
 	# Prepare the log entry
 	log_entry <- paste0("Error Count Summary for File: ", file, "\n")
 	log_entry <- paste0(log_entry, "----------------------------------------\n")
@@ -139,12 +134,13 @@ printValidationError <- function(line, file = NA, line_number = NA, log_file = N
 	if (length(errors) > 0) {
 		error_message <- paste(errors, collapse = "\n")
 		formatted_message <- paste0(
+					    "----------------------------------------\n",
 					    "Validation Errors:\n",
 					    "File: ", ifelse(is.na(file), "N/A", file), "\n",
 					    "Line Number: ", ifelse(is.na(line_number), "N/A", line_number), "\n",
 					    "Line: ", line, "\n",
-					    error_message, "\n"
-		)
+					    error_message, "\n",
+					    "critical error:", validateLine(line), "\n")
 
 		# Log error message to file if specified
 		if (!is.null(log_file)) {
@@ -178,14 +174,8 @@ validateFile <- function(file_path, silent = FALSE) {
 	lines <- readLines(file_path)
 	validation_results <- logical(length(lines))
 
-	# create progress bar
-	if (!silent) {
-		pb <- txtProgressBar(min = 0, max = length(lines), style = 3)
-	}
 	# Validate each line and collect errors
 	for (i in seq_along(lines)) {
-		# update progress bar
-		if (!silent) setTxtProgressBar(pb, i)
 		errors <- printValidationError(
 						   lines[i], 
 						   file = file_path, 
@@ -196,10 +186,6 @@ validateFile <- function(file_path, silent = FALSE) {
 
 		validation_results[i] <- validateLine(lines[i], file = file_path, line_number = i, log_file = log_file)
 
-	}
-	# close progress bar
-	if (!silent) {
-		close(pb)
 	}
 
 	# Log error counts

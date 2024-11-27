@@ -100,7 +100,9 @@ for(i in 2:length(paths)){
 			print(paste("Processing :", paths[i]));
 		}
 	}
-	data <- exportCSV(path, paste("repack/", gsub(" ", "_",dirs[i]), sep=""));
+	outputfile = gsub("/Raw Data", "",dirs[i]);
+	outputfile = gsub(" ", "_", outputfile);
+	data <- exportCSV(path, paste("repack/", outputfile, sep=""));
 	if(validate){
 		next;
 	}

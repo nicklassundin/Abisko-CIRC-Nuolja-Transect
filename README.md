@@ -10,6 +10,11 @@ The Nuolja Transect project involves processing data from transect surveys condu
 - **Data Reading Functions**: Functions to read and process data files, inserting entries into target data structures.
 
 ### Key Functions and Their Purpose
+#### Validation 
+Validate the data in and log the errors into directory log/
+
+#### Operations
+
 - **getPaths()**: Retrieves the paths of directories within a specified directory, optionally matching a pattern.
 - **getDirs()**: Retrieves the names of directories within a specified directory, optionally matching a pattern.
 - **getDataFilesPaths()**: Retrieves the paths of data files within a specified directory, optionally matching a pattern.
@@ -35,6 +40,7 @@ An example of the data format used in this project can be found in the `descript
 ## Notes about Data
 - There are inconsistencies in date naming within the dataset.
 - One entry from 2022 is missing a valid date.
+- Geotaging are inconsistent throught the dataset
 
 ## Documentation
 The full documentation for this project is available as a GitHub Pages site. You can access it [here](https://nicklassundin.github.io/Abisko-CIRC-Nuolja-Transect/).
@@ -42,6 +48,13 @@ The full documentation for this project is available as a GitHub Pages site. You
 This documentation includes detailed information about the project's structure, data processing steps, and usage examples. It is generated automatically from the source code comments using `roxygen2` and `pkgdown`.
 
 ### How to Update Documentation
+#### Manually
+1. Run `Rscript build.docs.R`
+2. commit 
+3. push to repository
+4. pull into master
+
+#### Github workflow
 1. Ensure your code is properly documented using `roxygen2` comments.
 2. Push your changes to the `beta` branch.
 3. The GitHub Actions workflow will automatically generate and deploy the updated documentation to GitHub Pages.

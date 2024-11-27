@@ -39,10 +39,6 @@ validateLine <- function(line, file = NA, line_number = NA, log_file = NULL) {
 	pattern <- LENIENT_PATTERN
 	# Check if the line matches the pattern
 	validation_result <- grepl(pattern, line)
-	# If line is invalid and a log_file is provided, log errors
-	if (!validation_result && !is.null(log_file)) {
-		printValidationError(line, file, line_number, log_file)
-	}
 	return(validation_result)
 
 }
@@ -72,7 +68,6 @@ logErrorCounts <- function(error_list, file, count_log_file = "log/error_count_s
 	log_entry <- paste0(log_entry, "----------------------------------------\n")
 	for (error in names(error_count)) {
 		log_entry <- paste0(log_entry, error, ": ", error_count[[error]], "\n")
-
 	}
 	log_entry <- paste0(log_entry, "\n\n")
 
@@ -95,19 +90,20 @@ logErrorCounts <- function(error_list, file, count_log_file = "log/error_count_s
 #' @return NULL (This function is called for its side effect of printing/logging messages.)
 #'
 #' @examples
-#' printValidationError ("NS-20220510-001 68.37261219N 18.69783 1195.186 O", "data.txt", 5, "log/validation.txt")
+#' printValidationError ("NS-20220510-001 68.37261219N 18.69783 1195.186 O", "data.txt", 5, "log/validation.txt", "log/warnings.txt")
 #' 
 #' @export
 printValidationError <- function(line, file = NA, line_number = NA, log_file = NULL) {
+	warnings_file = "log/warnings.txt"
 	errors <- c()
 	# Check prefix
 	if (!grepl(prefix_pattern, line)) {
-		errors <- c(errors, "Error: Line does not start with 'NS-' prefix.")
+		errors <- c(errors, "Warning: Line does not start with 'NS-' prefix.")
 	}
 
 	# Check date-time format
 	if (!grepl(datetime_pattern, line)) {
-		errors <- c(errors, "Error: Missing or incorrect date-time format (YYYYMMDD-NNN).")
+		errors <- c(errors, "Warning: Missing or incorrect date-time format (YYYYMMDD-NNN).")
 	}
 
 	# Check latitude
@@ -133,6 +129,7 @@ printValidationError <- function(line, file = NA, line_number = NA, log_file = N
 	# Format error messages
 	if (length(errors) > 0) {
 		error_message <- paste(errors, collapse = "\n")
+		critical <- !validateLine(line)
 		formatted_message <- paste0(
 					    "----------------------------------------\n",
 					    "Validation Errors:\n",
@@ -140,11 +137,15 @@ printValidationError <- function(line, file = NA, line_number = NA, log_file = N
 					    "Line Number: ", ifelse(is.na(line_number), "N/A", line_number), "\n",
 					    "Line: ", line, "\n",
 					    error_message, "\n",
-					    "critical error:", validateLine(line), "\n")
+					    "critical error:", critical, "\n")
 
 		# Log error message to file if specified
 		if (!is.null(log_file)) {
-			cat(formatted_message, file = log_file, append = TRUE)
+			if (critical){
+				cat(formatted_message, file = log_file, append = TRUE)
+			}else{
+				cat(formatted_message, file = warnings_file, append = TRUE)
+			}
 		}
 	}
 	return(errors)
@@ -167,7 +168,7 @@ printValidationError <- function(line, file = NA, line_number = NA, log_file = N
 #' 
 #' @export
 validateFile <- function(file_path, silent = FALSE) {
-	log_file <- "log/validation.txt"
+	log_file <- "log/error.txt"
 	error_list <- list()
 
 	# Read the file line by line

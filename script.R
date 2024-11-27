@@ -78,7 +78,7 @@ exportCSV <- function(filenames, filename){
 }
 
 
-for(i in 2:length(paths)){
+for(i in 1:length(paths)){
 	regex = "\\d{4}.csv$"
 	if(!silent && promt){
 		## promt for regex

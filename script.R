@@ -13,7 +13,7 @@ source("R/validate.R");
 createDir <- function(subdir){
 	if(!file.exists(subdir)){
 		# create a new sub directory inside
-        	# the main path
+		# the main path
 		dir.create(file.path(getwd(), subdir))
 	}
 }
@@ -25,58 +25,53 @@ createDir("data")
 ## Build paths for the directories
 paths <- getPaths() 
 dirs <- getDirs()
-### filter out if dirs not ends on four numbers
-### filter out if dirs contain Archieve
-
-print(paths)
-print(dirs)
 
 transect_desc = loadTransectDescription();
-print("Only validate? (y/n)")
-answer <- readLines(file("stdin"), 1);
-validate <- answer == "y";
 
-silent <- TRUE;
-if(!validate){
-	print("Run silent? (y/n)")
-	answer <- readLines(file("stdin"), 1);
-	silent <- answer == "y";
+print("Select operations to perform");
+print("1) Build CSV files");
+print("2) Build CSV with debug");
+print("3) Validate CSV files");
+print("4) Debug");
+answer <- readLines(file("stdin"), 1);
+validate = FALSE;
+silent = TRUE;
+promt = FALSE;
+if(answer == "2"){
+	silent = FALSE;
+}else if(answer == "3"){
+	validate = TRUE;
+}else if(answer == "4"){
+	silent = FALSE;
+	promt = TRUE;
 }
 
-promt <- TRUE;
-if(!silent) {
-	print("Want prompt for each file? (y/n)")
+
+# paths <- paths[grepl("Raw Data$|\\d{4}$", dirs)]
+# dirs <- dirs[grepl("Raw Data$|\\d{4}$", dirs)]
+paths <- paths[grepl("Raw Data$", dirs)]
+dirs <- dirs[grepl("Raw Data$", dirs)]
+if(promt){
+	print("Use default filter (1) or custom filter (2)?")
 	answer <- readLines(file("stdin"), 1)
-	promt <- answer == "y";
-	if (!promt) {
-		paths <- paths[grepl("Raw Data$|\\d{4}$", dirs)]
-		dirs <- dirs[grepl("Raw Data$|\\d{4}$", dirs)]
-	}else{
-		print("Use default filter (1) or custom filter (2)?")
-		answer <- readLines(file("stdin"), 1)
-		if(answer == "2"){
-			print("Enter filter regex: ")
-			filter <- readLines(file("stdin"), 1)
-			paths <- paths[grepl(filter, dirs)]
-			dirs <- dirs[grepl(filter, dirs)]
-		}else{
-			paths <- paths[grepl("Raw Data$|\\d{4}$", dirs)]
-			dirs <- dirs[grepl("Raw Data$|\\d{4}$", dirs)]
-		}
+	if(answer == "2"){
+		print("Enter filter regex: ")
+		filter <- readLines(file("stdin"), 1)
+		paths <- paths[grepl(filter, dirs)]
+		dirs <- dirs[grepl(filter, dirs)]
 	}
-}else{
-	promt <- FALSE;
 }
 
 ## this writes to csv file based on name called at the end of the document
 exportCSV <- function(filenames, filename){
 	if(length(filenames)==0) return(NULL)
 	# Parsing the data from the file
-	
-	# entries = read.delim(filenames[1], header=FALSE, sep=",")[,1:5]
-	lapply(filenames, validateFile);
 
-	data = lapply(filenames, readFile);
+	# entries = read.delim(filenames[1], header=FALSE, sep=",")[,1:5]
+	valid = lapply(filenames, validateFile);
+	# Read data only for valid files
+	data <- mapply(readFile, filenames, valid, SIMPLIFY = FALSE)
+	# data = lapply(filenames, readFile);
 	# Accumulative build result row by row, with insert(,,);
 	result <- dataframeBuilder(data);
 	return(list(result=result, filename=filename));	
@@ -84,7 +79,18 @@ exportCSV <- function(filenames, filename){
 
 
 for(i in 2:length(paths)){
-	path = getDataFilesPaths(paths[i])
+	regex = "\\d{4}.csv$"
+	if(!silent && promt){
+		## promt for regex
+		print("Use default filter (1) or custom filter (2)?")
+		print("Default filter: ", regex)
+		answer <- readLines(file("stdin"), 1)
+		if(answer == "2"){
+			print("Enter filter regex: ")
+			regex <- readLines(file("stdin"), 1)
+		}
+	}
+	path = getDataFilesPaths(paths[i], pattern=regex);
 	if(!silent){
 		print(paste("Directory :", dirs[i]));
 		if(promt) {
@@ -114,13 +120,13 @@ for(i in 2:length(paths)){
 	# # cont_plot <- calculate(data$result, "subplot", "contemporary")
 	# print(cont_plot[1:10,]);
 	# TODO call old library to calculate the data
-	
+
 	subplot = subCalc(data$result[-1], dirs[i], transect_desc[,c(2,3)]);
 	filename = gsub("repack/", "", data$filename)
 	write(subplot$contemporary, paste(filename, "_contemporary", sep=""), "subplot");
 	write(subplot$historical, paste(filename, "_historical", sep=""), "subplot");
 
-	
+
 	plotcoord = matrix(,nrow=0,ncol=2)
 	for(i in 1:20){
 		tmp = transect_desc[transect_desc[,1]==i,]
@@ -131,7 +137,7 @@ for(i in 2:length(paths)){
 		plotcoord = rbind(plotcoord, res)
 	}
 	plot = subCalc(data$result[-2], filename, plotcoord);
-	
+
 	write(plot$contemporary, paste(filename, "_contemporary", sep=""), "plot");
 	write(plot$historical, paste(filename, "_historical", sep=""), "plot");
 

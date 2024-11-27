@@ -1,13 +1,7 @@
-Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2017/Snow Data 2017 Summarized by Plot.csv
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2017/Snow Data 2017.csv
 ----------------------------------------
 Error: Line does not start with 'NS-' prefix.
-: 1951
-
-
-Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2017/Snow Data 2017 Summarized by Subplot.csv
-----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 501
+: 88926
 
 
 Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2017/Snow Data 2017.csv
@@ -16,274 +10,64 @@ Error: Line does not start with 'NS-' prefix.
 : 88926
 
 
-Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2017/transect_structure.csv
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2017/Snow Data 2017.csv
 ----------------------------------------
 Error: Line does not start with 'NS-' prefix.
-: 79
+: 88926
 
 
-Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2018/Raw Data/Archive/Nuolja snow 180619.csv
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2017/Snow Data 2017.csv
 ----------------------------------------
 Error: Line does not start with 'NS-' prefix.
-: 10
+: 88926
 
 
-Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2018/Raw Data/Archive/Nuolja snow 1806192.csv
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2017/Snow Data 2017.csv
 ----------------------------------------
 Error: Line does not start with 'NS-' prefix.
-: 10
+: 88926
 
 
-Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2018/Raw Data/Archive/Nuolja snow 180625.csv
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2017/Snow Data 2017.csv
 ----------------------------------------
 Error: Line does not start with 'NS-' prefix.
-: 11
+: 88926
 
 
-Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2018/Raw Data/Archive/Nuolja snow 180630.csv
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2017/Snow Data 2017.csv
 ----------------------------------------
 Error: Line does not start with 'NS-' prefix.
-: 10
+: 88926
 
 
-Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2018/Raw Data/Archive/Nuolja snow 180705.csv
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2017/Snow Data 2017.csv
 ----------------------------------------
 Error: Line does not start with 'NS-' prefix.
-: 10
+: 88926
 
 
-Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2018/Raw Data/Archive/Nuolja snow 180710.csv
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2017/Snow Data 2017.csv
 ----------------------------------------
 Error: Line does not start with 'NS-' prefix.
-: 12
+: 88926
 
 
-Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2018/Raw Data/Archive/Nuolja snow 180714.csv
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2017/Snow Data 2017.csv
 ----------------------------------------
 Error: Line does not start with 'NS-' prefix.
-: 5
+: 88925
 
 
-Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2018/Raw Data/Archive/Nuolja snow 180720_snow free.csv
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2017/Snow Data 2017.csv
 ----------------------------------------
 Error: Line does not start with 'NS-' prefix.
-: 1
+: 88926
 
 
-Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2018/Raw Data/Archive/Nuolja snow 180619.csv
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2017/Snow Data 2017.csv
 ----------------------------------------
 Error: Line does not start with 'NS-' prefix.
-: 10
-
-
-Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2018/Raw Data/Archive/Nuolja snow 1806192.csv
-----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 10
-
-
-Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2018/Raw Data/Archive/Nuolja snow 180625.csv
-----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 11
-
-
-Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2018/Raw Data/Archive/Nuolja snow 180630.csv
-----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 10
-
-
-Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2018/Raw Data/Archive/Nuolja snow 180705.csv
-----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 10
-
-
-Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2018/Raw Data/Archive/Nuolja snow 180710.csv
-----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 12
-
-
-Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2018/Raw Data/Archive/Nuolja snow 180714.csv
-----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 5
-
-
-Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2018/Raw Data/Archive/Nuolja snow 180720_snow free.csv
-----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 1
-
-
-Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Noulja Snow 20190505.csv
-----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 119
-
-
-Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190510.csv
-----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 86
-
-
-Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190517.csv
-----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 111
-
-
-Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190520.csv
-----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 82
-
-
-Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/nuolja snow 20190526.csv
-----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 58
-
-
-Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190530.csv
-----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 63
-
-
-Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190605.csv
-----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 50
-
-
-Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja snow 20190611.csv
-----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 43
-
-
-Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190616.csv
-----------------------------------------
-Error: Missing or incorrect date-time format (YYYYMMDD-NNN).
-: 54
-
-
-Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja snow 20190620.csv
-----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 36
-
-
-Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190625.csv
-----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 28
-
-
-Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190630.csv
-----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 15
-
-
-Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja snow 20190704.csv
-----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 22
-
-
-Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190710.csv
-----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 14
-
-
-Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190715.csv
-----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 11
-
-
-Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190719.csv
-----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 10
-
-
-Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190727.csv
-----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 6
-
-
-Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190730.csv
-----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 6
-
-
-Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190804.csv
-----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 6
-
-
-Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190808.csv
-----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 6
-
-
-Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190814.csv
-----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 6
-
-
-Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190818.csv
-----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 6
-
-
-Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190824.csv
-----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 8
-
-
-Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190829.csv
-----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 8
-
-
-Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190902.csv
-----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 4
-
-
-Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190908.csv
-----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 6
-
-
-Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2017/Snow Data 2017 Summarized by Plot.csv
-----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 1951
-
-
-Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2017/Snow Data 2017 Summarized by Subplot.csv
-----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 501
+: 88926
 
 
 Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Noulja Snow 20190505.csv
@@ -1378,327 +1162,2916 @@ Error: Line does not start with 'NS-' prefix.
 : 6
 
 
-Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2017/Snow Data 2017 Summarized by Plot.csv
-----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 1951
-
-
-Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2017/Snow Data 2017 Summarized by Subplot.csv
-----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 501
-
-
 Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Noulja Snow 20190505.csv
 ----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 119
+Error: Line does not start with 'NS-' prefix.: 119
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 119
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
 
 
 Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190510.csv
 ----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 86
+Error: Line does not start with 'NS-' prefix.: 86
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 86
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
 
 
 Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190517.csv
 ----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 111
+Error: Line does not start with 'NS-' prefix.: 111
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 111
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
 
 
 Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190520.csv
 ----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 82
+Error: Line does not start with 'NS-' prefix.: 82
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 82
 
 
 Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/nuolja snow 20190526.csv
 ----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 58
+Error: Line does not start with 'NS-' prefix.: 58
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 58
 
 
 Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190530.csv
 ----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 63
+Error: Line does not start with 'NS-' prefix.: 63
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 63
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
 
 
 Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190605.csv
 ----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 50
+Error: Line does not start with 'NS-' prefix.: 50
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 50
 
 
 Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja snow 20190611.csv
 ----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 43
+Error: Line does not start with 'NS-' prefix.: 43
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 43
 
 
 Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190616.csv
 ----------------------------------------
-Error: Missing or incorrect date-time format (YYYYMMDD-NNN).
-: 54
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 54
 
 
 Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja snow 20190620.csv
 ----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 36
+Error: Line does not start with 'NS-' prefix.: 36
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 36
 
 
 Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190625.csv
 ----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 28
+Error: Line does not start with 'NS-' prefix.: 28
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 28
 
 
 Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190630.csv
 ----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 15
+Error: Line does not start with 'NS-' prefix.: 15
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 15
 
 
 Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja snow 20190704.csv
 ----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 22
+Error: Line does not start with 'NS-' prefix.: 22
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 22
 
 
 Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190710.csv
 ----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 14
+Error: Line does not start with 'NS-' prefix.: 14
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 14
 
 
 Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190715.csv
 ----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 11
+Error: Line does not start with 'NS-' prefix.: 11
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 11
 
 
 Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190719.csv
 ----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 10
+Error: Line does not start with 'NS-' prefix.: 10
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 10
 
 
 Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190727.csv
 ----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 6
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
 
 
 Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190730.csv
 ----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 6
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
 
 
 Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190804.csv
 ----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 6
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
 
 
 Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190808.csv
 ----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 6
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
 
 
 Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190814.csv
 ----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 6
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+Error: Missing or incorrect elevation format (e.g., 1195.186).: 6
+Error: Missing or incorrect latitude format (e.g., 68.37261219N).: 6
+Error: Missing or incorrect longitude format (e.g., 18.69783E).: 6
 
 
 Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190818.csv
 ----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 6
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
 
 
 Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190824.csv
 ----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 8
+Error: Line does not start with 'NS-' prefix.: 8
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 8
 
 
 Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190829.csv
 ----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 8
+Error: Line does not start with 'NS-' prefix.: 8
 
 
 Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190902.csv
 ----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 4
+Error: Line does not start with 'NS-' prefix.: 4
 
 
 Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190908.csv
 ----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 6
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
 
 
 Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Noulja Snow 20190505.csv
 ----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 119
+Error: Line does not start with 'NS-' prefix.: 119
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 119
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
 
 
 Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190510.csv
 ----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 86
+Error: Line does not start with 'NS-' prefix.: 86
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 86
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
 
 
 Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190517.csv
 ----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 111
+Error: Line does not start with 'NS-' prefix.: 111
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 111
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
 
 
 Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190520.csv
 ----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 82
+Error: Line does not start with 'NS-' prefix.: 82
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 82
 
 
 Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/nuolja snow 20190526.csv
 ----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 58
+Error: Line does not start with 'NS-' prefix.: 58
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 58
 
 
 Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190530.csv
 ----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 63
+Error: Line does not start with 'NS-' prefix.: 63
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 63
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
 
 
 Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190605.csv
 ----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 50
+Error: Line does not start with 'NS-' prefix.: 50
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 50
 
 
 Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja snow 20190611.csv
 ----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 43
+Error: Line does not start with 'NS-' prefix.: 43
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 43
 
 
 Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190616.csv
 ----------------------------------------
-Error: Missing or incorrect date-time format (YYYYMMDD-NNN).
-: 54
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 54
 
 
 Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja snow 20190620.csv
 ----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 36
+Error: Line does not start with 'NS-' prefix.: 36
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 36
 
 
 Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190625.csv
 ----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 28
+Error: Line does not start with 'NS-' prefix.: 28
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 28
 
 
 Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190630.csv
 ----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 15
+Error: Line does not start with 'NS-' prefix.: 15
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 15
 
 
 Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja snow 20190704.csv
 ----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 22
+Error: Line does not start with 'NS-' prefix.: 22
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 22
 
 
 Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190710.csv
 ----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 14
+Error: Line does not start with 'NS-' prefix.: 14
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 14
 
 
 Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190715.csv
 ----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 11
+Error: Line does not start with 'NS-' prefix.: 11
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 11
 
 
 Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190719.csv
 ----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 10
+Error: Line does not start with 'NS-' prefix.: 10
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 10
 
 
 Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190727.csv
 ----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 6
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
 
 
 Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190730.csv
 ----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 6
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
 
 
 Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190804.csv
 ----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 6
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
 
 
 Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190808.csv
 ----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 6
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
 
 
 Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190814.csv
 ----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 6
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+Error: Missing or incorrect elevation format (e.g., 1195.186).: 6
+Error: Missing or incorrect latitude format (e.g., 68.37261219N).: 6
+Error: Missing or incorrect longitude format (e.g., 18.69783E).: 6
 
 
 Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190818.csv
 ----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 6
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
 
 
 Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190824.csv
 ----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 8
+Error: Line does not start with 'NS-' prefix.: 8
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 8
 
 
 Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190829.csv
 ----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 8
+Error: Line does not start with 'NS-' prefix.: 8
 
 
 Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190902.csv
 ----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 4
+Error: Line does not start with 'NS-' prefix.: 4
 
 
 Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190908.csv
 ----------------------------------------
-Error: Line does not start with 'NS-' prefix.
-: 6
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Noulja Snow 20190505.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 119
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 119
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190510.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 86
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 86
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190517.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 111
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 111
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190520.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 82
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 82
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/nuolja snow 20190526.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 58
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 58
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190530.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 63
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 63
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190605.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 50
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 50
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja snow 20190611.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 43
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 43
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190616.csv
+----------------------------------------
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 54
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja snow 20190620.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 36
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 36
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190625.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 28
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 28
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190630.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 15
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 15
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja snow 20190704.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 22
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 22
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190710.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 14
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 14
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190715.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 11
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 11
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190719.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 10
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 10
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190727.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190730.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190804.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190808.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190814.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+Error: Missing or incorrect elevation format (e.g., 1195.186).: 6
+Error: Missing or incorrect latitude format (e.g., 68.37261219N).: 6
+Error: Missing or incorrect longitude format (e.g., 18.69783E).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190818.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190824.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 8
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 8
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190829.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 8
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190902.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 4
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190908.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Noulja Snow 20190505.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 119
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 119
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190510.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 86
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 86
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190517.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 111
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 111
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190520.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 82
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 82
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/nuolja snow 20190526.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 58
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 58
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190530.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 63
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 63
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190605.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 50
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 50
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja snow 20190611.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 43
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 43
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190616.csv
+----------------------------------------
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 54
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja snow 20190620.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 36
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 36
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190625.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 28
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 28
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190630.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 15
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 15
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja snow 20190704.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 22
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 22
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190710.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 14
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 14
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190715.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 11
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 11
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190719.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 10
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 10
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190727.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190730.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190804.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190808.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190814.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+Error: Missing or incorrect elevation format (e.g., 1195.186).: 6
+Error: Missing or incorrect latitude format (e.g., 68.37261219N).: 6
+Error: Missing or incorrect longitude format (e.g., 18.69783E).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190818.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190824.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 8
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 8
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190829.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 8
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190902.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 4
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190908.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Noulja Snow 20190505.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 119
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 119
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190510.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 86
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 86
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190517.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 111
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 111
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190520.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 82
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 82
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/nuolja snow 20190526.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 58
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 58
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Noulja Snow 20190505.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 119
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 119
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190510.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 86
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 86
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190517.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 111
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 111
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190520.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 82
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 82
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/nuolja snow 20190526.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 58
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 58
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190530.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 63
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 63
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190605.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 50
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 50
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja snow 20190611.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 43
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 43
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190616.csv
+----------------------------------------
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 54
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja snow 20190620.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 36
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 36
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190625.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 28
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 28
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190630.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 15
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 15
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja snow 20190704.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 22
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 22
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190710.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 14
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 14
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190715.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 11
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 11
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190719.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 10
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 10
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190727.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190730.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190804.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190808.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190814.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+Error: Missing or incorrect elevation format (e.g., 1195.186).: 6
+Error: Missing or incorrect latitude format (e.g., 68.37261219N).: 6
+Error: Missing or incorrect longitude format (e.g., 18.69783E).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190818.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190824.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 8
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 8
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190829.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 8
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190902.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 4
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190908.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Noulja Snow 20190505.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 119
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 119
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190510.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 86
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 86
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190517.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 111
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 111
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190520.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 82
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 82
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/nuolja snow 20190526.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 58
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 58
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190530.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 63
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 63
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190605.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 50
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 50
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja snow 20190611.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 43
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 43
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190616.csv
+----------------------------------------
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 54
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja snow 20190620.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 36
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 36
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190625.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 28
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 28
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190630.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 15
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 15
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja snow 20190704.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 22
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 22
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190710.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 14
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 14
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190715.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 11
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 11
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190719.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 10
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 10
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190727.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190730.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190804.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190808.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190814.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+Error: Missing or incorrect elevation format (e.g., 1195.186).: 6
+Error: Missing or incorrect latitude format (e.g., 68.37261219N).: 6
+Error: Missing or incorrect longitude format (e.g., 18.69783E).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190818.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190824.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 8
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 8
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190829.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 8
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190902.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 4
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190908.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Noulja Snow 20190505.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 119
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 119
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190510.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 86
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 86
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190517.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 111
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 111
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190520.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 82
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 82
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/nuolja snow 20190526.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 58
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 58
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190530.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 63
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 63
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190605.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 50
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 50
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja snow 20190611.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 43
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 43
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190616.csv
+----------------------------------------
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 54
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja snow 20190620.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 36
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 36
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190625.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 28
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 28
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190630.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 15
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 15
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja snow 20190704.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 22
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 22
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190710.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 14
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 14
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190715.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 11
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 11
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190719.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 10
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 10
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190727.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190730.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190804.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190808.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190814.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+Error: Missing or incorrect elevation format (e.g., 1195.186).: 6
+Error: Missing or incorrect latitude format (e.g., 68.37261219N).: 6
+Error: Missing or incorrect longitude format (e.g., 18.69783E).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190818.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190824.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 8
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 8
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190829.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 8
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190902.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 4
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190908.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Noulja Snow 20190505.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 119
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 119
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190510.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 86
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 86
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190517.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 111
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 111
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190520.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 82
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 82
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/nuolja snow 20190526.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 58
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 58
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190530.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 63
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 63
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190605.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 50
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 50
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja snow 20190611.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 43
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 43
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190616.csv
+----------------------------------------
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 54
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja snow 20190620.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 36
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 36
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190625.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 28
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 28
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190630.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 15
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 15
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja snow 20190704.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 22
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 22
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190710.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 14
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 14
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190715.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 11
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 11
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190719.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 10
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 10
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190727.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190730.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190804.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190808.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190814.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+Error: Missing or incorrect elevation format (e.g., 1195.186).: 6
+Error: Missing or incorrect latitude format (e.g., 68.37261219N).: 6
+Error: Missing or incorrect longitude format (e.g., 18.69783E).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190818.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190824.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 8
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 8
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190829.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 8
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190902.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 4
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190908.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Noulja Snow 20190505.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 119
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 119
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190510.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 86
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 86
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190517.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 111
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 111
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190520.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 82
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 82
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/nuolja snow 20190526.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 58
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 58
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190530.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 63
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 63
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190605.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 50
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 50
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja snow 20190611.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 43
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 43
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190616.csv
+----------------------------------------
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 54
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja snow 20190620.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 36
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 36
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190625.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 28
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 28
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190630.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 15
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 15
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja snow 20190704.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 22
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 22
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190710.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 14
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 14
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190715.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 11
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 11
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190719.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 10
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 10
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190727.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190730.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190804.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190808.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190814.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+Error: Missing or incorrect elevation format (e.g., 1195.186).: 6
+Error: Missing or incorrect latitude format (e.g., 68.37261219N).: 6
+Error: Missing or incorrect longitude format (e.g., 18.69783E).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190818.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190824.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 8
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 8
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190829.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 8
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190902.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 4
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190908.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Noulja Snow 20190505.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 119
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 119
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190510.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 86
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 86
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190517.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 111
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 111
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190520.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 82
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 82
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/nuolja snow 20190526.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 58
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 58
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190530.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 63
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 63
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190605.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 50
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 50
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja snow 20190611.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 43
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 43
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190616.csv
+----------------------------------------
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 54
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja snow 20190620.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 36
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 36
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190625.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 28
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 28
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190630.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 15
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 15
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja snow 20190704.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 22
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 22
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190710.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 14
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 14
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190715.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 11
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 11
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190719.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 10
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 10
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190727.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190730.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190804.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190808.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190814.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+Error: Missing or incorrect elevation format (e.g., 1195.186).: 6
+Error: Missing or incorrect latitude format (e.g., 68.37261219N).: 6
+Error: Missing or incorrect longitude format (e.g., 18.69783E).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190818.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190824.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 8
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 8
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190829.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 8
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190902.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 4
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190908.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Noulja Snow 20190505.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 119
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 119
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190510.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 86
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 86
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190517.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 111
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 111
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190520.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 82
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 82
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/nuolja snow 20190526.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 58
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 58
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190530.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 63
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 63
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190605.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 50
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 50
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja snow 20190611.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 43
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 43
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190616.csv
+----------------------------------------
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 54
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja snow 20190620.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 36
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 36
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190625.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 28
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 28
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190630.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 15
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 15
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja snow 20190704.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 22
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 22
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190710.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 14
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 14
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190715.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 11
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 11
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190719.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 10
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 10
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190727.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190730.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190804.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190808.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190814.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+Error: Missing or incorrect elevation format (e.g., 1195.186).: 6
+Error: Missing or incorrect latitude format (e.g., 68.37261219N).: 6
+Error: Missing or incorrect longitude format (e.g., 18.69783E).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190818.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190824.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 8
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 8
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190829.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 8
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190902.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 4
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190908.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Noulja Snow 20190505.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 119
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 119
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190510.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 86
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 86
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190517.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 111
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 111
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190520.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 82
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 82
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/nuolja snow 20190526.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 58
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 58
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190530.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 63
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 63
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190605.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 50
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 50
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja snow 20190611.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 43
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 43
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190616.csv
+----------------------------------------
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 54
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja snow 20190620.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 36
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 36
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190625.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 28
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 28
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190630.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 15
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 15
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja snow 20190704.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 22
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 22
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190710.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 14
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 14
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190715.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 11
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 11
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190719.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 10
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 10
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190727.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190730.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190804.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190808.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190814.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+Error: Missing or incorrect elevation format (e.g., 1195.186).: 6
+Error: Missing or incorrect latitude format (e.g., 68.37261219N).: 6
+Error: Missing or incorrect longitude format (e.g., 18.69783E).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190818.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190824.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 8
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 8
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190829.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 8
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190902.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 4
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190908.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Noulja Snow 20190505.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 119
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 119
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190510.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 86
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 86
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190517.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 111
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 111
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190520.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 82
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 82
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/nuolja snow 20190526.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 58
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 58
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190530.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 63
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 63
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190605.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 50
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 50
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja snow 20190611.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 43
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 43
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190616.csv
+----------------------------------------
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 54
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja snow 20190620.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 36
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 36
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190625.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 28
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 28
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190630.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 15
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 15
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja snow 20190704.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 22
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 22
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190710.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 14
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 14
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190715.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 11
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 11
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190719.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 10
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 10
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190727.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190730.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190804.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190808.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190814.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+Error: Missing or incorrect elevation format (e.g., 1195.186).: 6
+Error: Missing or incorrect latitude format (e.g., 68.37261219N).: 6
+Error: Missing or incorrect longitude format (e.g., 18.69783E).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190818.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190824.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 8
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 8
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190829.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 8
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190902.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 4
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190908.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Noulja Snow 20190505.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 119
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 119
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190510.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 86
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 86
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190517.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 111
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 111
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190520.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 82
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 82
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/nuolja snow 20190526.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 58
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 58
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190530.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 63
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 63
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190605.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 50
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 50
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja snow 20190611.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 43
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 43
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190616.csv
+----------------------------------------
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 54
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja snow 20190620.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 36
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 36
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190625.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 28
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 28
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190630.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 15
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 15
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja snow 20190704.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 22
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 22
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190710.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 14
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 14
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190715.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 11
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 11
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190719.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 10
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 10
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190727.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190730.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190804.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190808.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190814.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+Error: Missing or incorrect elevation format (e.g., 1195.186).: 6
+Error: Missing or incorrect latitude format (e.g., 68.37261219N).: 6
+Error: Missing or incorrect longitude format (e.g., 18.69783E).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190818.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190824.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 8
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 8
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190829.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 8
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190902.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 4
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190908.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Noulja Snow 20190505.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 119
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 119
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190510.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 86
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 86
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190517.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 111
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 111
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190520.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 82
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 82
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/nuolja snow 20190526.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 58
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 58
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190530.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 63
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 63
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190605.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 50
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 50
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja snow 20190611.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 43
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 43
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190616.csv
+----------------------------------------
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 54
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja snow 20190620.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 36
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 36
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190625.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 28
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 28
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190630.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 15
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 15
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja snow 20190704.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 22
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 22
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190710.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 14
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 14
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190715.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 11
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 11
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190719.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 10
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 10
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190727.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190730.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190804.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190808.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190814.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+Error: Missing or incorrect elevation format (e.g., 1195.186).: 6
+Error: Missing or incorrect latitude format (e.g., 68.37261219N).: 6
+Error: Missing or incorrect longitude format (e.g., 18.69783E).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190818.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190824.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 8
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 8
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190829.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 8
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190902.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 4
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190908.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Noulja Snow 20190505.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 119
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 119
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190510.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 86
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 86
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190517.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 111
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 111
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190520.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 82
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 82
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/nuolja snow 20190526.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 58
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 58
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190530.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 63
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 63
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190605.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 50
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 50
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja snow 20190611.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 43
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 43
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190616.csv
+----------------------------------------
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 54
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja snow 20190620.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 36
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 36
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190625.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 28
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 28
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190630.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 15
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 15
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja snow 20190704.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 22
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 22
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190710.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 14
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 14
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190715.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 11
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 11
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190719.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 10
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 10
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190727.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190730.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190804.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190808.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190814.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+Error: Missing or incorrect elevation format (e.g., 1195.186).: 6
+Error: Missing or incorrect latitude format (e.g., 68.37261219N).: 6
+Error: Missing or incorrect longitude format (e.g., 18.69783E).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190818.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190824.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 8
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 8
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190829.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 8
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190902.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 4
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190908.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Noulja Snow 20190505.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 119
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 119
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190510.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 86
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 86
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190517.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 111
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 111
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190520.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 82
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 82
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/nuolja snow 20190526.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 58
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 58
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190530.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 63
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 63
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190605.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 50
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 50
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja snow 20190611.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 43
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 43
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190616.csv
+----------------------------------------
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 54
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja snow 20190620.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 36
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 36
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190625.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 28
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 28
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190630.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 15
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 15
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja snow 20190704.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 22
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 22
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190710.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 14
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 14
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190715.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 11
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 11
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190719.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 10
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 10
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190727.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190730.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190804.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190808.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190814.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+Error: Missing or incorrect elevation format (e.g., 1195.186).: 6
+Error: Missing or incorrect latitude format (e.g., 68.37261219N).: 6
+Error: Missing or incorrect longitude format (e.g., 18.69783E).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190818.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190824.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 8
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 8
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190829.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 8
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190902.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 4
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190908.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Noulja Snow 20190505.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 119
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 119
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190510.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 86
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 86
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190517.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 111
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 111
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190520.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 82
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 82
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/nuolja snow 20190526.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 58
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 58
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190530.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 63
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 63
+Error: Missing or incorrect observation code format (e.g., O or OS).: 1
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190605.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 50
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 50
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja snow 20190611.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 43
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 43
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190616.csv
+----------------------------------------
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 54
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja snow 20190620.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 36
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 36
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190625.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 28
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 28
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190630.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 15
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 15
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja snow 20190704.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 22
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 22
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190710.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 14
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 14
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190715.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 11
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 11
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190719.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 10
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 10
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190727.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190730.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190804.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190808.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190814.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+Error: Missing or incorrect elevation format (e.g., 1195.186).: 6
+Error: Missing or incorrect latitude format (e.g., 68.37261219N).: 6
+Error: Missing or incorrect longitude format (e.g., 18.69783E).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190818.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190824.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 8
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 8
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190829.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 8
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190902.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 4
+
+
+Error Count Summary for File: /home/masema/workspace/vizchange/nuolja-transect/data/Snow Data 2019/Raw Data/Nuolja Snow 20190908.csv
+----------------------------------------
+Error: Line does not start with 'NS-' prefix.: 6
+Error: Missing or incorrect date-time format (YYYYMMDD-NNN).: 6
 
 

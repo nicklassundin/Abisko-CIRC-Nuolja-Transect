@@ -142,11 +142,14 @@ extract_date <- function(filename) {
 #' @param x A character string representing the file path.
 #' @return A processed data frame.
 #' @export
-readFile = function(x){
+readFile = function(x, valid){
 	# extract date from file name x
 	date = as.character(as.Date(extract_date(x), "%Y%m%d"));
-
+	# check for header
 	entries = read.delim(x, header=FALSE, sep=",")[,1:5]
+	# filter rows based on valid
+	entries = entries[valid,];
+	print(entries[1:5,])
 	if(dim(entries)[2] < 5) return(NA);	
 
 	# print(entries[1:5,])
@@ -192,7 +195,7 @@ insert <- function(target, entry, sect){
 #' @export
 drawPlots <- function(df) {
 	df$date = as.numeric(format(as.Date(df$date, origin="1970-01-01")), "%j");
-	print(df[1:5])
+	# print(df[1:5])
 	for(d in unique(df$date)){
 		temp = df[df$date == d,];
 		if(nrow(temp)>1){
@@ -215,10 +218,8 @@ drawPlots <- function(df) {
 #' @return A data frame containing the accumulated data.
 #' @export
 dataframeBuilder <- function(data){
-	# print(data)
 	# initating result data.frame
 	result <- data.frame();
-	# print(result)
 	# Accumulative build result row by row, with insert(,,);
 	for(i in 1:length(data)){
 		if(length(data[[i]][!is.na(data[[i]])]) > 0){

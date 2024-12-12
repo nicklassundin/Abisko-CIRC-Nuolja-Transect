@@ -31,11 +31,52 @@ Validate the data in and log the errors into directory log/
 
 ### Example Data
 An example of the data format used in this project can be found in the `descriptions/transect_description.csv` file. This file contains information about the transect points, including plot numbers, coordinates (latitude and longitude), and elevations.
+## Prerequisites
+To run the project, ensure the following are installed and configured on your system:
+1. **R and Rtools**  
+   - Install the latest version of R from [CRAN](https://cran.r-project.org/).  
+   - If on Windows, install Rtools for building and compiling packages.
+
+2. **Required R Packages**  
+   These will be install when running the script
+   - `dplyr`
+   - `ggplot2`
+   - `tidyr`
+   - `lubridate`
+   - `readr`
+   - `devtools`
+   - `roxygen2`
+   - `pkgdown`
 
 ## Instructions
 1. Place your data directories into the `data` directory.
 2. Run `Rscript script.r` to process the data. This will generate files in the `/repack` directory and output files in the `/out` directory.
 3. Follow the prompted options to validate or generate files as required.
+
+### Running an Interactive R Session in RStudio Terminal
+Follow these steps to run your R script interactively in RStudio's terminal, ensuring the working directory is set correctly:
+
+## Running an Interactive R Session in RStudio Terminal
+
+Follow these steps to run your R script interactively in RStudio's terminal, ensuring the working directory is set correctly:
+
+### Step 1: Change the Working Directory in RStudio
+Before opening the terminal, set the working directory in RStudio using one of these methods:
+
+#### Option 1: Use the GUI
+1. Click on `Session > Set Working Directory > Choose Directory...`.
+2. Navigate to the folder containing your R script and click `Open`.
+
+#### Option 2: Use the Console
+1. In the RStudio console, set the working directory manually by typing:
+   ```r
+   setwd("path/to/your/script")
+### Step 1: Open the Terminal in RStudio
+- In RStudio, go to `Tools > Terminal > New Terminal`.  
+  Alternatively, use the shortcut:  
+  - **Windows/Linux**: `Shift + Alt + T`  
+  - **Mac**: `Shift + Option + T`
+
 
 ## Notes about Data
 - There are inconsistencies in date naming within the dataset.

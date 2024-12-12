@@ -117,30 +117,30 @@ formatDate = function(x){
 #' @return A character string representing the extracted date, or NULL if no date is found.
 #' @export
 extract_date <- function(filename) {
-	# Define the pattern to match the date in YYYYMMDD format followed by .csv
-	pattern <- "([0-9]{8})\\.csv$"
-	# Use regular expression to search for the pattern in the filename
-	match <- regmatches(filename, regexec(pattern, filename))
-	pattern_2 <- "([0-9]{6})\\.csv$"
-	match_2 <- regmatches(filename, regexec(pattern_2, filename))
-	
+	# Ensure the input is just the filename
+	filename <- basename(filename)  # Extracts the filename from a full path
+
+	# Define patterns to match the date in YYYYMMDD or YYMMDD formats followed by .csv
+	pattern_1 <- "([0-9]{8})\\.csv$"  # Matches YYYYMMDD
+	pattern_2 <- "([0-9]{6})\\.csv$"  # Matches YYMMDD
+
+	# Try to match the first pattern
+	match <- regmatches(filename, regexec(pattern_1, filename))
+
+	# If the first pattern does not match, try the second pattern
 	if (length(match[[1]]) == 0) {
-		match <- match_2;
+		match <- regmatches(filename, regexec(pattern_2, filename))
+
 	}
 
-	# return if match is length 0
+	# If neither pattern matches, return NULL
 	if (length(match[[1]]) == 0) {
 		return(NULL)
 
 	}
-	# If a match is found, extract and return the date
-	if (!is.na(match[[1]])) {
-		return(match[[1]][2])
 
-	} else {
-		return(NULL)
-
-	}
+	# Return the matched date
+	return(match[[1]][2])
 
 }
 

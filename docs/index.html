@@ -153,21 +153,16 @@
 <h4 id="manually">Manually<a class="anchor" aria-label="anchor" href="#manually"></a>
 </h4>
 <ol style="list-style-type: decimal">
-<li>Run <code>Rscript build.docs.R</code>
+<li>Enter <code>R</code> enviroment</li>
+<li>Run <code><a href="https://devtools.r-lib.org/reference/document.html" class="external-link">devtools::document()</a></code>
 </li>
-<li>commit</li>
+<li>Run <code><a href="https://pkgdown.r-lib.org/reference/build_site.html" class="external-link">pkgdown::build_site()</a></code>
+</li>
+<li>Exit <code>R</code> enviroment</li>
 <li>push to repository</li>
 <li>pull into master</li>
 </ol>
-</div>
-<div class="section level4">
-<h4 id="github-workflow">Github workflow<a class="anchor" aria-label="anchor" href="#github-workflow"></a>
-</h4>
-<ol style="list-style-type: decimal">
-<li>Ensure your code is properly documented using <code>roxygen2</code> comments.</li>
-<li>Push your changes to the <code>beta</code> branch.</li>
-<li>The GitHub Actions workflow will automatically generate and deploy the updated documentation to GitHub Pages.</li>
-</ol>
+<!-- #### Github workflow --><!-- 1. Ensure your code is properly documented using `roxygen2` comments. --><!-- 2. Push your changes to the `beta` branch. --><!-- 3. The GitHub Actions workflow will automatically generate and deploy the updated documentation to GitHub Pages. -->
 </div>
 </div>
 </div>

@@ -1,10 +1,12 @@
 # TODO install all dependencies in the script
 ## Install geosphere package if not already install on client
-list.of.packages <- c("geosphere", "dplyr")
+list.of.packages <- c("geosphere", "dplyr", "here")
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
 if(length(new.packages)) install.packages(new.packages)
 library(geosphere);
 library(dplyr);
+library(here)
+setwd(here::here())
 source("R/helper.R");
 source("R/repack.R");
 source("R/generate.R");

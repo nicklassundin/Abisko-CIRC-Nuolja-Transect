@@ -61,11 +61,11 @@ This documentation includes detailed information about the project's structure, 
 
 ## Data Formating
 
-# File Format Specification for `repack/`
+### File Format Specification for `repack/`
 
 The files in the `repack/` directory are structured as CSV files with detailed information about geographical plots and their associated data. Each file adheres to the following schema:
 
-## Column Descriptions
+#### Column Descriptions
 
 | **Column Name**  | **Description**                                                                                              |
 |-------------------|------------------------------------------------------------------------------------------------------------|
@@ -85,13 +85,13 @@ The files in the `repack/` directory are structured as CSV files with detailed i
 |                  | - `o`: Open                                                                                         |
 |                  | - `s`: Snow                                                                                              |
 
-## File Characteristics
+#### File Characteristics
 
 - **CSV Format**: The files are plain-text, comma-separated value files with a header row for column names.
 - **Consistency**: Each row corresponds to a single data point, and all columns are present for every entry.
 - **Data Use**: These files are used for analyzing environmental or geographical changes across plots and subplots.
 
-## Example Data
+#### Example Data
 
 Below is an excerpt to illustrate the format:
 

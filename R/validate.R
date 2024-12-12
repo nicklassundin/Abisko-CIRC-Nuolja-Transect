@@ -3,11 +3,15 @@
 prefix_pattern <- "^NS-"
 datetime_pattern <- "\\d{8}-\\d{3}"
 latitude_pattern <- "\\d+\\.\\d{6,9}N"
-lenient_latitude_pattern <- "\\d+\\.\\d+N"
 longitude_pattern <- "\\d+\\.\\d{6,9}E"
-lenient_longitude_pattern <- "\\d+\\.\\d+E"
 elevation_pattern <- "\\d+\\.\\d+"
 obs_code_pattern <- "[osOS]{1,2}$"
+
+# Patterns for lenient validation
+lenient_latitude_pattern <- "\\d+\\.\\d+N"
+lenient_longitude_pattern <- "\\d+\\.\\d+E"
+
+
 STRICT_PATTERN <- paste(prefix_pattern, datetime_pattern, latitude_pattern, longitude_pattern, elevation_pattern, obs_code_pattern, sep = "[ , ]+")
 # STRICT_PATTERN <- "^NS-\\d{8}-\\d{3}[ , ]\\d+\\.\\d+N[ , ]\\d+\\.\\d+E[, ]\\d+\\.\\d+[, ][osOS]{1,2}$"
 LENIENT_PATTERN <- paste(lenient_latitude_pattern, lenient_longitude_pattern, elevation_pattern, obs_code_pattern, sep = "[ , ]")
@@ -62,6 +66,11 @@ validateLine <- function(line, file = NA, line_number = NA, log_file = NULL) {
 logErrorCounts <- function(error_list, file, count_log_file = "log/error_count_summary.txt") {
 	# Create a table to count occurrences of each error message
 	error_count <- table(unlist(error_list))
+
+	# create file if it does not exist
+	if (!file.exists(count_log_file)) {
+		file.create(count_log_file)
+	}
 	
 	# Prepare the log entry
 	log_entry <- paste0("Error Count Summary for File: ", file, "\n")

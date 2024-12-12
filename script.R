@@ -1,3 +1,4 @@
+# TODO install all dependencies in the script
 ## Install geosphere package if not already install on client
 list.of.packages <- c("geosphere", "dplyr")
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]

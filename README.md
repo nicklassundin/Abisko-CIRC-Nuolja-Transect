@@ -59,22 +59,45 @@ This documentation includes detailed information about the project's structure, 
 2. Push your changes to the `beta` branch.
 3. The GitHub Actions workflow will automatically generate and deploy the updated documentation to GitHub Pages.
 
-### Example
-To see an example of how to document your functions, check the comments in `script.r`:
+## Data Formating
 
-```r
-#' Title of your function
-#'
-#' Detailed description of your function.
-#'
-#' @param x Description of parameter x.
-#' @param y Description of parameter y.
-#' @return Description of the return value.
-#' @export
-#' @examples
-#' example_function(1, 2)
-example_function <- function(x, y) {
-  # Your code here
-  
-}
-```
+# File Format Specification for `repack/`
+
+The files in the `repack/` directory are structured as CSV files with detailed information about geographical plots and their associated data. Each file adheres to the following schema:
+
+## Column Descriptions
+
+| **Column Name**  | **Description**                                                                                              |
+|-------------------|------------------------------------------------------------------------------------------------------------|
+| `plot`           | The plot number associated with the data entry.                                                            |
+| `subplot`        | The subplot number within the plot.                                                                         |
+| `proj_factor`    | A calculated projection factor, used for scaling or alignment in analyses.                                  |
+| `id`             | A unique identifier for each record, formatted as `NS-YYYYMMDD-XXX`, where `XXX` is the sequential entry.  |
+| `date`           | The date of the record, formatted as `YYYY-MM-DD`.                                                         |
+| `latitude`       | The latitude of the recorded point in decimal degrees.                                                     |
+| `longitude`      | The longitude of the recorded point in decimal degrees.                                                    |
+| `elevation`      | The elevation at the specific point, measured in meters.                                                   |
+| `contemporary`   | A label indicating the contemporary observation status. Possible values:                                    |
+|                  | - `o`: Open                                                                                         |
+|                  | - `s`: Snow                                                                                              |
+|                  | - `os`: Both Open and Snow                                                                        |
+| `historical`     | A label indicating the historical observation status. Possible values:                                     |
+|                  | - `o`: Open                                                                                         |
+|                  | - `s`: Snow                                                                                              |
+
+## File Characteristics
+
+- **CSV Format**: The files are plain-text, comma-separated value files with a header row for column names.
+- **Consistency**: Each row corresponds to a single data point, and all columns are present for every entry.
+- **Data Use**: These files are used for analyzing environmental or geographical changes across plots and subplots.
+
+## Example Data
+
+Below is an excerpt to illustrate the format:
+
+```csv
+"plot","subplot","proj_factor","id","date","latitude","longitude","elevation","contemporary","historical"
+20,78,3357.62764497642,"NS-20180506-001","2018-05-06","68.37261122","18.69783956",1180.841,"o","o"
+19,76,3260.95020778743,"NS-20180506-004","2018-05-06","68.37218199","18.69989872",1169.419,"os","s"
+18,69,2957.15889307984,"NS-20180506-011","2018-05-06","68.37041561","18.70585272",1103.361,"s","s"
+

@@ -61,9 +61,9 @@ This documentation includes detailed information about the project's structure, 
 
 ## Data Formating
 
-### File Format Specification for `out/`
+### File Format Specification for `repack/`
 
-The files in the `out/` directory are structured as CSV files with detailed information about geographical plots and their associated data. Each file adheres to the following schema:
+The files in the `repack/` directory are structured as CSV files with detailed information about geographical plots and their associated data. Each file adheres to the following schema:
 
 #### Column Descriptions
 
@@ -101,9 +101,9 @@ Below is an excerpt to illustrate the format:
 19,76,3260.95020778743,"NS-20180506-004","2018-05-06","68.37218199","18.69989872",1169.419,"os","s"
 18,69,2957.15889307984,"NS-20180506-011","2018-05-06","68.37041561","18.70585272",1103.361,"s","s"
 ```
-### File Format Specification for `repack/`
+### File Format Specification for `out/`
 
-The files in the `open/` directory include CSV files with data representing daily snow of various plot statuses. Each file adheres to the following schema:
+The files in the `out/` directory include CSV files with data representing daily snow of various plot statuses. Each file adheres to the following schema:
 
 #### Column Descriptions
 

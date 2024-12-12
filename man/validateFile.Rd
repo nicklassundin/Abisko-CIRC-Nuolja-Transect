@@ -4,7 +4,7 @@
 \alias{validateFile}
 \title{Validate All Lines in a File Against a Specific Format}
 \usage{
-validateFile(file_path)
+validateFile(file_path, silent = FALSE)
 }
 \arguments{
 \item{file_path}{A character vector representing the path to the file to be validated.}

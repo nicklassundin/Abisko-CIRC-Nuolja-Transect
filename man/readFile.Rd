@@ -4,7 +4,7 @@
 \alias{readFile}
 \title{Read File}
 \usage{
-readFile(x)
+readFile(x, valid)
 }
 \arguments{
 \item{x}{A character string representing the file path.}

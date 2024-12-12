@@ -11,6 +11,11 @@ obs_code_pattern <- "[osOS]{1,2}$"
 lenient_latitude_pattern <- "\\d+\\.\\d+N"
 lenient_longitude_pattern <- "\\d+\\.\\d+E"
 
+# create log directory if it does not exist
+if (!dir.exists("log")) {
+	dir.create("log")
+}
+
 
 STRICT_PATTERN <- paste(prefix_pattern, datetime_pattern, latitude_pattern, longitude_pattern, elevation_pattern, obs_code_pattern, sep = "[ , ]+")
 # STRICT_PATTERN <- "^NS-\\d{8}-\\d{3}[ , ]\\d+\\.\\d+N[ , ]\\d+\\.\\d+E[, ]\\d+\\.\\d+[, ][osOS]{1,2}$"

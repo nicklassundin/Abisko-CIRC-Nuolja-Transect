@@ -49,15 +49,17 @@ This documentation includes detailed information about the project's structure, 
 
 ### How to Update Documentation
 #### Manually
-1. Run `Rscript build.docs.R`
-2. commit 
+1. Enter `R` enviroment
+2. Run `devtools::document()`
+3. Run `pkgdown::build_site()`
+4. Exit `R` enviroment
 3. push to repository
 4. pull into master
 
-#### Github workflow
-1. Ensure your code is properly documented using `roxygen2` comments.
-2. Push your changes to the `beta` branch.
-3. The GitHub Actions workflow will automatically generate and deploy the updated documentation to GitHub Pages.
+<!-- #### Github workflow -->
+<!-- 1. Ensure your code is properly documented using `roxygen2` comments. -->
+<!-- 2. Push your changes to the `beta` branch. -->
+<!-- 3. The GitHub Actions workflow will automatically generate and deploy the updated documentation to GitHub Pages. -->
 
 ## Data Formating
 

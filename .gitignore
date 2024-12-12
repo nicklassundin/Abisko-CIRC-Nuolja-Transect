@@ -2,5 +2,12 @@ repack
 out
 data
 old_out
+out_old
+data_old
+plots
+repack_old
+Rplots.pdf
 .RData
 .Rhistory
+log/*.txt
+

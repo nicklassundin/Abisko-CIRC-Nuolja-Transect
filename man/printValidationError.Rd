@@ -2,15 +2,9 @@
 % Please edit documentation in R/validate.R
 \name{printValidationError}
 \alias{printValidationError}
-\title{Print Validation Error Messages for Invalid Lines}
+\title{Validate Line and Print Field-Specific Errors}
 \usage{
-printValidationError(
-  line,
-  file = NA,
-  line_number = NA,
-  log_file = NULL,
-  error_list = NULL
-)
+printValidationError(line, file = NA, line_number = NA, log_file = NULL)
 }
 \arguments{
 \item{line}{A character vector representing the line to be validated.}
@@ -26,10 +20,10 @@ are logged. If NULL, messages are only printed to the console.}
 NULL (This function is called for its side effect of printing/logging messages.)
 }
 \description{
-This function prints detailed error messages for lines that do not match the expected
-format pattern. Errors can be logged to a specified log file for later review.
+This function validates a line against a specified format pattern and prints/logs
+detailed errors for each field that does not match the expected format.
 }
 \examples{
-printValidationError("NS-20220510-001 68.37261219N 18.69783 1195.186 X", "data.txt", 5, "log/validation.txt")
+printValidationError ("NS-20220510-001 68.37261219N 18.69783 1195.186 O", "data.txt", 5, "log/validation.txt", "log/warnings.txt")
 
 }

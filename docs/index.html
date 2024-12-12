@@ -79,6 +79,14 @@
 <div class="section level3">
 <h3 id="key-functions-and-their-purpose">Key Functions and Their Purpose<a class="anchor" aria-label="anchor" href="#key-functions-and-their-purpose"></a>
 </h3>
+<div class="section level4">
+<h4 id="validation">Validation<a class="anchor" aria-label="anchor" href="#validation"></a>
+</h4>
+<p>Validate the data in and log the errors into directory log/</p>
+</div>
+<div class="section level4">
+<h4 id="operations">Operations<a class="anchor" aria-label="anchor" href="#operations"></a>
+</h4>
 <ul>
 <li>
 <strong>getPaths()</strong>: Retrieves the paths of directories within a specified directory, optionally matching a pattern.</li>
@@ -108,6 +116,7 @@
 <strong>dataframeBuilder()</strong>: Builds a data frame by accumulating rows from provided data.</li>
 </ul>
 </div>
+</div>
 <div class="section level3">
 <h3 id="example-data">Example Data<a class="anchor" aria-label="anchor" href="#example-data"></a>
 </h3>
@@ -129,6 +138,7 @@
 <ul>
 <li>There are inconsistencies in date naming within the dataset.</li>
 <li>One entry from 2022 is missing a valid date.</li>
+<li>Geotaging are inconsistent throught the dataset</li>
 </ul>
 </div>
 <div class="section level2">
@@ -139,31 +149,197 @@
 <div class="section level3">
 <h3 id="how-to-update-documentation">How to Update Documentation<a class="anchor" aria-label="anchor" href="#how-to-update-documentation"></a>
 </h3>
+<div class="section level4">
+<h4 id="manually">Manually<a class="anchor" aria-label="anchor" href="#manually"></a>
+</h4>
+<ol style="list-style-type: decimal">
+<li>Run <code>Rscript build.docs.R</code>
+</li>
+<li>commit</li>
+<li>push to repository</li>
+<li>pull into master</li>
+</ol>
+</div>
+<div class="section level4">
+<h4 id="github-workflow">Github workflow<a class="anchor" aria-label="anchor" href="#github-workflow"></a>
+</h4>
 <ol style="list-style-type: decimal">
 <li>Ensure your code is properly documented using <code>roxygen2</code> comments.</li>
 <li>Push your changes to the <code>beta</code> branch.</li>
 <li>The GitHub Actions workflow will automatically generate and deploy the updated documentation to GitHub Pages.</li>
 </ol>
 </div>
+</div>
+</div>
+<div class="section level2">
+<h2 id="data-formating">Data Formating<a class="anchor" aria-label="anchor" href="#data-formating"></a>
+</h2>
 <div class="section level3">
-<h3 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
+<h3 id="file-format-specification-for-repack">File Format Specification for <code>repack/</code>
+<a class="anchor" aria-label="anchor" href="#file-format-specification-for-repack"></a>
 </h3>
-<p>To see an example of how to document your functions, check the comments in <code>script.r</code>:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co">#' Title of your function</span></span>
-<span><span class="co">#'</span></span>
-<span><span class="co">#' Detailed description of your function.</span></span>
-<span><span class="co">#'</span></span>
-<span><span class="co">#' @param x Description of parameter x.</span></span>
-<span><span class="co">#' @param y Description of parameter y.</span></span>
-<span><span class="co">#' @return Description of the return value.</span></span>
-<span><span class="co">#' @export</span></span>
-<span><span class="co">#' @examples</span></span>
-<span><span class="co">#' example_function(1, 2)</span></span>
-<span><span class="va">example_function</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="co"># Your code here</span></span>
-<span>  </span>
-<span><span class="op">}</span></span></code></pre></div>
+<p>The files in the <code>repack/</code> directory are structured as CSV files with detailed information about geographical plots and their associated data. Each file adheres to the following schema:</p>
+<div class="section level4">
+<h4 id="column-descriptions">Column Descriptions<a class="anchor" aria-label="anchor" href="#column-descriptions"></a>
+</h4>
+<table class="table">
+<colgroup>
+<col width="14%">
+<col width="85%">
+</colgroup>
+<thead><tr class="header">
+<th><strong>Column Name</strong></th>
+<th><strong>Description</strong></th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><code>plot</code></td>
+<td>The plot number associated with the data entry.</td>
+</tr>
+<tr class="even">
+<td><code>subplot</code></td>
+<td>The subplot number within the plot.</td>
+</tr>
+<tr class="odd">
+<td><code>proj_factor</code></td>
+<td>A calculated projection factor, used for scaling or alignment in analyses.</td>
+</tr>
+<tr class="even">
+<td><code>id</code></td>
+<td>A unique identifier for each record, formatted as <code>NS-YYYYMMDD-XXX</code>, where <code>XXX</code> is the sequential entry.</td>
+</tr>
+<tr class="odd">
+<td><code>date</code></td>
+<td>The date of the record, formatted as <code>YYYY-MM-DD</code>.</td>
+</tr>
+<tr class="even">
+<td><code>latitude</code></td>
+<td>The latitude of the recorded point in decimal degrees.</td>
+</tr>
+<tr class="odd">
+<td><code>longitude</code></td>
+<td>The longitude of the recorded point in decimal degrees.</td>
+</tr>
+<tr class="even">
+<td><code>elevation</code></td>
+<td>The elevation at the specific point, measured in meters.</td>
+</tr>
+<tr class="odd">
+<td><code>contemporary</code></td>
+<td>A label indicating the contemporary observation status. Possible values:</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>- <code>o</code>: Open</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>- <code>s</code>: Snow</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>- <code>os</code>: Both Open and Snow</td>
+</tr>
+<tr class="odd">
+<td><code>historical</code></td>
+<td>A label indicating the historical observation status. Possible values:</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>- <code>o</code>: Open</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>- <code>s</code>: Snow</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section level4">
+<h4 id="file-characteristics">File Characteristics<a class="anchor" aria-label="anchor" href="#file-characteristics"></a>
+</h4>
+<ul>
+<li>
+<strong>CSV Format</strong>: The files are plain-text, comma-separated value files with a header row for column names.</li>
+<li>
+<strong>Consistency</strong>: Each row corresponds to a single data point, and all columns are present for every entry.</li>
+<li>
+<strong>Data Use</strong>: These files are used for analyzing environmental or geographical changes across plots and subplots.</li>
+</ul>
+</div>
+<div class="section level4">
+<h4 id="example-data-1">Example Data<a class="anchor" aria-label="anchor" href="#example-data-1"></a>
+</h4>
+<p>Below is an excerpt to illustrate the format:</p>
+<pre class="csv"><code>"plot","subplot","proj_factor","id","date","latitude","longitude","elevation","contemporary","historical"
+20,78,3357.62764497642,"NS-20180506-001","2018-05-06","68.37261122","18.69783956",1180.841,"o","o"
+19,76,3260.95020778743,"NS-20180506-004","2018-05-06","68.37218199","18.69989872",1169.419,"os","s"
+18,69,2957.15889307984,"NS-20180506-011","2018-05-06","68.37041561","18.70585272",1103.361,"s","s"</code></pre>
+</div>
+</div>
+<div class="section level3">
+<h3 id="file-format-specification-for-out">File Format Specification for <code>out/</code>
+<a class="anchor" aria-label="anchor" href="#file-format-specification-for-out"></a>
+</h3>
+<p>The files in the <code>out/</code> directory include CSV files with data representing daily snow of various plot statuses. Each file adheres to the following schema:</p>
+<div class="section level4">
+<h4 id="column-descriptions-1">Column Descriptions<a class="anchor" aria-label="anchor" href="#column-descriptions-1"></a>
+</h4>
+<table class="table">
+<colgroup>
+<col width="15%">
+<col width="84%">
+</colgroup>
+<thead><tr class="header">
+<th><strong>Column Name</strong></th>
+<th><strong>Description</strong></th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><code>DOY</code></td>
+<td>Day of the Year (DOY) for the recorded observations.</td>
+</tr>
+<tr class="even">
+<td><code>plot/subplot</code></td>
+<td>The plot number associated with the data entry.</td>
+</tr>
+<tr class="odd">
+<td><code>s</code></td>
+<td>Proportion of open categorized as “Snow” for the given plot and day.</td>
+</tr>
+<tr class="even">
+<td><code>so</code></td>
+<td>Proportion of open categorized as “Snow and Open” for the given plot and day.</td>
+</tr>
+<tr class="odd">
+<td><code>o</code></td>
+<td>Proportion of open categorized as “Open” for the given plot and day.</td>
+</tr>
+<tr class="even">
+<td><code>os</code></td>
+<td>Proportion of open categorized as “Open and Snow” for the given plot and day.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section level4">
+<h4 id="file-characteristics-1">File Characteristics<a class="anchor" aria-label="anchor" href="#file-characteristics-1"></a>
+</h4>
+<ul>
+<li>
+<strong>CSV Format</strong>: The files are plain-text, comma-separated value files with a header row for column names.</li>
+<li>
+<strong>Proportional Data</strong>: The columns <code>s</code>, <code>so</code>, <code>o</code>, and <code>os</code> represent proportions (values between 0 and 1) for each category.</li>
+<li>
+<strong>Daily Observations</strong>: Each row corresponds to a specific day and plot.</li>
+</ul>
+</div>
+<div class="section level4">
+<h4 id="example-data-2">Example Data<a class="anchor" aria-label="anchor" href="#example-data-2"></a>
+</h4>
+<p>Below is an excerpt to illustrate the format:</p>
+<p>```csv “DOY”,“plot”,“s”,“so”,“o”,“os” 126,6,0.0540559471516565,0.21497303215613,0.0818149541820005,0.649156066510213 126,7,0,0.318104640512793,0.139848133706484,0.542047225780723 126,8,0.123763616329758,0.876236383670242,0,0 126,9,0,0.863436913617926,0,0.136563086382074 126,10,0.768916411918146,0,0.0997298448068066,0.13135374327</p>
+</div>
 </div>
 </div>
 </div>

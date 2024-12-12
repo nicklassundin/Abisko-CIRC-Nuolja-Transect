@@ -71,6 +71,7 @@ exportCSV <- function(filenames, filename){
 	# entries = read.delim(filenames[1], header=FALSE, sep=",")[,1:5]
 	valid = lapply(filenames, validateFile);
 	# Read data only for valid files
+	print(readFile)
 	data <- mapply(readFile, filenames, valid, SIMPLIFY = FALSE)
 	# data = lapply(filenames, readFile);
 	# Accumulative build result row by row, with insert(,,);

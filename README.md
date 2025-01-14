@@ -1,6 +1,7 @@
 # Nuolja Transect
 
 ## Project Overview
+<details>
 The Nuolja Transect project involves processing data from transect surveys conducted in the Nuolja region. The key components of the project include:
 
 ### Data Processing
@@ -12,8 +13,16 @@ The Nuolja Transect project involves processing data from transect surveys condu
 ### Key Functions and Their Purpose
 #### Validation 
 Validate the data in and log the errors into directory log/
+### Example Data
+An example of the data format used in this project can be found in the `descriptions/transect_description.csv` file. This file contains information about the transect points, including plot numbers, coordinates (latitude and longitude), and elevations.
+#### Notes about Data
+- There are inconsistencies in date naming within the dataset.
+- One entry from 2022 is missing a valid date.
+- Geotaging are inconsistent throught the dataset
+</details>
 
-#### Operations
+## Operations
+<details>
 
 - **getPaths()**: Retrieves the paths of directories within a specified directory, optionally matching a pattern.
 - **getDirs()**: Retrieves the names of directories within a specified directory, optionally matching a pattern.
@@ -29,9 +38,10 @@ Validate the data in and log the errors into directory log/
 - **drawPlots()**: Generates and saves plots based on the provided data frame.
 - **dataframeBuilder()**: Builds a data frame by accumulating rows from provided data.
 
-### Example Data
-An example of the data format used in this project can be found in the `descriptions/transect_description.csv` file. This file contains information about the transect points, including plot numbers, coordinates (latitude and longitude), and elevations.
+</details>
+
 ## Prerequisites
+<details>
 To run the project, ensure the following are installed and configured on your system:
 1. **R and Rtools**  
    - Install the latest version of R from [CRAN](https://cran.r-project.org/).  
@@ -47,9 +57,12 @@ To run the project, ensure the following are installed and configured on your sy
    - `devtools`
    - `roxygen2`
    - `pkgdown`
+</details>
 
 ## Instructions
-1. Place your data directories into the `data` directory.
+<details>
+   <summary>Running the Code in interactive enviroment</summary>
+   1. Place your data directories into the `data` directory.
 2. Run `Rscript script.r` to process the data. This will generate files in the `/repack` directory and output files in the `/out` directory.
 3. Follow the prompted options to validate or generate files as required.
 
@@ -82,12 +95,11 @@ Before opening the terminal, set the working directory in RStudio using one of t
      ```r
    Rscript script.R
 - This will run the script
-## Notes about Data
-- There are inconsistencies in date naming within the dataset.
-- One entry from 2022 is missing a valid date.
-- Geotaging are inconsistent throught the dataset
+
+</details>
 
 ## Documentation
+<details>
 The full documentation for this project is available as a GitHub Pages site. You can access it [here](https://nicklassundin.github.io/Abisko-CIRC-Nuolja-Transect/).
 
 This documentation includes detailed information about the project's structure, data processing steps, and usage examples. It is generated automatically from the source code comments using `roxygen2` and `pkgdown`.
@@ -105,8 +117,11 @@ This documentation includes detailed information about the project's structure, 
 <!-- 1. Ensure your code is properly documented using `roxygen2` comments. -->
 <!-- 2. Push your changes to the `beta` branch. -->
 <!-- 3. The GitHub Actions workflow will automatically generate and deploy the updated documentation to GitHub Pages. -->
+</details>
+
 
 ## Data Formating
+<details>
 
 ### File Format Specification for `repack/`
 
@@ -180,3 +195,5 @@ Below is an excerpt to illustrate the format:
 126,8,0.123763616329758,0.876236383670242,0,0
 126,9,0,0.863436913617926,0,0.136563086382074
 126,10,0.768916411918146,0,0.0997298448068066,0.13135374327
+
+</details>

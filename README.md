@@ -71,13 +71,17 @@ Before opening the terminal, set the working directory in RStudio using one of t
 1. In the RStudio console, set the working directory manually by typing:
    ```r
    setwd("path/to/your/script")
-### Step 1: Open the Terminal in RStudio
+### Step 2: Open the Terminal in RStudio
 - In RStudio, go to `Tools > Terminal > New Terminal`.  
   Alternatively, use the shortcut:  
   - **Windows/Linux**: `Shift + Alt + T`  
   - **Mac**: `Shift + Option + T`
 
-
+### 
+- type
+     ```r
+   Rscript script.R
+- This will run the script
 ## Notes about Data
 - There are inconsistencies in date naming within the dataset.
 - One entry from 2022 is missing a valid date.

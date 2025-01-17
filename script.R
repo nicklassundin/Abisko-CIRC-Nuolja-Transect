@@ -30,21 +30,41 @@ dirs <- getDirs()
 transect_desc = loadTransectDescription();
 
 print("Select operations to perform");
+print("0) Exit");
 print("1) Build CSV files");
 print("2) Build CSV with debug");
 print("3) Validate CSV files");
 print("4) Debug");
-answer <- readLines(file("stdin"), 1);
+# loop until vallid input is given
+while(TRUE){
+	answer <- readLines(file("stdin"), 1);
+	# replace ) with empty string
+	answer <- gsub("\\)", "", answer);
+	# replace none numeric with empty string
+	answer <- gsub("\\D", "", answer);
+	if(answer == "0"){
+		return(NULL);
+	}
+	if(answer == "1" || answer == "2" || answer == "3" || answer == "4"){
+		break;
+	}
+	print("Invalid input, please try again");
+}
 validate = FALSE;
 silent = TRUE;
 promt = FALSE;
 if(answer == "2"){
+	print("Build CSV files with debug")
 	silent = FALSE;
 }else if(answer == "3"){
+	print("Validation mode");
 	validate = TRUE;
 }else if(answer == "4"){
+	print("Debug mode");
 	silent = FALSE;
 	promt = TRUE;
+}else{
+	print("Build CSV files");
 }
 
 

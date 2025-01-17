@@ -15,7 +15,25 @@ lenient_longitude_pattern <- "\\d+\\.\\d+E"
 if (!dir.exists("log")) {
 	dir.create("log")
 }
-
+# Moving existing log files to backup
+if (file.exists("log/error.txt")) {
+	if (file.exists("log/error_backup.txt")) {
+		file.remove("log/error_backup.txt")
+	}
+	file.rename("log/error.txt", "log/error_backup.txt")
+}
+if (file.exists("log/warnings.txt")) {
+	if (file.exists("log/warnings_backup.txt")) {
+		file.remove("log/warnings_backup.txt")
+	}
+	file.rename("log/warnings.txt", "log/warnings_backup.txt")
+}
+if (file.exists("log/error_count_summary.txt")) {
+	if (file.exists("log/error_count_summary_backup.txt")) {
+		file.remove("log/error_count_summary_backup.txt")
+	}
+	file.rename("log/error_count_summary.txt", "log/error_count_summary_backup.txt")
+}
 
 STRICT_PATTERN <- paste(prefix_pattern, datetime_pattern, latitude_pattern, longitude_pattern, elevation_pattern, obs_code_pattern, sep = "[ , ]+")
 # STRICT_PATTERN <- "^NS-\\d{8}-\\d{3}[ , ]\\d+\\.\\d+N[ , ]\\d+\\.\\d+E[, ]\\d+\\.\\d+[, ][osOS]{1,2}$"

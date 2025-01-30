@@ -9,7 +9,6 @@ getPaths <- function(dir = "/data", pattern = "", full.names = TRUE) {
 	paths <- list.dirs(paste(getwd(), dir, sep=""), full.names = TRUE)[-1]
 	paths <- paths[grepl(pattern, paths)]
 	return(paths)
-
 }
 
 #' @title Get Directories
@@ -23,7 +22,6 @@ getDirs <- function(dir = "/data", pattern = "", full.names = FALSE) {
 	dirs <- list.dirs(paste(getwd(), dir, sep=""), full.names = full.names)[-1]
 	dirs <- dirs[grepl(pattern, dirs)]
 	return(dirs)
-
 }
 
 #' @title Get Data Files Paths
@@ -119,23 +117,30 @@ formatDate = function(x){
 #' @return A character string representing the extracted date, or NULL if no date is found.
 #' @export
 extract_date <- function(filename) {
-	# Define the pattern to match the date in YYYYMMDD format followed by .csv
-	pattern <- "([0-9]{8})\\.csv$"
-	# Use regular expression to search for the pattern in the filename
-	match <- regmatches(filename, regexec(pattern, filename))
-	# return if match is length 0
+	# Ensure the input is just the filename
+	filename <- basename(filename)  # Extracts the filename from a full path
+
+	# Define patterns to match the date in YYYYMMDD or YYMMDD formats followed by .csv
+	pattern_1 <- "([0-9]{8})\\.csv$"  # Matches YYYYMMDD
+	pattern_2 <- "([0-9]{6})\\.csv$"  # Matches YYMMDD
+
+	# Try to match the first pattern
+	match <- regmatches(filename, regexec(pattern_1, filename))
+
+	# If the first pattern does not match, try the second pattern
+	if (length(match[[1]]) == 0) {
+		match <- regmatches(filename, regexec(pattern_2, filename))
+
+	}
+
+	# If neither pattern matches, return NULL
 	if (length(match[[1]]) == 0) {
 		return(NULL)
 
 	}
-	# If a match is found, extract and return the date
-	if (!is.na(match[[1]])) {
-		return(match[[1]][2])
 
-	} else {
-		return(NULL)
-
-	}
+	# Return the matched date
+	return(match[[1]][2])
 
 }
 
@@ -144,11 +149,15 @@ extract_date <- function(filename) {
 #' @param x A character string representing the file path.
 #' @return A processed data frame.
 #' @export
-readFile = function(x){
+readFile = function(x, valid){
+	# check if any row are valid
+	if(all(!valid)) return(NA);
 	# extract date from file name x
 	date = as.character(as.Date(extract_date(x), "%Y%m%d"));
-
+	# check for header
 	entries = read.delim(x, header=FALSE, sep=",")[,1:5]
+	# filter rows based on valid
+	entries = entries[valid,];
 	if(dim(entries)[2] < 5) return(NA);	
 
 	# print(entries[1:5,])
@@ -161,6 +170,8 @@ readFile = function(x){
 	hist = data.matrix(lapply(entries[,5], historical));
 	# unlisting to be able to bind it to 'entries'
 	hist <- delist(hist)
+	# print number of columns
+
 	entries = cbind(entries, hist);
 	entries = cbind(entries[,1], cbind(dates, entries[,-1]));
 	# return full structure
@@ -194,7 +205,7 @@ insert <- function(target, entry, sect){
 #' @export
 drawPlots <- function(df) {
 	df$date = as.numeric(format(as.Date(df$date, origin="1970-01-01")), "%j");
-	print(df[1:5])
+	# print(df[1:5])
 	for(d in unique(df$date)){
 		temp = df[df$date == d,];
 		if(nrow(temp)>1){
@@ -217,10 +228,8 @@ drawPlots <- function(df) {
 #' @return A data frame containing the accumulated data.
 #' @export
 dataframeBuilder <- function(data){
-	# print(data)
 	# initating result data.frame
 	result <- data.frame();
-	# print(result)
 	# Accumulative build result row by row, with insert(,,);
 	for(i in 1:length(data)){
 		if(length(data[[i]][!is.na(data[[i]])]) > 0){

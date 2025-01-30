@@ -4,7 +4,7 @@ on:
   push:
     branches:
       # - beta  # Specify the 'beta' branch here
-      # - placeholder
+      - placeholder
 
 jobs:
   build:
@@ -29,7 +29,7 @@ jobs:
         run: |
           echo "Installing roxygen2"
           Rscript -e 'install.packages("roxygen2")'
-          Rscript -e 'if (!requireNamespace("roxygen2", quitly = TRUE)) { stop("Package roxygen2 not found") }'
+          Rscript -e 'if (!requireNamespace("roxygen2", quietly = TRUE)) { stop("Package roxygen2 not found") }'
         timeout-minutes: 10
 
       - name: Install pkgdown
@@ -49,7 +49,22 @@ jobs:
           echo "Installing package dependencies"
           Rscript -e 'remotes::install_deps(dependencies = TRUE)'
         timeout-minutes: 10
-
+    
+      - name: Install data.table
+        run: |
+          echo "Installing data.table"
+          Rscript -e 'install.packages("data.table")'
+        timeout-minutes: 10
+      - name: Install geosphere
+        run: |
+          echo "Installing geosphere"
+          Rscript -e 'install.packages("geosphere")'
+        timeout-minutes: 10
+      - name: Install lubridate
+        run: |
+          echo "Installing lubridate"
+          Rscript -e 'install.packages("lubridate")'
+        timeout-minutes: 10
       - name: Generate Documentation
         run: |
           echo "Generating documentation"

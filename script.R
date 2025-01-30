@@ -10,16 +10,6 @@ source("R/repack.R");
 source("R/generate.R");
 source("R/validate.R");
 
-# Creating missing directories for repack and outpu
-createDir <- function(subdir){
-	if(!file.exists(subdir)){
-		# create a new sub directory inside
-		# the main path
-		dir.create(file.path(getwd(), subdir))
-	}
-}
-createDir("repack")
-createDir("out")
 createDir("data")
 
 
@@ -67,11 +57,42 @@ if(answer == "2"){
 	print("Build CSV files");
 }
 
+# split dirs between / and take index 0
+datatypes <- sapply(strsplit(dirs, "/"), "[", 1)
+datatypes <- unique(datatypes)
+
+# Select which data to process
+while(TRUE){
+	print("Select data to process");
+	print("0) Exit");
+	for(i in 1:length(datatypes)){
+		print(paste(i,") ", datatypes[i], sep=""));
+	}
+	print(paste(length(datatypes)+1,") All data", sep=""));
+	answer <- readLines(file("stdin"), 1);
+	answer <- gsub("\\)", "", answer);
+	answer <- gsub("\\D", "", answer);
+	if(answer == "0"){
+		return(NULL);
+	}
+	if(as.numeric(answer) <= length(datatypes)+1){
+		dirs <- dirs[datatypes == datatypes[as.numeric(answer)]]
+		paths <- paths[datatypes == datatypes[as.numeric(answer)]]
+		break;
+	}
+	print("Invalid input, please try again");
+}
+
+for (i in 1:length(dirs)){
+	createDir(paste("repack/", datatypes[i], sep=""))
+	createDir(paste("out/", datatypes[i], sep=""))
+}
 
 # paths <- paths[grepl("Raw Data$|\\d{4}$", dirs)]
 # dirs <- dirs[grepl("Raw Data$|\\d{4}$", dirs)]
 paths <- paths[grepl("Raw Data$", dirs)]
 dirs <- dirs[grepl("Raw Data$", dirs)]
+
 if(promt){
 	print("Use default filter (1) or custom filter (2)?")
 	answer <- readLines(file("stdin"), 1)
@@ -82,22 +103,6 @@ if(promt){
 		dirs <- dirs[grepl(filter, dirs)]
 	}
 }
-
-## this writes to csv file based on name called at the end of the document
-exportCSV <- function(filenames, filename){
-	if(length(filenames)==0) return(NULL)
-	# Parsing the data from the file
-
-	# entries = read.delim(filenames[1], header=FALSE, sep=",")[,1:5]
-	valid = lapply(filenames, validateFile);
-	# Read data only for valid files
-	data <- mapply(readFile, filenames, valid, SIMPLIFY = FALSE)
-	# data = lapply(filenames, readFile);
-	# Accumulative build result row by row, with insert(,,);
-	result <- dataframeBuilder(data);
-	return(list(result=result, filename=filename));	
-}
-
 
 for(i in 1:length(paths)){
 	regex = "\\d{4}.csv$"
@@ -121,8 +126,11 @@ for(i in 1:length(paths)){
 			print(paste("Processing :", paths[i]));
 		}
 	}
+	print(dirs[i])
 	outputfile = gsub("/Raw Data", "",dirs[i]);
-	outputfile = gsub(" ", "_", outputfile);
+	print(outputfile);
+	# outputfile = gsub(" ", "_", outputfile);
+	# print(outputfile);
 	data <- exportCSV(path, paste("repack/", outputfile, sep=""));
 	if(validate){
 		next;

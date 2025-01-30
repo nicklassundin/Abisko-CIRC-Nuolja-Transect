@@ -37,15 +37,18 @@ createDir <- function(subdir){
 exportCSV <- function(filenames, filename){
 	if(length(filenames)==0) return(NULL)
 	# Parsing the data from the file
-	
-	# entries = read.delim(filenames[1], header=FALSE, sep=",")[,1:5]
-	lapply(filenames, validateFile);
 
-	data = lapply(filenames, readFile);
+	# entries = read.delim(filenames[1], header=FALSE, sep=",")[,1:5]
+	valid = lapply(filenames, validateFile);
+	# Read data only for valid files
+	data <- mapply(readFile, filenames, valid, SIMPLIFY = FALSE)
+	# data = lapply(filenames, readFile);
 	# Accumulative build result row by row, with insert(,,);
 	result <- dataframeBuilder(data);
 	return(list(result=result, filename=filename));	
 }
+
+
 
 #' @title Section
 #' @description Find the section of the dataframe corresponding to a given projection factor.

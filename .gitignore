@@ -4,6 +4,7 @@ data/
 .RData
 .Rhistory
 log
+README.md.bak
 
 ## Ignore files for development
 data_old/

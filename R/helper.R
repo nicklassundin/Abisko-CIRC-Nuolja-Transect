@@ -34,12 +34,10 @@ createDir <- function(subdir){
 #' @param filenames A character vector representing the paths to the input files.
 #' @param filename A character string representing the name of the output file.
 #' @return A list containing the data frame and the output file name.
-exportCSV <- function(filenames, filename){
+exportCSV <- function(filenames, filename, valid){
 	if(length(filenames)==0) return(NULL)
 	# Parsing the data from the file
 
-	# entries = read.delim(filenames[1], header=FALSE, sep=",")[,1:5]
-	valid = lapply(filenames, validateFile);
 	# Read data only for valid files
 	data <- mapply(readFile, filenames, valid, SIMPLIFY = FALSE)
 	# data = lapply(filenames, readFile);

@@ -22,10 +22,10 @@ project_directory/
 ├── plots
 │   ├── README.md
 ├── R
-│   ├── generate.R
 │   ├── helper.R
 │   ├── patterns.R
 │   ├── repack.R
+│   ├── snow.R
 │   └── validate.R
 ├── README.md
 ├── repack

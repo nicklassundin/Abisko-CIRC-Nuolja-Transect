@@ -7,7 +7,7 @@ library(geosphere);
 library(dplyr);
 source("R/helper.R");
 source("R/repack.R");
-source("R/generate.R");
+source("R/snow.R");
 source("R/validate.R");
 
 createDir("data")
@@ -105,22 +105,18 @@ if(promt){
 	}
 }
 
-for(i in 1:length(paths)){
-	regex = "\\d{4}.csv$"
-	if(!silent && promt){
-		## promt for regex
-		print("Use default filter (1) or custom filter (2)?")
-		print("Default filter: ", regex)
-		answer <- readLines(file("stdin"), 1)
-		if(answer == "2"){
-			print("Enter filter regex: ")
-			regex <- readLines(file("stdin"), 1)
-		}
-	}
-	path = getDataFilesPaths(paths[i], pattern=regex);
+FILE_REGEX = "\\d{4}.csv$"
+for (i in 1:length(paths)){
+	path = getDataFilesPaths(paths[i], pattern="\\d{4}.csv$");
+	if(length(path) == 0) return(NULL);
+	valid = lapply(path, validateFile)
+	# filter out invalid files in the list path
 	if(!silent){
+		print("Default filter", FILE_REGEX)
+	}
+	if(!silent) {
 		print(paste("Directory :", dirs[i]));
-		if(promt) {
+		if(print) {
 			print("Do you wanna process this directory? (y/n)");
 			answer <- readLines(file("stdin"),1)
 			if(answer != "y") return(NULL);
@@ -128,8 +124,9 @@ for(i in 1:length(paths)){
 		}
 	}
 	outputfile = gsub("/Raw Data", "",dirs[i]);
-	data <- exportCSV(path, paste("repack/", outputfile, sep=""));
+	data <- exportCSV(path, paste("repack/", outputfile, sep=""), valid);
 	if(validate){
+		# leave loop if only validating
 		next;
 	}
 	if(is.null(data)) next;
@@ -137,23 +134,16 @@ for(i in 1:length(paths)){
 		print(paste("Completed -", dirs[i]));
 		print(paste("Location -", getwd()));
 	}
-	# drawPlots(data$result);
+	# Writing repack files to csv
 	write.csv(data$result, paste(data$filename, ".csv", sep=""), row.names=FALSE)
-
-
+	
 	data$result = data$result %>% arrange(date);
-	#print(data$result[1:15,c(1,2,5,9,10)]);
-	# cont_plot <- calculate(data$result, "plot", "contemporary")
-	# print(cont_plot[1:10,]);
-	# # cont_plot <- calculate(data$result, "subplot", "contemporary")
-	# print(cont_plot[1:10,]);
-	# TODO call old library to calculate the data
+	subplot = subCalc(data$result, dirs[i], transect_desc[,c(2,3)]);
+	filename = gsub("repack/", "out/", data$filename)
 
-	subplot = subCalc(data$result[-1], dirs[i], transect_desc[,c(2,3)]);
-	filename = gsub("repack/", "", data$filename)
-	write(subplot$contemporary, paste(filename, "_contemporary", sep=""), "subplot");
-	write(subplot$historical, paste(filename, "_historical", sep=""), "subplot");
-
+	print("Writing summarized data to csv");
+	write.csv(subplot$contemporary, paste(filename, "Summarized by Subplot Contemporary.csv", sep=" "), row.names=FALSE);
+	write.csv(subplot$historical, paste(filename, "Summarized by Subplot Historical.csv", sep=" "), row.names=FALSE);
 
 	plotcoord = matrix(,nrow=0,ncol=2)
 	for(i in 1:20){
@@ -165,12 +155,8 @@ for(i in 1:length(paths)){
 		plotcoord = rbind(plotcoord, res)
 	}
 	plot = subCalc(data$result[-2], filename, plotcoord);
-
-	write(plot$contemporary, paste(filename, "_contemporary", sep=""), "plot");
-	write(plot$historical, paste(filename, "_historical", sep=""), "plot");
-
+	write.csv(plot$contemporary, paste(filename, "Summarized by Plot Contemporary.csv", sep=" "), row.names=FALSE);
+	write.csv(plot$historical, paste(filename, "Summarized by Plot Historical.csv", sep=" "), row.names=FALSE);
+	print("Completed");
 }
-
-print("repack.r : DONE : CSV files built");
-
 

@@ -12,30 +12,7 @@ The Nuolja Transect project involves processing data from transect surveys condu
 project_directory/
 ├── build.docs.R
 ├── data
-│   └── Nuolja Snow Data
-│   │   ├── Snow Data 1917-1919
-│   │   │   ├── R Scripts
-│   │   ├── Snow Data 2017
-│   │   │   ├── Archive
-│   │   ├── Snow Data 2018
-│   │   │   ├── Archive
-│   │   │   ├── Raw Data
-│   │   │   │   ├── Archive
-│   │   ├── Snow Data 2019
-│   │   │   ├── Raw Data
-│   │   │   │   ├── Archive
-│   │   ├── Snow Data 2020
-│   │   │   ├── Archive
-│   │   │   └── Raw Data
-│   │   ├── Snow Data 2021
-│   │   │   └── Raw Data
-│   │   ├── Snow Data 2022
-│   │   │   └── Raw Data
-│   │   │   │   ├── Archive
-│   │   ├── Snow Data 2023
-│   │   │   └── Raw Data
-│   │   └── Snow Data 2024
-│   │   │   └── Archive
+│   ├── DATAHERE.md
 ├── descriptions
 ├── docs
 │   ├── reference

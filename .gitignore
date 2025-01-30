@@ -1,7 +1,8 @@
 repack/*.csv
 out/*.csv
 data/*.csv
-data/**/*.R
+data/**
+!data/*.md
 .RData
 .Rhistory
 log

@@ -4,17 +4,17 @@
 The Nuolja Transect project involves processing data from transect surveys conducted in the Nuolja region. The key components of the project include:
 
 ### Directory structure 
-- project_root/
-- src/
-- main.py
-- utils.py
-- docs/
-- README.md
-- guide.md
-- data/
-- dataset.csv
-- tests/
-- test_main.py
+project_root/
+│── src/
+│   ├── main.py
+│   ├── utils.py
+│── docs/
+│   ├── README.md
+│   ├── guide.md
+│── data/
+│   ├── dataset.csv
+│── tests/
+│   ├── test_main.py
 
 
 

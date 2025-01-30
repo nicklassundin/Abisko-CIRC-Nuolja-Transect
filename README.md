@@ -3,6 +3,10 @@
 ## Project Overview
 The Nuolja Transect project involves processing data from transect surveys conducted in the Nuolja region. The key components of the project include:
 
+### Directory structure 
+project-root/ ├── docs/ │ ├── README.md │ ├── design-specs.md │ └── user-guide.md ├── src/ │ ├── main.py │ ├── utils.py │ ├── models/ │ │ ├── model1.py │ │ └── model2.py │ └── data/ │ ├── dataset.csv │ └── processed_data/ ├── tests/ │ ├── test_main.py │ ├── test_utils.py │ └── test_models/ ├── .gitignore ├── requirements.txt └── README.md
+
+
 ### Data Processing
 - **Path Functions**: Functions to retrieve paths and directories within the data directory.
 - **Filtering Functions**: Functions to filter data based on historical and contemporary perspectives.

@@ -62,6 +62,5 @@ else
 	!found' "$README_FILE" > "$OUTPUT_FILE"
 fi
 
-nvim README_OUT.md
 cp README.md README.md.bak
 mv README_OUT.md README.md

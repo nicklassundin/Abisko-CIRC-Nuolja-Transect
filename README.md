@@ -19,8 +19,6 @@ project_directory/
 ├── man
 ├── old.script.R
 ├── out
-│   ├── NA
-│   └── Nuolja Snow Data
 ├── plots
 │   ├── README.md
 ├── R
@@ -30,8 +28,6 @@ project_directory/
 │   └── validate.R
 ├── README.md
 ├── repack
-│   ├── NA
-│   └── Nuolja Snow Data
 ├── script.R
 ```
 <!-- TREE END -->

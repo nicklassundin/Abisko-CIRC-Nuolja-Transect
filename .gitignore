@@ -1,5 +1,5 @@
-repack/*.csv
-out/*.csv
+repack/**
+out/**
 data/*.csv
 data/**
 !data/*.md

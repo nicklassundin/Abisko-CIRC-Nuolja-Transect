@@ -78,12 +78,13 @@ while(TRUE){
 	if(as.numeric(answer) <= length(datatypes)+1){
 		dirs <- dirs[datatypes == datatypes[as.numeric(answer)]]
 		paths <- paths[datatypes == datatypes[as.numeric(answer)]]
+		datatypes <- datatypes[datatypes == datatypes[as.numeric(answer)]]
 		break;
 	}
 	print("Invalid input, please try again");
 }
 
-for (i in 1:length(dirs)){
+for (i in 1:length(datatypes)){
 	createDir(paste("repack/", datatypes[i], sep=""))
 	createDir(paste("out/", datatypes[i], sep=""))
 }
@@ -126,11 +127,7 @@ for(i in 1:length(paths)){
 			print(paste("Processing :", paths[i]));
 		}
 	}
-	print(dirs[i])
 	outputfile = gsub("/Raw Data", "",dirs[i]);
-	print(outputfile);
-	# outputfile = gsub(" ", "_", outputfile);
-	# print(outputfile);
 	data <- exportCSV(path, paste("repack/", outputfile, sep=""));
 	if(validate){
 		next;

@@ -156,7 +156,8 @@ This documentation includes detailed information about the project's structure, 
 
 The files in the `repack/` directory are structured as CSV files with detailed information about geographical plots and their associated data. Each file adheres to the following schema:
 
-#### Column Descriptions
+#### Snow Data
+##### Column Descriptions
 
 | **Column Name**  | **Description**                                                                                              |
 |-------------------|------------------------------------------------------------------------------------------------------------|
@@ -176,13 +177,13 @@ The files in the `repack/` directory are structured as CSV files with detailed i
 |                  | - `o`: Open                                                                                         |
 |                  | - `s`: Snow                                                                                              |
 
-#### File Characteristics
+##### File Characteristics
 
 - **CSV Format**: The files are plain-text, comma-separated value files with a header row for column names.
 - **Consistency**: Each row corresponds to a single data point, and all columns are present for every entry.
 - **Data Use**: These files are used for analyzing environmental or geographical changes across plots and subplots.
 
-#### Example Data
+##### Example Data
 
 Below is an excerpt to illustrate the format:
 
@@ -191,13 +192,13 @@ Below is an excerpt to illustrate the format:
 20,78,3357.62764497642,"NS-20180506-001","2018-05-06","68.37261122","18.69783956",1180.841,"o","o"
 19,76,3260.95020778743,"NS-20180506-004","2018-05-06","68.37218199","18.69989872",1169.419,"os","s"
 18,69,2957.15889307984,"NS-20180506-011","2018-05-06","68.37041561","18.70585272",1103.361,"s","s"
->>>>>>> master
 ```
 ### File Format Specification for `out/`
 
 The files in the `out/` directory include CSV files with data representing daily snow of various plot statuses. Each file adheres to the following schema:
 
-#### Column Descriptions
+#### Snow Data
+##### Column Descriptions
 
 | **Column Name** | **Description**                                                                                   |
 |------------------|---------------------------------------------------------------------------------------------------|
@@ -208,13 +209,13 @@ The files in the `out/` directory include CSV files with data representing daily
 | `o`             | Proportion of open categorized as "Open" for the given plot and day.               |
 | `os`            | Proportion of open categorized as "Open and Snow" for the given plot and day.    |
 
-#### File Characteristics
+##### File Characteristics
 
 - **CSV Format**: The files are plain-text, comma-separated value files with a header row for column names.
 - **Proportional Data**: The columns `s`, `so`, `o`, and `os` represent proportions (values between 0 and 1) for each category.
 - **Daily Observations**: Each row corresponds to a specific day and plot.
 
-#### Example Data
+##### Example Data
 
 Below is an excerpt to illustrate the format:
 

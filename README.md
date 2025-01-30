@@ -4,7 +4,18 @@
 The Nuolja Transect project involves processing data from transect surveys conducted in the Nuolja region. The key components of the project include:
 
 ### Directory structure 
-project-root/ ├── docs/ │ ├── README.md │ ├── design-specs.md │ └── user-guide.md ├── src/ │ ├── main.py │ ├── utils.py │ ├── models/ │ │ ├── model1.py │ │ └── model2.py │ └── data/ │ ├── dataset.csv │ └── processed_data/ ├── tests/ │ ├── test_main.py │ ├── test_utils.py │ └── test_models/ ├── .gitignore ├── requirements.txt └── README.md
+- project_root/
+- src/
+- main.py
+- utils.py
+- docs/
+- README.md
+- guide.md
+- data/
+- dataset.csv
+- tests/
+- test_main.py
+
 
 
 ### Data Processing
@@ -65,7 +76,7 @@ To see an example of how to document your functions, check the comments in `scri
 #' @examples
 #' example_function(1, 2)
 example_function <- function(x, y) {
-  # Your code here
-  
+# Your code here
+
 }
 ```

@@ -1,10 +1,9 @@
-repack
-out
-data
-old_out
+repack/
+out/
+data/
 .RData
 .Rhistory
-log/
+log
 
 ## Ignore files for development
 data_old/

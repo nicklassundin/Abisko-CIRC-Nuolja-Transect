@@ -17,6 +17,36 @@ delist <- function(y) {
 
 }
 
+#' @title createDir
+#' @description Create a new sub directory inside the main path.
+#' @param subdir A character string representing the name of the sub directory.
+#' @export
+createDir <- function(subdir){
+	if(!file.exists(subdir)){
+		# create a new sub directory inside
+        	# the main path
+		dir.create(file.path(getwd(), subdir))
+	}
+}
+
+#' @title exportCSV
+#' @description Export the data from the input files to a CSV file.
+#' @param filenames A character vector representing the paths to the input files.
+#' @param filename A character string representing the name of the output file.
+#' @return A list containing the data frame and the output file name.
+exportCSV <- function(filenames, filename){
+	if(length(filenames)==0) return(NULL)
+	# Parsing the data from the file
+	
+	# entries = read.delim(filenames[1], header=FALSE, sep=",")[,1:5]
+	lapply(filenames, validateFile);
+
+	data = lapply(filenames, readFile);
+	# Accumulative build result row by row, with insert(,,);
+	result <- dataframeBuilder(data);
+	return(list(result=result, filename=filename));	
+}
+
 #' @title Section
 #' @description Find the section of the dataframe corresponding to a given projection factor.
 #' @param df A data frame containing the data.

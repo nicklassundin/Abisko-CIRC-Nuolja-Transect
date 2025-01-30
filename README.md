@@ -123,9 +123,8 @@ Before opening the terminal, set the working directory in RStudio using one of t
 ### 
 - type
      ```r
-   Rscript script.R
+   Rscript script.R```
 - This will run the script
-```
 </details>
 
 ## Documentation

@@ -6,6 +6,7 @@ The Nuolja Transect project involves processing data from transect surveys condu
 ### Directory structure
 <!-- TREE START -->
 #### Directory Tree
+```tree
 ├── build.docs.R
 ├── data
 │   └── README.md
@@ -23,6 +24,7 @@ The Nuolja Transect project involves processing data from transect surveys condu
 │   └── validate.R
 ├── README.md
 ├── script.R
+```
 <!-- TREE END -->
 
 ### Data Processing

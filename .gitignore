@@ -5,6 +5,7 @@ data/
 .Rhistory
 log
 README.md.bak
+directory_tree.md
 
 ## Ignore files for development
 data_old/

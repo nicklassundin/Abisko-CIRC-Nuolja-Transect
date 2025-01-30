@@ -65,4 +65,5 @@ fi
 cp README.md README.md.bak
 mv README_OUT.md README.md
 
+git add README.md
 rm directory_tree.md

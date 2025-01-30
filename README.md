@@ -11,13 +11,11 @@ The Nuolja Transect project involves processing data from transect surveys condu
 ```tree
 project_directory/
 ├── build.docs.R
-├── data
-│   └── README.md
 ├── descriptions
 ├── docs
 │   ├── reference
-├── log
 ├── man
+├── old.script.R
 ├── plots
 │   ├── README.md
 ├── R

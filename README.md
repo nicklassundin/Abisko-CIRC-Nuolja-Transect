@@ -32,7 +32,7 @@ project_directory/
 ├── script.R
 ```
 <!-- TREE END -->
-</detail>
+</details>
 
 ### Data Processing
 - **Path Functions**: Functions to retrieve paths and directories within the data directory.

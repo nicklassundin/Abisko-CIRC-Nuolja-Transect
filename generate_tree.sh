@@ -5,8 +5,6 @@ generate_tree() {
 
 	shopt -s nullglob dotglob
 	local items=("$dir"/*)
-
-
 	for i in "${!items[@]}"; do
 		local item="${items[i]}"
 		local name=$(basename "$item")
@@ -45,6 +43,7 @@ Ensure the file is created before writing
 
 echo "#### Directory Tree" >> "directory_tree.md"
 echo '```tree' >> "directory_tree.md"
+echo "project_directory/" >> "directory_tree.md"
 
 generate_tree "$PWD" ""
 echo '```' >> "directory_tree.md"

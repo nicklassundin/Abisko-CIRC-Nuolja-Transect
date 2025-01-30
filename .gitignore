@@ -4,3 +4,10 @@ data
 old_out
 .RData
 .Rhistory
+log/
+
+## Ignore files for development
+data_old/
+out_old/
+plots/
+repack_old/

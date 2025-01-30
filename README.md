@@ -130,6 +130,7 @@ Before opening the terminal, set the working directory in RStudio using one of t
 
 ## Documentation
 <details>
+<summary>More about documentation</summary>
 The full documentation for this project is available as a GitHub Pages site. You can access it [here](https://nicklassundin.github.io/Abisko-CIRC-Nuolja-Transect/).
 
 This documentation includes detailed information about the project's structure, data processing steps, and usage examples. It is generated automatically from the source code comments using `roxygen2` and `pkgdown`.
@@ -151,6 +152,7 @@ This documentation includes detailed information about the project's structure, 
 
 ## Data Formating
 <details>
+<summary>About formating and data produced by the code</summary>
 
 ### File Format Specification for `repack/`
 
@@ -231,6 +233,4 @@ Below is an excerpt to illustrate the format:
 ```
 #### Phenology Data
 TODO
-
-</details>
 </details>

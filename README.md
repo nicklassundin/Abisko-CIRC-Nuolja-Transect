@@ -24,6 +24,7 @@ project_directory/
 ├── R
 │   ├── generate.R
 │   ├── helper.R
+│   ├── patterns.R
 │   ├── repack.R
 │   └── validate.R
 ├── README.md

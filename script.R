@@ -5,13 +5,16 @@ new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"
 if(length(new.packages)) install.packages(new.packages)
 library(geosphere);
 library(dplyr);
+library(data.table);
 source("R/helper.R");
-source("R/repack.R");
 source("R/snow.R");
-source("R/validate.R");
+source("R/repack.R");
+source("R/phenology.R");
+# source("R/validation/phenology.R");
+source("R/validation/snow.R");
+
 
 createDir("data")
-
 
 ## Build paths for the directories
 paths <- getPaths() 
@@ -76,23 +79,20 @@ while(TRUE){
 		return(NULL);
 	}
 	if(as.numeric(answer) <= length(datatypes)+1){
-		dirs <- dirs[datatypes == datatypes[as.numeric(answer)]]
-		paths <- paths[datatypes == datatypes[as.numeric(answer)]]
+		dirs <- dirs[grepl(datatypes[as.numeric(answer)], dirs)]
+		paths <- paths[grepl(datatypes[as.numeric(answer)], paths)]
 		datatypes <- datatypes[datatypes == datatypes[as.numeric(answer)]]
 		break;
 	}
 	print("Invalid input, please try again");
 }
-
 for (i in 1:length(datatypes)){
 	createDir(paste("repack/", datatypes[i], sep=""))
 	createDir(paste("out/", datatypes[i], sep=""))
 }
 
-# paths <- paths[grepl("Raw Data$|\\d{4}$", dirs)]
-# dirs <- dirs[grepl("Raw Data$|\\d{4}$", dirs)]
-paths <- paths[grepl("Raw Data$", dirs)]
-dirs <- dirs[grepl("Raw Data$", dirs)]
+paths <- paths[grepl("Raw Data$|Raw Data \\d{4}$", dirs)]
+dirs <- dirs[grepl("Raw Data$|Raw Data \\d{4}$", dirs)]
 
 if(promt){
 	print("Use default filter (1) or custom filter (2)?")
@@ -105,58 +105,11 @@ if(promt){
 	}
 }
 
-FILE_REGEX = "\\d{4}.csv$"
-for (i in 1:length(paths)){
-	path = getDataFilesPaths(paths[i], pattern="\\d{4}.csv$");
-	if(length(path) == 0) return(NULL);
-	valid = lapply(path, validateFile)
-	# filter out invalid files in the list path
-	if(!silent){
-		print("Default filter", FILE_REGEX)
-	}
-	if(!silent) {
-		print(paste("Directory :", dirs[i]));
-		if(print) {
-			print("Do you wanna process this directory? (y/n)");
-			answer <- readLines(file("stdin"),1)
-			if(answer != "y") return(NULL);
-			print(paste("Processing :", paths[i]));
-		}
-	}
-	outputfile = gsub("/Raw Data", "",dirs[i]);
-	data <- exportCSV(path, paste("repack/", outputfile, sep=""), valid);
-	if(validate){
-		# leave loop if only validating
-		next;
-	}
-	if(is.null(data)) next;
-	if(!silent){
-		print(paste("Completed -", dirs[i]));
-		print(paste("Location -", getwd()));
-	}
-	# Writing repack files to csv
-	write.csv(data$result, paste(data$filename, ".csv", sep=""), row.names=FALSE)
-	
-	data$result = data$result %>% arrange(date);
-	subplot = subCalc(data$result, dirs[i], transect_desc[,c(2,3)]);
-	filename = gsub("repack/", "out/", data$filename)
 
-	print("Writing summarized data to csv");
-	write.csv(subplot$contemporary, paste(filename, "Summarized by Subplot Contemporary.csv", sep=" "), row.names=FALSE);
-	write.csv(subplot$historical, paste(filename, "Summarized by Subplot Historical.csv", sep=" "), row.names=FALSE);
-
-	plotcoord = matrix(,nrow=0,ncol=2)
-	for(i in 1:20){
-		tmp = transect_desc[transect_desc[,1]==i,]
-		res = c(i, min(tmp[,3]));
-		if(i==20){
-			res = rbind(res, c(i+1, max(tmp[,3])))
-		}
-		plotcoord = rbind(plotcoord, res)
+for (i in 1:length(datatypes)){
+	if(datatypes[i] == "Plant Phenology Data"){
+		process_phenology_data(paths, dirs)
+	}else if(datatypes[i] == "Nuolja Snow Data"){
+		process_snow_data(paths, dirs)
 	}
-	plot = subCalc(data$result[-2], filename, plotcoord);
-	write.csv(plot$contemporary, paste(filename, "Summarized by Plot Contemporary.csv", sep=" "), row.names=FALSE);
-	write.csv(plot$historical, paste(filename, "Summarized by Plot Historical.csv", sep=" "), row.names=FALSE);
-	print("Completed");
 }
-

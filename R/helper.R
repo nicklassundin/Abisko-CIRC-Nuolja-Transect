@@ -1,5 +1,3 @@
-library(data.table)
-library(geosphere)
 
 # Keysets definitions
 keyset <- list(contemporary = c("s", "so", "o", "os"), historical = c("s", "o"))

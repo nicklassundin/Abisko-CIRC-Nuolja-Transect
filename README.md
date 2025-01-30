@@ -24,9 +24,12 @@ project_directory/
 ├── R
 │   ├── helper.R
 │   ├── patterns.R
+│   ├── phenology.R
 │   ├── repack.R
 │   ├── snow.R
-│   └── validate.R
+│   └── validation
+│   │   ├── phenology.R
+│   │   └── snow.R
 ├── README.md
 ├── repack
 ├── script.R

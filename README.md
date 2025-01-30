@@ -193,6 +193,8 @@ Below is an excerpt to illustrate the format:
 19,76,3260.95020778743,"NS-20180506-004","2018-05-06","68.37218199","18.69989872",1169.419,"os","s"
 18,69,2957.15889307984,"NS-20180506-011","2018-05-06","68.37041561","18.70585272",1103.361,"s","s"
 ```
+### Phenology Data
+TODO
 ### File Format Specification for `out/`
 
 The files in the `out/` directory include CSV files with data representing daily snow of various plot statuses. Each file adheres to the following schema:
@@ -226,5 +228,8 @@ Below is an excerpt to illustrate the format:
 126,8,0.123763616329758,0.876236383670242,0,0
 126,9,0,0.863436913617926,0,0.136563086382074
 126,10,0.768916411918146,0,0.0997298448068066,0.13135374327
+
+#### Phenology Data
+TODO
 
 </details>

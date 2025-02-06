@@ -33,7 +33,7 @@ generate_tree() {
 
 			echo "$prefix$connector $name" >> "directory_tree.md"
 
-			[[ -d "$item"  ]] && generate_tree "$item" "$prefix│   "
+			[[ -d "$item"  ]] && generate_tree "$item" "$prefix\n│   "
 		fi
 	done
 }

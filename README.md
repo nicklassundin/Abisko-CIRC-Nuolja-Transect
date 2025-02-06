@@ -12,24 +12,37 @@ The Nuolja Transect project involves processing data from transect surveys condu
 project_directory/
 ├── build.docs.R
 ├── data
+
 │   ├── DATAHERE.md
 ├── descriptions
 ├── docs
+
 │   ├── reference
 ├── man
 ├── old.script.R
 ├── out
 ├── plots
+
 │   ├── README.md
 ├── R
+
 │   ├── helper.R
+
 │   ├── patterns.R
+
 │   ├── phenology.R
+
 │   ├── repack.R
+
 │   ├── snow.R
+
 │   └── validation
-│   │   ├── phenology.R
-│   │   └── snow.R
+
+│   
+│   ├── phenology.R
+
+│   
+│   └── snow.R
 ├── README.md
 ├── repack
 ├── script.R

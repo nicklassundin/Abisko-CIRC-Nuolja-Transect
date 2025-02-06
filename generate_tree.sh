@@ -31,7 +31,7 @@ generate_tree() {
 			local connector="├──"
 			[[ $i -eq $((${#items[@]} - 1))  ]] && connector="└──"
 
-			echo "$prefix$connector $name \n" >> "directory_tree.md"
+			echo "$prefix$connector $name" >> "directory_tree.md"
 
 			[[ -d "$item"  ]] && generate_tree "$item" "$prefix│   "
 		fi
@@ -53,7 +53,9 @@ OUTPUT_FILE="README_OUT.md"
 
 if ! grep -q '<!-- TREE START -->' "$README_FILE"; then
 	cp "$README_FILE" "$OUTPUT_FILE"
-	echo -e "\n<!-- TREE START -->### Directory Tree \n$(cat directory_tree.md)\n\n<!-- TREE END -->" >> "$OUTPUT_FILE"
+	echo -e "\n<!-- TREE START -->### Directory Tree \n 
+	$(cat directory_tree.md)\n\n
+	<!-- TREE END -->" >> "$OUTPUT_FILE"
 else
 	# Replace content between TREE markers with the new tree and save to README_OUT.md
 	awk -v tree="$(cat directory_tree.md)" '

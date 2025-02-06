@@ -31,7 +31,9 @@ generate_tree() {
 			local connector="├──"
 			[[ $i -eq $((${#items[@]} - 1))  ]] && connector="└──"
 
-			echo "$prefix$connector $name" >> "directory_tree.md"
+			# echo "$prefix$connector $name" >> "directory_tree.md"
+			# Add explicit newline
+			echo -e "$prefix$connector $name" >> "directory_tree.md"
 
 			[[ -d "$item"  ]] && generate_tree "$item" "$prefix│   "
 		fi

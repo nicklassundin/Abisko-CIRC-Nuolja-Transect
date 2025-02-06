@@ -10,42 +10,52 @@ The Nuolja Transect project involves processing data from transect surveys condu
 #### Directory Tree
 ```tree
 project_directory/
-├── build.docs.R
-├── data
+├── build.docs.R 
 
-│   ├── DATAHERE.md
-├── descriptions
-├── docs
+├── data 
 
-│   ├── reference
-├── man
-├── old.script.R
-├── out
-├── plots
+│   ├── DATAHERE.md 
 
-│   ├── README.md
-├── R
+├── descriptions 
 
-│   ├── helper.R
+├── docs 
 
-│   ├── patterns.R
+│   ├── reference 
 
-│   ├── phenology.R
+├── man 
 
-│   ├── repack.R
+├── old.script.R 
 
-│   ├── snow.R
+├── out 
 
-│   └── validation
+├── plots 
 
-│   
-│   ├── phenology.R
+│   ├── README.md 
 
-│   
-│   └── snow.R
-├── README.md
-├── repack
-├── script.R
+├── R 
+
+│   ├── helper.R 
+
+│   ├── patterns.R 
+
+│   ├── phenology.R 
+
+│   ├── repack.R 
+
+│   ├── snow.R 
+
+│   └── validation 
+
+│   │   ├── phenology.R 
+
+│   │   └── snow.R 
+
+├── README.md 
+
+├── repack 
+
+├── script.R 
+
 ```
 <!-- TREE END -->
 </details>

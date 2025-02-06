@@ -44,10 +44,12 @@ Ensure the file is created before writing
 : > "directory_tree.md"
 
 echo "#### Directory Tree" >> "directory_tree.md"
-echo '```tree' >> "directory_tree.md"
+# echo '```tree' >> "directory_tree.md"
+echo -e '\n```' >> "directory_tree.md"
+
 echo "project_directory/" >> "directory_tree.md"
 
-generate_tree "$PWD" ""
+generate_tree "$PWD" "| "
 echo '```' >> "directory_tree.md"
 
 README_FILE="README.md"

@@ -108,6 +108,18 @@ Follow these steps to run your R script interactively in RStudio's terminal, ens
 
 Follow these steps to run your R script interactively in RStudio's terminal, ensuring the working directory is set correctly:
 
+### Step 0: Make sure datasets are placed inside `data/` 
+
+```
+# Example
+project_directory/
+...
+| ├── data
+| │   ├── DATAHERE.md
+| │   ├── Plant Phenology Data/
+| │   ├── Nuolja Snow Data/
+...
+```
 ### Step 1: Change the Working Directory in RStudio
 Before opening the terminal, set the working directory in RStudio using one of these methods:
 

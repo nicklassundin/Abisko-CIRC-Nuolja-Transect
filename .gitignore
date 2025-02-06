@@ -1,5 +1,6 @@
 repack/**
 out/**
+!out/*.md
 data/*.csv
 data/**
 !data/*.md

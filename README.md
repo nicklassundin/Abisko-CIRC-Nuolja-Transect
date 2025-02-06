@@ -20,6 +20,7 @@ project_directory/
 | ├── man
 | ├── old.script.R
 | ├── out
+| │   ├── DATA_OUTPUT_HERE.md
 | ├── plots
 | │   ├── README.md
 | ├── R

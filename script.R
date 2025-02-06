@@ -91,8 +91,10 @@ for (i in 1:length(datatypes)){
 	createDir(paste("out/", datatypes[i], sep=""))
 }
 
-paths <- paths[grepl("Raw Data$|Raw Data \\d{4}$", dirs)]
-dirs <- dirs[grepl("Raw Data$|Raw Data \\d{4}$", dirs)]
+paths_snow <- paths[grepl("Raw Data$|Raw Data \\d{4}$", dirs)]
+dirs_snow <- dirs[grepl("Raw Data$|Raw Data \\d{4}$", dirs)]
+paths_phenology <- paths[grepl("Phenology Data$", dirs)]
+dirs_phenology <- dirs[grepl("Phenology Data$", dirs)]
 
 if(promt){
 	print("Use default filter (1) or custom filter (2)?")
@@ -110,6 +112,6 @@ for (i in 1:length(datatypes)){
 	if(datatypes[i] == "Plant Phenology Data"){
 		process_phenology_data(paths, dirs)
 	}else if(datatypes[i] == "Nuolja Snow Data"){
-		process_snow_data(paths, dirs)
+		dataframe <- process_snow_data(paths, dirs)
 	}
 }

@@ -11,10 +11,16 @@ library(data.table);
 library(stringr);
 library(dplyr);
 
+#' @title read_descriptions'
+#' @description columns Poles, Plot and Subplot
+plots_and_subplots <- read.csv("descriptions/plots_and_subplots.csv", header = TRUE, stringsAsFactors = FALSE)
+
 ## Columns on first transform from Raw data
-DEF_COLS <- c("Synonym Current","Date","Subplot","Code")
+DEF_COLS <- c("Synonym Current","Date","Poles","Code")
 ## Columns on second transform from first transform
 DEF_COLS_2 <- c("Synonym Current", "Year", "Subplot", "Number of Observations")
+DEF_COLS_3 <- c("Synonym Current", "Year", "Plot", "Number of Observations")
+
 
 ## clear memory of all datasets ##
 # rm(list = ls())
@@ -50,20 +56,30 @@ process_phenology_data <- function(path, dirs){
 		colnames(data) <- c(DEF_COLS, "Year")
 		combined_data <- rbind(combined_data, data)	
 	}
+	# mutate Poles into Subplot and Plot from the plots_and_subplots data 
+	combined_data <- merge(combined_data, plots_and_subplots, by.x = "Poles", by.y = "Poles", all.x = TRUE)
+	# remove the Poles column
+	combined_data <- combined_data[, !(colnames(combined_data) %in% c("Poles"))]
+		
 	# group by "Year" and "Synonym Current" count the number of observations
-	combined_data <- combined_data %>% group_by(`Synonym Current`, Year, `Subplot`) %>% summarise(n = n())
+	combined_data_subplot <- combined_data %>% group_by(`Synonym Current`, Year, `Subplot`) %>% summarise(n = n())
+	combined_data_subplot <- combined_data_subplot[order(combined_data_subplot$Year, combined_data_subplot$`Synonym Current`),]
+	colnames(combined_data_subplot) <- DEF_COLS_2
+	combined_data_plot <- combined_data %>% group_by(`Synonym Current`, Year, `Plot`) %>% summarise(n = n())
+	combined_data_plot <- combined_data_plot[order(combined_data_plot$Year, combined_data_plot$`Synonym Current`),]
+	colnames(combined_data_plot) <- DEF_COLS_3
 	# order the data by year and synonym
-	combined_data <- combined_data[order(combined_data$Year, combined_data$`Synonym Current`),]
-	colnames(combined_data) <- DEF_COLS_2
 	closeAllConnections()
 	output_path <- paths[1]
 	# remove the file name from the path
 	output_path <- gsub("Nuolja_Data_\\d{4}.csv", "", output_path)
 	output_path <- gsub("/data/", "/out/", output_path)
 	# add the new file name
-	output_path <- paste(output_path, "Nuolja_Annual_Species_Observations.csv", sep="")
-	write.csv(combined_data, output_path, row.names=FALSE)
-	return(combined_data)	
+	output_path <- paste(output_path, "Nuolja_Annual_Species_Observations_Subplot.csv", sep="")
+	write.csv(combined_data_subplot, output_path, row.names=FALSE)
+	output_path <- gsub("Nuolja_Annual_Species_Observations_Subplot.csv", "Nuolja_Annual_Species_Observations_Plot.csv", output_path)
+	write.csv(combined_data_plot, output_path, row.names=FALSE)
+	return(TRUE)
 }
 
 DATA_FILE_PATTERN = "^Nuolja Transect Phenology Data Entry Segments \\d+ to \\d+ \\d{4} CURRENT\\.xlsx$"

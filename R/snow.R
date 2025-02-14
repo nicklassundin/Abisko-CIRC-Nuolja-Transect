@@ -145,6 +145,7 @@ subCalc <- function(entries, filename, vs, data) {
 	plots = unique(max(entries[, 1]))
 	type = colnames(entries)[1]
 	days = unique(entries$date)
+	year = unique(year(entries$date))
 	entries = data.table(entries)
 	entries = entries[order(-entries$proj_factor)]
 
@@ -156,7 +157,7 @@ subCalc <- function(entries, filename, vs, data) {
 
 	contemporary = matrix(nrow = 0, ncol = 6)
 	historical = matrix(nrow = 0, ncol = 4)
-
+	
 	for (day in days) {
 		doy = yday(day)
 		default = data.table("o", "o")
@@ -181,33 +182,23 @@ subCalc <- function(entries, filename, vs, data) {
 			m = cbind(percent, m)
 
 			perc = sumPerc(m)
-			contemporary = rbind(contemporary, c(doy, vs[p, 1], perc$contemporary))
-			historical = rbind(historical, c(doy, vs[p, 1], perc$historical))
+			contemporary = rbind(contemporary, c(vs[p, 1], doy, perc$contemporary))
+			historical = rbind(historical, c(vs[p, 1], doy, perc$historical))
 			default = perc$default
 
 		}
 
 	}
-
+	# Add column with year
+	year_con = rep(year, nrow(contemporary))
+	contemporary = cbind(year_con, contemporary)
+	year_his = rep(year, nrow(historical))
+	historical = cbind(year_his, historical)
 	plotname = colnames(entries)[1]
-	colnames(contemporary) <- c("DOY", plotname, keyset$contemporary)
-	colnames(historical) <- c("DOY", plotname, keyset$historical)
+	colnames(contemporary) <- c("Year", plotname, "DOY", keyset$contemporary)
+	colnames(historical) <- c("Year", plotname, "DOY", keyset$historical)
 	print(paste("DONE -", type))
 	return(list(contemporary = contemporary, historical = historical))
-
-}
-
-#' @title Write Data
-#' @description Write data to a CSV file.
-#' @param data A data frame containing the data to write.
-#' @param file A character string representing the file name.
-#' @param t A character string representing the type of data.
-#' @return None
-#' @export
-write <- function(data, file, t) {
-	name = getName(file, t)
-	print(paste("Write to : ", name))
-	write.csv(data, name, row.names = FALSE)
 
 }
 
@@ -230,4 +221,70 @@ buildCSV <- function(dataset, filename) {
 
 		}
 	}
+}
+
+
+FILE_REGEX = "\\d{4}.csv$"
+
+#' @title Process Snow Data
+#' @description Process Snow_Data_YYYY.csv files in a specified directory.
+#' @param path A character string representing the path to the directory.
+#' @param dirs A character vector of directory names.
+#' @return A list containing the processed data.
+#' @export
+process_snow_data <- function(path, dirs){
+	for (i in 1:length(paths)){
+		path = getDataFilesPaths(paths[i], pattern="\\d{4}.csv$");
+		if(length(path) == 0) return(NULL);
+		valid = lapply(path, validateFile)
+		# filter out invalid files in the list path
+		if(!silent){
+			print("Default filter", FILE_REGEX)
+		}
+		if(!silent) {
+			print(paste("Directory :", dirs[i]));
+			if(print) {
+				print("Do you wanna process this directory? (y/n)");
+				answer <- readLines(file("stdin"),1)
+				if(answer != "y") return(NULL);
+				print(paste("Processing :", paths[i]));
+			}
+		}
+		outputfile = gsub("/Raw Data", "",dirs[i]);
+		data <- exportCSV(path, paste("repack/", outputfile, sep=""), valid);
+		if(validate){
+			# leave loop if only validating
+			next;
+		}
+		if(is.null(data)) next;
+		if(!silent){
+			print(paste("Completed -", dirs[i]));
+			print(paste("Location -", getwd()));
+		}
+		# Writing repack files to csv
+		write.csv(data$result, paste(data$filename, ".csv", sep=""), row.names=FALSE)
+
+		data$result = data$result %>% arrange(date);
+		subplot = subCalc(data$result, dirs[i], transect_desc[,c(2,3)]);
+		filename = gsub("repack/", "out/", data$filename)
+
+		print("Writing summarized data to csv");
+		write.csv(subplot$contemporary, paste(filename, "Summarized by Subplot Contemporary.csv", sep=" "), row.names=FALSE);
+		write.csv(subplot$historical, paste(filename, "Summarized by Subplot Historical.csv", sep=" "), row.names=FALSE);
+
+		plotcoord = matrix(,nrow=0,ncol=2)
+		for(i in 1:20){
+			tmp = transect_desc[transect_desc[,1]==i,]
+			res = c(i, min(tmp[,3]));
+			if(i==20){
+				res = rbind(res, c(i+1, max(tmp[,3])))
+			}
+			plotcoord = rbind(plotcoord, res)
+		}
+		plot = subCalc(data$result[-2], filename, plotcoord);
+		write.csv(plot$contemporary, paste(filename, "Summarized by Plot Contemporary.csv", sep=" "), row.names=FALSE);
+		write.csv(plot$historical, paste(filename, "Summarized by Plot Historical.csv", sep=" "), row.names=FALSE);
+		print("Completed");
+	}
+
 }

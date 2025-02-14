@@ -1,13 +1,17 @@
-repack
-out
-data
-old_out
-out_old
-data_old
-plots
-repack_old
-Rplots.pdf
+repack/**
+out/**
+!out/*.md
+data/*.csv
+data/**
+!data/*.md
 .RData
 .Rhistory
-log/*.txt
+log
+README.md.bak
+directory_tree.md
 
+## Ignore files for development
+data_old/
+out_old/
+plots/
+repack_old/

@@ -4,6 +4,39 @@
 <details>
 The Nuolja Transect project involves processing data from transect surveys conducted in the Nuolja region. The key components of the project include:
 
+### Directory structure
+<details>
+<!-- TREE START -->
+#### Directory Tree
+
+```
+project_directory/
+| ├── build.docs.R
+| ├── data
+| │   ├── DATAHERE.md
+| ├── descriptions
+| ├── docs
+| │   ├── reference
+| ├── man
+| ├── old.script.R
+| ├── out
+| │   ├── DATA_OUTPUT_HERE.md
+| ├── R
+| │   ├── helper.R
+| │   ├── patterns.R
+| │   ├── phenology.R
+| │   ├── repack.R
+| │   ├── snow.R
+| │   └── validation
+| │   │   ├── phenology.R
+| │   │   └── snow.R
+| ├── README.md
+| ├── repack
+| ├── script.R
+```
+<!-- TREE END -->
+</details>
+
 ### Data Processing
 - **Path Functions**: Functions to retrieve paths and directories within the data directory.
 - **Filtering Functions**: Functions to filter data based on historical and contemporary perspectives.
@@ -73,6 +106,18 @@ Follow these steps to run your R script interactively in RStudio's terminal, ens
 
 Follow these steps to run your R script interactively in RStudio's terminal, ensuring the working directory is set correctly:
 
+### Step 0: Make sure datasets are placed inside `data/` 
+
+```
+# Example
+project_directory/
+...
+| ├── data
+| │   ├── DATAHERE.md
+| │   ├── Plant Phenology Data/
+| │   ├── Nuolja Snow Data/
+...
+```
 ### Step 1: Change the Working Directory in RStudio
 Before opening the terminal, set the working directory in RStudio using one of these methods:
 
@@ -84,6 +129,7 @@ Before opening the terminal, set the working directory in RStudio using one of t
 1. In the RStudio console, set the working directory manually by typing:
    ```r
    setwd("path/to/your/script")
+   ```
 ### Step 2: Open the Terminal in RStudio
 - In RStudio, go to `Tools > Terminal > New Terminal`.  
   Alternatively, use the shortcut:  
@@ -94,12 +140,13 @@ Before opening the terminal, set the working directory in RStudio using one of t
 - type
      ```r
    Rscript script.R
+   ```
 - This will run the script
-
 </details>
 
 ## Documentation
 <details>
+<summary>More about documentation</summary>
 The full documentation for this project is available as a GitHub Pages site. You can access it [here](https://nicklassundin.github.io/Abisko-CIRC-Nuolja-Transect/).
 
 This documentation includes detailed information about the project's structure, data processing steps, and usage examples. It is generated automatically from the source code comments using `roxygen2` and `pkgdown`.
@@ -119,15 +166,16 @@ This documentation includes detailed information about the project's structure, 
 <!-- 3. The GitHub Actions workflow will automatically generate and deploy the updated documentation to GitHub Pages. -->
 </details>
 
-
 ## Data Formating
 <details>
+<summary>About formating and data produced by the code</summary>
 
 ### File Format Specification for `repack/`
 
 The files in the `repack/` directory are structured as CSV files with detailed information about geographical plots and their associated data. Each file adheres to the following schema:
 
-#### Column Descriptions
+#### Snow Data
+##### Column Descriptions
 
 | **Column Name**  | **Description**                                                                                              |
 |-------------------|------------------------------------------------------------------------------------------------------------|
@@ -147,13 +195,13 @@ The files in the `repack/` directory are structured as CSV files with detailed i
 |                  | - `o`: Open                                                                                         |
 |                  | - `s`: Snow                                                                                              |
 
-#### File Characteristics
+##### File Characteristics
 
 - **CSV Format**: The files are plain-text, comma-separated value files with a header row for column names.
 - **Consistency**: Each row corresponds to a single data point, and all columns are present for every entry.
 - **Data Use**: These files are used for analyzing environmental or geographical changes across plots and subplots.
 
-#### Example Data
+##### Example Data
 
 Below is an excerpt to illustrate the format:
 
@@ -163,11 +211,14 @@ Below is an excerpt to illustrate the format:
 19,76,3260.95020778743,"NS-20180506-004","2018-05-06","68.37218199","18.69989872",1169.419,"os","s"
 18,69,2957.15889307984,"NS-20180506-011","2018-05-06","68.37041561","18.70585272",1103.361,"s","s"
 ```
+### Phenology Data
+TODO
 ### File Format Specification for `out/`
 
 The files in the `out/` directory include CSV files with data representing daily snow of various plot statuses. Each file adheres to the following schema:
 
-#### Column Descriptions
+#### Snow Data
+##### Column Descriptions
 
 | **Column Name** | **Description**                                                                                   |
 |------------------|---------------------------------------------------------------------------------------------------|
@@ -178,13 +229,13 @@ The files in the `out/` directory include CSV files with data representing daily
 | `o`             | Proportion of open categorized as "Open" for the given plot and day.               |
 | `os`            | Proportion of open categorized as "Open and Snow" for the given plot and day.    |
 
-#### File Characteristics
+##### File Characteristics
 
 - **CSV Format**: The files are plain-text, comma-separated value files with a header row for column names.
 - **Proportional Data**: The columns `s`, `so`, `o`, and `os` represent proportions (values between 0 and 1) for each category.
 - **Daily Observations**: Each row corresponds to a specific day and plot.
 
-#### Example Data
+##### Example Data
 
 Below is an excerpt to illustrate the format:
 
@@ -195,5 +246,7 @@ Below is an excerpt to illustrate the format:
 126,8,0.123763616329758,0.876236383670242,0,0
 126,9,0,0.863436913617926,0,0.136563086382074
 126,10,0.768916411918146,0,0.0997298448068066,0.13135374327
-
+```
+#### Phenology Data
+TODO
 </details>

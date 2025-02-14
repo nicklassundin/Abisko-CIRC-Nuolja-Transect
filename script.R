@@ -5,23 +5,16 @@ new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"
 if(length(new.packages)) install.packages(new.packages)
 library(geosphere);
 library(dplyr);
+library(data.table);
 source("R/helper.R");
+source("R/snow.R");
 source("R/repack.R");
-source("R/generate.R");
-source("R/validate.R");
+source("R/phenology.R");
+# source("R/validation/phenology.R");
+source("R/validation/snow.R");
 
-# Creating missing directories for repack and outpu
-createDir <- function(subdir){
-	if(!file.exists(subdir)){
-		# create a new sub directory inside
-		# the main path
-		dir.create(file.path(getwd(), subdir))
-	}
-}
-createDir("repack")
-createDir("out")
+
 createDir("data")
-
 
 ## Build paths for the directories
 paths <- getPaths() 
@@ -67,11 +60,42 @@ if(answer == "2"){
 	print("Build CSV files");
 }
 
+# split dirs between / and take index 0
+datatypes <- sapply(strsplit(dirs, "/"), "[", 1)
+datatypes <- unique(datatypes)
 
-# paths <- paths[grepl("Raw Data$|\\d{4}$", dirs)]
-# dirs <- dirs[grepl("Raw Data$|\\d{4}$", dirs)]
-paths <- paths[grepl("Raw Data$", dirs)]
-dirs <- dirs[grepl("Raw Data$", dirs)]
+# Select which data to process
+while(TRUE){
+	print("Select data to process");
+	print("0) Exit");
+	for(i in 1:length(datatypes)){
+		print(paste(i,") ", datatypes[i], sep=""));
+	}
+	print(paste(length(datatypes)+1,") All data", sep=""));
+	answer <- readLines(file("stdin"), 1);
+	answer <- gsub("\\)", "", answer);
+	answer <- gsub("\\D", "", answer);
+	if(answer == "0"){
+		return(NULL);
+	}
+	if(as.numeric(answer) <= length(datatypes)+1){
+		dirs <- dirs[grepl(datatypes[as.numeric(answer)], dirs)]
+		paths <- paths[grepl(datatypes[as.numeric(answer)], paths)]
+		datatypes <- datatypes[datatypes == datatypes[as.numeric(answer)]]
+		break;
+	}
+	print("Invalid input, please try again");
+}
+for (i in 1:length(datatypes)){
+	createDir(paste("repack/", datatypes[i], sep=""))
+	createDir(paste("out/", datatypes[i], sep=""))
+}
+
+paths_snow <- paths[grepl("Raw Data$|Raw Data \\d{4}$", dirs)]
+dirs_snow <- dirs[grepl("Raw Data$|Raw Data \\d{4}$", dirs)]
+paths_phenology <- paths[grepl("Phenology Data$", dirs)]
+dirs_phenology <- dirs[grepl("Phenology Data$", dirs)]
+
 if(promt){
 	print("Use default filter (1) or custom filter (2)?")
 	answer <- readLines(file("stdin"), 1)
@@ -83,89 +107,11 @@ if(promt){
 	}
 }
 
-## this writes to csv file based on name called at the end of the document
-exportCSV <- function(filenames, filename){
-	if(length(filenames)==0) return(NULL)
-	# Parsing the data from the file
 
-	# entries = read.delim(filenames[1], header=FALSE, sep=",")[,1:5]
-	valid = lapply(filenames, validateFile);
-	# Read data only for valid files
-	data <- mapply(readFile, filenames, valid, SIMPLIFY = FALSE)
-	# data = lapply(filenames, readFile);
-	# Accumulative build result row by row, with insert(,,);
-	result <- dataframeBuilder(data);
-	return(list(result=result, filename=filename));	
+for (i in 1:length(datatypes)){
+	if(datatypes[i] == "Plant Phenology Data"){
+		process_phenology_data(paths, dirs)
+	}else if(datatypes[i] == "Nuolja Snow Data"){
+		dataframe <- process_snow_data(paths, dirs)
+	}
 }
-
-
-for(i in 1:length(paths)){
-	regex = "\\d{4}.csv$"
-	if(!silent && promt){
-		## promt for regex
-		print("Use default filter (1) or custom filter (2)?")
-		print("Default filter: ", regex)
-		answer <- readLines(file("stdin"), 1)
-		if(answer == "2"){
-			print("Enter filter regex: ")
-			regex <- readLines(file("stdin"), 1)
-		}
-	}
-	path = getDataFilesPaths(paths[i], pattern=regex);
-	if(!silent){
-		print(paste("Directory :", dirs[i]));
-		if(promt) {
-			print("Do you wanna process this directory? (y/n)");
-			answer <- readLines(file("stdin"),1)
-			if(answer != "y") return(NULL);
-			print(paste("Processing :", paths[i]));
-		}
-	}
-	outputfile = gsub("/Raw Data", "",dirs[i]);
-	outputfile = gsub(" ", "_", outputfile);
-	data <- exportCSV(path, paste("repack/", outputfile, sep=""));
-	if(validate){
-		next;
-	}
-	if(is.null(data)) next;
-	if(!silent){
-		print(paste("Completed -", dirs[i]));
-		print(paste("Location -", getwd()));
-	}
-	# drawPlots(data$result);
-	write.csv(data$result, paste(data$filename, ".csv", sep=""), row.names=FALSE)
-
-
-	data$result = data$result %>% arrange(date);
-	#print(data$result[1:15,c(1,2,5,9,10)]);
-	# cont_plot <- calculate(data$result, "plot", "contemporary")
-	# print(cont_plot[1:10,]);
-	# # cont_plot <- calculate(data$result, "subplot", "contemporary")
-	# print(cont_plot[1:10,]);
-	# TODO call old library to calculate the data
-
-	subplot = subCalc(data$result[-1], dirs[i], transect_desc[,c(2,3)]);
-	filename = gsub("repack/", "", data$filename)
-	write(subplot$contemporary, paste(filename, "_contemporary", sep=""), "subplot");
-	write(subplot$historical, paste(filename, "_historical", sep=""), "subplot");
-
-
-	plotcoord = matrix(,nrow=0,ncol=2)
-	for(i in 1:20){
-		tmp = transect_desc[transect_desc[,1]==i,]
-		res = c(i, min(tmp[,3]));
-		if(i==20){
-			res = rbind(res, c(i+1, max(tmp[,3])))
-		}
-		plotcoord = rbind(plotcoord, res)
-	}
-	plot = subCalc(data$result[-2], filename, plotcoord);
-
-	write(plot$contemporary, paste(filename, "_contemporary", sep=""), "plot");
-	write(plot$historical, paste(filename, "_historical", sep=""), "plot");
-
-}
-
-print("repack.r : DONE : CSV files built");
-
-

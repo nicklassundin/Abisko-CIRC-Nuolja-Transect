@@ -1,6 +1,6 @@
 # TODO install all dependencies in the script
 ## Install geosphere package if not already install on client
-list.of.packages <- c("geosphere", "dplyr", "data.table", "lubridate", "readxl")
+list.of.packages <- c("geosphere", "dplyr", "data.table", "lubridate")
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
 if(length(new.packages)) install.packages(new.packages)
 library(geosphere);

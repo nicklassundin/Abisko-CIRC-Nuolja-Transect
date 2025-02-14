@@ -40,7 +40,7 @@ generate_tree() {
 	done
 }
 
-Ensure the file is created before writing
+# Ensure the file is created before writing
 : > "directory_tree.md"
 
 echo "#### Directory Tree" >> "directory_tree.md"

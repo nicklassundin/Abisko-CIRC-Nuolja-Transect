@@ -8,7 +8,7 @@
 ## required libraries for code ##
 # library(readxl);
 library(data.table);
-library(stringr);
+# library(stringr);
 library(dplyr);
 
 #' @title read_descriptions'

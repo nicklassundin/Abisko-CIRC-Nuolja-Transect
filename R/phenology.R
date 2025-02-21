@@ -73,8 +73,10 @@ process_phenology_data <- function(path, dirs){
 	output_path <- get_output_path(paths[1], "Nuolja_Annual_Species_Observations.csv") 
 	write.csv(observ_data, output_path, row.names=FALSE)
 	# calculate first observation date for each year 
-	first_observation <- combined_data %>% group_by(`Synonym Current`, Year, Code) %>% summarise(Date = min(Date), .groups = "drop")
-	colnames(first_observation) <- c("Synonym Current", "Year", "Code", "First Observation Date")
+	first_observation <- combined_data %>%
+		group_by(`Synonym Current`, Year, Code) %>%
+		summarise(`First Observation Date` = min(Date), `Last Observation Date` = max(Date), .groups = "drop")
+	colnames(first_observation) <- c("Synonym Current", "Year", "Code", "First Observation Date", "Last Observation Date")
 	# output_path replace the file name with the new file name
 	output_path <- get_output_path(paths[1], "Nuolja_First_Observation_Date.csv")
 	write.csv(first_observation, output_path, row.names=FALSE)

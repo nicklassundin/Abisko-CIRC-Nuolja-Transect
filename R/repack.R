@@ -106,7 +106,6 @@ formatDate = function(x){
 		result = as.Date(substr(x, 3, 10), "%Y%m%d");
 
 	}
-	# print(result);
 	return(result);
 
 }
@@ -160,7 +159,6 @@ readFile = function(x, valid){
 	entries = entries[valid,];
 	if(dim(entries)[2] < 5) return(NA);	
 
-	# print(entries[1:5,])
 	# create a vector of length if entries column filled with date
 	dates = rep(date, nrow(entries));
 	###########
@@ -170,7 +168,6 @@ readFile = function(x, valid){
 	hist = data.matrix(lapply(entries[,5], historical));
 	# unlisting to be able to bind it to 'entries'
 	hist <- delist(hist)
-	# print number of columns
 
 	entries = cbind(entries, hist);
 	entries = cbind(entries[,1], cbind(dates, entries[,-1]));
@@ -205,7 +202,6 @@ insert <- function(target, entry, sect){
 #' @export
 drawPlots <- function(df) {
 	df$date = as.numeric(format(as.Date(df$date, origin="1970-01-01")), "%j");
-	# print(df[1:5])
 	for(d in unique(df$date)){
 		temp = df[df$date == d,];
 		if(nrow(temp)>1){

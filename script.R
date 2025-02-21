@@ -21,6 +21,7 @@ paths <- getPaths()
 dirs <- getDirs()
 
 transect_desc = loadTransectDescription();
+plots_and_subplots = read.csv("descriptions/plots_and_subplots.csv", header = TRUE, sep = ",", quote = "\"", dec = ".", fill = TRUE, comment.char = "")
 
 print("Select operations to perform");
 print("0) Exit");

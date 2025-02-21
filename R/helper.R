@@ -74,6 +74,7 @@ section <- function(df, x) {
 #' @return A numeric vector representing the section and distance.
 #' @export
 closest <- function(e, df) {
+	print(df[1:5,])
 	proj <- projection(df, e[1:3])
 	d <- proj[1]
 	return(c(section(df, d), d))

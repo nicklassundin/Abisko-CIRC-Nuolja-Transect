@@ -245,7 +245,7 @@ dataframeBuilder <- function(data){
 	## naming the columns for the return file
 	colnames(result) <- colnames; 
 	rownames(result) <- 1:nrow(result);
-	# print(result[1:26,])
+	# print(result[1:5,])
 	return(result);
 
 }

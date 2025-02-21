@@ -110,8 +110,10 @@ if(promt){
 
 for (i in 1:length(datatypes)){
 	if(datatypes[i] == "Plant Phenology Data"){
-		process_phenology_data(paths, dirs)
+		print("Processing Phenology Data")
+		process_phenology_data(paths_phenology, dirs_phenology)
 	}else if(datatypes[i] == "Nuolja Snow Data"){
-		dataframe <- process_snow_data(paths, dirs)
+		print("Processing Snow Data")
+		dataframe <- process_snow_data(paths_snow, dirs_snow)
 	}
 }

@@ -19,8 +19,20 @@ plots_and_subplots <- read.csv("descriptions/plots_and_subplots.csv", header = T
 DEF_COLS <- c("Synonym Current","Date","Poles","Code")
 ## Columns on second transform from first transform
 DEF_COLS_2 <- c("Synonym Current", "Year", "Subplot", "Number of Observations")
-DEF_COLS_3 <- c("Synonym Current", "Year", "Plot", "Number of Observations")
 
+
+#' @title get output path
+#' @description This function returns the output path for the given input path
+#' @param path The input path
+#' @return The output path
+get_output_path <- function(path, filename){
+	# remove the file name from the path
+	output_path <- gsub("Nuolja_Data_\\d{4}.csv", "", path)
+	output_path <- gsub("/data/", "/out/", output_path)
+	# add the new file name
+	output_path <- paste(output_path, filename, sep="")
+	return(output_path)
+}
 
 ## clear memory of all datasets ##
 # rm(list = ls())
@@ -36,7 +48,7 @@ DEF_COLS_3 <- c("Synonym Current", "Year", "Plot", "Number of Observations")
 # }
 
 #' @title process_phenology_data
-#' @description This function reads in all phenology data from the specified path
+#' @description This function reads in all phenology data from the given path and directories and processes it into two files; Observation by Year, Species, Code and Subplot; Second First observation by Year, Species and Code
 #' @param path The path to the directory containing the phenology data
 #' @param dirs The directories to search for the phenology data
 #' @return A data frame containing the phenology data
@@ -44,41 +56,28 @@ process_phenology_data <- function(path, dirs){
 	# read only .csv files from path
 	paths <- list.files(path, pattern = ".csv", full.names = TRUE, recursive = FALSE)
 	paths <- paths[grepl("Plant Phenology Data/Nuolja_Data_\\d{4}.csv$", paths)]
-	# combined dataframe
-	combined_data <- data.frame()
-	# loop through all files in the directory
-	for (i in 1:length(paths)){
-		# read in the data
-		data <- read.csv(paths[i], header = TRUE, stringsAsFactors = FALSE)
-		# add the year to the data
-		data$Year <- as.numeric(str_extract(paths[i], "\\d{4}"))
-		# add the data to the combined data
+	combined_data <- bind_rows(lapply(paths, function(path) {
+		if (!file.exists(path)){
+			return(NULL)
+		}
+		data <- read.csv(path, header = TRUE, stringsAsFactors = FALSE)
+		data$Year <- as.numeric(str_extract(path, "\\d{4}"))
 		colnames(data) <- c(DEF_COLS, "Year")
-		combined_data <- rbind(combined_data, data)	
-	}
-	# mutate Poles into Subplot and Plot from the plots_and_subplots data 
-	combined_data <- merge(combined_data, plots_and_subplots, by.x = "Poles", by.y = "Poles", all.x = TRUE)
-	# remove the Poles column
-	combined_data <- combined_data[, !(colnames(combined_data) %in% c("Poles"))]
-		
+		return(data)
+	}))
 	# group by "Year" and "Synonym Current" count the number of observations
-	combined_data_subplot <- combined_data %>% group_by(`Synonym Current`, Year, `Subplot`) %>% summarise(n = n())
-	combined_data_subplot <- combined_data_subplot[order(combined_data_subplot$Year, combined_data_subplot$`Synonym Current`),]
-	colnames(combined_data_subplot) <- DEF_COLS_2
-	combined_data_plot <- combined_data %>% group_by(`Synonym Current`, Year, `Plot`) %>% summarise(n = n())
-	combined_data_plot <- combined_data_plot[order(combined_data_plot$Year, combined_data_plot$`Synonym Current`),]
-	colnames(combined_data_plot) <- DEF_COLS_3
+	observ_data <- combined_data %>% group_by(`Synonym Current`, Year, `Poles`) %>% summarise(n = n(), .groups = "drop")
+	observ_data <- observ_data[order(observ_data$Year, observ_data$`Synonym Current`),]
+	colnames(observ_data) <- DEF_COLS_2
 	# order the data by year and synonym
-	closeAllConnections()
-	output_path <- paths[1]
-	# remove the file name from the path
-	output_path <- gsub("Nuolja_Data_\\d{4}.csv", "", output_path)
-	output_path <- gsub("/data/", "/out/", output_path)
-	# add the new file name
-	output_path <- paste(output_path, "Nuolja_Annual_Species_Observations_Subplot.csv", sep="")
-	write.csv(combined_data_subplot, output_path, row.names=FALSE)
-	output_path <- gsub("Nuolja_Annual_Species_Observations_Subplot.csv", "Nuolja_Annual_Species_Observations_Plot.csv", output_path)
-	write.csv(combined_data_plot, output_path, row.names=FALSE)
+	output_path <- get_output_path(paths[1], "Nuolja_Annual_Species_Observations.csv") 
+	write.csv(observ_data, output_path, row.names=FALSE)
+	# calculate first observation date for each year 
+	first_observation <- combined_data %>% group_by(`Synonym Current`, Year, Code) %>% summarise(Date = min(Date), .groups = "drop")
+	colnames(first_observation) <- c("Synonym Current", "Year", "Code", "First Observation Date")
+	# output_path replace the file name with the new file name
+	output_path <- get_output_path(paths[1], "Nuolja_First_Observation_Date.csv")
+	write.csv(first_observation, output_path, row.names=FALSE)
 	return(TRUE)
 }
 

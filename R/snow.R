@@ -232,8 +232,9 @@ FILE_REGEX = "\\d{4}.csv$"
 #' @param dirs A character vector of directory names.
 #' @return A list containing the processed data.
 #' @export
-process_snow_data <- function(path, dirs){
+process_snow_data <- function(paths, dirs){
 	for (i in 1:length(paths)){
+		print(paths[i])
 		path = getDataFilesPaths(paths[i], pattern="\\d{4}.csv$");
 		if(length(path) == 0) return(NULL);
 		valid = lapply(path, validateFile)

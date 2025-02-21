@@ -267,6 +267,8 @@ process_snow_data <- function(paths, dirs){
 
 		data$result = data$result %>% arrange(date);
 		subplot = subCalc(data$result, dirs[i], transect_desc[,c(2,3)]);
+		print(subplot$contemporary[1:5,])
+
 		filename = gsub("repack/", "out/", data$filename)
 
 		print("Writing summarized data to csv");

@@ -245,7 +245,10 @@ dataframeBuilder <- function(data){
 	## naming the columns for the return file
 	colnames(result) <- colnames; 
 	rownames(result) <- 1:nrow(result);
-	# print(result[1:5,])
+	# mutate in Poles into result from plots_and_subplots table
+	result <- merge(result, plots_and_subplots, by.x = c("plot", "subplot"), by.y = c("Plot", "Subplot"), all.x = TRUE)
+	# reorder the columns so Last column are first
+	# result <- result[,c(ncol(result), 1:(ncol(result)-1))];
 	return(result);
 
 }

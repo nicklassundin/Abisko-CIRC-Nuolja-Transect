@@ -18,7 +18,7 @@ plots_and_subplots <- read.csv("descriptions/plots_and_subplots.csv", header = T
 ## Columns on first transform from Raw data
 DEF_COLS <- c("Synonym Current","Date","Poles","Code")
 ## Columns on second transform from first transform
-DEF_COLS_2 <- c("Synonym Current", "Year", "Subplot", "Number of Observations")
+DEF_COLS_2 <- c("Synonym Current", "Year", "Poles", "Number of Observations")
 
 
 #' @title get output path

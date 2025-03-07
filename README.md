@@ -151,7 +151,7 @@ Build and Validate, will produce Files in `out\` and Log files in `log\`
 Same as 1) With developer options
 #### 3) Validate CSV files
 Only validate and produce Log in `log\`
-### 4) Debug
+#### 4) Debug
 Only developer options
 ### Step 4: Select data to process
 #### 0) Exit

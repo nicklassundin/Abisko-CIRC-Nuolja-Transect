@@ -141,8 +141,38 @@ Before opening the terminal, set the working directory in RStudio using one of t
    Rscript script.R
    ```
 - This will run the script
-</details>
 
+### Step 3: Selection operations to perform
+#### 0) Exit
+<details>
+quit process
+</details>
+#### 1) Build CSV files
+<details>
+Build and Validate, will produce Files in `out\` and Log files in `log\`
+</details>
+#### 2) Build CSV with debug
+<details>
+Same as 1) With developer options
+</details>
+#### 3) Validate CSV files
+<details>
+Only validate and produce Log in `log\`
+</details>
+### 4) Debug
+<details>
+Only developer options
+</details>
+</details>
+### Step 4: Select data to process
+#### 0) Exit
+<details>
+quit process
+</details>
+#### n) Data to be processed
+<details>
+List of data sets placed in `data\`
+</details>
 ## Documentation
 <details>
 <summary>More about documentation</summary>

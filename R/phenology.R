@@ -56,7 +56,13 @@ process_phenology_data <- function(path, dirs){
 	# read only .csv files from path
 	paths <- list.files(path, pattern = ".csv", full.names = TRUE, recursive = FALSE)
 	paths <- paths[grepl("Plant Phenology Data/Nuolja_Data_\\d{4}.csv$", paths)]
-	combined_data <- bind_rows(lapply(paths, function(path) {
+
+	# validate files 
+	valid = lapply(paths, (function(x) {
+			return(validateFile(x, PATTERNS=PHENO_PATTERNS, log_file="phen.log"))
+	}))
+	combined_data <- bind_rows(lapply(valid, function(path) {
+	# combined_data <- bind_rows(lapply(paths, function(path) {
 		if (!file.exists(path)){
 			return(NULL)
 		}

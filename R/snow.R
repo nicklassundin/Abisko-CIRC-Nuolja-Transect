@@ -236,7 +236,9 @@ process_snow_data <- function(paths, dirs){
 	for (i in 1:length(paths)){
 		path = getDataFilesPaths(paths[i], pattern="\\d{4}.csv$");
 		if(length(path) == 0) return(NULL);
-		valid = lapply(path, validateFile)
+		valid = lapply(path, (function(x) {
+			return(validateFile(x, PATTERNS=SNOW_PATTERNS, log_file="snow.log"))
+		}));
 		# filter out invalid files in the list path
 		if(!silent){
 			print("Default filter", FILE_REGEX)

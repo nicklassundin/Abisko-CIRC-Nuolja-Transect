@@ -1,26 +1,26 @@
 source("R/patterns.R")
-# create log directory if it does not exist
-if (!dir.exists("log")) {
-	dir.create("log")
-}
-# Moving existing log files to backup
-if (file.exists("log/error.txt")) {
-	if (file.exists("log/error_backup.txt")) {
-		file.remove("log/error_backup.txt")
+create_backup <- function(log_file) {
+	log_backup_file = paste0("log/backup.", log_file)
+	log_file = paste0("log/", log_file)
+	if (file.exists(log_backup_file)) {
+		file.remove(log_backup_file)
 	}
-	file.rename("log/error.txt", "log/error_backup.txt")
-}
-if (file.exists("log/warnings.txt")) {
-	if (file.exists("log/warnings_backup.txt")) {
-		file.remove("log/warnings_backup.txt")
+	if (file.exists(log_file)) {
+		# print(log_file)
+		file.rename(log_file, log_backup_file)
+		# for (file in list.files("log")) {
+			# print(file)
+		# }
 	}
-	file.rename("log/warnings.txt", "log/warnings_backup.txt")
 }
-if (file.exists("log/error_count_summary.txt")) {
-	if (file.exists("log/error_count_summary_backup.txt")) {
-		file.remove("log/error_count_summary_backup.txt")
-	}
-	file.rename("log/error_count_summary.txt", "log/error_count_summary_backup.txt")
+create_file_structure <- function(log_file) {
+	log_backup_file = paste0("log/backup.", log_file)
+	create_backup(log_file)
+	warnings_file = paste0("warnings.", log_file)
+	create_backup(warnings_file)
+	error_count_file = paste0("count.", log_file)
+	create_backup(error_count_file)
+	# print files in log directory
 }
 
 # print(LENIENT_PATTERN)
@@ -45,13 +45,12 @@ if (file.exists("log/error_count_summary.txt")) {
 #' validateLine("NS-20231015-034 70.12345678N 20.54321E 1500.000 os")
 #'
 #' @export
-validateLine <- function(line, file = NA, line_number = NA, log_file = NULL) {
+validateLine <- function(line, file = NA, line_number = NA, log_file = NULL, PATTERNS) {
 	# Define the regular expression pattern
 	pattern <- LENIENT_PATTERN
 	# Check if the line matches the pattern
 	validation_result <- grepl(pattern, line)
 	return(validation_result)
-
 }
 
 #' Count and Log Errors for Each File and Type of Error
@@ -109,43 +108,23 @@ logErrorCounts <- function(error_list, file, count_log_file = "log/error_count_s
 #' printValidationError ("NS-20220510-001 68.37261219N 18.69783 1195.186 O", "data.txt", 5, "log/validation.txt", "log/warnings.txt")
 #' 
 #' @export
-printValidationError <- function(line, file = NA, line_number = NA, log_file = NULL) {
-	warnings_file = "log/warnings.txt"
+printValidationError <- function(line, PATTERNS, file = NA, line_number = NA, log_file = NULL) {
+	warnings_file = paste0("log/warnings.", log_file)
 	errors <- c()
 	# Check prefix
-	if (!grepl(prefix_pattern, line)) {
-		errors <- c(errors, "Warning: Line does not start with 'NS-' prefix.")
-	}
+	# iterate over key and value pairs in PATTERNS$STRUCT
+	for (key in names(PATTERNS$STRUCT)) {
+		pattern <- PATTERNS$STRUCT[[key]]
+		if (!grepl(pattern, line)) {
+			errors <- c(errors, paste("Message: Missing or incorrect", key, "format."))
+		}
 
-	# Check date-time format
-	if (!grepl(datetime_pattern, line)) {
-		errors <- c(errors, "Warning: Missing or incorrect date-time format (YYYYMMDD-NNN).")
-	}
-
-	# Check latitude
-	if (!grepl(latitude_pattern, line)) {
-		errors <- c(errors, "Error: Missing or incorrect latitude format (e.g., 68.37261219N).")
-	}
-
-	# Check longitude
-	if (!grepl(longitude_pattern, line)) {
-		errors <- c(errors, "Error: Missing or incorrect longitude format (e.g., 18.69783E).")
-	}
-
-	# Check elevation
-	if (!grepl(elevation_pattern, line)) {
-		errors <- c(errors, "Error: Missing or incorrect elevation format (e.g., 1195.186).")
-	}
-
-	# Check observation code
-	if (!grepl(obs_code_pattern, line)) {
-		errors <- c(errors, "Error: Missing or incorrect observation code format (e.g., O or OS).")
 	}
 
 	# Format error messages
 	if (length(errors) > 0) {
 		error_message <- paste(errors, collapse = "\n")
-		critical <- !validateLine(line)
+		critical <- !validateLine(line, PATTERNS)
 		formatted_message <- paste0(
 					    "----------------------------------------\n",
 					    "Validation Errors:\n",
@@ -156,6 +135,7 @@ printValidationError <- function(line, file = NA, line_number = NA, log_file = N
 					    "critical error:", critical, "\n")
 
 		# Log error message to file if specified
+		log_file = paste0("log/error.", log_file)
 		if (!is.null(log_file)) {
 			if (critical){
 				cat(formatted_message, file = log_file, append = TRUE)
@@ -183,8 +163,9 @@ printValidationError <- function(line, file = NA, line_number = NA, log_file = N
 #' validateFile("data.txt")
 #' 
 #' @export
-validateFile <- function(file_path, silent = FALSE) {
-	log_file <- "log/error.txt"
+validateFile <- function(file_path, silent = FALSE, PATTERNS, log_file="log/error.log") {
+	# Create the file structure
+	create_file_structure(log_file)
 	error_list <- list()
 
 	# Read the file line by line
@@ -197,18 +178,21 @@ validateFile <- function(file_path, silent = FALSE) {
 						   lines[i], 
 						   file = file_path, 
 						   line_number = i, 
-						   log_file = log_file)
+						   log_file = log_file,
+						   PATTERNS = PATTERNS
+		)
+
 		# append errors to error_list
 		error_list <- c(error_list, errors)
 
-		validation_results[i] <- validateLine(lines[i], file = file_path, line_number = i, log_file = log_file)
+		validation_results[i] <- validateLine(lines[i], file = file_path, line_number = i, log_file = log_file, PATTERNS = PATTERNS)
 
 	}
 
 	# Log error counts
-	logErrorCounts(error_list, file_path)
-
+	count_log_file = paste0("log/count.", log_file)
+	logErrorCounts(error_list, file_path, count_log_file = count_log_file)
+	
 	# Return validation results (TRUE for valid lines, FALSE for invalid)
 	return(validation_results)
-
 }

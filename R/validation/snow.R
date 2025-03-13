@@ -6,16 +6,12 @@ create_backup <- function(log_file) {
 		file.remove(log_backup_file)
 	}
 	if (file.exists(log_file)) {
-		# print(log_file)
 		file.rename(log_file, log_backup_file)
-		# for (file in list.files("log")) {
-			# print(file)
-		# }
 	}
 }
 create_file_structure <- function(log_file) {
-	log_backup_file = paste0("log/backup.", log_file)
-	create_backup(log_file)
+	log_error_file = paste0("error.", log_file)
+	create_backup(log_error_file)
 	warnings_file = paste0("warnings.", log_file)
 	create_backup(warnings_file)
 	error_count_file = paste0("count.", log_file)

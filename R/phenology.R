@@ -93,7 +93,10 @@ process_phenology_data <- function(path, dirs){
 	# for each Synonym Current
 	obser_data_complete <- observ_data %>% complete(Year, `Synonym Current`, Poles, Code = pheno_codes$codes)
 	observ_data <- rbind(observ_data, obser_data_complete)
-	print(observ_data)
+	# remove Synonym Current, year, poles, where number of observations are NA
+
+	# sort column by synonym and year
+	observ_data <- observ_data[order(observ_data$`Synonym Current`, observ_data$Year, observ_data$Poles, observ_data$Code),]
 
 	# order the data by year and synonym
 	output_path <- get_output_path(paths[1], "Nuolja_Annual_Species_Observations.csv") 
@@ -106,6 +109,20 @@ process_phenology_data <- function(path, dirs){
 	# output_path replace the file name with the new file name
 	output_path <- get_output_path(paths[1], "Nuolja_First_Observation_Date.csv")
 	write.csv(first_observation, output_path, row.names=FALSE)
+
+	# create number of observations per year
+	# species year subplot numober of fielddays
+	# add day of the year
+	print(combined_data[1:10,])
+	combined_data$DoY <- as.numeric(strftime(combined_data$Date, "%j"))
+	print(combined_data[1:10,])
+	# filter out unique DoY
+	number_obs <- combined_data %>% group_by(`Synonym Current`, Year, `Poles`, DoY) %>% summarise(n = 1, .groups = "drop")
+	number_obs <- number_obs %>% group_by(`Synonym Current`, Year, `Poles`) %>% summarise(`Number of Observations` = n(), .groups = "drop")
+
+	# output_path replace the file name with the new file name
+	output_path <- get_output_path(paths[1], "Nuolja_Annual_Species_Days_Observed.csv")
+	write.csv(number_obs, output_path, row.names=FALSE)
 	return(TRUE)
 }
 

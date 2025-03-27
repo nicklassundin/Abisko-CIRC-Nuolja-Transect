@@ -10,15 +10,22 @@
 library(data.table);
 library(stringr);
 library(dplyr);
+library(tidyr);
+
+
 
 #' @title read_descriptions'
 #' @description columns Poles, Plot and Subplot
 plots_and_subplots <- read.csv("descriptions/plots_and_subplots.csv", header = TRUE, stringsAsFactors = FALSE)
 
+#' @title phenology_codes
+#' @description This function reads in the phenology codes from the given path and directories
+pheno_codes <- read.csv("descriptions/phenology_codes.csv", header = TRUE, stringsAsFactors = FALSE)
+
 ## Columns on first transform from Raw data
 DEF_COLS <- c("Synonym Current","Date","Poles","Code")
 ## Columns on second transform from first transform
-DEF_COLS_2 <- c("Synonym Current", "Year", "Poles", "Number of Observations")
+DEF_COLS_2 <- c("Synonym Current", "Year", "Poles","Code", "Number of Observations")
 
 
 #' @title get output path
@@ -55,26 +62,39 @@ get_output_path <- function(path, filename){
 process_phenology_data <- function(path, dirs){
 	# read only .csv files from path
 	paths <- list.files(path, pattern = ".csv", full.names = TRUE, recursive = FALSE)
+	# filter NA values
+	# paths <- paths[!is.na(paths)]
 	paths <- paths[grepl("Plant Phenology Data/Nuolja_Data_\\d{4}.csv$", paths)]
+	
+	# validate files TODO
+	# valid = lapply(paths, (function(x) {
+			# return(validateFile(x, PATTERNS=PHENO_PATTERNS, log_file="phen.log", head=TRUE))
+	# }))
+	# print(valid[1:10])
+	valid = paths
 
-	# validate files 
-	valid = lapply(paths, (function(x) {
-			return(validateFile(x, PATTERNS=PHENO_PATTERNS, log_file="phen.log"))
-	}))
+	# paths <- paths[unlist(valid)]
+	# filter paths that are valid
 	combined_data <- bind_rows(lapply(valid, function(path) {
+		
 	# combined_data <- bind_rows(lapply(paths, function(path) {
-		if (!file.exists(path)){
-			return(NULL)
-		}
+		# if (!file.exists(path)){
+			# return(NULL)
+		# }
 		data <- read.csv(path, header = TRUE, stringsAsFactors = FALSE)
 		data$Year <- as.numeric(str_extract(path, "\\d{4}"))
 		colnames(data) <- c(DEF_COLS, "Year")
 		return(data)
 	}))
 	# group by "Year" and "Synonym Current" count the number of observations
-	observ_data <- combined_data %>% group_by(`Synonym Current`, Year, `Poles`) %>% summarise(n = n(), .groups = "drop")
+	observ_data <- combined_data %>% group_by(`Synonym Current`, Year, `Poles`, Code) %>% summarise(n = n(), .groups = "drop")
 	observ_data <- observ_data[order(observ_data$Year, observ_data$`Synonym Current`),]
 	colnames(observ_data) <- DEF_COLS_2
+	# for each Synonym Current
+	obser_data_complete <- observ_data %>% complete(Year, `Synonym Current`, Poles, Code = pheno_codes$codes)
+	observ_data <- rbind(observ_data, obser_data_complete)
+	print(observ_data)
+
 	# order the data by year and synonym
 	output_path <- get_output_path(paths[1], "Nuolja_Annual_Species_Observations.csv") 
 	write.csv(observ_data, output_path, row.names=FALSE)

@@ -34,7 +34,6 @@ getDirs <- function(dir = "/data", pattern = "", full.names = FALSE) {
 getDataFilesPaths <- function(dir, pattern = "*.csv", full.names = TRUE) {
 	files <- list.files(dir, pattern = pattern, full.names = full.names)
 	return(files)
-
 }
 
 #' @title Historical Filter

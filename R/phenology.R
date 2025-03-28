@@ -113,9 +113,7 @@ process_phenology_data <- function(path, dirs){
 	# create number of observations per year
 	# species year subplot numober of fielddays
 	# add day of the year
-	print(combined_data[1:10,])
 	combined_data$DoY <- as.numeric(strftime(combined_data$Date, "%j"))
-	print(combined_data[1:10,])
 	# filter out unique DoY
 	number_obs <- combined_data %>% group_by(`Synonym Current`, Year, `Poles`, DoY) %>% summarise(n = 1, .groups = "drop")
 	number_obs <- number_obs %>% group_by(`Synonym Current`, Year, `Poles`) %>% summarise(`Number of Observations` = n(), .groups = "drop")

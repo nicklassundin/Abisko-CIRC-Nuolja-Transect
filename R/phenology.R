@@ -120,7 +120,7 @@ process_phenology_data <- function(path, dirs){
 		)
 	colnames(first_observation) <- c("Synonym Current", "Year", "Code", "First Observation Date", "Last Observation Date", "Poles First", "Poles Last")
 	# output_path replace the file name with the new file name
-	output_path <- get_output_path(paths[1], "Nuolja_First_Observation_Date.csv")
+	output_path <- get_output_path(paths[1], "Nuolja_First_Last_Observation_Date.csv")
 	write.csv(first_observation, output_path, row.names=FALSE)
 
 	# create number of observations per year

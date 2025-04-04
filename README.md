@@ -15,6 +15,7 @@ project_directory/
 | ├── data
 | │   ├── DATAHERE.md
 | ├── descriptions
+| │   ├── Nuolja Master Documents
 | ├── docs
 | │   ├── reference
 | ├── man

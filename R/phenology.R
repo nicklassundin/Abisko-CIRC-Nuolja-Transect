@@ -142,13 +142,13 @@ survey_tables <- function(df){
 	# print(datasheet_info)	
 	list <- df %>% group_by(`Synonym Current`, Year, Poles) %>% summarise(n = n(), .groups = "drop")	
 	list <- list %>% left_join(datasheet_info, by = c("Synonym Current" = "Species")) %>%
-		mutate(`Synonym Current` = if_else(W == "Y" && WG == "Y",
-					paste0(`Synonym Current`, " (W WG)"),
+		mutate(`Synonym Current` = if_else(!is.na(W) & !is.na(WG) & (W == "Y") & (WG == "Y"),
+					 paste0(`Synonym Current`, " (W WG)"),
 					`Synonym Current`)) %>%
-		mutate(`Synonym Current` = if_else(W == "Y",
+		mutate(`Synonym Current` = if_else(!is.na(W) & (W == "Y") & (WG != "Y" | is.na(WG)),
 					 paste0(`Synonym Current`, " (W)"),
 					`Synonym Current`)) %>%
-		mutate(`Synonym Current` = if_else(WG == "Y",
+		mutate(`Synonym Current` = if_else(!is.na(WG) & WG == "Y" & (W != "Y" | is.na(W)),
 					paste0(`Synonym Current`, " (WG)"),
 					`Synonym Current`))
 	print(list)

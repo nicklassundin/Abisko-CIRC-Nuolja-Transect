@@ -12,6 +12,8 @@ library(stringr);
 library(dplyr);
 library(tidyr);
 
+library(openxlsx)
+
 
 
 #' @title read_descriptions'
@@ -86,8 +88,12 @@ process_phenology_data <- function(path, dirs){
 		colnames(data) <- c(DEF_COLS, "Year")
 		return(data)
 	}))
+	survey_tables(combined_data)
+	return(TRUE)
+
 	# group by "Year" and "Synonym Current" count the number of observations
 	observ_data <- combined_data %>% group_by(`Synonym Current`, Year, `Poles`, Code) %>% summarise(n = n(), .groups = "drop")
+
 	observ_data <- observ_data[order(observ_data$Year, observ_data$`Synonym Current`),]
 	colnames(observ_data) <- DEF_COLS_2
 	# for each Synonym Current
@@ -121,69 +127,24 @@ process_phenology_data <- function(path, dirs){
 	# output_path replace the file name with the new file name
 	output_path <- get_output_path(paths[1], "Nuolja_Annual_Species_Days_Observed.csv")
 	write.csv(number_obs, output_path, row.names=FALSE)
+
 	return(TRUE)
 }
 
 DATA_FILE_PATTERN = "^Nuolja Transect Phenology Data Entry Segments \\d+ to \\d+ \\d{4} CURRENT\\.xlsx$"
 
-#' @title phenology_excel_to_csv 
-#' @description This function reads in all sheets from an Excel spreadsheet
-#' @param dir The directory where the Excel file is located
-#' @param filename The name of the Excel file
-#' @return A list of data frames, one for each sheet in the Excel file
-#phenology_excel_to_csv <- function(dir){
-#	# retreive file in directory matching the filename with regex pattern with out year
-#	file <- list.files(dir, pattern = DATA_FILE_PATTERN)
-#	print(file)
-#	if (length(file) == 0){
-#		print("No file found")
-#		return(NULL)
-#	}
-#	Nuolja.Data <- read_excel_allsheets(paste(dir, file, sep="/"))
+# datasheet_info <- "descriptions/Nuolja\ Master\ Documents/Nuolja_Phenology_Datasheet_information.xlsx"
+datasheet_info <- normalizePath('descriptions/Nuolja\ Master\ Documents/Nuolja_Phenology_Datasheet_Information.xlsx')
 
-#	## split data in the single column into multiple columns by the comma delimiter ##
-#	Nuolja.Data <- setDT(Nuolja.Data)[, list(var = unlist(.SD))][, tstrsplit(var, ",")]
-
-
-#	## delete all null records, e.g. all data in a record is NA ##
-#	Nuolja.Data <- Nuolja.Data[rowSums(is.na(Nuolja.Data))!=ncol(Nuolja.Data), ]
-
-#	## assign names to columns ##
-#	columns <- c("Date","Subplot","Species")
-#	for (i in 1:(ncol(Nuolja.Data)-3)){
-#		columns <- c(columns, paste("Code.", i, sep=""))
-#	}
-#	colnames(Nuolja.Data) <- columns 
-
-#	## convert character to date for Date column ##
-#	Nuolja.Data$Date <- as.Date(Nuolja.Data$Date, format="%d/%m/%Y")
-
-
-#	## remove whitespace at end of species names ##
-#	Nuolja.Data$Species <- trimws(Nuolja.Data$Species, which = c("right"))
-
-#	## extract only the species name, not the variety or subspecies ##
-#	Nuolja.Data$SpeciesName <- word(Nuolja.Data$Species, start=1, end =2, sep=fixed(" "))
-
-#	## sort data set by date, Subplot and species ##
-#	Nuolja.Data <- Nuolja.Data[with(Nuolja.Data, order(Date, Subplot, Species)), ]
-	
-#	# take the first none NA value from the code columns exc
-#	Nuolja.Data$Code <- apply(Nuolja.Data[,4:(ncol(Nuolja.Data)-1)], 1, function(x) x[!is.na(x)][1])
-	
-#	## remove records with no observations
-#	Nuolja.Data <- Nuolja.Data[!is.na(Nuolja.Data$Code),]
-		
-#	## sort data set by date, Subplot and species ##
-#	Nuolja.Data <- cbind(Nuolja.Data[,(ncol(Nuolja.Data)-1)], Nuolja.Data[,1:2], Nuolja.Data[,ncol(Nuolja.Data)])
-
-#	## Rename fields to match Nuolja Project MS Access Database ##
-#	colnames(Nuolja.Data) <- DEF_COLS
-
-
-#	##Create text file of the newly formatted dataset ##
-#	print(dir)
-#	# TODO Compare to the original results
-#	# write.csv(Nuolja.Data, "Nuolja.Data.csv", row.names=FALSE)
-#}
+survey_tables <- function(df){
+	# read in the datasheet information
+	datasheet_info <- read.xlsx(datasheet_info, sheet = 1, colNames = TRUE)
+	# print(datasheet_info)	
+	list <- df %>% group_by(`Synonym Current`, Year, Poles) %>% summarise(n = n(), .groups = "drop")	
+	list <- list %>% left_join(datasheet_info, by = c("Synonym Current" = "Species")) %>%
+		mutate(`Synonym Current` = if_else(W == "Y",
+					 paste0(`Synonym Current`, " (W)"),
+					`Synonym Current`));
+	print(list)
+}
 

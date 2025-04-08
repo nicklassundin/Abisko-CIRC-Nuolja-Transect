@@ -139,7 +139,7 @@ datasheet_info <- normalizePath('descriptions/Nuolja\ Master\ Documents/Nuolja_P
 survey_tables <- function(df){
 	# read in the datasheet information
 	datasheet_info <- read.xlsx(datasheet_info, sheet = 1, colNames = TRUE)
-	# print(datasheet_info)	
+	print(datasheet_info[1:10,])	
 	list <- df %>% group_by(`Synonym Current`, Year, Poles) %>% summarise(n = n(), .groups = "drop")	
 	list <- list %>% left_join(datasheet_info, by = c("Synonym Current" = "Species")) %>%
 		mutate(`Synonym Current` = if_else(!is.na(W) & !is.na(WG) & (W == "Y") & (WG == "Y"),
@@ -150,13 +150,15 @@ survey_tables <- function(df){
 					   `Synonym Current`)) %>%
 	mutate(`Synonym Current` = if_else(!is.na(WG) & WG == "Y" & (W != "Y" | is.na(W)),
 					   paste0(`Synonym Current`, " (WG)"),
-					   `Synonym Current`))
+					   `Synonym Current`)) %>%
+	select(-W) %>% select(-WG) %>% select(-n)
 
-	list <- list %>%
-		filter(str_match(Pole, "^(\\d{2}) to (\\d{2})")[,2] %>%
-		       as.integer() + 1 ==
-		       str_match(Pole, "^(\\d{2}) to (\\d{2})")[,3] %>%
-		       as.integer())
+
+	# list <- list %>%
+	# 	filter(str_match(Poles, "^(\\d{2}) to (\\d{2})")[,2] %>%
+	# 	       as.integer() + 1 ==
+	# 	       str_match(Poles, "^(\\d{2}) to (\\d{2})")[,3] %>%
+	# 	       as.integer())
 	print(list)
 }
 

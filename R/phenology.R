@@ -67,10 +67,10 @@ process_phenology_data <- function(path, dirs){
 	# filter NA values
 	# paths <- paths[!is.na(paths)]
 	paths <- paths[grepl("Plant Phenology Data/Nuolja_Data_\\d{4}.csv$", paths)]
-	
+
 	# validate files TODO
 	# valid = lapply(paths, (function(x) {
-			# return(validateFile(x, PATTERNS=PHENO_PATTERNS, log_file="phen.log", head=TRUE))
+	# return(validateFile(x, PATTERNS=PHENO_PATTERNS, log_file="phen.log", head=TRUE))
 	# }))
 	# print(valid[1:10])
 	valid = paths
@@ -78,16 +78,16 @@ process_phenology_data <- function(path, dirs){
 	# paths <- paths[unlist(valid)]
 	# filter paths that are valid
 	combined_data <- bind_rows(lapply(valid, function(path) {
-		
-	# combined_data <- bind_rows(lapply(paths, function(path) {
-		# if (!file.exists(path)){
-			# return(NULL)
-		# }
-		data <- read.csv(path, header = TRUE, stringsAsFactors = FALSE)
-		data$Year <- as.numeric(str_extract(path, "\\d{4}"))
-		colnames(data) <- c(DEF_COLS, "Year")
-		return(data)
-	}))
+
+						  # combined_data <- bind_rows(lapply(paths, function(path) {
+						  # if (!file.exists(path)){
+						  # return(NULL)
+						  # }
+						  data <- read.csv(path, header = TRUE, stringsAsFactors = FALSE)
+						  data$Year <- as.numeric(str_extract(path, "\\d{4}"))
+						  colnames(data) <- c(DEF_COLS, "Year")
+						  return(data)
+}))
 	survey_tables(combined_data)
 	return(TRUE)
 
@@ -143,14 +143,20 @@ survey_tables <- function(df){
 	list <- df %>% group_by(`Synonym Current`, Year, Poles) %>% summarise(n = n(), .groups = "drop")	
 	list <- list %>% left_join(datasheet_info, by = c("Synonym Current" = "Species")) %>%
 		mutate(`Synonym Current` = if_else(!is.na(W) & !is.na(WG) & (W == "Y") & (WG == "Y"),
-					 paste0(`Synonym Current`, " (W WG)"),
-					`Synonym Current`)) %>%
-		mutate(`Synonym Current` = if_else(!is.na(W) & (W == "Y") & (WG != "Y" | is.na(WG)),
-					 paste0(`Synonym Current`, " (W)"),
-					`Synonym Current`)) %>%
-		mutate(`Synonym Current` = if_else(!is.na(WG) & WG == "Y" & (W != "Y" | is.na(W)),
-					paste0(`Synonym Current`, " (WG)"),
-					`Synonym Current`))
+						   paste0(`Synonym Current`, " (W WG)"),
+						   `Synonym Current`)) %>%
+	mutate(`Synonym Current` = if_else(!is.na(W) & (W == "Y") & (WG != "Y" | is.na(WG)),
+					   paste0(`Synonym Current`, " (W)"),
+					   `Synonym Current`)) %>%
+	mutate(`Synonym Current` = if_else(!is.na(WG) & WG == "Y" & (W != "Y" | is.na(W)),
+					   paste0(`Synonym Current`, " (WG)"),
+					   `Synonym Current`))
+
+	list <- list %>%
+		filter(str_match(Pole, "^(\\d{2}) to (\\d{2})")[,2] %>%
+		       as.integer() + 1 ==
+		       str_match(Pole, "^(\\d{2}) to (\\d{2})")[,3] %>%
+		       as.integer())
 	print(list)
 }
 

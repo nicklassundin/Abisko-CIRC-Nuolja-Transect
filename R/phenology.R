@@ -283,9 +283,6 @@ survey_tables <- function(df){
 			# grey
 			fillStyle <- createStyle(
 						 fgFill = "#D9D9D9",
-						 halign = "center",
-						 valign = "center"
-
 			)
 
 			# Get total number of rows (including header)

@@ -154,14 +154,16 @@ survey_tables <- function(df){
 	
 	mask = !is.na(species_list[,6]);
 	species_list[mask,]$`Synonym Current` = species_list[mask,]$`Corrected.name`
-	
-
+	speices_list <- species_list %>%
+		mutate(`Field Filter` = 
+						((`Species.Error.(Y/N)` == "N") | !is.na(`Corrected.name`) &
+						 (`single.date.observation.(Y/N)` == "N")
+						(`High.confidence.of.correct.identification.on.species.level.(Y/N)` == "Y")))
 
 	print(colnames(species_list))
+	return(TRUE)
 	species_list <- species_list %>%
 		filter(`Species.Error.(Y/N)` == "N",
-		`single.date.observation.(Y/N)` == "N",
-		`High.confidence.of.correct.identification.on.species.level.(Y/N)` == "Y")
 
 	
 

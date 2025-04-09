@@ -226,7 +226,7 @@ survey_tables <- function(df){
 		centerStyle <- createStyle(halign = "center", valign = "center")
 		# Apply centering to the whole used range
 		addStyle(wb, sheet = sheet, style = centerStyle,
-		         rows = 1:100, cols = 1:100, gridExpand = TRUE)
+		         rows = 2:3, cols = 1:15, gridExpand = TRUE)
 
 		setColWidths(wb, sheet = sheet, cols = 1, widths = 25)
 		writeData(wb, sheet, x = top_header, startCol = 1, startRow = 1, colNames = FALSE)

@@ -26,9 +26,10 @@ plots_and_subplots = read.csv("descriptions/plots_and_subplots.csv", header = TR
 print("Select operations to perform");
 print("0) Exit");
 print("1) Build CSV files");
-print("2) Build CSV with debug");
-print("3) Validate CSV files");
-print("4) Debug");
+print("2) Produce Survey Excel files");
+print("3) Build CSV with debug");
+print("4) Validate CSV files");
+print("5) Debug");
 # loop until vallid input is given
 while(TRUE){
 	answer <- readLines(file("stdin"), 1);
@@ -47,13 +48,16 @@ while(TRUE){
 validate = FALSE;
 silent = TRUE;
 promt = FALSE;
+survey = FALSE;
 if(answer == "2"){
+	survey = TRUE;
+}else if(answer == "3"){
 	print("Build CSV files with debug")
 	silent = FALSE;
-}else if(answer == "3"){
+}else if(answer == "4"){
 	print("Validation mode");
 	validate = TRUE;
-}else if(answer == "4"){
+}else if(answer == "5"){
 	print("Debug mode");
 	silent = FALSE;
 	promt = TRUE;
@@ -112,7 +116,11 @@ if(promt){
 for (i in 1:length(datatypes)){
 	if(datatypes[i] == "Plant Phenology Data"){
 		print("Processing Phenology Data")
-		process_phenology_data(paths_phenology, dirs_phenology)
+		if(survey){
+			dataframe <- survey_tables(paths_phenology, dirs_phenology)
+		}else{
+			process_phenol(paths_phenology, dirs_phenology)
+		}
 	}else if(datatypes[i] == "Nuolja Snow Data"){
 		print("Processing Snow Data")
 		dataframe <- process_snow_data(paths_snow, dirs_snow)

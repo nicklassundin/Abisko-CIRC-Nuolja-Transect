@@ -154,19 +154,21 @@ survey_tables <- function(df){
 	
 	mask = !is.na(species_list[,6]);
 	species_list[mask,]$`Synonym Current` = species_list[mask,]$`Corrected.name`
-	speices_list <- species_list %>%
-		mutate(`Field Filter` = 
-						((`Species.Error.(Y/N)` == "N") | !is.na(`Corrected.name`) &
-						 (`single.date.observation.(Y/N)` == "N")
-						(`High.confidence.of.correct.identification.on.species.level.(Y/N)` == "Y")))
-
-	print(colnames(species_list))
-	return(TRUE)
 	species_list <- species_list %>%
-		filter(`Species.Error.(Y/N)` == "N",
+		mutate(`Field Filter` = (!is.na(`Corrected.name`)) | (`Species.Error.(Y/N)` == "N") &
+					 (`single.date.observation.(Y/N)` == "N") &
+				 (`High.confidence.of.correct.identification.on.species.level.(Y/N)` == "Y"))
+
+	species_list <- species_list %>%
+		filter(`Field Filter` == TRUE)
+	
+	print(species_list)
+	# filter if present years TODO
+	# species_list <- df %>% group_by(`Synonym Current`, Poles) %>% summarise(n = n(), .groups = "drop") %>%
+	print(species_list)
 
 	
-
+	return(TRUE)
 
 	species_list <- species_list[order(species_list$Poles),]
 	# print(species_list)

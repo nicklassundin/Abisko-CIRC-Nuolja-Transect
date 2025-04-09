@@ -160,7 +160,7 @@ survey_tables <- function(df){
 	species_list <- species_list %>%
 		left_join(species_errors, 
 			  by = c("Synonym Current" = "Observed.species", "Poles" = "Subplot")) 
-	# by = c("Synonym Current" = "Observed.species", "Year" = "Year", "Poles" = "Subplot")) 
+			# by = c("Synonym Current" = "Observed.species", "Year" = "Year", "Poles" = "Subplot")) 
 
 	# print(species_list[,2])
 	mask = !is.na(species_list[,7]);
@@ -171,7 +171,7 @@ survey_tables <- function(df){
 		       (`High.confidence.of.correct.identification.on.species.level.(Y/N)` == "Y"))
 
 	species_list <- species_list %>%
-		filter(`Field Filter` == TRUE)
+		filter(`Field Filter` == FALSE)
 
 
 	species_list <- species_list[order(species_list$Poles),]
@@ -203,7 +203,7 @@ survey_tables <- function(df){
 		# print(colnames(species_list)[11:20])
 		species_list <- species_list %>% left_join(datasheet_info, by = c("Synonym Current" = "Species")) %>%
 			mutate(`Synonym Current` = if_else(!is.na(W) & !is.na(WG) & (W == "Y") & (WG == "Y"),
-							   paste0(`Synonym Current`, " (W WG)"),
+							   paste0(`Synonym Current`, " (W, WG)"),
 							   `Synonym Current`)) %>%
 		mutate(`Synonym Current` = if_else(!is.na(W) & (W == "Y") & (WG != "Y" | is.na(WG)),
 						   paste0(`Synonym Current`, " (W)"),

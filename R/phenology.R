@@ -274,7 +274,7 @@ survey_tables <- function(df){
 			mask2 = species_list[,poles[i+1]] == TRUE;
 			mask = mask1 | mask2;
 			# print(poles[i])
-			poles_species <- species_list[mask,]
+			poles_species <- species_list[mask,] %>% distinct(`Synonym Current`)
 			poles_species <- poles_species[order(poles_species$`Synonym Current`),]
 			writeData(wb, sheet, x = poles_species$`Synonym Current`, startCol = 1, startRow = 4, colNames = FALSE)
 

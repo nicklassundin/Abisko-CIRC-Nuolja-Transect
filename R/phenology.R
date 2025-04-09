@@ -158,11 +158,15 @@ survey_data_sheet_get <- function(species_list, poles, i){
 			  WG = any(WG == "Y", na.rm = TRUE),
 			  .groups = "drop"
 			  ) %>%
-		mutate(tag = case_when(num_poles == 2 ~ "",  # appears in both — omit tag
+		mutate(tag = case_when(
+				       num_poles == 2 & (W == TRUE) & (WG == TRUE) ~ "(W, WG)",
+				       num_poles == 2 & (W == TRUE) & (WG == FALSE) ~ "(W)",
+				       num_poles == 2 & (W == FALSE) & (WG == TRUE) ~ "(WG)",
+				       num_poles == 2 ~ "",
 				       W & WG ~ paste0("(", PoleNums[1], ", W, WG)"),
 				       W ~ paste0("(", PoleNums[1], ", W)"),
 				       WG ~ paste0("(", PoleNums[1], ", WG)"),
-				       TRUE ~ ""
+				       num_poles == 1 ~ paste0("(", PoleNums[1], ")")
 				       ),`Synonym Current` = if_else(tag != "",
 				       paste0(`Synonym Current`, " ", tag),
 				       `Synonym Current`));
@@ -288,7 +292,7 @@ survey_tables <- function(df){
 		)
 
 		# Get total number of rows (including header)
-		total_rows <- nrow(poles_species) + 4  # +1 for header
+		total_rows <- 100+3 # +1 for header
 
 		# Apply style in blocks: color 3 rows, skip 3
 		for (start_row in seq(4, total_rows, by = 6)) {

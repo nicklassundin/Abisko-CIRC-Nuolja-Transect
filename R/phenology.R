@@ -133,15 +133,59 @@ process_phenology_data <- function(path, dirs){
 
 DATA_FILE_PATTERN = "^Nuolja Transect Phenology Data Entry Segments \\d+ to \\d+ \\d{4} CURRENT\\.xlsx$"
 
-# datasheet_info <- "descriptions/Nuolja\ Master\ Documents/Nuolja_Phenology_Datasheet_information.xlsx"
 datasheet_info <- normalizePath('descriptions/Nuolja\ Master\ Documents/Nuolja_Phenology_Datasheet_Information.xlsx')
+species_errors <- normalizePath('descriptions/Nuolja\ Master\ Documents/Nuolja\ Species\ Errors\ and\ Observation\ Notes\ CURRENT.xlsx')
+
 
 survey_tables <- function(df){
+	
+	species_list <- df %>% group_by(`Synonym Current`, Poles, Year) %>% summarise(n = n(), .groups = "drop") %>%
+		select(-n)
+	
+	# Observation Error
+	species_errors <- read.xlsx(species_errors, sheet = 1, colNames = TRUE)
+	# remove columns
+	species_errors <- species_errors[,c(1,2,3,4,5,7,8,9)]
+	# print(species_errors[1:10,])
+	# filter based on species errors 'Species Error (Y/N)' is Y
+	species_list <- species_list %>%
+		left_join(species_errors, 
+			  by = c("Synonym Current" = "Observed.species", "Year" = "Year")) 
+	
+	mask = !is.na(species_list[,6]);
+	species_list[mask,]$`Synonym Current` = species_list[mask,]$`Corrected.name`
+	
+
+
+	print(colnames(species_list))
+	species_list <- species_list %>%
+		filter(`Species.Error.(Y/N)` == "N",
+		`single.date.observation.(Y/N)` == "N",
+		`High.confidence.of.correct.identification.on.species.level.(Y/N)` == "Y")
+
+	
+
+
+	species_list <- species_list[order(species_list$Poles),]
+	# print(species_list)
+	species_list <- species_list %>%
+		mutate(is_present = TRUE) %>%
+		distinct(`Synonym Current`,  .keep_all = TRUE) %>%
+		pivot_wider(
+			    names_from = Poles, 
+			    values_from = is_present, 
+			    values_fill = list(is_present = FALSE)
+			    );
+
+	# sort by synonym
+	species_list <- species_list[order(species_list$`Synonym Current`),]
+
+	
 	# read in the datasheet information
 	datasheet_info <- read.xlsx(datasheet_info, sheet = 1, colNames = TRUE)
-	print(datasheet_info[1:10,])	
-	list <- df %>% group_by(`Synonym Current`, Year, Poles) %>% summarise(n = n(), .groups = "drop")	
-	list <- list %>% left_join(datasheet_info, by = c("Synonym Current" = "Species")) %>%
+	# print(datasheet_info[1:10,])	
+	# print(datasheet_info[1:10,])	
+	species_list <- species_list %>% left_join(datasheet_info, by = c("Synonym Current" = "Species")) %>%
 		mutate(`Synonym Current` = if_else(!is.na(W) & !is.na(WG) & (W == "Y") & (WG == "Y"),
 						   paste0(`Synonym Current`, " (W WG)"),
 						   `Synonym Current`)) %>%
@@ -150,8 +194,9 @@ survey_tables <- function(df){
 					   `Synonym Current`)) %>%
 	mutate(`Synonym Current` = if_else(!is.na(WG) & WG == "Y" & (W != "Y" | is.na(W)),
 					   paste0(`Synonym Current`, " (WG)"),
-					   `Synonym Current`)) %>%
-	select(-W) %>% select(-WG) %>% select(-n)
+					   `Synonym Current`))
+	# select(-W) %>% select(-WG)
+	# print(species_list)
 
 
 	# list <- list %>%
@@ -159,6 +204,5 @@ survey_tables <- function(df){
 	# 	       as.integer() + 1 ==
 	# 	       str_match(Poles, "^(\\d{2}) to (\\d{2})")[,3] %>%
 	# 	       as.integer())
-	print(list)
 }
 

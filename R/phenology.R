@@ -61,7 +61,8 @@ get_output_path <- function(path, filename){
 #' @param path The path to the directory containing the phenology data
 #' @param dirs The directories to search for the phenology data
 #' @return A data frame containing the phenology data
-process_phenology_data <- function(path, dirs){
+
+read_phenology_data <- function(path, dirs) {
 	# read only .csv files from path
 	paths <- list.files(path, pattern = ".csv", full.names = TRUE, recursive = FALSE)
 	# filter NA values
@@ -87,7 +88,21 @@ process_phenology_data <- function(path, dirs){
 						  colnames(data) <- c(DEF_COLS, "Year")
 						  return(data)
 }))
+	return(combined_data)
+}
 
+process_phenology_data <- function(combined_data, path, dirs){
+	# read only .csv files from path
+	paths <- list.files(path, pattern = ".csv", full.names = TRUE, recursive = FALSE)
+	# filter NA values
+	# paths <- paths[!is.na(paths)]
+	paths <- paths[grepl("Plant Phenology Data/Nuolja_Data_\\d{4}.csv$", paths)]
+
+	# valid = lapply(paths, (function(x) {
+	# return(validateFile(x, PATTERNS=PHENO_PATTERNS, log_file="phen.log", head=TRUE))
+	# }))
+	# print(valid[1:10])
+	valid = paths
 	# group by "Year" and "Synonym Current" count the number of observations
 	observ_data <- combined_data %>% group_by(`Synonym Current`, Year, `Poles`, Code) %>% summarise(n = n(), .groups = "drop")
 
@@ -179,33 +194,7 @@ survey_data_sheet_get <- function(species_list, poles, i){
 #' @export
 
 
-survey_tables <- function(path, dirs){
-	# read only .csv files from path
-	paths <- list.files(path, pattern = ".csv", full.names = TRUE, recursive = FALSE)
-	# filter NA values
-	# paths <- paths[!is.na(paths)]
-	paths <- paths[grepl("Plant Phenology Data/Nuolja_Data_\\d{4}.csv$", paths)]
-
-	# valid = lapply(paths, (function(x) {
-	# return(validateFile(x, PATTERNS=PHENO_PATTERNS, log_file="phen.log", head=TRUE))
-	# }))
-	# print(valid[1:10])
-	valid = paths
-
-	# paths <- paths[unlist(valid)]
-	# filter paths that are valid
-	combined_data <- bind_rows(lapply(valid, function(path) {
-
-						  # combined_data <- bind_rows(lapply(paths, function(path) {
-						  # if (!file.exists(path)){
-						  # return(NULL)
-						  # }
-						  data <- read.csv(path, header = TRUE, stringsAsFactors = FALSE)
-						  data$Year <- as.numeric(str_extract(path, "\\d{4}"))
-						  colnames(data) <- c(DEF_COLS, "Year")
-						  return(data)
-}))
-	df <- combined_data
+survey_tables <- function(df, file_name = "out/Planet Phenology Survey/Nuolja Transect Phenology Datasheets.xlsx"){
 
 	species_counts <- df %>%
 		distinct(`Synonym Current`, Poles, Year) %>%
@@ -334,6 +323,6 @@ survey_tables <- function(path, dirs){
 			 rows = 1:100, cols = 1, gridExpand = TRUE, stack = TRUE)
 
 	}
-	saveWorkbook(wb, "out/Planet Phenology Survey/Nuolja Transect Phenology Datasheets.xlsx", overwrite = TRUE)
+	saveWorkbook(wb, file_name, overwrite = TRUE)
 }
 

@@ -6,6 +6,7 @@ if(length(new.packages)) install.packages(new.packages, repos = "http://cran.us.
 library(geosphere);
 library(dplyr);
 library(data.table);
+library(lubridate)
 source("R/helper.R");
 source("R/snow.R");
 source("R/repack.R");
@@ -116,13 +117,20 @@ if(promt){
 for (i in 1:length(datatypes)){
 	if(datatypes[i] == "Plant Phenology Data"){
 		print("Processing Phenology Data")
+		df <- read_phenology_data(paths_phenology, dirs_phenology)
+		# filter out none may date for all years
+		df_may <- df %>%
+			  filter(month(Date) == 5)
 		if(survey){
-			dataframe <- survey_tables(paths_phenology, dirs_phenology)
+			survey_tables(df, file_name = "out/Planet Phenology Survey/Nuolja Transect Phenology Datasheets.xlsx")
+			# may call
+			survey_tables(df_may, file_name = "out/Planet Phenology Survey/Nuolja Transect Phenology Datasheets SPRING.xlsx")
+
 		}else{
-			process_phenol(paths_phenology, dirs_phenology)
+			process_phenology_data(df, paths_phenology, dirs_phenology)
 		}
 	}else if(datatypes[i] == "Nuolja Snow Data"){
 		print("Processing Snow Data")
-		dataframe <- process_snow_data(paths_snow, dirs_snow)
+		dataframe <- process_snow_data(paths_snow)
 	}
 }

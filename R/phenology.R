@@ -136,6 +136,7 @@ DATA_FILE_PATTERN = "^Nuolja Transect Phenology Data Entry Segments \\d+ to \\d+
 datasheet_info <- normalizePath('descriptions/Nuolja\ Master\ Documents/Nuolja_Phenology_Datasheet_Information.xlsx')
 species_errors <- normalizePath('descriptions/Nuolja\ Master\ Documents/Nuolja\ Species\ Errors\ and\ Observation\ Notes\ CURRENT.xlsx')
 
+datasheet_info <- read.xlsx(datasheet_info, sheet = 1, colNames = TRUE)
 
 survey_tables <- function(df){
 
@@ -163,6 +164,7 @@ survey_tables <- function(df){
 	species_list <- species_list %>%
 		left_join(species_errors, 
 			  by = c("Synonym Current" = "Observed.species", "Year" = "Year", "Poles" = "Subplot")) 
+	# by = c("Synonym Current" = "Observed.species", "Year" = "Year", "Poles" = "Subplot")) 
 
 	# print(species_list[,2])
 	mask = !is.na(species_list$`Corrected.name`) & species_list$`Species.Error.(Y/N)` == "Y"; 
@@ -212,7 +214,7 @@ survey_tables <- function(df){
 		addStyle(wb, sheet = sheet, style = centerStyle,
 			 rows = 2:3, cols = 2:15, gridExpand = TRUE)
 
-		setColWidths(wb, sheet = sheet, cols = 1, widths = 25)
+		setColWidths(wb, sheet = sheet, cols = 1, widths = 35)
 		writeData(wb, sheet, x = top_header, startCol = 1, startRow = 1, colNames = FALSE)
 		mergeCells(wb, sheet, cols = 2:15, rows = 1)
 		poles_header <- matrix(c("Subplot", poles[i],"","","","","","", poles[i+1]), nrow = 1)
@@ -228,69 +230,75 @@ survey_tables <- function(df){
 		addStyle(wb, sheet = sheet, style = verticalStyle, 
 			 rows = 3, cols = 2:15, gridExpand = TRUE)
 		# Bold for top rows
-		boldStyle <- createStyle(textDecoration = "bold", halign = "center", valign = "center")
+		boldStyle <- createStyle(textDecoration = "bold", valign = "center")
 		addStyle(wb, sheet = sheet, style = boldStyle,
-			 rows = 2, cols = 1:15, gridExpand = TRUE)
+			 rows = 2, cols = 1:15, gridExpand = TRUE, stack = TRUE)
 		addStyle(wb, sheet = sheet, style = boldStyle,
-			 rows = 3, cols = 1, gridExpand = TRUE)
+			 rows = 3, cols = 1, gridExpand = TRUE, stack = TRUE)
 		# Bold for top header
 		addStyle(wb, sheet = sheet, style = boldStyle,
 			 rows = 1, cols = 1:15, gridExpand = TRUE, stack = TRUE)
 		setRowHeights(wb, sheet = sheet, rows = 1, heights = 25)
 
-		# filter if column i or i+1 is TRUE
-
-		# check so that poles[i] and poles[i+1] exist in species_list
-
-		if (!poles[i] %in% colnames(species_list)){
-
-		}
-		if (!poles[i+1] %in% colnames(species_list)){
-			# next
-		}
 		poles_species <- species_list %>%
 			filter(`Poles` == poles[i] | `Poles` == poles[i+1]) %>%
-			distinct(`Synonym Current`);
-	# # read in the datasheet information
-	# datasheet_info <- read.xlsx(datasheet_info, sheet = 1, colNames = TRUE)
-	# species_list <- species_list %>% left_join(datasheet_info, by = c("Synonym Current" = "Species")) %>%
-	# 	mutate(`Synonym Current` = if_else(!is.na(W) & !is.na(WG) & (W == "Y") & (WG == "Y"),
-	# 					   paste0(`Synonym Current`, " (W, WG)"),
-	# 					   `Synonym Current`)) %>%
-	# mutate(`Synonym Current` = if_else(!is.na(W) & (W == "Y") & (WG != "Y" | is.na(WG)),
-	# 				   paste0(`Synonym Current`, " (W)"),
-	# 				   `Synonym Current`)) %>%
-	# mutate(`Synonym Current` = if_else(!is.na(WG) & WG == "Y" & (W != "Y" | is.na(W)),
-	# 				   paste0(`Synonym Current`, " (WG)"),
-	# 				   `Synonym Current`))
+			distinct(`Synonym Current`, Poles)
+		poles_species <- poles_species %>%
+			group_by(`Synonym Current`) %>%
 
-		writeData(wb, sheet, x = poles_species$`Synonym Current`, startCol = 1, startRow = 4, colNames = FALSE)
+			mutate(PoleNum = case_when(
+						   `Poles` == poles[i] ~ "1",
+						   `Poles` == poles[i + 1] ~ "2"
+						   )) %>%
+			left_join(datasheet_info, by = c("Synonym Current" = "Species")) %>%
+			group_by(`Synonym Current`) %>%
+			summarise(
+				  PoleNums = sort(unique(PoleNum)),
+				  num_poles = n_distinct(PoleNum),
+				  W = any(W == "Y", na.rm = TRUE),
+				  WG = any(WG == "Y", na.rm = TRUE),
+				  .groups = "drop"
+				  ) %>%
+			mutate(tag = case_when(
+					       num_poles == 2 ~ "",  # appears in both — omit tag
+					       W & WG ~ paste0("(", PoleNums[1], ", W, WG)"),
+					       W ~ paste0("(", PoleNums[1], ", W)"),
+					       WG ~ paste0("(", PoleNums[1], ", WG)"),
+					       TRUE ~ ""
+					       ),`Synonym Current` = if_else(tag != "",
+					       paste0(`Synonym Current`, " ", tag),
+					       `Synonym Current`));
 
-		# print(poles_species)
-		# Create fill style
-		# grey
-		fillStyle <- createStyle(
-					 fgFill = "#D9D9D9",
-		)
+			# print(poles_species[1:10,1:2])
+			poles_species <- poles_species %>%
+				distinct(`Synonym Current`)
+			writeData(wb, sheet, x = poles_species$`Synonym Current`, startCol = 1, startRow = 4, colNames = FALSE)
 
-		# Get total number of rows (including header)
-		total_rows <- nrow(poles_species) + 4  # +1 for header
+			# print(poles_species)
+			# Create fill style
+			# grey
+			fillStyle <- createStyle(
+						 fgFill = "#D9D9D9",
+			)
 
-		# Apply style in blocks: color 3 rows, skip 3
-		for (start_row in seq(4, total_rows, by = 6)) {
-			rows_to_color <- start_row:min(start_row + 2, total_rows)
-			addStyle(wb, sheet = sheet, style = fillStyle,
-				 rows = rows_to_color, cols = 1:15, gridExpand = TRUE)
+			# Get total number of rows (including header)
+			total_rows <- nrow(poles_species) + 4  # +1 for header
 
-		}
-		gridStyle <- createStyle(border = "TopBottomLeftRight", borderStyle = "thin")
-		addStyle(wb, sheet = sheet, style = gridStyle,
-			 rows = 2:100, cols = 1:15, gridExpand = TRUE, stack = TRUE)
-		gridStyleThick <- createStyle(border = "TopBottomLeftRight", borderStyle = "medium")
-		addStyle(wb, sheet = sheet, style = gridStyleThick,
-			 rows = 1:3, cols = 1:15, gridExpand = TRUE, stack = TRUE)
-		addStyle(wb, sheet = sheet, style = gridStyleThick,
-			 rows = 1:100, cols = 1, gridExpand = TRUE, stack = TRUE)
+			# Apply style in blocks: color 3 rows, skip 3
+			for (start_row in seq(4, total_rows, by = 6)) {
+				rows_to_color <- start_row:min(start_row + 2, total_rows)
+				addStyle(wb, sheet = sheet, style = fillStyle,
+					 rows = rows_to_color, cols = 1:15, gridExpand = TRUE)
+
+			}
+			gridStyle <- createStyle(border = "TopBottomLeftRight", borderStyle = "thin")
+			addStyle(wb, sheet = sheet, style = gridStyle,
+				 rows = 2:100, cols = 1:15, gridExpand = TRUE, stack = TRUE)
+			gridStyleThick <- createStyle(border = "TopBottomLeftRight", borderStyle = "medium")
+			addStyle(wb, sheet = sheet, style = gridStyleThick,
+				 rows = 1:3, cols = 1:15, gridExpand = TRUE, stack = TRUE)
+			addStyle(wb, sheet = sheet, style = gridStyleThick,
+				 rows = 1:100, cols = 1, gridExpand = TRUE, stack = TRUE)
 
 	}
 	saveWorkbook(wb, "out/Planet Phenology Survey/test.xlsx", overwrite = TRUE)

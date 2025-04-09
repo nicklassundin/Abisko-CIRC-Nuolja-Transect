@@ -1,4 +1,4 @@
-##########################################################################
+########################################## %>%################################
 ### Import 2024 Nuolja phenology data and then do some basic formating ###
 ##########################################################################
 ### Last modified by Pia Raker on 17 January 2025                      ###
@@ -139,9 +139,12 @@ species_errors <- normalizePath('descriptions/Nuolja\ Master\ Documents/Nuolja\ 
 
 survey_tables <- function(df){
 	
-	species_list <- df %>% group_by(`Synonym Current`, Poles, Year) %>% summarise(n = n(), .groups = "drop") %>%
-		select(-n)
-	
+	species_list <- df %>% 
+		# group_by(`Synonym Current`, Poles, Year) %>% 
+		distinct(`Synonym Current`, Poles) %>%
+		count(`Synonym Current`, Poles, year, name = "n")
+
+	print(species_list)
 	# Observation Error
 	species_errors <- read.xlsx(species_errors, sheet = 1, colNames = TRUE)
 	# remove columns

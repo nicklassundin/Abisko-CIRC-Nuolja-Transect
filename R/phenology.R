@@ -245,11 +245,8 @@ survey_tables <- function(df){
 			distinct(`Synonym Current`, Poles)
 		poles_species <- poles_species %>%
 			group_by(`Synonym Current`) %>%
-
-			mutate(PoleNum = case_when(
-						   `Poles` == poles[i] ~ "1",
-						   `Poles` == poles[i + 1] ~ "2"
-						   )) %>%
+			mutate(PoleNum = case_when(`Poles` == poles[i] ~ "1",
+						   `Poles` == poles[i + 1] ~ "2")) %>%
 			left_join(datasheet_info, by = c("Synonym Current" = "Species")) %>%
 			group_by(`Synonym Current`) %>%
 			summarise(
@@ -259,8 +256,7 @@ survey_tables <- function(df){
 				  WG = any(WG == "Y", na.rm = TRUE),
 				  .groups = "drop"
 				  ) %>%
-			mutate(tag = case_when(
-					       num_poles == 2 ~ "",  # appears in both — omit tag
+			mutate(tag = case_when(num_poles == 2 ~ "",  # appears in both — omit tag
 					       W & WG ~ paste0("(", PoleNums[1], ", W, WG)"),
 					       W ~ paste0("(", PoleNums[1], ", W)"),
 					       WG ~ paste0("(", PoleNums[1], ", WG)"),
@@ -268,10 +264,8 @@ survey_tables <- function(df){
 					       ),`Synonym Current` = if_else(tag != "",
 					       paste0(`Synonym Current`, " ", tag),
 					       `Synonym Current`));
-
-			# print(poles_species[1:10,1:2])
-			poles_species <- poles_species %>%
-				distinct(`Synonym Current`)
+		poles_species <- poles_species %>%
+				distinct(`Synonym Current`);
 			writeData(wb, sheet, x = poles_species$`Synonym Current`, startCol = 1, startRow = 4, colNames = FALSE)
 
 			# print(poles_species)

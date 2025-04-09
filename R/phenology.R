@@ -163,8 +163,6 @@ survey_tables <- function(df){
 	species_list <- species_list %>%
 		left_join(species_errors, 
 			  by = c("Synonym Current" = "Observed.species", "Year" = "Year", "Poles" = "Subplot")) 
-	# by = c("Synonym Current" = "Observed.species", "Poles" = "Subplot")) 
-	# by = c("Synonym Current" = "Observed.species", "Year" = "Year", "Poles" = "Subplot")) 
 
 	# print(species_list[,2])
 	mask = !is.na(species_list$`Corrected.name`) & species_list$`Species.Error.(Y/N)` == "Y"; 
@@ -193,18 +191,6 @@ survey_tables <- function(df){
 	species_list <- species_list %>%
 		filter(`Synonym Current` %in% species_corrected_list)
 
-	# read in the datasheet information
-	datasheet_info <- read.xlsx(datasheet_info, sheet = 1, colNames = TRUE)
-	species_list <- species_list %>% left_join(datasheet_info, by = c("Synonym Current" = "Species")) %>%
-		mutate(`Synonym Current` = if_else(!is.na(W) & !is.na(WG) & (W == "Y") & (WG == "Y"),
-						   paste0(`Synonym Current`, " (W, WG)"),
-						   `Synonym Current`)) %>%
-	mutate(`Synonym Current` = if_else(!is.na(W) & (W == "Y") & (WG != "Y" | is.na(WG)),
-					   paste0(`Synonym Current`, " (W)"),
-					   `Synonym Current`)) %>%
-	mutate(`Synonym Current` = if_else(!is.na(WG) & WG == "Y" & (W != "Y" | is.na(W)),
-					   paste0(`Synonym Current`, " (WG)"),
-					   `Synonym Current`))
 	# select(-W) %>% select(-WG)
 	# print(species_list[,c(1,12:20)])
 
@@ -265,6 +251,18 @@ survey_tables <- function(df){
 		poles_species <- species_list %>%
 			filter(`Poles` == poles[i] | `Poles` == poles[i+1]) %>%
 			distinct(`Synonym Current`);
+	# # read in the datasheet information
+	# datasheet_info <- read.xlsx(datasheet_info, sheet = 1, colNames = TRUE)
+	# species_list <- species_list %>% left_join(datasheet_info, by = c("Synonym Current" = "Species")) %>%
+	# 	mutate(`Synonym Current` = if_else(!is.na(W) & !is.na(WG) & (W == "Y") & (WG == "Y"),
+	# 					   paste0(`Synonym Current`, " (W, WG)"),
+	# 					   `Synonym Current`)) %>%
+	# mutate(`Synonym Current` = if_else(!is.na(W) & (W == "Y") & (WG != "Y" | is.na(WG)),
+	# 				   paste0(`Synonym Current`, " (W)"),
+	# 				   `Synonym Current`)) %>%
+	# mutate(`Synonym Current` = if_else(!is.na(WG) & WG == "Y" & (W != "Y" | is.na(W)),
+	# 				   paste0(`Synonym Current`, " (WG)"),
+	# 				   `Synonym Current`))
 
 		writeData(wb, sheet, x = poles_species$`Synonym Current`, startCol = 1, startRow = 4, colNames = FALSE)
 

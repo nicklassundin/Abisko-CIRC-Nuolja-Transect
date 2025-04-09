@@ -153,26 +153,30 @@ survey_tables <- function(df){
 
 	# Observation Error
 	species_errors <- read.xlsx(species_errors, sheet = 1, colNames = TRUE)
+	species_corrected_list <- species_errors$`Observed.species` %>% unique()
 	# remove columns
 	species_errors <- species_errors[,c(1,2,3,4,5,7,8,9)]
 	# print(species_errors[1:10,])
 	# filter based on species errors 'Species Error (Y/N)' is Y
+
+
 	species_list <- species_list %>%
 		left_join(species_errors, 
-			  by = c("Synonym Current" = "Observed.species", "Poles" = "Subplot")) 
-			# by = c("Synonym Current" = "Observed.species", "Year" = "Year", "Poles" = "Subplot")) 
+			  by = c("Synonym Current" = "Observed.species", "Year" = "Year", "Poles" = "Subplot")) 
+	# by = c("Synonym Current" = "Observed.species", "Poles" = "Subplot")) 
+	# by = c("Synonym Current" = "Observed.species", "Year" = "Year", "Poles" = "Subplot")) 
 
 	# print(species_list[,2])
-	mask = !is.na(species_list[,7]);
+	mask = !is.na(species_list$`Corrected.name`) & species_list$`Species.Error.(Y/N)` == "Y"; 
 	species_list[mask,]$`Synonym Current` = species_list[mask,]$`Corrected.name`
 	species_list <- species_list %>%
-		mutate(`Field Filter` = (!is.na(`Corrected.name`)) | (`Species.Error.(Y/N)` == "N") &
+		mutate(`Field Filter` = 
+		       (!is.na(`Corrected.name`) & (`Species.Error.(Y/N)` == "Y")) | (`Species.Error.(Y/N)` == "N") &
 		       (`single.date.observation.(Y/N)` == "N") &
 		       (`High.confidence.of.correct.identification.on.species.level.(Y/N)` == "Y"))
 
 	species_list <- species_list %>%
 		filter(`Field Filter` == TRUE)
-
 
 	species_list <- species_list[order(species_list$Poles),]
 	# list of poles
@@ -184,127 +188,113 @@ survey_tables <- function(df){
 
 	# print(poles[1:10])
 	# Boolean table for Poles
+	species_list <- species_list[order(species_list$`Synonym Current`),]
+	# Exclude if not in corrected species list
 	species_list <- species_list %>%
-		mutate(is_present = TRUE) %>%
-		distinct(`Synonym Current`, Poles,  .keep_all = TRUE) %>%
-		pivot_wider(
-			    names_from = Poles, 
-			    values_from = is_present, 
-			    values_fill = list(is_present = FALSE)
-			    );
-		# sort by synonym
-		species_list <- species_list[order(species_list$`Synonym Current`),]
+		filter(`Synonym Current` %in% species_corrected_list)
 
-
-		# read in the datasheet information
-		datasheet_info <- read.xlsx(datasheet_info, sheet = 1, colNames = TRUE)
-		# print(datasheet_info[1:10,])	
-		# print(datasheet_info[1:10,])	
-		# print(colnames(species_list)[11:20])
-		species_list <- species_list %>% left_join(datasheet_info, by = c("Synonym Current" = "Species")) %>%
-			mutate(`Synonym Current` = if_else(!is.na(W) & !is.na(WG) & (W == "Y") & (WG == "Y"),
-							   paste0(`Synonym Current`, " (W, WG)"),
-							   `Synonym Current`)) %>%
-		mutate(`Synonym Current` = if_else(!is.na(W) & (W == "Y") & (WG != "Y" | is.na(WG)),
-						   paste0(`Synonym Current`, " (W)"),
+	# read in the datasheet information
+	datasheet_info <- read.xlsx(datasheet_info, sheet = 1, colNames = TRUE)
+	species_list <- species_list %>% left_join(datasheet_info, by = c("Synonym Current" = "Species")) %>%
+		mutate(`Synonym Current` = if_else(!is.na(W) & !is.na(WG) & (W == "Y") & (WG == "Y"),
+						   paste0(`Synonym Current`, " (W, WG)"),
 						   `Synonym Current`)) %>%
-		mutate(`Synonym Current` = if_else(!is.na(WG) & WG == "Y" & (W != "Y" | is.na(W)),
-						   paste0(`Synonym Current`, " (WG)"),
-						   `Synonym Current`))
-		# select(-W) %>% select(-WG)
-		# print(species_list[,c(1,12:20)])
+	mutate(`Synonym Current` = if_else(!is.na(W) & (W == "Y") & (WG != "Y" | is.na(WG)),
+					   paste0(`Synonym Current`, " (W)"),
+					   `Synonym Current`)) %>%
+	mutate(`Synonym Current` = if_else(!is.na(WG) & WG == "Y" & (W != "Y" | is.na(W)),
+					   paste0(`Synonym Current`, " (WG)"),
+					   `Synonym Current`))
+	# select(-W) %>% select(-WG)
+	# print(species_list[,c(1,12:20)])
 
-		# print(colnames(species_list)[11:20])
-		# return(TRUE)
-		wb <- createWorkbook()
-		dir.create("out/Planet Phenology Survey", showWarnings = FALSE, recursive = TRUE)
+	# print(colnames(species_list)[11:20])
+	# return(TRUE)
+	wb <- createWorkbook()
+	dir.create("out/Planet Phenology Survey", showWarnings = FALSE, recursive = TRUE)
 
-		top_header <- matrix(c("Date:", "Surveyors:", ""), nrow = 1)
-		phen_sub_head <- c("Confirmed ID", "Leaf-out", "Flowering", "Fruiting", "Seed Dispersal", "Senescence", "Leaf Fall")
-		phen_header <- matrix(c("Phenology Phases", phen_sub_head, phen_sub_head), nrow = 1)
-		# iterate over the poles by pair neigboors
-		for (i in seq(1, length(poles), 2)){
-			sheet = paste0(substr(poles[i],1,2), "-", substr(poles[i+1],7,8))
-			addWorksheet(wb, sheet);
-			# Create a centering style
-			centerStyle <- createStyle(halign = "center", valign = "center")
-			# Apply centering to the whole used range
-			addStyle(wb, sheet = sheet, style = centerStyle,
-				 rows = 2:3, cols = 2:15, gridExpand = TRUE)
+	top_header <- matrix(c("Date:", "Surveyors:", ""), nrow = 1)
+	phen_sub_head <- c("Confirmed ID", "Leaf-out", "Flowering", "Fruiting", "Seed Dispersal", "Senescence", "Leaf Fall")
+	phen_header <- matrix(c("Phenology Phases", phen_sub_head, phen_sub_head), nrow = 1)
+	# iterate over the poles by pair neigboors
+	for (i in seq(1, length(poles), 2)){
+		sheet = paste0(substr(poles[i],1,2), "-", substr(poles[i+1],7,8))
+		addWorksheet(wb, sheet);
+		# Create a centering style
+		centerStyle <- createStyle(halign = "center", valign = "center")
+		# Apply centering to the whole used range
+		addStyle(wb, sheet = sheet, style = centerStyle,
+			 rows = 2:3, cols = 2:15, gridExpand = TRUE)
 
-			setColWidths(wb, sheet = sheet, cols = 1, widths = 25)
-			writeData(wb, sheet, x = top_header, startCol = 1, startRow = 1, colNames = FALSE)
-			mergeCells(wb, sheet, cols = 2:15, rows = 1)
-			poles_header <- matrix(c("Subplot", poles[i],"","","","","","", poles[i+1]), nrow = 1)
-			writeData(wb, sheet, x = poles_header, startCol = 1, startRow = 2, colNames = FALSE)
-			mergeCells(wb, sheet, cols = 2:8, rows = 2)
-			mergeCells(wb, sheet, cols = 9:15, rows = 2)
-			writeData(wb, sheet, x = phen_header, startCol = 1, startRow = 3, colNames = FALSE)
-			# Create vertical text style (textRotation = 90 for vertical)
-			verticalStyle <- createStyle(textRotation = 90, halign="center", textDecoration = "bold", 
-						     valign = "center", wrapText = TRUE, fontSize = 10)
-			# Apply style to header row (row 2)
-			setRowHeights(wb, sheet = sheet, rows = 3, heights = 75)
-			addStyle(wb, sheet = sheet, style = verticalStyle, 
-				 rows = 3, cols = 2:15, gridExpand = TRUE)
-			# Bold for top rows
-			boldStyle <- createStyle(textDecoration = "bold", halign = "center", valign = "center")
-			addStyle(wb, sheet = sheet, style = boldStyle,
-				 rows = 2, cols = 1:15, gridExpand = TRUE)
-			addStyle(wb, sheet = sheet, style = boldStyle,
-				 rows = 3, cols = 1, gridExpand = TRUE)
-			# Bold for top header
-			addStyle(wb, sheet = sheet, style = boldStyle,
-				 rows = 1, cols = 1:15, gridExpand = TRUE, stack = TRUE)
-			setRowHeights(wb, sheet = sheet, rows = 1, heights = 25)
+		setColWidths(wb, sheet = sheet, cols = 1, widths = 25)
+		writeData(wb, sheet, x = top_header, startCol = 1, startRow = 1, colNames = FALSE)
+		mergeCells(wb, sheet, cols = 2:15, rows = 1)
+		poles_header <- matrix(c("Subplot", poles[i],"","","","","","", poles[i+1]), nrow = 1)
+		writeData(wb, sheet, x = poles_header, startCol = 1, startRow = 2, colNames = FALSE)
+		mergeCells(wb, sheet, cols = 2:8, rows = 2)
+		mergeCells(wb, sheet, cols = 9:15, rows = 2)
+		writeData(wb, sheet, x = phen_header, startCol = 1, startRow = 3, colNames = FALSE)
+		# Create vertical text style (textRotation = 90 for vertical)
+		verticalStyle <- createStyle(textRotation = 90, halign="center", textDecoration = "bold", 
+					     valign = "center", wrapText = TRUE, fontSize = 10)
+		# Apply style to header row (row 2)
+		setRowHeights(wb, sheet = sheet, rows = 3, heights = 75)
+		addStyle(wb, sheet = sheet, style = verticalStyle, 
+			 rows = 3, cols = 2:15, gridExpand = TRUE)
+		# Bold for top rows
+		boldStyle <- createStyle(textDecoration = "bold", halign = "center", valign = "center")
+		addStyle(wb, sheet = sheet, style = boldStyle,
+			 rows = 2, cols = 1:15, gridExpand = TRUE)
+		addStyle(wb, sheet = sheet, style = boldStyle,
+			 rows = 3, cols = 1, gridExpand = TRUE)
+		# Bold for top header
+		addStyle(wb, sheet = sheet, style = boldStyle,
+			 rows = 1, cols = 1:15, gridExpand = TRUE, stack = TRUE)
+		setRowHeights(wb, sheet = sheet, rows = 1, heights = 25)
 
-			# filter if column i or i+1 is TRUE
+		# filter if column i or i+1 is TRUE
 
-			# check so that poles[i] and poles[i+1] exist in species_list
+		# check so that poles[i] and poles[i+1] exist in species_list
 
-			if (!poles[i] %in% colnames(species_list)){
-
-			}
-			if (!poles[i+1] %in% colnames(species_list)){
-				# next
-			}
-			# print(colnames(species_list))
-			# mask
-			mask1 = species_list[,poles[i]] == TRUE;
-			mask2 = species_list[,poles[i+1]] == TRUE;
-			mask = mask1 | mask2;
-			# print(poles[i])
-			poles_species <- species_list[mask,] %>% distinct(`Synonym Current`)
-			poles_species <- poles_species[order(poles_species$`Synonym Current`),]
-			writeData(wb, sheet, x = poles_species$`Synonym Current`, startCol = 1, startRow = 4, colNames = FALSE)
-
-			# print(poles_species)
-			# Create fill style
-			# grey
-			fillStyle <- createStyle(
-						 fgFill = "#D9D9D9",
-			)
-
-			# Get total number of rows (including header)
-			total_rows <- nrow(poles_species) + 4  # +1 for header
-
-			# Apply style in blocks: color 3 rows, skip 3
-			for (start_row in seq(4, total_rows, by = 6)) {
-				rows_to_color <- start_row:min(start_row + 2, total_rows)
-				addStyle(wb, sheet = sheet, style = fillStyle,
-					 rows = rows_to_color, cols = 1:15, gridExpand = TRUE)
-
-			}
-			gridStyle <- createStyle(border = "TopBottomLeftRight", borderStyle = "thin")
-			addStyle(wb, sheet = sheet, style = gridStyle,
-				 rows = 2:100, cols = 1:15, gridExpand = TRUE, stack = TRUE)
-			gridStyleThick <- createStyle(border = "TopBottomLeftRight", borderStyle = "medium")
-			addStyle(wb, sheet = sheet, style = gridStyleThick,
-				 rows = 1:3, cols = 1:15, gridExpand = TRUE, stack = TRUE)
-			addStyle(wb, sheet = sheet, style = gridStyleThick,
-				 rows = 1:100, cols = 1, gridExpand = TRUE, stack = TRUE)
+		if (!poles[i] %in% colnames(species_list)){
 
 		}
-		saveWorkbook(wb, "out/Planet Phenology Survey/test.xlsx", overwrite = TRUE)
+		if (!poles[i+1] %in% colnames(species_list)){
+			# next
+		}
+		poles_species <- species_list %>%
+			filter(`Poles` == poles[i] | `Poles` == poles[i+1]) %>%
+			distinct(`Synonym Current`);
+
+		writeData(wb, sheet, x = poles_species$`Synonym Current`, startCol = 1, startRow = 4, colNames = FALSE)
+
+		# print(poles_species)
+		# Create fill style
+		# grey
+		fillStyle <- createStyle(
+					 fgFill = "#D9D9D9",
+		)
+
+		# Get total number of rows (including header)
+		total_rows <- nrow(poles_species) + 4  # +1 for header
+
+		# Apply style in blocks: color 3 rows, skip 3
+		for (start_row in seq(4, total_rows, by = 6)) {
+			rows_to_color <- start_row:min(start_row + 2, total_rows)
+			addStyle(wb, sheet = sheet, style = fillStyle,
+				 rows = rows_to_color, cols = 1:15, gridExpand = TRUE)
+
+		}
+		gridStyle <- createStyle(border = "TopBottomLeftRight", borderStyle = "thin")
+		addStyle(wb, sheet = sheet, style = gridStyle,
+			 rows = 2:100, cols = 1:15, gridExpand = TRUE, stack = TRUE)
+		gridStyleThick <- createStyle(border = "TopBottomLeftRight", borderStyle = "medium")
+		addStyle(wb, sheet = sheet, style = gridStyleThick,
+			 rows = 1:3, cols = 1:15, gridExpand = TRUE, stack = TRUE)
+		addStyle(wb, sheet = sheet, style = gridStyleThick,
+			 rows = 1:100, cols = 1, gridExpand = TRUE, stack = TRUE)
+
+	}
+	saveWorkbook(wb, "out/Planet Phenology Survey/test.xlsx", overwrite = TRUE)
 }
 

@@ -151,7 +151,6 @@ survey_tables <- function(df){
 		filter(n > 1)
 	
 
-	print(species_list)
 	# Observation Error
 	species_errors <- read.xlsx(species_errors, sheet = 1, colNames = TRUE)
 	# remove columns
@@ -160,9 +159,10 @@ survey_tables <- function(df){
 	# filter based on species errors 'Species Error (Y/N)' is Y
 	species_list <- species_list %>%
 		left_join(species_errors, 
-			  by = c("Synonym Current" = "Observed.species", "Year" = "Year")) 
+			  by = c("Synonym Current" = "Observed.species", "Year" = "Year", "Poles" = "Subplot")) 
 	
-	mask = !is.na(species_list[,6]);
+	# print(species_list[,2])
+	mask = !is.na(species_list[,7]);
 	species_list[mask,]$`Synonym Current` = species_list[mask,]$`Corrected.name`
 	species_list <- species_list %>%
 		mutate(`Field Filter` = (!is.na(`Corrected.name`)) | (`Species.Error.(Y/N)` == "N") &
@@ -172,16 +172,16 @@ survey_tables <- function(df){
 	species_list <- species_list %>%
 		filter(`Field Filter` == TRUE)
 	
-	print(species_list)
-	# filter if present years TODO
-	# species_list <- df %>% group_by(`Synonym Current`, Poles) %>% summarise(n = n(), .groups = "drop") %>%
-	print(species_list)
-
-	
-	return(TRUE)
 
 	species_list <- species_list[order(species_list$Poles),]
-	# print(species_list)
+	# list of poles
+	poles <- species_list %>%
+		distinct(Poles, .keep_all = TRUE) %>%
+		select(Poles);
+	# poles to array
+	poles <- as.character(poles$Poles)
+
+	# Boolean table for Poles
 	species_list <- species_list %>%
 		mutate(is_present = TRUE) %>%
 		distinct(`Synonym Current`,  .keep_all = TRUE) %>%
@@ -194,7 +194,7 @@ survey_tables <- function(df){
 	# sort by synonym
 	species_list <- species_list[order(species_list$`Synonym Current`),]
 
-	
+		
 	# read in the datasheet information
 	datasheet_info <- read.xlsx(datasheet_info, sheet = 1, colNames = TRUE)
 	# print(datasheet_info[1:10,])	
@@ -210,13 +210,47 @@ survey_tables <- function(df){
 					   paste0(`Synonym Current`, " (WG)"),
 					   `Synonym Current`))
 	# select(-W) %>% select(-WG)
-	# print(species_list)
+	# print(species_list[,c(1,12:20)])
+	
+	wb <- createWorkbook()
+	dir.create("out/Planet Phenology Survey", showWarnings = FALSE, recursive = TRUE)
+	
+	top_header <- matrix(c("Date:", "Surveyors:", ""), nrow = 1)
+	phen_sub_head <- c("Confirmed ID", "Leaf-out", "Flowering", "Fruiting", "Seed Dispersal", "Senescence", "Leaf Fall")
+	phen_header <- matrix(c("Phenology Phases", phen_sub_head, phen_sub_head), nrow = 1)
+	# iterate over the poles by pair neigboors
+	for (i in seq(1, length(poles), 2)){
+		sheet = paste0(substr(poles[i],1,2), "-", substr(poles[i+1],7,8))
+		addWorksheet(wb, sheet);
+		# Create a centering style
+		centerStyle <- createStyle(halign = "center", valign = "center")
+		# Apply centering to the whole used range
+		addStyle(wb, sheet = sheet, style = centerStyle,
+		         rows = 1:100, cols = 1:100, gridExpand = TRUE)
 
+		setColWidths(wb, sheet = sheet, cols = 1, widths = 25)
+		writeData(wb, sheet, x = top_header, startCol = 1, startRow = 1, colNames = FALSE)
+		mergeCells(wb, sheet, cols = 2:15, rows = 1)
+		poles_header <- matrix(c("Subplot", poles[i],"","","","","","", poles[i+1]), nrow = 1)
+		writeData(wb, sheet, x = poles_header, startCol = 1, startRow = 2, colNames = FALSE)
+		mergeCells(wb, sheet, cols = 2:8, rows = 2)
+		mergeCells(wb, sheet, cols = 9:15, rows = 2)
+		writeData(wb, sheet, x = phen_header, startCol = 1, startRow = 3, colNames = FALSE)
+		# Create vertical text style (textRotation = 90 for vertical)
+		verticalStyle <- createStyle(textRotation = 90, halign="center", textDecoration = "bold", 
+		                            valign = "center", wrapText = TRUE, fontSize = 10)
+		# Apply style to header row (row 2)
+		setRowHeights(wb, sheet = sheet, rows = 3, heights = 75)
+		addStyle(wb, sheet = sheet, style = verticalStyle, 
+		         rows = 3, cols = 2:15, gridExpand = TRUE)
+		# Bold for top rows
+		boldStyle <- createStyle(textDecoration = "bold", halign = "center", valign = "center")
+		addStyle(wb, sheet = sheet, style = boldStyle,
+		         rows = 1:2, cols = 1:15, gridExpand = TRUE)
+		addStyle(wb, sheet = sheet, style = boldStyle,
+		         rows = 3, cols = 1, gridExpand = TRUE)
 
-	# list <- list %>%
-	# 	filter(str_match(Poles, "^(\\d{2}) to (\\d{2})")[,2] %>%
-	# 	       as.integer() + 1 ==
-	# 	       str_match(Poles, "^(\\d{2}) to (\\d{2})")[,3] %>%
-	# 	       as.integer())
+	}
+	saveWorkbook(wb, "out/Planet Phenology Survey/test.xlsx", overwrite = TRUE)
 }
 

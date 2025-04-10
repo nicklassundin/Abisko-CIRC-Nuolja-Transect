@@ -192,9 +192,7 @@ survey_data_sheet_get <- function(species_list, poles, i){
 #' @param df The data frame to create survey tables for
 #' @return A data frame containing the survey tables
 #' @export
-
-
-survey_tables <- function(df, file_name = "out/Planet Phenology Survey/Nuolja Transect Phenology Datasheets.xlsx"){
+build_species_list <- function(df){
 
 	species_counts <- df %>%
 		distinct(`Synonym Current`, Poles, Year) %>%
@@ -254,6 +252,10 @@ survey_tables <- function(df, file_name = "out/Planet Phenology Survey/Nuolja Tr
 
 	# print(colnames(species_list)[11:20])
 	# return(TRUE)
+	return(list(species_list = species_list, poles = poles))
+}
+
+build_data_sheets <- function(species_list, poles, file_name = "out/Planet Phenology Survey/Nuolja Transect Phenology Datasheets.xlsx"){
 	wb <- createWorkbook()
 	dir.create("out/Planet Phenology Survey", showWarnings = FALSE, recursive = TRUE)
 

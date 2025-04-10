@@ -122,9 +122,12 @@ for (i in 1:length(datatypes)){
 		df_may <- df %>%
 			  filter(month(Date) == 5)
 		if(survey){
-			survey_tables(df, file_name = "out/Planet Phenology Survey/Nuolja Transect Phenology Datasheets.xlsx")
+			df_full <- build_species_list(df)
+			build_data_sheets(df_full$species_list, df_full$poles, file_name = "out/Planet Phenology Survey/Nuolja Transect Phenology Datasheets.xlsx")
+
 			# may call
-			survey_tables(df_may, file_name = "out/Planet Phenology Survey/Nuolja Transect Phenology Datasheets SPRING.xlsx")
+			df_spring <- build_species_list(df_may)
+			build_data_sheets(df_spring$species_list, df_spring$poles, file_name = "out/Planet Phenology Survey/Nuolja Transect Phenology Datasheets SPRING.xlsx")
 
 		}else{
 			process_phenology_data(df, paths_phenology, dirs_phenology)

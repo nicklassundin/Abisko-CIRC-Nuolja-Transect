@@ -214,7 +214,8 @@ build_species_list <- function(df){
 	# print(species_errors[1:10,])
 	# filter based on species errors 'Species Error (Y/N)' is Y
 
-
+	print(colnames(species_errors))
+	return(TRUE)
 	species_list <- species_list %>%
 		left_join(species_errors, 
 			  by = c("Synonym Current" = "Observed.species", "Year" = "Year", "Poles" = "Subplot")) 

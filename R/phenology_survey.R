@@ -271,8 +271,11 @@ build_spring_data_sheets <- function(species_list, poles, file_name = "out/Plane
 
 		}
 		gridStyleThick <- createStyle(border = "TopBottomLeftRight", borderStyle = "medium")
-	
-		horizontalStyle <- createStyle(border = "Bottom", borderStyle = "thick", valign = "center")
+		gridStyle <- createStyle(border = "TopBottomLeftRight", borderStyle = "thin")	
+		addStyle(wb, sheet = sheet, style = gridStyle,
+			 rows = 3:100, cols = 1:15, gridExpand = TRUE, stack = TRUE)
+
+		horizontalStyle <- createStyle(border = "Bottom", borderStyle = "thick")
 		addStyle(wb, sheet = sheet, style = horizontalStyle,
 			 rows = 1:3, cols = 1:15, gridExpand = TRUE, stack = TRUE)
 		for (col in seq(2, 16, by = 2)) {

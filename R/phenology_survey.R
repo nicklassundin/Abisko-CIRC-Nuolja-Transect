@@ -107,6 +107,7 @@ build_species_list <- function(df){
 
 	# print(colnames(species_list)[11:20])
 	# return(TRUE)
+
 	return(list(species_list = species_list, poles = poles))
 }
 
@@ -180,13 +181,18 @@ build_data_sheets <- function(species_list, poles, file_name = "out/Planet Pheno
 			 rows = 1:100, cols = 1, gridExpand = TRUE, stack = TRUE)
 
 	}
+	# add cheet with whole species list
+	addWorksheet(wb, "Validation/Debug")
+	writeData(wb, "Validation/Debug", x = species_list, startCol = 1, startRow = 1, colNames = TRUE)
+
 	saveWorkbook(wb, file_name, overwrite = TRUE)
 }
 
 spring_survey_names <- function(species_list, poles, i){
-
+	
+	# filter on poles[i] to poles[i+13]
 	poles_species <- species_list %>%
-		filter(`Poles` == poles[i] | `Poles` == poles[i+1]) %>%
+		filter(`Poles` == poles[i] | `Poles` == poles[i+1] | `Poles` == poles[i+2] | `Poles` == poles[i+3] | `Poles` == poles[i+4] | `Poles` == poles[i+5] | `Poles` == poles[i+6] | `Poles` == poles[i+7] | `Poles` == poles[i+8] | `Poles` == poles[i+9] | `Poles` == poles[i+10] | `Poles` == poles[i+11] | `Poles` == poles[i+12] | `Poles` == poles[i+13]) %>%
 		distinct(`Synonym Current`, Poles)
 	poles_species <- poles_species %>%
 		group_by(`Synonym Current`) %>%

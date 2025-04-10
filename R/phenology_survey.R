@@ -239,7 +239,7 @@ build_spring_data_sheets <- function(species_list, poles, file_name = "out/Plane
 		mergeCells(wb, sheet, cols = 2:15, rows = 1)
 		# poles_header <- matrix(c("Subplot", poles[i],"","","","","","", poles[i+1]), nrow = 1)
 		poles_header <- matrix(c("Subplot", poles[i], poles[i+1], poles[i+2], poles[i+3], poles[i+4], poles[i+5], poles[i+6], 
-						poles[i+7], poles[i+8], poles[i+9], poles[i+10], poles[i+11], poles[i+12]), nrow = 1)
+						poles[i+7], poles[i+8], poles[i+9], poles[i+10], poles[i+11], poles[i+12], poles[i+13]), nrow = 1)
 		# replace all ' to ' wiht '-' in poles_header
 		poles_header <- gsub(" to ", " - ", poles_header)
 		writeData(wb, sheet, x = poles_header, startCol = 1, startRow = 2, colNames = FALSE)
@@ -277,9 +277,9 @@ build_spring_data_sheets <- function(species_list, poles, file_name = "out/Plane
 		addStyle(wb, sheet = sheet, style = gridStyleThick,
 			 rows = 1:2, cols = 1:15, gridExpand = TRUE, stack = TRUE)
 		addStyle(wb, sheet = sheet, style = gridStyleThick,
-			 rows = 1:100, cols = 1, gridExpand = TRUE, stack = TRUE)
+			 rows = 1:3, cols = 1, gridExpand = TRUE, stack = TRUE)
 		# Add bold vertical lines every 2 columns (e.g., after column 1, 3, 5, etc.)
-		for (col in seq(2, 14, by = 2)) {
+		for (col in seq(2, 16, by = 2)) {
 			  bold_line <- createStyle(border = "left", borderStyle = "thick")
 		  	addStyle(wb, sheet, style = bold_line, rows = 1:100, cols = col, gridExpand = TRUE, stack = TRUE)
 		  

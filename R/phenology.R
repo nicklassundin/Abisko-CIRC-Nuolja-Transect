@@ -210,12 +210,10 @@ build_species_list <- function(df){
 	species_errors <- read.xlsx(species_errors, sheet = 1, colNames = TRUE)
 	species_corrected_list <- species_errors$`Observed.species` %>% unique()
 	# remove columns
-	species_errors <- species_errors[,c(1,2,3,4,5,7,8,9)]
+	species_errors <- species_errors[,c(1,2,3,4,5,7,8,9,10)]
 	# print(species_errors[1:10,])
 	# filter based on species errors 'Species Error (Y/N)' is Y
 
-	print(colnames(species_errors))
-	return(TRUE)
 	species_list <- species_list %>%
 		left_join(species_errors, 
 			  by = c("Synonym Current" = "Observed.species", "Year" = "Year", "Poles" = "Subplot")) 
@@ -228,7 +226,8 @@ build_species_list <- function(df){
 		mutate(`Field Filter` = 
 		       (!is.na(`Corrected.name`) & (`Species.Error.(Y/N)` == "Y")) | (`Species.Error.(Y/N)` == "N") &
 		       (`single.date.observation.(Y/N)` == "N") &
-		       (`High.confidence.of.correct.identification.on.species.level.(Y/N)` == "Y"))
+		       (`High.confidence.of.correct.identification.on.species.level.(Y/N)` == "Y") &
+			(`primtive.plant.(Y/N)` == 'N'))
 
 	species_list <- species_list %>%
 		filter(`Field Filter` == TRUE)

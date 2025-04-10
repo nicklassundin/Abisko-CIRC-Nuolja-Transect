@@ -202,14 +202,10 @@ spring_survey_names <- function(species_list, poles, i){
 			  .groups = "drop"
 			  ) %>%
 		mutate(tag = case_when(
-				       num_poles == 2 & (W == TRUE) & (WG == TRUE) ~ "(W, WG)",
-				       num_poles == 2 & (W == TRUE) & (WG == FALSE) ~ "(W)",
-				       num_poles == 2 & (W == FALSE) & (WG == TRUE) ~ "(WG)",
-				       num_poles == 2 ~ "",
-				       W & WG ~ paste0("(", PoleNums[1], ", W, WG)"),
-				       W ~ paste0("(", PoleNums[1], ", W)"),
-				       WG ~ paste0("(", PoleNums[1], ", WG)"),
-				       num_poles == 1 ~ paste0("(", PoleNums[1], ")")
+				       W & WG ~ "(W, WG)",
+				       W ~ "(W)",
+				       WG ~ "(WG)",
+				       TRUE ~ "",
 				       ),`Synonym Current` = if_else(tag != "",
 				       paste0(`Synonym Current`, " ", tag),
 				       `Synonym Current`));

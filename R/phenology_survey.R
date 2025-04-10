@@ -275,11 +275,11 @@ build_spring_data_sheets <- function(species_list, poles, file_name = "out/Plane
 			 rows = 3:100, cols = 1:15, gridExpand = TRUE, stack = TRUE)
 		gridStyleThick <- createStyle(border = "TopBottomLeftRight", borderStyle = "medium")
 		addStyle(wb, sheet = sheet, style = gridStyleThick,
-			 rows = 1:3, cols = 1:15, gridExpand = TRUE, stack = TRUE)
+			 rows = 1:2, cols = 1:15, gridExpand = TRUE, stack = TRUE)
 		addStyle(wb, sheet = sheet, style = gridStyleThick,
 			 rows = 1:100, cols = 1, gridExpand = TRUE, stack = TRUE)
 		# Add bold vertical lines every 2 columns (e.g., after column 1, 3, 5, etc.)
-		for (col in seq(2, ncol(16), by = 2)) {
+		for (col in seq(2, 14, by = 2)) {
 			  bold_line <- createStyle(border = "left", borderStyle = "thick")
 		  	addStyle(wb, sheet, style = bold_line, rows = 1:100, cols = col, gridExpand = TRUE, stack = TRUE)
 		  

@@ -223,12 +223,10 @@ build_spring_data_sheets <- function(species_list, poles, file_name = "out/Plane
 	dir.create("out/Planet Phenology Survey", showWarnings = FALSE, recursive = TRUE)
 
 	top_header <- matrix(c("Date:", "Surveyors:", ""), nrow = 1)
-	phen_sub_head <- c("Confirmed ID", "Leaf-out", "Flowering", "Fruiting", "Seed Dispersal", "Senescence", "Leaf Fall")
-	phen_header <- matrix(c("Phenology Phases", phen_sub_head, phen_sub_head), nrow = 1)
 	# iterate over the poles by pair neigboors
-	for (i in seq(1, length(poles), 14)){
+	for (i in seq(1, length(poles), 15)){
 		# sheet = paste0(substr(poles[i],1,2), "-", substr(poles[i+1],7,8))
-		sheet = paste0(substr(poles[i],1,2), "-", substr(poles[i+1],7,8))
+		sheet = paste0(substr(poles[i],1,2), "-", substr(poles[i+12],7,8))
 		addWorksheet(wb, sheet);
 		# Create a centering style
 		centerStyle <- createStyle(halign = "center", valign = "center")
@@ -239,29 +237,22 @@ build_spring_data_sheets <- function(species_list, poles, file_name = "out/Plane
 		setColWidths(wb, sheet = sheet, cols = 1, widths = 35)
 		writeData(wb, sheet, x = top_header, startCol = 1, startRow = 1, colNames = FALSE)
 		mergeCells(wb, sheet, cols = 2:15, rows = 1)
-		poles_header <- matrix(c("Subplot", poles[i],"","","","","","", poles[i+1]), nrow = 1)
+		# poles_header <- matrix(c("Subplot", poles[i],"","","","","","", poles[i+1]), nrow = 1)
+		poles_header <- matrix(c("Subplot", poles[i], poles[i+1], poles[i+2], poles[i+3], poles[i+4], poles[i+5], poles[i+6], 
+						poles[i+7], poles[i+8], poles[i+9], poles[i+10], poles[i+11], poles[i+12]), nrow = 1)
+		# replace all ' to ' wiht '-' in poles_header
+		poles_header <- gsub(" to ", " - ", poles_header)
 		writeData(wb, sheet, x = poles_header, startCol = 1, startRow = 2, colNames = FALSE)
-		mergeCells(wb, sheet, cols = 2:8, rows = 2)
-		mergeCells(wb, sheet, cols = 9:15, rows = 2)
-		writeData(wb, sheet, x = phen_header, startCol = 1, startRow = 3, colNames = FALSE)
-		# Create vertical text style (textRotation = 90 for vertical)
-		verticalStyle <- createStyle(textRotation = 90, halign="center", textDecoration = "bold", 
-					     valign = "center", wrapText = TRUE, fontSize = 10)
-		# Apply style to header row (row 2)
-		setRowHeights(wb, sheet = sheet, rows = 3, heights = 75)
-		addStyle(wb, sheet = sheet, style = verticalStyle, 
-			 rows = 3, cols = 2:15, gridExpand = TRUE)
 		# Bold for top rows
 		boldStyle <- createStyle(textDecoration = "bold", valign = "center")
-		addStyle(wb, sheet = sheet, style = boldStyle,
-			 rows = 2, cols = 1:15, gridExpand = TRUE, stack = TRUE)
 		addStyle(wb, sheet = sheet, style = boldStyle,
 			 rows = 3, cols = 1, gridExpand = TRUE, stack = TRUE)
 		# Bold for top header
 		addStyle(wb, sheet = sheet, style = boldStyle,
-			 rows = 1, cols = 1:15, gridExpand = TRUE, stack = TRUE)
+			 rows = 1:2, cols = 1:15, gridExpand = TRUE, stack = TRUE)
 		setRowHeights(wb, sheet = sheet, rows = 1, heights = 25)
 		poles_species <- spring_survey_names(species_list, poles, i)
+		writeData(wb, sheet, x = c('Snow'), startCol = 1, startRow = 3, colNames = FALSE)
 		writeData(wb, sheet, x = poles_species$`Synonym Current`, startCol = 1, startRow = 4, colNames = FALSE)
 
 		# Create fill style
@@ -281,12 +272,18 @@ build_spring_data_sheets <- function(species_list, poles, file_name = "out/Plane
 		}
 		gridStyle <- createStyle(border = "TopBottomLeftRight", borderStyle = "thin")
 		addStyle(wb, sheet = sheet, style = gridStyle,
-			 rows = 2:100, cols = 1:15, gridExpand = TRUE, stack = TRUE)
+			 rows = 3:100, cols = 1:15, gridExpand = TRUE, stack = TRUE)
 		gridStyleThick <- createStyle(border = "TopBottomLeftRight", borderStyle = "medium")
 		addStyle(wb, sheet = sheet, style = gridStyleThick,
 			 rows = 1:3, cols = 1:15, gridExpand = TRUE, stack = TRUE)
 		addStyle(wb, sheet = sheet, style = gridStyleThick,
 			 rows = 1:100, cols = 1, gridExpand = TRUE, stack = TRUE)
+		# Add bold vertical lines every 2 columns (e.g., after column 1, 3, 5, etc.)
+		for (col in seq(2, ncol(16), by = 2)) {
+			  bold_line <- createStyle(border = "left", borderStyle = "thick")
+		  	addStyle(wb, sheet, style = bold_line, rows = 1:100, cols = col, gridExpand = TRUE, stack = TRUE)
+		  
+		}
 
 	}
 	saveWorkbook(wb, file_name, overwrite = TRUE)

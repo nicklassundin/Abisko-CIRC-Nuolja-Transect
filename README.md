@@ -25,6 +25,7 @@ project_directory/
 | │   ├── helper.R
 | │   ├── patterns.R
 | │   ├── phenology.R
+| │   ├── phenology_survey.R
 | │   ├── repack.R
 | │   ├── snow.R
 | │   └── validation

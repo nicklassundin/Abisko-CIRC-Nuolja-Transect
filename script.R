@@ -11,6 +11,7 @@ source("R/helper.R");
 source("R/snow.R");
 source("R/repack.R");
 source("R/phenology.R");
+source("R/phenology_survey.R");
 # source("R/validation/phenology.R");
 source("R/validation/snow.R");
 
@@ -127,7 +128,7 @@ for (i in 1:length(datatypes)){
 
 			# may call
 			df_spring <- build_species_list(df_may)
-			build_data_sheets(df_spring$species_list, df_spring$poles, file_name = "out/Planet Phenology Survey/Nuolja Transect Phenology Datasheets SPRING.xlsx")
+			build_spring_data_sheets(df_spring$species_list, df_spring$poles, file_name = "out/Planet Phenology Survey/Nuolja Transect Phenology Datasheets SPRING.xlsx")
 
 		}else{
 			process_phenology_data(df, paths_phenology, dirs_phenology)

@@ -75,18 +75,22 @@ build_species_list <- function(df){
 	# by = c("Synonym Current" = "Observed.species", "Year" = "Year", "Poles" = "Subplot")) 
 
 	# print(species_list[,2])
+
 	mask = !is.na(species_list$`Corrected.name`) & species_list$`Species.Error.(Y/N)` == "Y"; 
 	species_list[mask,]$`Synonym Current` = species_list[mask,]$`Corrected.name`
+
 	species_list <- species_list %>%
 		mutate(`Field Filter` = 
-		       (!is.na(`Corrected.name`) & (`Species.Error.(Y/N)` == "Y")) | (`Species.Error.(Y/N)` == "N") &
-		       (`single.date.observation.(Y/N)` == "N") &
+			((!is.na(`Corrected.name`) & (`Species.Error.(Y/N)` == "Y")) | (`Species.Error.(Y/N)` == "N")) &
+		       # (`single.date.observation.(Y/N)` == "N") &
+		       (`Low.observation.number.-.on.3.or.less.days.observed` == "N") &
 		       (`High.confidence.of.correct.identification.on.species.level.(Y/N)` == "Y") &
 			(`primtive.plant.(Y/N)` == 'N'))
 
 	species_list <- species_list %>%
 		filter(`Field Filter` == TRUE)
-
+	
+	
 	species_list <- species_list[order(species_list$Poles),]
 	# list of poles
 	poles <- species_list %>%
@@ -118,6 +122,9 @@ build_data_sheets <- function(species_list, poles, file_name = "out/Planet Pheno
 	top_header <- matrix(c("Date:", "Surveyors:", ""), nrow = 1)
 	phen_sub_head <- c("Confirmed ID", "Leaf-out", "Flowering", "Fruiting", "Seed Dispersal", "Senescence", "Leaf Fall")
 	phen_header <- matrix(c("Phenology Phases", phen_sub_head, phen_sub_head), nrow = 1)
+	# add sheet with whole species list
+	addWorksheet(wb, "Validation/Debug")
+	writeData(wb, "Validation/Debug", x = species_list, startCol = 1, startRow = 1, colNames = TRUE)
 	# iterate over the poles by pair neigboors
 	for (i in seq(1, length(poles), 2)){
 		sheet = paste0(substr(poles[i],1,2), "-", substr(poles[i+1],7,8))
@@ -181,10 +188,6 @@ build_data_sheets <- function(species_list, poles, file_name = "out/Planet Pheno
 			 rows = 1:100, cols = 1, gridExpand = TRUE, stack = TRUE)
 
 	}
-	# add cheet with whole species list
-	addWorksheet(wb, "Validation/Debug")
-	writeData(wb, "Validation/Debug", x = species_list, startCol = 1, startRow = 1, colNames = TRUE)
-
 	saveWorkbook(wb, file_name, overwrite = TRUE)
 }
 

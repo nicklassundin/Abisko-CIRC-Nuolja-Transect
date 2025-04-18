@@ -141,10 +141,10 @@ STYLES <- list(
 #' @param sheet The sheet to add the style to
 #' @param style The style to add
 #' @param rows The rows to add the style to
-addStyleInBlocks <- function(wb, sheet, style, start_row, total_rows, n = 3){
+addStyleInBlocks <- function(wb, sheet, style, start_row, total_rows, n = 3, skip = 0){
 		# Apply style in blocks: color 3 rows, skip 3
 		for (start_row in seq(4, total_rows, by = n*2)) {
-			rows_to_color <- start_row:min(start_row + 2, total_rows)
+			rows_to_color <- start_row:min(start_row + skip, total_rows)
 			addStyle(wb, sheet = sheet, style = style,
 				 rows = rows_to_color, cols = 1:15, gridExpand = TRUE)
 
@@ -208,13 +208,7 @@ build_data_sheets <- function(species_list, poles, file_name = "out/Planet Pheno
 		total_rows <- 100+3 # +1 for header
 
 		# Apply style in blocks: color 3 rows, skip 3
-		addStyleInBlocks(wb, sheet, fillStyle, 4, total_rows, n = 3)
-		# for (start_row in seq(4, total_rows, by = 6)) {
-		# 	rows_to_color <- start_row:min(start_row + 2, total_rows)
-		# 	addStyle(wb, sheet = sheet, style = fillStyle,
-		# 		 rows = rows_to_color, cols = 1:15, gridExpand = TRUE)
-
-		# }
+		addStyleInBlocks(wb, sheet, fillStyle, 4, total_rows, n = 3, 2)
 		gridStyle <- createStyle(border = "TopBottomLeftRight", borderStyle = "thin")
 		addStyle(wb, sheet = sheet, style = gridStyle,
 			 rows = 2:100, cols = 1:15, gridExpand = TRUE, stack = TRUE)
@@ -264,7 +258,6 @@ build_spring_data_sheets <- function(species_list, poles, file_name = "out/Plane
 	wb <- createWorkbook()
 	dir.create("out/Planet Phenology Survey", showWarnings = FALSE, recursive = TRUE)
 	
-	print(species_list)
 	top_header <- matrix(c("Date:", "Surveyors:", ""), nrow = 1)
 	# iterate over the poles by pair neigboors
 	for (i in seq(1, length(poles), 15)){
@@ -307,12 +300,7 @@ build_spring_data_sheets <- function(species_list, poles, file_name = "out/Plane
 		total_rows <- 100+3 # +1 for header
 
 		# Apply style in blocks: color 3 rows, skip 3
-		for (start_row in seq(4, total_rows, by = 6)) {
-			rows_to_color <- start_row:min(start_row + 2, total_rows)
-			addStyle(wb, sheet = sheet, style = fillStyle,
-				 rows = rows_to_color, cols = 1:15, gridExpand = TRUE)
-
-		}
+		addStyleInBlocks(wb, sheet, fillStyle, 4, total_rows, n = 3, skip = 2)
 		gridStyleThick <- createStyle(border = "TopBottomLeftRight", borderStyle = "medium")
 		gridStyle <- createStyle(border = "TopBottomLeftRight", borderStyle = "thin")	
 		addStyle(wb, sheet = sheet, style = gridStyle,
@@ -352,6 +340,7 @@ build_data_entry_segments <- function(species_list, poles, file_name){
 		setColWidths(wb, sheet = sheet, cols = 3:(3+4*24), widths = 35)
 		setColWidths(wb, sheet = sheet, cols = 2, widths = 20)
 		writeData(wb, sheet, x = top_header, startCol = 1, startRow = 1, colNames = FALSE)
+		addStyleInBlocks(wb, sheet, centerStyle, 3, 100+3, n = 1, skip = 2)
 		## Repeate poles_in_header 24 times
 		poles_in_header <- rep(c(poles[i], poles[i+1], poles[i+2], poles[i+3]), times = 24)
 		poles_header <- matrix(c("Subplot","Confirmed ID", poles_in_header), nrow = 1);

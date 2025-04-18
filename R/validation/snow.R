@@ -19,9 +19,6 @@ create_file_structure <- function(log_file) {
 	# print files in log directory
 }
 
-# print(LENIENT_PATTERN)
-# print(OLD_LENIENT_PATTERN)
-
 #' Validate a Single Line Against a Specific Format
 #'
 #' This function checks whether a given line matches a specified format pattern. 

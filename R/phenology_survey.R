@@ -41,7 +41,6 @@ survey_data_sheet_get <- function(species_list, poles, i){
 			distinct(`Synonym Current`);
 	return(poles_species)
 }
-
 #' @title survey_tables
 #' @description This function creates survey tables for the given data frame
 #' @param df The data frame to create survey tables for
@@ -115,6 +114,43 @@ build_species_list <- function(df){
 	return(list(species_list = species_list, poles = poles))
 }
 
+# Styles
+STYLES <- list(
+	grid = list(
+		thick = list(
+			right = createStyle(border = "right", borderStyle = "thick"),
+			left = createStyle(border = "left", borderStyle = "thick"),
+			top = createStyle(border = "top", borderStyle = "thick"),
+			bottom = createStyle(border = "bottom", borderStyle = "thick"),
+			all = createStyle(border = "TopBottomLeftRight", borderStyle = "thick")
+		),
+		medium = list(
+			right = createStyle(border = "right", borderStyle = "medium"),
+			left = createStyle(border = "left", borderStyle = "medium"),
+			top = createStyle(border = "top", borderStyle = "medium"),
+			bottom = createStyle(border = "bottom", borderStyle = "medium"),
+			all = createStyle(border = "TopBottomLeftRight", borderStyle = "medium")
+		)
+
+	)
+)
+#addStyle in n rows skip n
+#' @title addStyleInBlocks
+#' @description This function adds a style to a workbook in blocks of n rows, skipping m rows
+#' @param wb The workbook to add the style to
+#' @param sheet The sheet to add the style to
+#' @param style The style to add
+#' @param rows The rows to add the style to
+addStyleInBlocks <- function(wb, sheet, style, start_row, total_rows, n = 3){
+		# Apply style in blocks: color 3 rows, skip 3
+		for (start_row in seq(4, total_rows, by = n*2)) {
+			rows_to_color <- start_row:min(start_row + 2, total_rows)
+			addStyle(wb, sheet = sheet, style = style,
+				 rows = rows_to_color, cols = 1:15, gridExpand = TRUE)
+
+		}
+}
+
 build_data_sheets <- function(species_list, poles, file_name = "out/Planet Phenology Survey/Nuolja Transect Phenology Datasheets.xlsx"){
 	wb <- createWorkbook()
 	dir.create("out/Planet Phenology Survey", showWarnings = FALSE, recursive = TRUE)
@@ -172,12 +208,13 @@ build_data_sheets <- function(species_list, poles, file_name = "out/Planet Pheno
 		total_rows <- 100+3 # +1 for header
 
 		# Apply style in blocks: color 3 rows, skip 3
-		for (start_row in seq(4, total_rows, by = 6)) {
-			rows_to_color <- start_row:min(start_row + 2, total_rows)
-			addStyle(wb, sheet = sheet, style = fillStyle,
-				 rows = rows_to_color, cols = 1:15, gridExpand = TRUE)
+		addStyleInBlocks(wb, sheet, fillStyle, 4, total_rows, n = 3)
+		# for (start_row in seq(4, total_rows, by = 6)) {
+		# 	rows_to_color <- start_row:min(start_row + 2, total_rows)
+		# 	addStyle(wb, sheet = sheet, style = fillStyle,
+		# 		 rows = rows_to_color, cols = 1:15, gridExpand = TRUE)
 
-		}
+		# }
 		gridStyle <- createStyle(border = "TopBottomLeftRight", borderStyle = "thin")
 		addStyle(wb, sheet = sheet, style = gridStyle,
 			 rows = 2:100, cols = 1:15, gridExpand = TRUE, stack = TRUE)
@@ -226,7 +263,8 @@ spring_survey_names <- function(species_list, poles, i){
 build_spring_data_sheets <- function(species_list, poles, file_name = "out/Planet Phenology Survey/Nuolja Transect Phenology Datasheets.xlsx"){
 	wb <- createWorkbook()
 	dir.create("out/Planet Phenology Survey", showWarnings = FALSE, recursive = TRUE)
-
+	
+	print(species_list)
 	top_header <- matrix(c("Date:", "Surveyors:", ""), nrow = 1)
 	# iterate over the poles by pair neigboors
 	for (i in seq(1, length(poles), 15)){
@@ -293,4 +331,51 @@ build_spring_data_sheets <- function(species_list, poles, file_name = "out/Plane
 	saveWorkbook(wb, file_name, overwrite = TRUE)
 }
 
+
+build_data_entry_segments <- function(species_list, poles, file_name){
+	wb <- createWorkbook()
+	dir.create("out/Planet Phenology Survey", showWarnings = FALSE, recursive = TRUE)
+	
+	top_header <- matrix(c("Date:"), nrow = 1)
+	# iterate over the poles by pair neigboors
+	for (i in seq(1, length(poles), 4)){
+		# sheet = paste0(substr(poles[i],1,2), "-", substr(poles[i+1],7,8))
+		sheet = paste0(substr(poles[i],1,2), "-", substr(poles[i+4],7,8))
+		addWorksheet(wb, sheet);
+		# Create a centering style
+		centerStyle <- createStyle(halign = "center", valign = "center")
+		# Apply centering to the whole used range
+		addStyle(wb, sheet = sheet, style = centerStyle,
+			 rows = 2:3, cols = 2:15, gridExpand = TRUE)
+
+		setColWidths(wb, sheet = sheet, cols = 1, widths = 35)
+		setColWidths(wb, sheet = sheet, cols = 3:(3+4*24), widths = 35)
+		setColWidths(wb, sheet = sheet, cols = 2, widths = 20)
+		writeData(wb, sheet, x = top_header, startCol = 1, startRow = 1, colNames = FALSE)
+		## Repeate poles_in_header 24 times
+		poles_in_header <- rep(c(poles[i], poles[i+1], poles[i+2], poles[i+3]), times = 24)
+		poles_header <- matrix(c("Subplot","Confirmed ID", poles_in_header), nrow = 1);
+		writeData(wb, sheet, x = poles_header, startCol = 1, startRow = 2, colNames = FALSE)
+		boldStyle <- createStyle(textDecoration = "bold", valign = "center")
+		addStyle(wb, sheet = sheet, style = boldStyle,
+			 rows = 1:3, cols = 1:(3+24*4), gridExpand = TRUE)
+		addStyle(wb, sheet = sheet, style = boldStyle,
+			 rows = 1:2, cols = 1:15, gridExpand = TRUE)
+		setRowHeights(wb, sheet = sheet, rows = 1:2, heights = 25)
+
+		addStyle(wb, sheet = sheet, style = centerStyle,
+			 rows = 2, cols = 2:(2+4*24), gridExpand = TRUE, stack = TRUE)
+		
+		poles_species <- spring_survey_names(species_list, poles, i)
+
+		# addStyle(wb, sheet = sheet, style = STYLES$grid$medium$all,
+			 # rows = 1:100, cols = 1, gridExpand = TRUE, stack = TRUE) 
+		
+		writeData(wb, sheet, x = c("Snow (complete S use 'S')"), startCol = 1, startRow = 3, colNames = FALSE)
+		writeData(wb, sheet, x = poles_species$`Synonym Current`, startCol = 1, startRow = 4, colNames = FALSE)
+
+	}
+	
+	saveWorkbook(wb, file_name, overwrite = TRUE)
+}
 

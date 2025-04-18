@@ -146,7 +146,7 @@ addStyleInBlocks <- function(wb, sheet, style, start_row, total_rows, n = 3, ski
 		for (start_row in seq(4, total_rows, by = n*2)) {
 			rows_to_color <- start_row:min(start_row + skip, total_rows)
 			addStyle(wb, sheet = sheet, style = style,
-				 rows = rows_to_color, cols = 1:15, gridExpand = TRUE)
+				 rows = rows_to_color, cols = 1:15, gridExpand = TRUE, stack = TRUE)
 
 		}
 }
@@ -340,7 +340,7 @@ build_data_entry_segments <- function(species_list, poles, file_name){
 		setColWidths(wb, sheet = sheet, cols = 3:(3+4*24), widths = 35)
 		setColWidths(wb, sheet = sheet, cols = 2, widths = 20)
 		writeData(wb, sheet, x = top_header, startCol = 1, startRow = 1, colNames = FALSE)
-		addStyleInBlocks(wb, sheet, centerStyle, 3, 100+3, n = 1, skip = 2)
+		addStyleInBlocks(wb, sheet, fillStyle, 4, 100+3, n = 3, skip = 2)
 		## Repeate poles_in_header 24 times
 		poles_in_header <- rep(c(poles[i], poles[i+1], poles[i+2], poles[i+3]), times = 24)
 		poles_header <- matrix(c("Subplot","Confirmed ID", poles_in_header), nrow = 1);

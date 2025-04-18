@@ -132,7 +132,8 @@ STYLES <- list(
 			all = createStyle(border = "TopBottomLeftRight", borderStyle = "medium")
 		)
 
-	)
+	),
+	fillStyle = createStyle(fgFill = "#D9D9D9")
 )
 #addStyle in n rows skip n
 #' @title addStyleInBlocks
@@ -199,16 +200,11 @@ build_data_sheets <- function(species_list, poles, file_name = "out/Planet Pheno
 		poles_species <- survey_data_sheet_get(species_list, poles, i)
 		writeData(wb, sheet, x = poles_species$`Synonym Current`, startCol = 1, startRow = 4, colNames = FALSE)
 
-		# Create fill style
-		fillStyle <- createStyle(
-					 fgFill = "#D9D9D9",
-		)
-
 		# Get total number of rows (including header)
 		total_rows <- 100+3 # +1 for header
 
 		# Apply style in blocks: color 3 rows, skip 3
-		addStyleInBlocks(wb, sheet, fillStyle, 4, total_rows, n = 3, 2)
+		addStyleInBlocks(wb, sheet, STYLES$fillStyle, 4, total_rows, n = 3, 2)
 		gridStyle <- createStyle(border = "TopBottomLeftRight", borderStyle = "thin")
 		addStyle(wb, sheet = sheet, style = gridStyle,
 			 rows = 2:100, cols = 1:15, gridExpand = TRUE, stack = TRUE)
@@ -292,15 +288,12 @@ build_spring_data_sheets <- function(species_list, poles, file_name = "out/Plane
 		writeData(wb, sheet, x = poles_species$`Synonym Current`, startCol = 1, startRow = 4, colNames = FALSE)
 
 		# Create fill style
-		fillStyle <- createStyle(
-					 fgFill = "#D9D9D9",
-		)
 
 		# Get total number of rows (including header)
 		total_rows <- 100+3 # +1 for header
 
 		# Apply style in blocks: color 3 rows, skip 3
-		addStyleInBlocks(wb, sheet, fillStyle, 4, total_rows, n = 3, skip = 2)
+		addStyleInBlocks(wb, sheet, STYLES$fillStyle, 4, total_rows, n = 3, skip = 2)
 		gridStyleThick <- createStyle(border = "TopBottomLeftRight", borderStyle = "medium")
 		gridStyle <- createStyle(border = "TopBottomLeftRight", borderStyle = "thin")	
 		addStyle(wb, sheet = sheet, style = gridStyle,
@@ -340,7 +333,7 @@ build_data_entry_segments <- function(species_list, poles, file_name){
 		setColWidths(wb, sheet = sheet, cols = 3:(3+4*24), widths = 35)
 		setColWidths(wb, sheet = sheet, cols = 2, widths = 20)
 		writeData(wb, sheet, x = top_header, startCol = 1, startRow = 1, colNames = FALSE)
-		addStyleInBlocks(wb, sheet, fillStyle, 4, 100+3, n = 3, skip = 2)
+		addStyleInBlocks(wb, sheet, STYLES$fillStyle, 4, 100+3, n = 3, skip = 2)
 		## Repeate poles_in_header 24 times
 		poles_in_header <- rep(c(poles[i], poles[i+1], poles[i+2], poles[i+3]), times = 24)
 		poles_header <- matrix(c("Subplot","Confirmed ID", poles_in_header), nrow = 1);

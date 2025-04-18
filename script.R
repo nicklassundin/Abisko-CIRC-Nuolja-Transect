@@ -135,6 +135,6 @@ for (i in 1:length(datatypes)){
 		}
 	}else if(datatypes[i] == "Nuolja Snow Data"){
 		print("Processing Snow Data")
-		dataframe <- process_snow_data(paths_snow)
+		dataframe <- process_snow_data(paths_snow, dirs_snow)
 	}
 }

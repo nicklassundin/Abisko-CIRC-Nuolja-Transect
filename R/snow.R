@@ -240,24 +240,8 @@ process_snow_data <- function(paths, dirs){
 			return(validateFile(x, PATTERNS=SNOW_PATTERNS, log_file="snow.log"))
 		}));
 		# filter out invalid files in the list path
-		if(!silent){
-			print("Default filter", FILE_REGEX)
-		}
-		if(!silent) {
-			print(paste("Directory :", dirs[i]));
-			if(print) {
-				print("Do you wanna process this directory? (y/n)");
-				answer <- readLines(file("stdin"),1)
-				if(answer != "y") return(NULL);
-				print(paste("Processing :", paths[i]));
-			}
-		}
 		outputfile = gsub("/Raw Data", "",dirs[i]);
 		data <- exportCSV(path, paste("repack/", outputfile, sep=""), valid);
-		if(validate){
-			# leave loop if only validating
-			next;
-		}
 		if(is.null(data)) next;
 		if(!silent){
 			print(paste("Completed -", dirs[i]));

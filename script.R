@@ -15,6 +15,13 @@ source("R/phenology_survey.R");
 # source("R/validation/phenology.R");
 source("R/validation/snow.R");
 
+# Retrieve command-line arguments (excluding default ones)
+args <- commandArgs(trailingOnly = TRUE)
+
+# Check for the presence of '-debug'
+silent <- !("-debug" %in% args)
+promt <- ("-debug" %in% args)
+
 
 createDir("data")
 
@@ -29,9 +36,6 @@ print("Select operations to perform");
 print("0) Exit");
 print("1) Build CSV files");
 print("2) Produce Survey Excel files");
-print("3) Build CSV with debug");
-print("4) Validate CSV files");
-print("5) Debug");
 # loop until vallid input is given
 while(TRUE){
 	answer <- readLines(file("stdin"), 1);
@@ -47,22 +51,10 @@ while(TRUE){
 	}
 	print("Invalid input, please try again");
 }
-validate = FALSE;
-silent = TRUE;
-promt = FALSE;
+
 survey = FALSE;
 if(answer == "2"){
 	survey = TRUE;
-}else if(answer == "3"){
-	print("Build CSV files with debug")
-	silent = FALSE;
-}else if(answer == "4"){
-	print("Validation mode");
-	validate = TRUE;
-}else if(answer == "5"){
-	print("Debug mode");
-	silent = FALSE;
-	promt = TRUE;
 }else{
 	print("Build CSV files");
 }
@@ -102,18 +94,6 @@ paths_snow <- paths[grepl("Raw Data$|Raw Data \\d{4}$", dirs)]
 dirs_snow <- dirs[grepl("Raw Data$|Raw Data \\d{4}$", dirs)]
 paths_phenology <- paths[grepl("Phenology Data$", dirs)]
 dirs_phenology <- dirs[grepl("Phenology Data$", dirs)]
-
-if(promt){
-	print("Use default filter (1) or custom filter (2)?")
-	answer <- readLines(file("stdin"), 1)
-	if(answer == "2"){
-		print("Enter filter regex: ")
-		filter <- readLines(file("stdin"), 1)
-		paths <- paths[grepl(filter, dirs)]
-		dirs <- dirs[grepl(filter, dirs)]
-	}
-}
-
 
 for (i in 1:length(datatypes)){
 	if(datatypes[i] == "Plant Phenology Data"){

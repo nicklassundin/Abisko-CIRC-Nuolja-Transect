@@ -321,7 +321,7 @@ build_data_entry_segments <- function(species_list, poles, file_name){
 	# iterate over the poles by pair neigboors
 	for (i in seq(1, length(poles), 4)){
 		# sheet = paste0(substr(poles[i],1,2), "-", substr(poles[i+1],7,8))
-		sheet = paste0(substr(poles[i],1,2), "-", substr(poles[i+4],7,8))
+		sheet = paste0(substr(poles[i],1,2), "-", substr(poles[i+3],7,8))
 		addWorksheet(wb, sheet);
 		# Create a centering style
 		centerStyle <- createStyle(halign = "center", valign = "center")

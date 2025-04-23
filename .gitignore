@@ -2,7 +2,7 @@ repack/**
 out/**
 !out/*.md
 data/*.csv
-data/**
+data/**/*csv
 !data/*.md
 .RData
 .Rhistory

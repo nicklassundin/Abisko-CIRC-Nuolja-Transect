@@ -92,13 +92,14 @@ for (i in 1:length(datatypes)){
 
 paths_snow <- paths[grepl("Raw Data$|Raw Data \\d{4}$", dirs)]
 dirs_snow <- dirs[grepl("Raw Data$|Raw Data \\d{4}$", dirs)]
-paths_phenology <- paths[grepl("Phenology Data$", dirs)]
-dirs_phenology <- dirs[grepl("Phenology Data$", dirs)]
+
+dir_phenology <- paste("data", dirs[1], sep="/")
+
 
 for (i in 1:length(datatypes)){
 	if(datatypes[i] == "Plant Phenology Data"){
 		print("Processing Phenology Data")
-		df <- read_phenology_data(paths_phenology, dirs_phenology)
+		df <- read_phenology_data(dir_phenology)
 		# filter out none may date for all years
 		df_may <- df %>%
 			  filter(month(Date) == 5)
@@ -112,7 +113,7 @@ for (i in 1:length(datatypes)){
 			# Data entry Segments Sheet
 			build_data_entry_segments(df_full$species_list, df_full$poles, file_name = "out/Planet Phenology Survey/Nuolja Transect Phenology Data Entry Segments 01 to 79.xlsx")
 		}else{
-			process_phenology_data(df, paths_phenology, dirs_phenology)
+			process_phenology_data(df, dir_phenology)
 		}
 	}else if(datatypes[i] == "Nuolja Snow Data"){
 		print("Processing Snow Data")

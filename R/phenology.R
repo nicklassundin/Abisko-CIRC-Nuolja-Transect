@@ -39,7 +39,7 @@ get_output_path <- function(path, filename){
 	output_path <- gsub("Nuolja_Data_\\d{4}.csv", "", path)
 	output_path <- gsub("/data/", "/out/", output_path)
 	# add the new file name
-	output_path <- paste(output_path, filename, sep="")
+	output_path <- paste(output_path, filename, sep="/")
 	return(output_path)
 }
 
@@ -62,9 +62,10 @@ get_output_path <- function(path, filename){
 #' @param dirs The directories to search for the phenology data
 #' @return A data frame containing the phenology data
 
-read_phenology_data <- function(path, dirs) {
+read_phenology_data <- function(dir) {
 	# read only .csv files from path
-	paths <- list.files(path, pattern = ".csv", full.names = TRUE, recursive = FALSE)
+	print(dir)
+	paths <- list.files(dir, pattern = ".csv", full.names = TRUE, recursive = FALSE)
 	# filter NA values
 	# paths <- paths[!is.na(paths)]
 	paths <- paths[grepl("Plant Phenology Data/Nuolja_Data_\\d{4}.csv$", paths)]
@@ -91,18 +92,20 @@ read_phenology_data <- function(path, dirs) {
 	return(combined_data)
 }
 
-process_phenology_data <- function(combined_data, path, dirs){
+process_phenology_data <- function(combined_data, dirs){
 	# read only .csv files from path
-	paths <- list.files(path, pattern = ".csv", full.names = TRUE, recursive = FALSE)
 	# filter NA values
-	# paths <- paths[!is.na(paths)]
-	paths <- paths[grepl("Plant Phenology Data/Nuolja_Data_\\d{4}.csv$", paths)]
-
-	# valid = lapply(paths, (function(x) {
-	# return(validateFile(x, PATTERNS=PHENO_PATTERNS, log_file="phen.log", head=TRUE))
-	# }))
-	# print(valid[1:10])
-	valid = paths
+	dirs <- dirs[!is.na(dirs)]
+	paths <- list.files(dirs, pattern = ".csv", full.names = TRUE, recursive = FALSE)
+	valid = lapply(paths, (function(x) {
+		return(validateFile(x, PATTERNS=PHENO_PATTERNS, log_file="phen.log", head=TRUE))
+	}))
+	print(paths)
+	# length of valid TRUE
+	print(length(valid))
+	# keep only valid rows in combined_data
+	combined_data <- combined_data[unlist(valid),]
+	print(combined_data[1:10,])
 	# group by "Year" and "Synonym Current" count the number of observations
 	observ_data <- combined_data %>% group_by(`Synonym Current`, Year, `Poles`, Code) %>% summarise(n = n(), .groups = "drop")
 
@@ -117,7 +120,8 @@ process_phenology_data <- function(combined_data, path, dirs){
 	observ_data <- observ_data[order(observ_data$`Synonym Current`, observ_data$Year, observ_data$Poles, observ_data$Code),]
 
 	# order the data by year and synonym
-	output_path <- get_output_path(paths[1], "Nuolja_Annual_Species_Observations.csv") 
+	output_path <- get_output_path(dirs[1], "Nuolja_Annual_Species_Observations.csv") 
+	print(output_path)
 	write.csv(observ_data, output_path, row.names=FALSE)
 	# calculate first observation date for each year 
 	first_observation <- combined_data %>%
@@ -125,7 +129,8 @@ process_phenology_data <- function(combined_data, path, dirs){
 		summarise(`First Observation Date` = min(Date), `Last Observation Date` = max(Date), .groups = "drop")
 	colnames(first_observation) <- c("Synonym Current", "Year", "Code", "Poles", "First Observation Date", "Last Observation Date")
 	# output_path replace the file name with the new file name
-	output_path <- get_output_path(paths[1], "Nuolja_First_Last_Observation_Date.csv")
+	output_path <- get_output_path(dirs[1], "Nuolja_First_Last_Observation_Date.csv")
+	print(output_path)
 	write.csv(first_observation, output_path, row.names=FALSE)
 
 	# create number of observations per year
@@ -137,9 +142,10 @@ process_phenology_data <- function(combined_data, path, dirs){
 	number_obs <- number_obs %>% group_by(`Synonym Current`, Year, `Poles`) %>% summarise(`Number of Observations` = n(), .groups = "drop")
 
 	# output_path replace the file name with the new file name
-	output_path <- get_output_path(paths[1], "Nuolja_Annual_Species_Days_Observed.csv")
+	output_path <- get_output_path(dirs[1], "Nuolja_Annual_Species_Days_Observed.csv")
+	print(output_path)
 	write.csv(number_obs, output_path, row.names=FALSE)
-
+	print("Completed processing phenology data")
 	return(TRUE)
 }
 

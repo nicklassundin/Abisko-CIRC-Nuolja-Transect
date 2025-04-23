@@ -236,6 +236,7 @@ process_snow_data <- function(paths, dirs){
 	for (i in 1:length(paths)){
 		path = getDataFilesPaths(paths[i], pattern="\\d{4}.csv$");
 		if(length(path) == 0) return(NULL);
+		print(paths)
 		valid = lapply(path, (function(x) {
 			return(validateFile(x, PATTERNS=SNOW_PATTERNS, log_file="snow.log"))
 		}));

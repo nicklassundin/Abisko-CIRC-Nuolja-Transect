@@ -161,9 +161,16 @@ validateFile <- function(file_path, silent = FALSE, PATTERNS, log_file="log/erro
 	# Create the file structure
 	create_file_structure(log_file)
 	error_list <- list()
-
 	# Read the file line by line
-	lines <- readLines(file_path)
+	tryCatch(
+		lines <- readLines(file_path),
+		error = function(e) {
+			if (!silent) {
+				cat("Error reading file:", file_path, "\n")
+			}
+			return(NULL)
+		}
+	)
 	if(head) {
 		lines = lines[-1]
 	}

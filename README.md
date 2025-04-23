@@ -149,12 +149,8 @@ Before opening the terminal, set the working directory in RStudio using one of t
 quit process
 #### 1) Build CSV files
 Build and Validate, will produce Files in `out\` and Log files in `log\`
-#### 2) Build CSV with debug
-Same as 1) With developer options
-#### 3) Validate CSV files
-Only validate and produce Log in `log\`
-#### 4) Debug
-Only developer options
+#### 2) Construct Survey 
+Constructing Survey Tables for next year, will produce files in `out\Plant Phenology Survey`.
 ### Step 4: Select data to process
 #### 0) Exit
 quit process

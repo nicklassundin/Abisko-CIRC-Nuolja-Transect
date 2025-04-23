@@ -37,7 +37,7 @@ DEF_COLS_2 <- c("Synonym Current", "Year", "Poles","Code", "Number of Observatio
 get_output_path <- function(path, filename){
 	# remove the file name from the path
 	output_path <- gsub("Nuolja_Data_\\d{4}.csv", "", path)
-	output_path <- gsub("/data/", "/out/", output_path)
+	output_path <- gsub("data/", "out/", output_path)
 	# add the new file name
 	output_path <- paste(output_path, filename, sep="/")
 	return(output_path)
@@ -64,7 +64,6 @@ get_output_path <- function(path, filename){
 
 read_phenology_data <- function(dir) {
 	# read only .csv files from path
-	print(dir)
 	paths <- list.files(dir, pattern = ".csv", full.names = TRUE, recursive = FALSE)
 	# filter NA values
 	# paths <- paths[!is.na(paths)]
@@ -100,12 +99,9 @@ process_phenology_data <- function(combined_data, dirs){
 	valid = lapply(paths, (function(x) {
 		return(validateFile(x, PATTERNS=PHENO_PATTERNS, log_file="phen.log", head=TRUE))
 	}))
-	print(paths)
 	# length of valid TRUE
-	print(length(valid))
 	# keep only valid rows in combined_data
 	combined_data <- combined_data[unlist(valid),]
-	print(combined_data[1:10,])
 	# group by "Year" and "Synonym Current" count the number of observations
 	observ_data <- combined_data %>% group_by(`Synonym Current`, Year, `Poles`, Code) %>% summarise(n = n(), .groups = "drop")
 
@@ -121,7 +117,6 @@ process_phenology_data <- function(combined_data, dirs){
 
 	# order the data by year and synonym
 	output_path <- get_output_path(dirs[1], "Nuolja_Annual_Species_Observations.csv") 
-	print(output_path)
 	write.csv(observ_data, output_path, row.names=FALSE)
 	# calculate first observation date for each year 
 	first_observation <- combined_data %>%
@@ -130,7 +125,6 @@ process_phenology_data <- function(combined_data, dirs){
 	colnames(first_observation) <- c("Synonym Current", "Year", "Code", "Poles", "First Observation Date", "Last Observation Date")
 	# output_path replace the file name with the new file name
 	output_path <- get_output_path(dirs[1], "Nuolja_First_Last_Observation_Date.csv")
-	print(output_path)
 	write.csv(first_observation, output_path, row.names=FALSE)
 
 	# create number of observations per year
@@ -143,7 +137,6 @@ process_phenology_data <- function(combined_data, dirs){
 
 	# output_path replace the file name with the new file name
 	output_path <- get_output_path(dirs[1], "Nuolja_Annual_Species_Days_Observed.csv")
-	print(output_path)
 	write.csv(number_obs, output_path, row.names=FALSE)
 	print("Completed processing phenology data")
 	return(TRUE)

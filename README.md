@@ -14,29 +14,6 @@ project_directory/
 | ├── build.docs.R
 | ├── data
 | │   ├── DATAHERE.md
-| │   ├── Nuolja Snow Data
-| │   │   ├── Snow Data 2017
-| │   │   │   ├── Archive
-| │   │   ├── Snow Data 2018
-| │   │   │   ├── Archive
-| │   │   │   ├── Raw Data
-| │   │   │   │   ├── Archive
-| │   │   ├── Snow Data 2019
-| │   │   │   ├── Raw Data
-| │   │   │   │   ├── Archive
-| │   │   ├── Snow Data 2020
-| │   │   │   ├── Archive
-| │   │   │   └── Raw Data
-| │   │   ├── Snow Data 2021
-| │   │   │   └── Raw Data
-| │   │   ├── Snow Data 2022
-| │   │   │   └── Raw Data
-| │   │   │   │   ├── Archive
-| │   │   ├── Snow Data 2023
-| │   │   │   └── Raw Data
-| │   │   └── Snow Data 2024
-| │   │   │   └── Archive
-| │   └── Plant Phenology Data
 | ├── descriptions
 | │   ├── Nuolja Master Documents
 | ├── docs

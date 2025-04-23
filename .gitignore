@@ -3,6 +3,7 @@ out/**
 !out/*.md
 data/*.csv
 data/**/*csv
+data/*
 !data/*.md
 .RData
 .Rhistory

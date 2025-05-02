@@ -23,14 +23,13 @@ project_directory/
 | ├── out
 | ├── R
 | │   ├── helper.R
+| │   ├── legacy.R
 | │   ├── patterns.R
 | │   ├── phenology.R
 | │   ├── phenology_survey.R
 | │   ├── repack.R
 | │   ├── snow.R
-| │   └── validation
-| │   │   ├── phenology.R
-| │   │   └── snow.R
+| │   └── validation.R
 | ├── README.md
 | ├── repack
 | ├── script.R

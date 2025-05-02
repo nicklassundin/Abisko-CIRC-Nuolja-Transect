@@ -13,7 +13,7 @@ source("R/repack.R");
 source("R/phenology.R");
 source("R/phenology_survey.R");
 # source("R/validation/phenology.R");
-source("R/validation/snow.R");
+source("R/validation.R");
 
 # Retrieve command-line arguments (excluding default ones)
 args <- commandArgs(trailingOnly = TRUE)

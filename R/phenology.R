@@ -69,15 +69,11 @@ read_phenology_data <- function(dir) {
 	# paths <- paths[!is.na(paths)]
 	paths <- paths[grepl("Plant Phenology Data/Nuolja_Data_\\d{4}.csv$", paths)]
 
-	# valid = lapply(paths, (function(x) {
-	# return(validateFile(x, PATTERNS=PHENO_PATTERNS, log_file="phen.log", head=TRUE))
-	# }))
-	# print(valid[1:10])
-	valid = paths
 
-	# paths <- paths[unlist(valid)]
-	# filter paths that are valid
-	combined_data <- bind_rows(lapply(valid, function(path) {
+	# TODO REMOVE THIS
+	# paths <- paths[-1]
+	# print(paths)
+	combined_data <- bind_rows(lapply(paths, function(path) {
 
 						  # combined_data <- bind_rows(lapply(paths, function(path) {
 						  # if (!file.exists(path)){

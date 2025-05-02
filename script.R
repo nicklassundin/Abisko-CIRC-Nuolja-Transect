@@ -97,21 +97,24 @@ dir_phenology <- paste("data", dirs[1], sep="/")
 
 
 for (i in 1:length(datatypes)){
-	if(datatypes[i] == "Plant Phenology Data"){
+	# if datatypes[i] contain Phenology
+	if(grepl("Phenology", datatypes[i], fixed = TRUE)){
 		print("Processing Phenology Data")
+		# reorder dir_phenology
+		# put first poistion last
 		df <- read_phenology_data(dir_phenology)
 		# filter out none may date for all years
 		df_may <- df %>%
 			  filter(month(Date) == 5)
 		if(survey){
 			df_full <- build_species_list(df)
-			build_data_sheets(df_full$species_list, df_full$poles, file_name = "out/Planet Phenology Survey/Nuolja Transect Phenology Datasheets.xlsx")
+			build_data_sheets(df_full$species_list, df_full$poles, file_name = "out/Plant Phenology Survey/Nuolja Transect Phenology Datasheets.xlsx")
 
 			# may call
 			df_spring <- build_species_list(df_may)
-			build_spring_data_sheets(df_spring$species_list, df_spring$poles, file_name = "out/Planet Phenology Survey/Nuolja Transect Phenology Datasheets SPRING.xlsx")
+			build_spring_data_sheets(df_spring$species_list, df_spring$poles, file_name = "out/Plant Phenology Survey/Nuolja Transect Phenology Datasheets SPRING.xlsx")
 			# Data entry Segments Sheet
-			build_data_entry_segments(df_full$species_list, df_full$poles, file_name = "out/Planet Phenology Survey/Nuolja Transect Phenology Data Entry Segments 01 to 79.xlsx")
+			build_data_entry_segments(df_full$species_list, df_full$poles, file_name = "out/Plant Phenology Survey/Nuolja Transect Phenology Data Entry Segments 01 to 79.xlsx")
 		}else{
 			process_phenology_data(df, dir_phenology)
 		}

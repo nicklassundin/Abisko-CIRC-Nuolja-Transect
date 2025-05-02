@@ -201,8 +201,15 @@ validateFile <- function(file_path, silent = FALSE, validator, log_file="log/err
 
 		# append errors to error_list
 		error_list <- c(error_list, errors)
-
-		validation_results[i] <- validateLine(lines[i], validator)
+		
+		tryCatch(
+			{
+				validation_results[i] <- validateLine(lines[i], validator)
+			},
+			error = function(e) {
+				cat("Error validating line:", lines[i], "\n")
+			}
+		)
 		if(!validation_results[i]) {
 			cat("\033[F\033[K") # Clear the line
 			cat(sprintf(lines[i]), "\n")

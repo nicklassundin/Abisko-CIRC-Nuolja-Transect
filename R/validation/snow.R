@@ -108,7 +108,6 @@ printValidationError <- function(line, validator, file = NA, line_number = NA, l
 
 	# check if validator is NULL
 	validField <- validator$validateField(line)
-	
 	for (key in names(validField)) {
 		if (!validField[[key]]) {
 			errors <- c(errors, paste("Message: Missing or incorrect", key, "format."))
@@ -177,7 +176,12 @@ validateFile <- function(file_path, silent = FALSE, validator, log_file="log/err
 	validation_results <- logical(length(lines))
 
 	# Validate each line and collect errors
+	progress_bar <- txtProgressBar(min = 0, max = length(lines), style = 3)
 	for (i in seq_along(lines)) {
+		# Update progress bar with and text with current line
+		setTxtProgressBar(progress_bar, i)
+
+
 		errors <- printValidationError(
 						   lines[i], 
 						   file = file_path, 
@@ -190,8 +194,12 @@ validateFile <- function(file_path, silent = FALSE, validator, log_file="log/err
 		error_list <- c(error_list, errors)
 
 		validation_results[i] <- validateLine(lines[i], validator)
-
+		if(!validation_results[i]) {
+			cat("\033[F\033[K") # Clear the line
+			cat(sprintf(lines[i]), "\n")
+		}
 	}
+	close(progress_bar)
 
 	# Log error counts
 	count_log_file = paste0("log/count.", log_file)

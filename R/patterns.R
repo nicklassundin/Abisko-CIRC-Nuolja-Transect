@@ -90,6 +90,11 @@ PhenologyValidator <- R6Class("PhenologyValidator",
 							    return(list(lenient = FALSE) # no species found
 							    )
 						    }
+						    # TODO just return all
+						    return (list(
+							    lenient = TRUE
+						    ))
+
 						    # check if code is in the acceptable codes
 						    code <- str_extract(line, self$ACCEPTABLE_CODES$Code)
 						    if (is.na(code)) {
@@ -103,27 +108,84 @@ PhenologyValidator <- R6Class("PhenologyValidator",
 						    )
 
 					    },
-					    validateField = function(line) {
+					    validateField = function(strLine) {
+						    # remove \"
+						    line <- gsub("\"", "", strLine)
+						    line <- gsub('"', "", line)
+						    # devide on comma into list with colnames
+						    line <- str_split(line, ",", simplify = TRUE)
+						    line <- list(
+								 species = line[1],
+								 date = line[2],
+								 subplot = line[3],
+								 code = line[4]
+						    )
+
 						    # check that all patterns are present
-						    current_species <- str_extract(line, self$ACCEPTABLE_CODES$Species)
+						    current_species <- str_extract(line$species, self$ACCEPTABLE_CODES$Species)
 						    codes <- self$ACCEPTABLE_CODES[!is.na(current_species), "Code"]
+						    # TODO check if "+" is valid temporarily add "+"
+						    # append "+" as character code to the end of the codes
+						    codes <- paste(codes, "\\+", sep = ",")
+							
+
+						    # if codes is not empty
+						    if (length(codes) != 0) {
+							    # split on comma and ';'
+							    codes <- str_split(codes, ",|;", simplify = TRUE)
+						    }
+						    # unique codes values
+						    codes <- unique(codes)
 						    # return only species not NA
 						    current_species <- current_species[!is.na(current_species)]
-						    valid_species <- str_detect(line, current_species) 
+						    valid_species <- str_detect(line$species, current_species) 
 						    if (length(current_species) == 0) {
 							    valid_species <- FALSE
 						    }
 
-						    date <- str_extract(line, self$PATTERNS$date)
+						    date <- str_extract(line$date, self$PATTERNS$date)
 						    date <- date[!is.na(date)]
-						    subplot <- str_extract(line, self$PATTERNS$subplot)
-						    subplot <- subplot[!is.na(subplot)]
-						    # split codes ',' sent '|' 
+						    valid_date <- str_detect(line$date, date)
+						    if (length(date) == 0) {
 
+						    }
+						    subplot <- str_extract(line$subplot, self$PATTERNS$subplot)
+						    subplot <- subplot[!is.na(subplot)]
+						    valid_subplot <- str_detect(line$subplot, subplot)
+						    if (length(subplot) == 0) {
+							    valid_subplot <- FALSE
+						    }
+						    code <- str_extract(line$code, codes)
+						    code <- code[!is.na(code)]
+						    valid_code <- str_detect(line$code, codes)
+						    # combine all codes boolean
+						    valid_code <- any(valid_code)
+						    if (length(code) == 0) {
+							    code <- FALSE
+						    }
+						    code_lenient <- str_extract(tolower(line$code), tolower(codes))
+						    code_lenient <- code_lenient[!is.na(code_lenient)]
+						    valid_code_len <- str_detect(tolower(line$code), tolower(codes))
+						    valid_code_len <- any(valid_code_len)
+						    # check if code is in the acceptable codes
+						    if (length(code_lenient) == 0) {
+							    code_lenient <- FALSE
+						    }
+
+
+						    if (valid_code_len) {
+						    } else if(valid_species) {
+							    # print("invalid code")
+							    # print(strLine)
+							    # print(line$species)
+							    # print(line$code)
+							    # print(tolower(codes))
+						    }
 						    list(
 							 species = valid_species,
-							 date = str_detect(line, date), 
-							 subplot = str_detect(line, subplot),
-							 code = str_detect(line, paste(codes, collapse = "|"))
-							 )
+							 date = valid_date,
+							 subplot = valid_subplot,
+							 # code = valid_code
+							 code = valid_code_len
+							)
 					    }))

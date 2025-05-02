@@ -74,9 +74,10 @@ PhenologyValidator <- R6Class("PhenologyValidator",
 						    acceptable_codes$Code <- apply(acceptable_codes[, -1], 1, function(x) paste(x, collapse = ","))
 
 						    self$ACCEPTABLE_CODES <- acceptable_codes %>%
-							    group_by(Code) %>%
-							    summarise(Species = paste(Species, collapse = "|")) %>%
-							    ungroup()
+							    group_by(Code, Species);
+						    # remove trailing spaces end of string
+						    self$ACCEPTABLE_CODES$Species <- gsub("\\s+$", "", self$ACCEPTABLE_CODES$Species)
+						    # print species containing communis
 
 						    phenology_structures <- list()
 						    phenology_species_patterns <- list()
@@ -86,7 +87,8 @@ PhenologyValidator <- R6Class("PhenologyValidator",
 					    validate = function(line) {
 						    # check if species is in the acceptable codes
 						    species <- str_extract(line, self$ACCEPTABLE_CODES$Species)
-						    if (is.na(species)) {
+						    species <- species[!is.na(species)]
+						    if (is.na(species) || length(species) == 0) {
 							    return(list(lenient = FALSE) # no species found
 							    )
 						    }
@@ -121,6 +123,7 @@ PhenologyValidator <- R6Class("PhenologyValidator",
 								 code = line[4]
 						    )
 
+
 						    # check that all patterns are present
 						    current_species <- str_extract(line$species, self$ACCEPTABLE_CODES$Species)
 						    codes <- self$ACCEPTABLE_CODES[!is.na(current_species), "Code"]
@@ -137,6 +140,7 @@ PhenologyValidator <- R6Class("PhenologyValidator",
 						    # unique codes values
 						    codes <- unique(codes)
 						    # return only species not NA
+
 						    current_species <- current_species[!is.na(current_species)]
 						    valid_species <- str_detect(line$species, current_species) 
 						    if (length(current_species) == 0) {

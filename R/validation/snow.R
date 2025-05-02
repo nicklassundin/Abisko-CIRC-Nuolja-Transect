@@ -174,9 +174,11 @@ validateFile <- function(file_path, silent = FALSE, validator, log_file="log/err
 		lines = lines[-1]
 	}
 	validation_results <- logical(length(lines))
-
-	# Validate each line and collect errors
+	# Print file path
+	cat(sprintf("Validating file: %s\n", file_path), "\n")
+	cat("\n")
 	progress_bar <- txtProgressBar(min = 0, max = length(lines), style = 3)
+	# Validate each line and collect errors
 	for (i in seq_along(lines)) {
 		# Update progress bar with and text with current line
 		setTxtProgressBar(progress_bar, i)
@@ -197,6 +199,8 @@ validateFile <- function(file_path, silent = FALSE, validator, log_file="log/err
 		if(!validation_results[i]) {
 			cat("\033[F\033[K") # Clear the line
 			cat(sprintf(lines[i]), "\n")
+			# sleep
+			# Sys.sleep(3.0)
 		}
 	}
 	close(progress_bar)

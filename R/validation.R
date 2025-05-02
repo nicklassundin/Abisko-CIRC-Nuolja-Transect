@@ -187,8 +187,17 @@ validateFile <- function(file_path, silent = FALSE, validator, log_file="log/err
 	progress_bar <- txtProgressBar(min = 0, max = length(lines), style = 3)
 	# Validate each line and collect errors
 	for (i in seq_along(lines)) {
+		# if(!validation_results[i]) {
+			cat("\033[F\033[K") # Clear the line
+			cat(sprintf(lines[i]), "\n")
+			# sleep
+			# Sys.sleep(3.0)
+		# }
+		
+
 		# Update progress bar with and text with current line
 		setTxtProgressBar(progress_bar, i)
+		
 
 
 		errors <- printValidationError(
@@ -210,12 +219,6 @@ validateFile <- function(file_path, silent = FALSE, validator, log_file="log/err
 				cat("Error validating line:", lines[i], "\n")
 			}
 		)
-		if(!validation_results[i]) {
-			cat("\033[F\033[K") # Clear the line
-			cat(sprintf(lines[i]), "\n")
-			# sleep
-			# Sys.sleep(3.0)
-		}
 	}
 	close(progress_bar)
 

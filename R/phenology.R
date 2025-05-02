@@ -96,8 +96,10 @@ process_phenology_data <- function(combined_data, dirs){
 	# filter NA values
 	dirs <- dirs[!is.na(dirs)]
 	paths <- list.files(dirs, pattern = ".csv", full.names = TRUE, recursive = FALSE)
+
+	validator = PhenologyValidator$new()
 	valid = lapply(paths, (function(x) {
-		return(validateFile(x, PATTERNS=PHENO_PATTERNS, log_file="phen.log", head=TRUE))
+		return(validateFile(x, validator=validator, log_file="phen.log", head=TRUE))
 	}))
 	# length of valid TRUE
 	# keep only valid rows in combined_data

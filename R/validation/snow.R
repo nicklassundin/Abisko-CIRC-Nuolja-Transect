@@ -38,13 +38,11 @@ create_file_structure <- function(log_file) {
 #' validateLine("NS-20231015-034 70.12345678N 20.54321E 1500.000 os")
 #'
 #' @export
-validateLine <- function(line, PATTERNS) {
+validateLine <- function(line, validator) {
 	# Define the regular expression pattern
 	# pattern <- LENIENT_PATTERN
-	pattern <- PATTERNS$LENIENT_PATTERN
-	# Check if the line matches the pattern
-	validation_result <- grepl(pattern, line)
-	return(validation_result)
+	validation_result <- validator$validate(line)
+	return(validation_result$lenient)
 }
 
 #' Count and Log Errors for Each File and Type of Error
@@ -102,23 +100,25 @@ logErrorCounts <- function(error_list, file, count_log_file = "log/error_count_s
 #' printValidationError ("NS-20220510-001 68.37261219N 18.69783 1195.186 O", "data.txt", 5, "log/validation.txt", "log/warnings.txt")
 #' 
 #' @export
-printValidationError <- function(line, PATTERNS, file = NA, line_number = NA, log_file = NULL) {
+printValidationError <- function(line, validator, file = NA, line_number = NA, log_file = NULL) {
 	warnings_file = paste0("log/warnings.", log_file)
 	errors <- c()
 	# Check prefix
 	# iterate over key and value pairs in PATTERNS$STRUCT
-	for (key in names(PATTERNS$STRUCT)) {
-		pattern <- PATTERNS$STRUCT[[key]]
-		if (!grepl(pattern, line)) {
+
+	# check if validator is NULL
+	validField <- validator$validateField(line)
+	
+	for (key in names(validField)) {
+		if (!validField[[key]]) {
 			errors <- c(errors, paste("Message: Missing or incorrect", key, "format."))
 		}
-
 	}
 
 	# Format error messages
 	if (length(errors) > 0) {
 		error_message <- paste(errors, collapse = "\n")
-		critical <- !validateLine(line, PATTERNS = PATTERNS)
+		critical <- !validateLine(line, validator = validator)
 		formatted_message <- paste0(
 					    "----------------------------------------\n",
 					    "Validation Errors:\n",
@@ -157,7 +157,7 @@ printValidationError <- function(line, PATTERNS, file = NA, line_number = NA, lo
 #' validateFile("data.txt")
 #' 
 #' @export
-validateFile <- function(file_path, silent = FALSE, PATTERNS, log_file="log/error.log", head=FALSE) {
+validateFile <- function(file_path, silent = FALSE, validator, log_file="log/error.log", head=FALSE) {
 	# Create the file structure
 	create_file_structure(log_file)
 	error_list <- list()
@@ -183,13 +183,13 @@ validateFile <- function(file_path, silent = FALSE, PATTERNS, log_file="log/erro
 						   file = file_path, 
 						   line_number = i, 
 						   log_file = log_file,
-						   PATTERNS = PATTERNS
+						   validator = validator
 		)
 
 		# append errors to error_list
 		error_list <- c(error_list, errors)
 
-		validation_results[i] <- validateLine(lines[i], PATTERNS)
+		validation_results[i] <- validateLine(lines[i], validator)
 
 	}
 

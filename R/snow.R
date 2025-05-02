@@ -238,7 +238,7 @@ process_snow_data <- function(paths, dirs){
 		if(length(path) == 0) return(NULL);
 		print(paths)
 		valid = lapply(path, (function(x) {
-			return(validateFile(x, PATTERNS=SNOW_PATTERNS, log_file="snow.log"))
+			return(validateFile(x, validator=SnowValidator$new(), log_file="snow.log"))
 		}));
 		# filter out invalid files in the list path
 		outputfile = gsub("/Raw Data", "",dirs[i]);

@@ -1,105 +1,129 @@
-# Patterns for validation
-prefix_pattern <- "^NS-"
-datetime_pattern <- "\\d{8}-\\d{3}"
-latitude_pattern <- "\\d+\\.\\d{6,9}N"
-longitude_pattern <- "\\d+\\.\\d{6,9}E"
-elevation_pattern <- "\\d+\\.\\d+"
-obs_code_pattern <- "[osOS]{1,2}$"
+library(R6)
+library(dplyr)
+library(stringr)
 
-# Patterns for lenient validation
-lenient_latitude_pattern <- "\\d+\\.\\d+N"
-lenient_longitude_pattern <- "\\d+\\.\\d+E"
+# SNOW VALIDATOR CLASS
+SnowValidator <- R6Class("SnowValidator",
+			 public = list(
+				       STRICT_PATTERN = NULL,
+				       LENIENT_PATTERN = NULL,
+				       PATTERNS = list(
+						       prefix_pattern = "^NS-",
+						       datetime_pattern = "\\d{8}-\\d{3}",
+						       latitude_pattern = "\\d+\\.\\d{6,9}N",
+						       longitude_pattern = "\\d+\\.\\d{6,9}E",
+						       elevation_pattern = "\\d+\\.\\d+",
+						       obs_code_pattern = "[osOS]{1,2}$",
+						       lenient_latitude_pattern = "\\d+\\.\\d+N",
+						       lenient_longitude_pattern = "\\d+\\.\\d+E"
+						       ),
+				       initialize = function() {
+					       # self$STRICT_PATTERN <- list(prefix_pattern, datetime_pattern, latitude_pattern,
+					       # longitude_pattern, elevation_pattern, obs_code_pattern,
+					       # sep = "[ , ]+")
+					       # self$LENIENT_PATTERN <- paste(lenient_latitude_pattern, lenient_longitude_pattern,
+					       # elevation_pattern, obs_code_pattern, sep = "[ , ]+")
+					       self$STRICT_PATTERN <- paste(self$PATTERNS$prefix_pattern, 
+									    self$PATTERNS$datetime_pattern,
+									    self$PATTERNS$latitude_pattern,
+									    self$PATTERNS$longitude_pattern,
+									    self$PATTERNS$elevation_pattern,
+									    self$PATTERNS$obs_code_pattern,
+									    sep = "[ , ]+")
+					       self$LENIENT_PATTERN <- paste(self$PATTERNS$lenient_latitude_pattern,
+									     self$PATTERNS$lenient_longitude_pattern,
+									     self$PATTERNS$elevation_pattern,
+									     self$PATTERNS$obs_code_pattern,
+									     sep = "[ , ]+")
 
-STRICT_PATTERN <- paste(prefix_pattern, datetime_pattern, latitude_pattern, longitude_pattern, elevation_pattern, obs_code_pattern, sep = "[ , ]+")
-# STRICT_PATTERN <- "^NS-\\d{8}-\\d{3}[ , ]\\d+\\.\\d+N[ , ]\\d+\\.\\d+E[, ]\\d+\\.\\d+[, ][osOS]{1,2}$"
-LENIENT_PATTERN <- paste(lenient_latitude_pattern, lenient_longitude_pattern, elevation_pattern, obs_code_pattern, sep = "[ , ]")
-OLD_LENIENT_PATTERN <- "^[ , ]\\d+\\.\\d+N[ , ]\\d+\\.\\d+E[, ]\\d+\\.\\d+[, ][osOS]{1,2}$"
+				       },
+				       validate = function(line) {
+					       list(
+						    strict = str_detect(line, self$STRICT_PATTERN),
+						    lenient = str_detect(line, self$LENIENT_PATTERN)
+					       )
+				       },
+				       validateField = function(line) {
+					       # check that all patterns are present
+					       list(
+						    prefix = str_detect(line, self$PATTERNS$prefix_pattern),
+						    datetime = str_detect(line, self$PATTERNS$datetime_pattern),
+						    latitude = str_detect(line, self$PATTERNS$latitude_pattern),
+						    longitude = str_detect(line, self$PATTERNS$longitude_pattern),
+						    elevation = str_detect(line, self$PATTERNS$elevation_pattern),
+						    obs_code = str_detect(line, self$PATTERNS$obs_code_pattern)
+					       )
+				       }
 
-
-# Snow Structure with patterns
-snow_structure <- list(
-		       id = prefix_pattern,
-		       datetime = datetime_pattern,
-		       latitude = latitude_pattern,
-		       longitude = longitude_pattern,
-		       elevation = elevation_pattern,
-		       obs_code = obs_code_pattern
+			 )
 )
-# Snow Structure with patterns
-SNOW_PATTERNS <- list(
-		      STRICT_PATTERN = STRICT_PATTERN,
-		      LENIENT_PATTERN = LENIENT_PATTERN,
-		      STRUCT = list(
-				    id = prefix_pattern,
-				    datetime = datetime_pattern,
-				    latitude = latitude_pattern,
-				    longitude = longitude_pattern,
-				    elevation = elevation_pattern,
-				    obs_code = obs_code_pattern
-		      )
-)
 
-# Read Acceptable codes from description/Nuolja Master Document/Acceptable_PhenoCodes_Species_CURRENT.csv
-acceptable_codes <- read.csv("descriptions/Nuolja Master Documents/Accepted_PhenoCodes_Species_CURRENT.csv", stringsAsFactors = FALSE, sep = ";")
-# merge all columns but Species into one column as a string with comma separated values
-acceptable_codes$Code <- apply(acceptable_codes[, -1], 1, function(x) paste(x, collapse = ","))
+# PHENOLOGY VALIDATOR CLASS
+PhenologyValidator <- R6Class("PhenologyValidator",
+			      public = list(
+					    LENIENT_PATTERN = NULL,
+					    STRUCT = NULL,
+					    PATTERNS = list(
+							    date = "\\d{4}-\\d{2}-\\d{2}",
+							    subplot = "\\d{1,2} to \\d{1,2}"
+							    ),
+					    ACCEPTABLE_CODES = NULL,
 
-# group by Code and merge Species like name | name2
-acceptable_codes <- acceptable_codes %>%
-	group_by(Code) %>%
-	summarise(Species = paste(Species, collapse = "|")) %>%
-	ungroup()
+					    initialize = function(csv_path = "descriptions/Nuolja Master Documents/Accepted_PhenoCodes_Species_CURRENT.csv") {
+						    acceptable_codes <- read.csv(csv_path, stringsAsFactors = FALSE, sep = ";")
+						    acceptable_codes$Code <- apply(acceptable_codes[, -1], 1, function(x) paste(x, collapse = ","))
 
-# Phenology Structure with patterns
-# for each species in the acceptable_codes$Species, add a pattern
+						    self$ACCEPTABLE_CODES <- acceptable_codes %>%
+							    group_by(Code) %>%
+							    summarise(Species = paste(Species, collapse = "|")) %>%
+							    ungroup()
 
-if (!dir.exists("out/patterns")) {
-	dir.create("out/patterns")
-}
+						    phenology_structures <- list()
+						    phenology_species_patterns <- list()
 
-# if files exist return them
-if (file.exists("out/patterns/phenology_structures.rds") && file.exists("out/patterns/phenology_species_patterns.rds")) {
-	phenology_structures <- readRDS("out/patterns/phenology_structures.rds")
-	phenology_species_patterns <- readRDS("out/patterns/phenology_species_patterns.rds")
-} else {
-	# create empty lists
-	phenology_structures <- list()
-	phenology_species_patterns <- list()
-	for (i in 1:nrow(acceptable_codes)) {
-		current_species <- acceptable_codes$Species[i]
-		# mutate acceptable_codes, Code = strsplit(Code, ","))
+					    },
 
-		codes <- acceptable_codes[acceptable_codes$Species == current_species, "Code"]
-		# remove spaces
-		codes <- gsub(" ", "", codes)
-		codes <- unlist(strsplit(codes, ","))
+					    validate = function(line) {
+						    # check if species is in the acceptable codes
+						    species <- str_extract(line, self$ACCEPTABLE_CODES$Species)
+						    if (is.na(species)) {
+							    return(list(lenient = FALSE) # no species found
+							    )
+						    }
+						    # check if code is in the acceptable codes
+						    code <- str_extract(line, self$ACCEPTABLE_CODES$Code)
+						    if (is.na(code)) {
+							    return(list(lenient = FALSE) # no code found
+							    )
+						    }
+						    # check combination of species, code, date and subplot
+						    combination <- paste(species, code, self$PATTERNS$date, self$PATTERNS$subplot, sep = "[ , ]+")
+						    list(
+							 lenient = str_detect(line, combination),
+						    )
 
-		phenology_structure <- list(
-					    # species = "[A-Za-z]+(?: [A-Za-z-]+)?",
-					    species = current_species, 
-					    date = "\\d{4}-\\d{2}-\\d{2}",
-					    subplot = "\\d{1,2} to \\d{1,2}",
-					    # code = "*"
-					    code = paste(codes, collapse = "|")
+					    },
+					    validateField = function(line) {
+						    # check that all patterns are present
+						    current_species <- str_extract(line, self$ACCEPTABLE_CODES$Species)
+						    codes <- self$ACCEPTABLE_CODES[!is.na(current_species), "Code"]
+						    # return only species not NA
+						    current_species <- current_species[!is.na(current_species)]
+						    valid_species <- str_detect(line, current_species) 
+						    if (length(current_species) == 0) {
+							    valid_species <- FALSE
+						    }
 
-		)
-		# species = "[A-Za-z]+(?: [A-Za-z-]+)?",
-		# species = paste(acceptable_codes$Species, collapse = "|"),
-		# date = "\\d{4}-\\d{2}-\\d{2}",
-		# subplot = "\\d{1,2} to \\d{1,2}",
-		# code = "*"
-		phenology_structure$species <- acceptable_codes$Species[i]
-		phenology_structure$code <- paste(acceptable_codes$Code[i], collapse = "|")
-		phenology_structures[[i]] <- phenology_structures
-		phenology_species_patterns[[i]] <- paste(phenology_structure$species, phenology_structure$date, phenology_structure$subplot, phenology_structure$code, sep = "[ , ]")
-	}
-}
-# save phenology_structures and phenology_species_patterns to a file
-saveRDS(phenology_structures, file = "out/patterns/phenology_structures.rds")
-saveRDS(phenology_species_patterns, file = "out/patterns/phenology_species_patterns.rds")
-# Phenology Structure with patterns
-PHENO_PATTERNS <- list(
-		       # LENIENT_PATTERN = paste(phenology_structure$species, phenology_structure$date, phenology_structure$subplot, phenology_structure$code, sep = "[ , ]"),
-		       LENIENT_PATTERN = paste(phenology_species_patterns, collapse = "|"),
-		       STRUCT = phenology_structures
-)
+						    date <- str_extract(line, self$PATTERNS$date)
+						    date <- date[!is.na(date)]
+						    subplot <- str_extract(line, self$PATTERNS$subplot)
+						    subplot <- subplot[!is.na(subplot)]
+						    # split codes ',' sent '|' 
+
+						    list(
+							 species = valid_species,
+							 date = str_detect(line, date), 
+							 subplot = str_detect(line, subplot),
+							 code = str_detect(line, paste(codes, collapse = "|"))
+							 )
+					    }))

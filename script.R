@@ -77,10 +77,12 @@ while(TRUE){
 	if(answer == "0"){
 		return(NULL);
 	}
-	if(as.numeric(answer) <= length(datatypes)+1){
+	if(as.numeric(answer) < length(datatypes)+1){
 		dirs <- dirs[grepl(datatypes[as.numeric(answer)], dirs)]
 		paths <- paths[grepl(datatypes[as.numeric(answer)], paths)]
 		datatypes <- datatypes[datatypes == datatypes[as.numeric(answer)]]
+		break;
+	}else if(as.numeric(answer) == length(datatypes)+1){
 		break;
 	}
 	print("Invalid input, please try again");
@@ -97,6 +99,7 @@ dir_phenology <- paste("data", dirs[1], sep="/")
 
 
 for (i in 1:length(datatypes)){
+	print(datatypes)
 	# if datatypes[i] contain Phenology
 	if(grepl("Phenology", datatypes[i], fixed = TRUE)){
 		print("Processing Phenology Data")

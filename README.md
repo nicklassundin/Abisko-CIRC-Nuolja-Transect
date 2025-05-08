@@ -224,7 +224,16 @@ Below is an excerpt to illustrate the format:
 18,69,2957.15889307984,"NS-20180506-011","2018-05-06","68.37041561","18.70585272",1103.361,"s","s"
 ```
 ### Phenology Data
-TODO
+
+#### Column Descriptions
+
+| **Column Name** | **Description**                                                                                  |
+|------------------|--------------------------------------------------------------------------------------------------|
+| `Species`        | Scientific name of the observed plant species.                                                   |
+| `Date`           | Date of observation, formatted as `YYYY-MM-DD`.                                                  |
+| `Subplot`        | Identifier of the subplot area within the transect (e.g., `"20 to 21"`).                         |
+| `Code`           | Phenological code representing the observed developmental stage (e.g., `"+"`, `"B1"`, `"b2"`).   |
+
 ### File Format Specification for `out/`
 
 The files in the `out/` directory include CSV files with data representing daily snow of various plot statuses. Each file adheres to the following schema:
@@ -259,6 +268,40 @@ Below is an excerpt to illustrate the format:
 126,9,0,0.863436913617926,0,0.136563086382074
 126,10,0.768916411918146,0,0.0997298448068066,0.13135374327
 ```
-#### Phenology Data
-TODO
+##### Phenology Data
+
+###### File: Nuolja_Annual_Species_Days_Observed.csv
+
+| **Column Name**       | **Description**                                                                 |
+|------------------------|---------------------------------------------------------------------------------|
+| `Synonym Current`      | The current accepted scientific name of the species.                           |
+| `Year`                 | The year the observations were made.                                           |
+| `Poles`                | The transect segment or subplot identifier (e.g., `"14 to 15"`).               |
+| `Number of Observations` | The total number of days on which the species was observed in that segment.  |
+
+---
+
+##### File: Nuolja_Annual_Species_Observations.csv
+
+| **Column Name**       | **Description**                                                                 |
+|------------------------|---------------------------------------------------------------------------------|
+| `Synonym Current`      | The current accepted scientific name of the species.                           |
+| `Year`                 | The year the observations were made.                                           |
+| `Poles`                | The transect segment or subplot identifier.                                    |
+| `Code`                 | Phenological development stage code (e.g., `B1`, `C`, `K`, `g1`).              |
+| `Number of Observations` | Count of how many times this code/stage was recorded for the species.        |
+
+---
+
+##### File: Nuolja_First_Last_Observation_Date.csv
+
+| **Column Name**          | **Description**                                                               |
+|---------------------------|-------------------------------------------------------------------------------|
+| `Synonym Current`         | The current accepted scientific name of the species.                         |
+| `Year`                    | The year the observations were made.                                         |
+| `Code`                    | Phenological development stage code (e.g., `+`, `K`, `b2`, `ed`).            |
+| `Poles`                   | The transect segment or subplot identifier.                                  |
+| `First Observation Date`  | The earliest date that this stage was observed, formatted as `YYYY-MM-DD`.   |
+| `Last Observation Date`   | The latest date that this stage was observed, formatted as `YYYY-MM-DD`.     |
+
 </details>

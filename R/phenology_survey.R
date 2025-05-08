@@ -152,9 +152,9 @@ addStyleInBlocks <- function(wb, sheet, style, start_row, total_rows, n = 3, ski
 		}
 }
 
-build_data_sheets <- function(species_list, poles, file_name = "out/Planet Phenology Survey/Nuolja Transect Phenology Datasheets.xlsx"){
+build_data_sheets <- function(species_list, poles, file_name = "out/Plant Phenology Survey/Nuolja Transect Phenology Datasheets.xlsx"){
 	wb <- createWorkbook()
-	dir.create("out/Planet Phenology Survey", showWarnings = FALSE, recursive = TRUE)
+	dir.create("out/Plant Phenology Survey", showWarnings = FALSE, recursive = TRUE)
 
 	top_header <- matrix(c("Date:", "Surveyors:", ""), nrow = 1)
 	phen_sub_head <- c("Confirmed ID", "Leaf-out", "Flowering", "Fruiting", "Seed Dispersal", "Senescence", "Leaf Fall")
@@ -250,9 +250,9 @@ spring_survey_names <- function(species_list, poles, i){
 	return(poles_species)
 }
 
-build_spring_data_sheets <- function(species_list, poles, file_name = "out/Planet Phenology Survey/Nuolja Transect Phenology Datasheets.xlsx"){
+build_spring_data_sheets <- function(species_list, poles, file_name = "out/Plant Phenology Survey/Nuolja Transect Phenology Datasheets.xlsx"){
 	wb <- createWorkbook()
-	dir.create("out/Planet Phenology Survey", showWarnings = FALSE, recursive = TRUE)
+	dir.create("out/Plant Phenology Survey", showWarnings = FALSE, recursive = TRUE)
 	
 	top_header <- matrix(c("Date:", "Surveyors:", ""), nrow = 1)
 	# iterate over the poles by pair neigboors
@@ -315,7 +315,7 @@ build_spring_data_sheets <- function(species_list, poles, file_name = "out/Plane
 
 build_data_entry_segments <- function(species_list, poles, file_name){
 	wb <- createWorkbook()
-	dir.create("out/Planet Phenology Survey", showWarnings = FALSE, recursive = TRUE)
+	dir.create("out/Plant Phenology Survey", showWarnings = FALSE, recursive = TRUE)
 	
 	top_header <- matrix(c("Date:"), nrow = 1)
 	# iterate over the poles by pair neigboors

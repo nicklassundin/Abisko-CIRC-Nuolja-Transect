@@ -233,6 +233,7 @@ FILE_REGEX = "\\d{4}.csv$"
 #' @return A list containing the processed data.
 #' @export
 process_snow_data <- function(paths, dirs){
+	create_file_structure("snow.log")
 	for (i in 1:length(paths)){
 		path = getDataFilesPaths(paths[i], pattern="\\d{4}.csv$");
 		if(length(path) == 0) return(NULL);

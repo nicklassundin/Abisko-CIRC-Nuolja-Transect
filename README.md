@@ -19,7 +19,6 @@ project_directory/
 | ├── docs
 | │   ├── reference
 | ├── man
-| ├── old.script.R
 | ├── out
 | ├── R
 | │   ├── helper.R

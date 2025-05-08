@@ -67,12 +67,8 @@ read_phenology_data <- function(dir) {
 	paths <- list.files(dir, pattern = ".csv", full.names = TRUE, recursive = FALSE)
 	# filter NA values
 	# paths <- paths[!is.na(paths)]
-	paths <- paths[grepl("Plant Phenology Data/Nuolja_Data_\\d{4}.csv$", paths)]
+	paths <- paths[grepl("Nuolja_Data_\\d{4}.csv$", paths)]
 
-
-	# TODO REMOVE THIS
-	# paths <- paths[-1]
-	# print(paths)
 	combined_data <- bind_rows(lapply(paths, function(path) {
 
 						  # combined_data <- bind_rows(lapply(paths, function(path) {

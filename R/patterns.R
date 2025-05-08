@@ -72,13 +72,17 @@ PhenologyValidator <- R6Class("PhenologyValidator",
 					    initialize = function(csv_path = "descriptions/Nuolja Master Documents/Accepted_PhenoCodes_Species_CURRENT.csv") {
 						    acceptable_codes <- read.csv(csv_path, stringsAsFactors = FALSE, sep = ";")
 						    acceptable_codes$Code <- apply(acceptable_codes[, -1], 1, function(x) paste(x, collapse = ","))
-
 						    self$ACCEPTABLE_CODES <- acceptable_codes %>%
 							    group_by(Code, Species);
 						    # remove trailing spaces end of string
 						    self$ACCEPTABLE_CODES$Species <- gsub("\\s+$", "", self$ACCEPTABLE_CODES$Species)
-						    # print species containing communis
-
+						    # change codes into array split on "," and ";"
+						    self$ACCEPTABLE_CODES$Code <- strsplit(as.character(self$ACCEPTABLE_CODES$Code), ",|;")
+						    # remove dublicate codes
+						    self$ACCEPTABLE_CODES <- self$ACCEPTABLE_CODES %>%
+							    group_by(Species) %>%
+							    summarise(Code = list(unique(unlist(Code)))) %>%
+							    ungroup()
 						    phenology_structures <- list()
 						    phenology_species_patterns <- list()
 
@@ -94,8 +98,8 @@ PhenologyValidator <- R6Class("PhenologyValidator",
 						    }
 						    # TODO just return all
 						    return (list(
-							    lenient = TRUE
-						    ))
+								 lenient = TRUE
+								 ))
 
 						    # check if code is in the acceptable codes
 						    code <- str_extract(line, self$ACCEPTABLE_CODES$Code)
@@ -111,85 +115,81 @@ PhenologyValidator <- R6Class("PhenologyValidator",
 
 					    },
 					    validateField = function(strLine) {
-						    # remove \"
-						    line <- gsub("\"", "", strLine)
-						    line <- gsub('"', "", line)
-						    # devide on comma into list with colnames
-						    line <- str_split(line, ",", simplify = TRUE)
-						    line <- list(
-								 species = line[1],
-								 date = line[2],
-								 subplot = line[3],
-								 code = line[4]
-						    )
+						    tryCatch({
+							    # # remove \"
+							    line <- gsub("\"", "", strLine)
+							    line <- gsub('"', "", line)
+							    # devide on comma into list with colnames
+							    line <- str_split(line, ",", simplify = TRUE)
+							    line <- list(
+									 species = line[1],
+									 date = line[2],
+									 subplot = line[3],
+									 code = line[4]
+							    )
+							    # line$species is in accpetable
+
+							    valid_species <- line$species %in% self$ACCEPTABLE_CODES$Species
+							    if (!valid_species) {
+								    return (list(
+										 species = valid_species
+										 ))
+							    }
+							    current_species <- line$species
+							    codes <- self$ACCEPTABLE_CODES[self$ACCEPTABLE_CODES$Species == current_species,]$Code[[1]]
+
+							    valid_date <- str_detect(line$date, self$PATTERNS$date)
+							    if (!valid_date) {
+								    return (list(
+										 species = valid_species,
+										 date = valid_date
+										 ))
+							    }
+							    valid_subplot <- str_detect(line$subplot, self$PATTERNS$subplot)
+							    if (!valid_subplot) {
+								    valid_subplot <- FALSE
+								    return (list(
+										 species = valid_species,
+										 date = valid_date,
+										 subplot = valid_subplot
+										 ))
+							    }
+
+							    valid_code <- str_detect(line$code, codes)
+							    # combine all codes boolean
+							    valid_code <- any(valid_code)
+							    if (!valid_code) {
+								    # code <- FALSE
+								    # return (list(
+								    # species = valid_species,
+								    # date = valid_date,
+								    # subplot = valid_subplot,
+								    # code = code
+								    # ))
+							    }
+							    valid_code_len <- str_detect(tolower(line$code), tolower(codes))
+							    valid_code_len <- any(valid_code_len)
+							    # check if code is in the acceptable codes
+							    if (!valid_code_len) {
+								    return (list(
+										 species = valid_species,
+										 date = valid_date,
+										 subplot = valid_subplot,
+										 code = valid_code_len
+										 ))
+							    }
 
 
-						    # check that all patterns are present
-						    current_species <- str_extract(line$species, self$ACCEPTABLE_CODES$Species)
-						    codes <- self$ACCEPTABLE_CODES[!is.na(current_species), "Code"]
-						    # TODO check if "+" is valid temporarily add "+"
-						    # append "+" as character code to the end of the codes
-						    codes <- paste(codes, "\\+", sep = ",")
-							
-
-						    # if codes is not empty
-						    if (length(codes) != 0) {
-							    # split on comma and ';'
-							    codes <- str_split(codes, ",|;", simplify = TRUE)
-						    }
-						    # unique codes values
-						    codes <- unique(codes)
-						    # return only species not NA
-
-						    current_species <- current_species[!is.na(current_species)]
-						    valid_species <- str_detect(line$species, current_species) 
-						    if (length(current_species) == 0) {
-							    valid_species <- FALSE
-						    }
-
-						    date <- str_extract(line$date, self$PATTERNS$date)
-						    date <- date[!is.na(date)]
-						    valid_date <- str_detect(line$date, date)
-						    if (length(date) == 0) {
-
-						    }
-						    subplot <- str_extract(line$subplot, self$PATTERNS$subplot)
-						    subplot <- subplot[!is.na(subplot)]
-						    valid_subplot <- str_detect(line$subplot, subplot)
-						    if (length(subplot) == 0) {
-							    valid_subplot <- FALSE
-						    }
-						    code <- str_extract(line$code, codes)
-						    code <- code[!is.na(code)]
-						    valid_code <- str_detect(line$code, codes)
-						    # combine all codes boolean
-						    valid_code <- any(valid_code)
-						    if (length(code) == 0) {
-							    code <- FALSE
-						    }
-						    code_lenient <- str_extract(tolower(line$code), tolower(codes))
-						    code_lenient <- code_lenient[!is.na(code_lenient)]
-						    valid_code_len <- str_detect(tolower(line$code), tolower(codes))
-						    valid_code_len <- any(valid_code_len)
-						    # check if code is in the acceptable codes
-						    if (length(code_lenient) == 0) {
-							    code_lenient <- FALSE
-						    }
-
-
-						    if (valid_code_len) {
-						    } else if(valid_species) {
-							    # print("invalid code")
-							    # print(strLine)
-							    # print(line$species)
-							    # print(line$code)
-							    # print(tolower(codes))
-						    }
-						    list(
-							 species = valid_species,
-							 date = valid_date,
-							 subplot = valid_subplot,
-							 # code = valid_code
-							 code = valid_code_len
-							)
+							    list(
+								 species = valid_species,
+								 date = valid_date,
+								 subplot = valid_subplot,
+								 # code = valid_code
+								 code = valid_code_len
+							    )
+						    }, error = {
+							    return (list(
+									 RUN_TIME_ERROR = FALSE
+									 ))
+						    })
 					    }))

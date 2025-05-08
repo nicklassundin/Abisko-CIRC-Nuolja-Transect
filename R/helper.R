@@ -36,7 +36,14 @@ exportCSV <- function(filenames, filename, valid){
 	if(length(filenames)==0) return(NULL)
 	# Parsing the data from the file
 
-	# Read data only for valid files
+	# Read data only for valid files Handle empty files
+	file_valid <- lapply(valid, function(x) {any(x)})
+	file_valid <- unlist(file_valid)
+	filenames <- filenames[file_valid]
+	valid <- valid[file_valid]
+	
+
+
 	data <- mapply(readFile, filenames, valid, SIMPLIFY = FALSE)
 	# data = lapply(filenames, readFile);
 	# Accumulative build result row by row, with insert(,,);

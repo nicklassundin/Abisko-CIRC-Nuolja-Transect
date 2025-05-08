@@ -206,6 +206,13 @@ validateFile <- function(file_path, silent = FALSE, validator, log_file="log/err
 	if(head) {
 		lines = lines[-1]
 	}
+	# return if file is empty
+	if (length(lines) == 0) {
+		if (!silent) {
+			cat("File is empty:", file_path, "\n")
+		}
+		return(NULL)
+	}
 	validation_results <- logical(length(lines))
 	# Print file path
 	cat(sprintf("Validating file: %s\n", file_path), "\n")

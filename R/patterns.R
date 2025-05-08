@@ -2,7 +2,23 @@ library(R6)
 library(dplyr)
 library(stringr)
 
-# SNOW VALIDATOR CLASS
+#' Snow Validator Class'
+#' inherits from R6Class
+#' @description This class is used to validate snow data.
+#' @param csv_path path to the csv file with acceptable codes
+#' @return a list with lenient and strict validation
+#' @examples
+#' snow_validator <- SnowValidator$new()
+#' snow_validator$validate("NS-20230101-001 60.123456N 15.123456E 100.0 os")
+#' @export
+#' @importFrom dplyr %>%
+#' @importFrom stringr str_detect str_extract
+#' @importFrom R6 R6Class
+#' @importFrom readr read_csv
+#' @importFrom tidyr separate
+#' @importFrom stringr str_split
+#' @importFrom stringr str_extract
+#' @importFrom stringr str_detect
 SnowValidator <- R6Class("SnowValidator",
 			 public = list(
 				       STRICT_PATTERN = NULL,
@@ -58,7 +74,20 @@ SnowValidator <- R6Class("SnowValidator",
 			 )
 )
 
-# PHENOLOGY VALIDATOR CLASS
+#' Phenology Validator Class
+#' inherits from R6Class
+#' @description This class is used to validate phenology data.
+#' @param csv_path path to the csv file with acceptable codes
+#' @return a list with lenient and strict validation
+#' @examples
+#' phenology_validator <- PhenologyValidator$new()
+#' phenology_validator$validate("species, date, subplot, code")
+#' @export
+#' @importFrom dplyr %>%
+#' @importFrom stringr str_detect str_extract str_split
+#' @importFrom R6 R6Class
+#' @importFrom readr read_csv
+#' @importFrom tidyr separate
 PhenologyValidator <- R6Class("PhenologyValidator",
 			      public = list(
 					    LENIENT_PATTERN = NULL,
@@ -115,7 +144,7 @@ PhenologyValidator <- R6Class("PhenologyValidator",
 
 					    },
 					    validateField = function(strLine) {
-						    tryCatch({
+						    # tryCatch({
 							    # # remove \"
 							    line <- gsub("\"", "", strLine)
 							    line <- gsub('"', "", line)
@@ -187,9 +216,9 @@ PhenologyValidator <- R6Class("PhenologyValidator",
 								 # code = valid_code
 								 code = valid_code_len
 							    )
-						    }, error = {
-							    return (list(
-									 RUN_TIME_ERROR = FALSE
-									 ))
-						    })
+						    # }, error = {
+							    # return (list(
+									 # RUN_TIME_ERROR = FALSE
+									 # ))
+						    # })
 					    }))

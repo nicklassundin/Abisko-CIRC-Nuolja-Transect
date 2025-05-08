@@ -1,4 +1,17 @@
 source("R/patterns.R")
+
+#' Create a Backup of the Log File
+#' 
+#' This function creates a backup of the specified log file by renaming it with a
+#' timestamp. If a backup file already exists, it is removed before creating the new
+#' backup.
+#'
+#' @param log_file A character vector specifying the name of the log file.
+#'
+#' @return NULL (This function is called for its side effect of creating a backup.)
+#'
+#' @examples
+#' create_backup("error.log")
 create_backup <- function(log_file) {
 	log_backup_file = paste0("log/backup.", log_file)
 	log_file = paste0("log/", log_file)
@@ -9,6 +22,19 @@ create_backup <- function(log_file) {
 		file.rename(log_file, log_backup_file)
 	}
 }
+
+#' Create the File Structure for Logging
+#'
+#' This function creates a backup of the specified log file and initializes the
+#' necessary log files for error and warning messages. It also creates a directory
+#' for the log files if it does not already exist.
+#'
+#' @param log_file A character vector specifying the name of the log file.
+#'
+#' @return NULL (This function is called for its side effect of creating log files.)
+#'
+#' @examples
+#' create_file_structure("error.log")
 create_file_structure <- function(log_file) {
 	log_error_file = paste0("error.", log_file)
 	create_backup(log_error_file)
@@ -40,14 +66,14 @@ create_file_structure <- function(log_file) {
 #' @export
 validateLine <- function(line, validator) {
 	tryCatch(
-		{
-		validation_result <- validator$validate(line)
-		return(validation_result$lenient)
-		},
-		error = function(e) {
-			cat("Error validating line:", line, "\n")
-			return(NULL)
-		}
+		 {
+			 validation_result <- validator$validate(line)
+			 return(validation_result$lenient)
+		 },
+		 error = function(e) {
+			 cat("Error validating line:", line, "\n")
+			 return(NULL)
+		 }
 
 	)
 }
@@ -76,7 +102,7 @@ logErrorCounts <- function(error_list, file, count_log_file = "log/error_count_s
 	if (!file.exists(count_log_file)) {
 		file.create(count_log_file)
 	}
-	
+
 	# Prepare the log entry
 	log_entry <- paste0("Error Count Summary for File: ", file, "\n")
 	log_entry <- paste0(log_entry, "----------------------------------------\n")
@@ -169,13 +195,13 @@ validateFile <- function(file_path, silent = FALSE, validator, log_file="log/err
 	error_list <- list()
 	# Read the file line by line
 	tryCatch(
-		lines <- readLines(file_path),
-		error = function(e) {
-			if (!silent) {
-				cat("Error reading file:", file_path, "\n")
-			}
-			return(NULL)
-		}
+		 lines <- readLines(file_path),
+		 error = function(e) {
+			 if (!silent) {
+				 cat("Error reading file:", file_path, "\n")
+			 }
+			 return(NULL)
+		 }
 	)
 	if(head) {
 		lines = lines[-1]
@@ -186,46 +212,50 @@ validateFile <- function(file_path, silent = FALSE, validator, log_file="log/err
 	cat("\n")
 	progress_bar <- txtProgressBar(min = 0, max = length(lines), style = 3)
 	# Validate each line and collect errors
+	total <- length(lines)
+	start_time <- Sys.time()
 	for (i in seq_along(lines)) {
-		# if(!validation_results[i]) {
-			cat("\033[F\033[K") # Clear the line
-			cat(sprintf(lines[i]), "\n")
-			# sleep
-			# Sys.sleep(3.0)
-		# }
-		
+		elapsed <- as.numeric(difftime(Sys.time(), start_time, units = "secs"))
+		est_total <- (elapsed / i) * total
+		remaining <- est_total - elapsed
+		minutes <- floor(remaining / 60)
+		seconds <- round(remaining %% 60, 0)
+
+		cat("\033[F\033[K") # Clear the line
+		cat(sprintf(paste("Time Rem:", minutes, "m", seconds, "s", lines[i])), "\n")
 
 		# Update progress bar with and text with current line
 		setTxtProgressBar(progress_bar, i)
-		
-
 
 		errors <- printValidationError(
-						   lines[i], 
-						   file = file_path, 
-						   line_number = i, 
-						   log_file = log_file,
-						   validator = validator
+					       lines[i], 
+					       file = file_path, 
+					       line_number = i, 
+					       log_file = log_file,
+					       validator = validator
 		)
-
 		# append errors to error_list
 		error_list <- c(error_list, errors)
-		
+
 		tryCatch(
-			{
-				validation_results[i] <- validateLine(lines[i], validator)
-			},
-			error = function(e) {
-				cat("Error validating line:", lines[i], "\n")
-			}
+			 {
+				 validation_results[i] <- validateLine(lines[i], validator)
+			 },
+			 error = function(e) {
+				 cat("Error validating line:", lines[i], "\n")
+			 }
 		)
 	}
 	close(progress_bar)
-
+	# Print total elapsed time
+	elapsed <- as.numeric(difftime(Sys.time(), start_time, units = "secs"))
+	minutes <- floor(elapsed / 60)
+	seconds <- round(elapsed %% 60, 0)
+	cat(sprintf("Total elapsed time: %d minutes and %d seconds\n", minutes, seconds), "\n")
 	# Log error counts
 	count_log_file = paste0("log/count.", log_file)
 	logErrorCounts(error_list, file_path, count_log_file = count_log_file)
-	
+
 	# Return validation results (TRUE for valid lines, FALSE for invalid)
 	return(validation_results)
 }

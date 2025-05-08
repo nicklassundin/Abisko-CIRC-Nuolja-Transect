@@ -70,7 +70,8 @@ while(TRUE){
 	for(i in 1:length(datatypes)){
 		print(paste(i,") ", datatypes[i], sep=""));
 	}
-	print(paste(length(datatypes)+1,") All data", sep=""));
+	# TODO FIXME OR REMOVE
+	# print(paste(length(datatypes)+1,") All data", sep=""));
 	answer <- readLines(file("stdin"), 1);
 	answer <- gsub("\\)", "", answer);
 	answer <- gsub("\\D", "", answer);
@@ -83,7 +84,8 @@ while(TRUE){
 		datatypes <- datatypes[datatypes == datatypes[as.numeric(answer)]]
 		break;
 	}else if(as.numeric(answer) == length(datatypes)+1){
-		break;
+		# TODO FIXME
+		# break;
 	}
 	print("Invalid input, please try again");
 }

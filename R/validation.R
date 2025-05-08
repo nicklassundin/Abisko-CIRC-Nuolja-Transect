@@ -191,7 +191,7 @@ printValidationError <- function(line, validator, file = NA, line_number = NA, l
 #' @export
 validateFile <- function(file_path, silent = FALSE, validator, log_file="log/error.log", head=FALSE) {
 	# Create the file structure
-	create_file_structure(log_file)
+	# create_file_structure(log_file)
 	error_list <- list()
 	# Read the file line by line
 	tryCatch(

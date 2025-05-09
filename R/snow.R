@@ -234,6 +234,7 @@ FILE_REGEX = "\\d{4}.csv$"
 #' @export
 process_snow_data <- function(paths, dirs){
 	create_file_structure("snow.log")
+	if(!dir.exists("repack")) dir.create("repack")
 	for (i in 1:length(paths)){
 		path = getDataFilesPaths(paths[i], pattern="\\d{4}.csv$");
 		if(length(path) == 0) return(NULL);

@@ -58,7 +58,7 @@ SnowValidator <- R6Class("SnowValidator",
 					       list(
 						    strict = str_detect(line, self$STRICT_PATTERN),
 						    lenient = str_detect(line, self$LENIENT_PATTERN),
-						    fields = fields,
+						    fields = fields
 					       )
 				       },
 				       validateField = function(line) {

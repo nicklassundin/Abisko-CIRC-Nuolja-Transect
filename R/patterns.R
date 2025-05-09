@@ -159,6 +159,20 @@ PhenologyValidator <- R6Class("PhenologyValidator",
 							    # line$species is in accpetable
 
 							    valid_species <- line$species %in% self$ACCEPTABLE_CODES$Species
+						    if (!valid_species) {
+							   # load log/missing.phen.txt
+							    if (!file.exists("log/missing.phen.txt")) {
+								    file.create("log/missing.phen.txt")
+							    }
+							    # read file
+							    missing_phen <- readLines("log/missing.phen.txt")
+							    # check if species is in the file
+							    if (!line$species %in% missing_phen) {
+								    # write species at next line
+								    cat("\n", file = "log/missing.phen.txt", append = TRUE)
+								    cat(line$species, file = "log/missing.phen.txt", append = TRUE)
+							    }
+						    }
 							    if (!valid_species) {
 								    return (list(
 										 species = valid_species

@@ -238,7 +238,6 @@ process_snow_data <- function(paths, dirs){
 	for (i in 1:length(paths)){
 		path = getDataFilesPaths(paths[i], pattern="\\d{4}.csv$");
 		if(length(path) == 0) return(NULL);
-		print(paths)
 		valid = lapply(path, (function(x) {
 			return(validateFile(x, validator=SnowValidator$new(), log_file="snow.log"))
 		}));
@@ -259,6 +258,7 @@ process_snow_data <- function(paths, dirs){
 		filename = gsub("repack/", "out/", data$filename)
 
 		print("Writing summarized data to csv");
+		if(!dir.exists("out")) createDir(filename)
 		write.csv(subplot$contemporary, paste(filename, "Summarized by Subplot Contemporary.csv", sep=" "), row.names=FALSE);
 		write.csv(subplot$historical, paste(filename, "Summarized by Subplot Historical.csv", sep=" "), row.names=FALSE);
 

@@ -232,11 +232,11 @@ validateFile <- function(file_path, silent = FALSE, validator, log_file="log/err
 		minutes <- floor(remaining / 60)
 		seconds <- round(remaining %% 60, 0)
 
-		cat("\033[F\033[K") # Clear the line
-		cat(sprintf(paste("Time Rem:", minutes, "m", seconds, "s", lines[i])), "\n")
 
 		# Update progress bar with and text with current line
 		setTxtProgressBar(progress_bar, i)
+		cat("\033[F\033[K") # Clear the line
+		cat(sprintf(paste("Time Rem:", minutes, "m", seconds, "s", lines[i])), "\n")
 
 		errors <- printValidationError(
 					       lines[i], 

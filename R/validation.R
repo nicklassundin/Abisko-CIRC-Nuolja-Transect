@@ -220,7 +220,7 @@ validateFile <- function(file_path, silent = FALSE, validator, log_file="log/err
 		error_list <- c(error_list, errors)
 
 				 
-		validation_results[i] <- validator$validateLine(lines[i])$lenient
+		validation_results[i] <- validator$validate(lines[i])$lenient
 	}
 	close(progress_bar)
 	# Print total elapsed time

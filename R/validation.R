@@ -13,6 +13,10 @@ source("R/patterns.R")
 #' @examples
 #' create_backup("error.log")
 create_backup <- function(log_file) {
+	# remove log/missing.phen.txt
+	if (file.exists(log_file)) {
+		file.remove(log_file)
+	}
 	log_backup_file = paste0("log/backup.", log_file)
 	log_file = paste0("log/", log_file)
 	if (file.exists(log_backup_file)) {
@@ -248,14 +252,8 @@ validateFile <- function(file_path, silent = FALSE, validator, log_file="log/err
 		# append errors to error_list
 		error_list <- c(error_list, errors)
 
-		tryCatch(
-			 {
-				 validation_results[i] <- validateLine(lines[i], validator)
-			 },
-			 error = function(e) {
-				 cat("Error validating line:", lines[i], "\n")
-			 }
-		)
+				 
+		validation_results[i] <- validateLine(lines[i], validator)
 	}
 	close(progress_bar)
 	# Print total elapsed time

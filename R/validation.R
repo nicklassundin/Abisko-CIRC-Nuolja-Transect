@@ -69,7 +69,7 @@ create_file_structure <- function(log_file) {
 #' logErrorCounts(c("Error: Missing latitude format.", "Error: Missing latitude format."), "data.txt")
 #'
 #' @export
-logErrorCounts <- function(error_list, file, count_log_file = "log/error_count_summary.txt") {
+logErrorCounts <- function(error_list, file, count_log_file) {
 	# Create a table to count occurrences of each error message
 	error_count <- table(unlist(error_list))
 

@@ -119,7 +119,9 @@ PhenologyValidator <- R6Class("PhenologyValidator",
 
 					    validate = function(line) {
 						    valid <- self$validateField(line)
-						    return(all(unlist(valid)))
+						    return(list(
+								lenient = all(unlist(valid)))
+							    )
 					    },
 					    validateField = function(strLine) {
 						    # tryCatch({

@@ -53,39 +53,6 @@ create_file_structure <- function(log_file) {
 	# print files in log directory
 }
 
-#' Validate a Single Line Against a Specific Format
-#'
-#' This function checks whether a given line matches a specified format pattern. 
-#' The pattern enforces a structure that starts with 'NS-', followed by a date-time 
-#' stamp, latitude, longitude, and an observation code.
-#'
-#' @param line A character vector representing a single line to be validated.
-#' @param file (Optional) The name of the file being processed (default is NA).
-#' @param line_number (Optional) The line number within the file (default is NA).
-#' @param log_file (Optional) A character vector specifying a file to which validation 
-#'        error messages should be logged. If NULL, logging is disabled.
-#' 
-#' @return A logical value indicating whether the line matches the specified format pattern.
-#' 
-#' @examples
-#' validateLine("NS-20220510-001 68.37261219N 18.69783E 1195.186 O")
-#' validateLine("NS-20231015-034 70.12345678N 20.54321E 1500.000 os")
-#'
-#' @export
-validateLine <- function(line, validator) {
-	tryCatch(
-		 {
-			 validation_result <- validator$validate(line)
-			 return(validation_result$lenient)
-		 },
-		 error = function(e) {
-			 cat("Error validating line:", line, "\n")
-			 return(NULL)
-		 }
-
-	)
-}
-
 #' Count and Log Errors for Each File and Type of Error
 #'
 #' This function aggregates the count of each type of validation error
@@ -253,7 +220,7 @@ validateFile <- function(file_path, silent = FALSE, validator, log_file="log/err
 		error_list <- c(error_list, errors)
 
 				 
-		validation_results[i] <- validateLine(lines[i], validator)
+		validation_results[i] <- validator$validateLine(lines[i])$lenient
 	}
 	close(progress_bar)
 	# Print total elapsed time

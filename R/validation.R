@@ -108,14 +108,14 @@ logErrorCounts <- function(error_list, file, count_log_file = "log/error_count_s
 #' printValidationError ("NS-20220510-001 68.37261219N 18.69783 1195.186 O", "data.txt", 5, "log/validation.txt", "log/warnings.txt")
 #' 
 #' @export
-printValidationError <- function(line, validator, file = NA, line_number = NA, log_file = NULL) {
+printValidationError <- function(line, validation, file = NA, line_number = NA, log_file = NULL) {
 	warnings_file = paste0("log/warnings.", log_file)
 	errors <- c()
 	# Check prefix
 	# iterate over key and value pairs in PATTERNS$STRUCT
 
 	# check if validator is NULL
-	validField <- validator$validateField(line)
+	validField <- validation$fields
 	for (key in names(validField)) {
 		if (!validField[[key]]) {
 			errors <- c(errors, paste("Message: Missing or incorrect", key, "format."))
@@ -125,7 +125,7 @@ printValidationError <- function(line, validator, file = NA, line_number = NA, l
 	# Format error messages
 	if (length(errors) > 0) {
 		error_message <- paste(errors, collapse = "\n")
-		critical <- !validator$validate(line)$lenient
+		critical <- !validation$lenient
 		formatted_message <- paste0(
 					    "----------------------------------------\n",
 					    "Validation Errors:\n",
@@ -208,19 +208,20 @@ validateFile <- function(file_path, silent = FALSE, validator, log_file="log/err
 		setTxtProgressBar(progress_bar, i)
 		cat("\033[F\033[K") # Clear the line
 		cat(sprintf(paste("Time Rem:", minutes, "m", seconds, "s", lines[i])), "\n")
-
+		
+		validation <- validator$validate(lines[i])
 		errors <- printValidationError(
 					       lines[i], 
 					       file = file_path, 
 					       line_number = i, 
 					       log_file = log_file,
-					       validator = validator
+					       validation = validation
 		)
 		# append errors to error_list
 		error_list <- c(error_list, errors)
 
-				 
-		validation_results[i] <- validator$validate(lines[i])$lenient
+		 
+		validation_results[i] <- validation$lenient
 	}
 	close(progress_bar)
 	# Print total elapsed time

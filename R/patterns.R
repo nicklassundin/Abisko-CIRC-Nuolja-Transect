@@ -54,9 +54,11 @@ SnowValidator <- R6Class("SnowValidator",
 
 				       },
 				       validate = function(line) {
+					       	fields <- self$validateField(line)
 					       list(
 						    strict = str_detect(line, self$STRICT_PATTERN),
-						    lenient = str_detect(line, self$LENIENT_PATTERN)
+						    lenient = str_detect(line, self$LENIENT_PATTERN),
+						    fields = fields,
 					       )
 				       },
 				       validateField = function(line) {
@@ -120,8 +122,9 @@ PhenologyValidator <- R6Class("PhenologyValidator",
 					    validate = function(line) {
 						    valid <- self$validateField(line)
 						    return(list(
-								lenient = all(unlist(valid)))
-							    )
+								lenient = all(unlist(valid)),
+							   fields = valid
+							    ))
 					    },
 					    validateField = function(strLine) {
 						    # tryCatch({

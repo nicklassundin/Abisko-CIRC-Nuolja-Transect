@@ -72,7 +72,11 @@ read_phenology_data <- function(dir) {
 		}
 		print("Please select a file by entering the corresponding number:")
 		answer = readLines(file("stdin"), n = 1)
+		# split on ; and ,
+		answer = unlist(strsplit(answer, "[;,]"))
+		answer = paths[as.numeric(answer)]
 		if(answer %in% paths){
+			paths <- answer
 			break;
 		} else {
 			print("Invalid selection. Please try again.");

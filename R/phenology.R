@@ -65,6 +65,19 @@ get_output_path <- function(path, filename){
 read_phenology_data <- function(dir) {
 	# read only .csv files from path
 	paths <- list.files(dir, pattern = ".csv", full.names = TRUE, recursive = FALSE)
+	answer = NA;
+	while(TRUE){
+		for(i in 1:length(paths)){
+			print(paste(i, ") ", paths[i], sep=""))
+		}
+		print("Please select a file by entering the corresponding number:")
+		answer = readLines(file("stdin"), n = 1)
+		if(answer %in% paths){
+			break;
+		} else {
+			print("Invalid selection. Please try again.");
+		}
+	}
 	# filter NA values
 	# paths <- paths[!is.na(paths)]
 	paths <- paths[grepl("Nuolja_Data_\\d{4}.csv$", paths)]

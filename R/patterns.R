@@ -54,7 +54,7 @@ SnowValidator <- R6Class("SnowValidator",
 
 				       },
 				       validate = function(line) {
-					       	fields <- self$validateField(line)
+					       fields <- self$validateField(line)
 					       list(
 						    strict = str_detect(line, self$STRICT_PATTERN),
 						    lenient = str_detect(line, self$LENIENT_PATTERN),
@@ -123,27 +123,28 @@ PhenologyValidator <- R6Class("PhenologyValidator",
 						    valid <- self$validateField(line)
 						    return(list(
 								lenient = all(unlist(valid)),
-							   fields = valid
-							    ))
+								fields = valid
+								))
 					    },
 					    validateField = function(strLine) {
 						    # tryCatch({
-							    # # remove \"
-							    line <- gsub("\"", "", strLine)
-							    line <- gsub('"', "", line)
-							    # devide on comma into list with colnames
-							    line <- str_split(line, ",", simplify = TRUE)
-							    line <- list(
-									 species = line[1],
-									 date = line[2],
-									 subplot = line[3],
-									 code = line[4]
-							    )
-							    # line$species is in accpetable
+						    # # remove \"
+						    line <- gsub("\"", "", strLine)
 
-							    valid_species <- line$species %in% self$ACCEPTABLE_CODES$Species
+						    line <- gsub('"', "", line)
+						    # devide on comma into list with colnames
+						    line <- str_split(line, ",", simplify = TRUE)
+						    line <- list(
+								 species = line[1],
+								 date = line[2],
+								 subplot = line[3],
+								 code = line[4]
+						    )
+						    # line$species is in accpetable
+
+						    valid_species <- line$species %in% self$ACCEPTABLE_CODES$Species
 						    if (!valid_species) {
-							   # load log/missing.phen.txt
+							    # load log/missing.phen.txt
 							    if (!file.exists("log/missing.phen.txt")) {
 								    file.create("log/missing.phen.txt")
 							    }
@@ -156,66 +157,66 @@ PhenologyValidator <- R6Class("PhenologyValidator",
 								    cat(line$species, file = "log/missing.phen.txt", append = TRUE)
 							    }
 						    }
-							    if (!valid_species) {
-								    return (list(
-										 species = valid_species
-										 ))
-							    }
-							    current_species <- line$species
-							    codes <- self$ACCEPTABLE_CODES[self$ACCEPTABLE_CODES$Species == current_species,]$Code[[1]]
+						    if (!valid_species) {
+							    return (list(
+									 species = valid_species
+									 ))
+						    }
+						    current_species <- line$species
+						    codes <- self$ACCEPTABLE_CODES[self$ACCEPTABLE_CODES$Species == current_species,]$Code[[1]]
 
-							    valid_date <- str_detect(line$date, self$PATTERNS$date)
-							    if (!valid_date) {
-								    return (list(
-										 species = valid_species,
-										 date = valid_date
-										 ))
-							    }
-							    valid_subplot <- str_detect(line$subplot, self$PATTERNS$subplot)
-							    if (!valid_subplot) {
-								    valid_subplot <- FALSE
-								    return (list(
-										 species = valid_species,
-										 date = valid_date,
-										 subplot = valid_subplot
-										 ))
-							    }
+						    valid_date <- str_detect(line$date, self$PATTERNS$date)
+						    if (!valid_date) {
+							    return (list(
+									 species = valid_species,
+									 date = valid_date
+									 ))
+						    }
+						    valid_subplot <- str_detect(line$subplot, self$PATTERNS$subplot)
+						    if (!valid_subplot) {
+							    valid_subplot <- FALSE
+							    return (list(
+									 species = valid_species,
+									 date = valid_date,
+									 subplot = valid_subplot
+									 ))
+						    }
 
-							    valid_code <- str_detect(line$code, codes)
-							    # combine all codes boolean
-							    valid_code <- any(valid_code)
-							    if (!valid_code) {
-								    # code <- FALSE
-								    # return (list(
-								    # species = valid_species,
-								    # date = valid_date,
-								    # subplot = valid_subplot,
-								    # code = code
-								    # ))
-							    }
-							    valid_code_len <- str_detect(tolower(line$code), tolower(codes))
-							    valid_code_len <- any(valid_code_len)
-							    # check if code is in the acceptable codes
-							    if (!valid_code_len) {
-								    return (list(
-										 species = valid_species,
-										 date = valid_date,
-										 subplot = valid_subplot,
-										 code = valid_code_len
-										 ))
-							    }
-
-
-							    list(
-								 species = valid_species,
-								 date = valid_date,
-								 subplot = valid_subplot,
-								 # code = valid_code
-								 code = valid_code_len
-							    )
-						    # }, error = {
+						    valid_code <- str_detect(line$code, codes)
+						    # combine all codes boolean
+						    valid_code <- any(valid_code)
+						    if (!valid_code) {
+							    # code <- FALSE
 							    # return (list(
-									 # RUN_TIME_ERROR = FALSE
-									 # ))
+							    # species = valid_species,
+							    # date = valid_date,
+							    # subplot = valid_subplot,
+							    # code = code
+							    # ))
+						    }
+						    valid_code_len <- str_detect(tolower(line$code), tolower(codes))
+						    valid_code_len <- any(valid_code_len)
+						    # check if code is in the acceptable codes
+						    if (!valid_code_len) {
+							    return (list(
+									 species = valid_species,
+									 date = valid_date,
+									 subplot = valid_subplot,
+									 code = valid_code_len
+									 ))
+						    }
+
+
+						    list(
+							 species = valid_species,
+							 date = valid_date,
+							 subplot = valid_subplot,
+							 # code = valid_code
+							 code = valid_code_len
+						    )
+						    # }, error = {
+						    # return (list(
+						    # RUN_TIME_ERROR = FALSE
+						    # ))
 						    # })
 					    }))

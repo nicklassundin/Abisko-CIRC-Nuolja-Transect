@@ -118,30 +118,8 @@ PhenologyValidator <- R6Class("PhenologyValidator",
 					    },
 
 					    validate = function(line) {
-						    # check if species is in the acceptable codes
-						    species <- str_extract(line, self$ACCEPTABLE_CODES$Species)
-						    species <- species[!is.na(species)]
-						    if (is.na(species) || length(species) == 0) {
-							    return(list(lenient = FALSE) # no species found
-							    )
-						    }
-						    # TODO just return all
-						    return (list(
-								 lenient = TRUE
-								 ))
-
-						    # check if code is in the acceptable codes
-						    code <- str_extract(line, self$ACCEPTABLE_CODES$Code)
-						    if (is.na(code)) {
-							    return(list(lenient = FALSE) # no code found
-							    )
-						    }
-						    # check combination of species, code, date and subplot
-						    combination <- paste(species, code, self$PATTERNS$date, self$PATTERNS$subplot, sep = "[ , ]+")
-						    list(
-							 lenient = str_detect(line, combination),
-						    )
-
+						    valid <- self$validateField(line)
+						    return(all(unlist(valid)))
 					    },
 					    validateField = function(strLine) {
 						    # tryCatch({

@@ -36,6 +36,10 @@ create_backup <- function(log_file) {
 #' @examples
 #' create_file_structure("error.log")
 create_file_structure <- function(log_file) {
+	# create log directory if it does not exist
+	if (!dir.exists("log")) {
+		dir.create("log")
+	}
 	log_error_file = paste0("error.", log_file)
 	create_backup(log_error_file)
 	warnings_file = paste0("warnings.", log_file)

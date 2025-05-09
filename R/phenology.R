@@ -62,11 +62,11 @@ get_output_path <- function(path, filename){
 #' @param dirs The directories to search for the phenology data
 #' @return A data frame containing the phenology data
 
-read_phenology_data <- function(dir) {
+read_phenology_data <- function(dir, all=FALSE) {
 	# read only .csv files from path
 	paths <- list.files(dir, pattern = ".csv", full.names = TRUE, recursive = FALSE)
 	answer = NA;
-	while(TRUE){
+	while(!all){
 		for(i in 1:length(paths)){
 			print(paste(i, ") ", paths[i], sep=""))
 		}

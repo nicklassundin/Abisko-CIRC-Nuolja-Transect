@@ -125,7 +125,7 @@ printValidationError <- function(line, validator, file = NA, line_number = NA, l
 	# Format error messages
 	if (length(errors) > 0) {
 		error_message <- paste(errors, collapse = "\n")
-		critical <- !validateLine(line, validator = validator)
+		critical <- !validator$validate(line)$lenient
 		formatted_message <- paste0(
 					    "----------------------------------------\n",
 					    "Validation Errors:\n",

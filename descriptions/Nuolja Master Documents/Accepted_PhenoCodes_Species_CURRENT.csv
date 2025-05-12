@@ -1,225 +1,246 @@
 ﻿Species;Leaf out;Flowering;Fruiting ;Dispersal;Senescence ;Leaf fall
-Achillea millefolium;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Agrostis capillaris;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Agrostis mertensii;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Alchemilla sp.;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Andromeda polifolia;"0,A,B1,B2;C";K,f1,f2,f3,f4;uf;V,Vb;none;none
-Angelica archangelica;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Antennaria alpina;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Antennaria dioica;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Antennaria lanata;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Antennaria porsildii;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Antennaria sp.;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Anthoxanthum alpinum;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Anthriscus sylvestris;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Arabis alpina;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Arabis hirsuta;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Arctostaphylos alpinus;"0,A,B1,B2;C";K,f1,f2,f3,f4;uf, rd,rf;none;ed,r;L 
-Astragalus alpinus;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Astragalus frigidus;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Bartsia alpina ;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Betula nana;"0,A,B1,B2;C";K,f1,f2,f3,f4;uf;V,Vb;ed,r,gd,g;L
-Betula pubescens;"0,A,B1,B2;C";K,f1,f2,f3,f4;uf;V,Vb;gd,g;L
-Bistorta vivipara;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Calamagrostis lapponica;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Calamagrostis neglecta;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Calamagrostis purpurea;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Campanula rotundifolia;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Campanula uniflora;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Cardamine bellidifolia;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Cardamine pratensis;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Carex atrata;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Carex atrofusca;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Carex bigelowii;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Carex brunnescens;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Carex capillaris;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Carex capitata;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Carex dioica;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Carex fuliginosa;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Carex glacialis;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Carex lachenalii;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Carex microglochin;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Carex nigra;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Carex norvegica;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Carex rupestris;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Carex saxatilis;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Carex vaginata;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Carex sp.;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Cassiope hypnoides;Z;K,f1,f2,f3,f5;uf;V,Vb;none;none
-Cassiope tetragona;Z;K,f1,f2,f3,f4;uf;V,Vb;none;none
-Cerastium alpinum;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Cerastium glabratum;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Cerastium cerastoides;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Cerastium fontanum;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Cerastium nigrescens;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Cerastium sp.;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Cicerbita alpina;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Cirsium helenioides;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Corallorhiza trifida;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Cornus suecica;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Dactylorhiza viride;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Deschampsia cespitosa;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Deschampsia flexuosa;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Diapensia lapponica;"0,A,B1,B2;C";K,f1,f2,f3,f4;uf;V,Vb;none;none
-Diphasiastrum alpinum;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Draba alpina;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Draba daurica;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Draba lactea;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Draba nivalis;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Draba norvegica;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Draba sp.;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Dryas octopetala;"0,A,B1,B2;C";K,f1,f2,f3,f4;uf;V,Vb;none;none
-Empetrum nigrum;"0,A,B1,B2;C";K,f1,f2,f3,f4;uf, rd,rf;none;none;none
-Epilobium alsinifolium;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Epilobium anagallidifolium;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Epilobium angustifolium;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Epilobium hornemannii;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Epilobium lactiflorum;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Erigeron borealis;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Erigeron humilis;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Erigeron sp.;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Eriophorum angustifolium ;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Erigeron uniflorus;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Eriophorum scheuchzeri;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Eriophorum vaginatum;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Euphrasia frigida;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Euphrasia stricta;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Euphrasia salisburgensis;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Festuca ovina;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Festuca rubra;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Festuca vivipara;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Festuca sp.;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Gentiana nivalis;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Gentianella tenella;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Geranium sylvaticum;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Geum rivale;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Gnaphalium norvegicum;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Gnaphalium supinum;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Gnaphalium sylvaticum;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Hieracium alpinum;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Hieracium hieracium;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Hieracium subalpina;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Hieracium sp.;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Hierochloe alpina;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Hierochloe odorata;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Juncus alpinoarticulatus;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Juncus biglumis;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Juncus trifidus;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Juncus triglumis;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Juniperus communis ;"0,A,B1,B2;C";K,f1,f2,f3,f4;uf, rd,rf;none;none;none
-Leucanthemum vulgare;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Linnaea borealis;0, A, B1, B2, C;K, f1-f3, f4;uf;V, Vb;none;none
-Listera cordata;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Loiseleuria procumbens;"0,A,B1,B2;C";K,f1,f2,f3,f4;uf;V,Vb;none;none
-Luzula arcuata ;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Luzula confusa;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Luzula multiflora;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Luzula parviflora;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Luzula pilosa;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Luzula spicata;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Luzula sudetica;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Luzula wahlenbergii;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Luzula sp.;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Melampyrum pratense;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Melampyrum sylvaticum;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Milium effusum;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Minuartia biflora;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Minuartia stricta;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Moneses uniflora;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Myosotis decumbens;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Nardus stricta;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Orthilia secunda;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Oxyria digyna;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Paris quadrifolia;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Parnassia palustris;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Pedicularis hirsuta;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Pedicularis lapponica;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Petasites frigidus;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Phleum alpinum;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Phyllodoce caerulea;"0,A,B1,B2;C";K,f1,f2,f3,f4;uf;V,Vb;none;none
-Pinguicula alpina;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Pinguicula vulgaris;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Pinus sylvestris;"0,A,B1,B2;C";K,f1,f2,f3,f4;uf;V,Vb;none;none
-Poa alpina;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Poa annua;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Poa vivipara;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Poa arctica;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Poa glauca;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Poa nemoralis;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Poa pratensis;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Poa sp.;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Populus tremula;"0,A,B1,B2;C";K,f1,f2,f3,f4;uf;V,Vb;gd,g;L
-Potentilla crantzii;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Pyrola minor;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Pyrola rotundifolia;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Ranunculus acris;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Ranunculus auricomus;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Ranunculus glacialis;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Ranunculus hyperboreus;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Ranunculus nivalis;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Ranunculus pygmaeus;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Ranunculus repens;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Ranunculus sp.;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Rhinanthus minor;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Rhodiola rosea ;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Rhododendron lapponicum;"0,A,B1,B2;C";K,f1,f2,f3,f4;uf;V,Vb;none;none
-Ribes spicatum;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Rubus arcticus;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Rubus chamaemorus;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Rubus saxatilis;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Rumex acetosa;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Rumex acetosella;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Sagina caespitosa;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Sagina nivalis;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Sagina saginoides;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Salix arbuscula;"0,A,B1,B2;C";K,f1,f2,f3,f4;uf;V,Vb;gd,g,vd,vt;L
-Salix caprea;"0,A,B1,B2;C";K,f1,f2,f3,f4;uf;V,Vb;gd,g,vd,vt;L
-Salix glauca;"0,A,B1,B2;C";K,f1,f2,f3,f4;uf;V,Vb;gd,g,vd,vt;L
-Salix hastata;"0,A,B1,B2;C";K,f1,f2,f3,f4;uf;V,Vb;gd,g,vd,vt;L
-Salix herbacea;"0,A,B1,B2;C";K,f1,f2,f3,f4;uf;V,Vb;gd,g,vd,vt;L
-Salix lanata;"0,A,B1,B2;C";K,f1,f2,f3,f4;uf;V,Vb;gd,g,vd,vt;L
-Salix lapponum;"0,A,B1,B2;C";K,f1,f2,f3,f4;uf;V,Vb;gd,g,vd,vt;L
-Salix myrsinifolia;"0,A,B1,B2;C";K,f1,f2,f3,f4;uf;V,Vb;gd,g,vd,vt;L
-Salix myrsinites;"0,A,B1,B2;C";K,f1,f2,f3,f4;uf;V,Vb;gd,g,vd,vt;L
-Salix phylicifolia;"0,A,B1,B2;C";K,f1,f2,f3,f4;uf;V,Vb;gd,g,vd,vt;L
-Salix polaris;"0,A,B1,B2;C";K,f1,f2,f3,f4;uf;V,Vb;gd,g,vd,vt;L
-Salix reticulata;"0,A,B1,B2;C";K,f1,f2,f3,f4;uf;V,Vb;gd,g,vd,vt;L
-Salix sp.;"0,A,B1,B2;C";K,f1,f2,f3,f4;uf;V,Vb;gd,g,vd,vt;L
-Saussurea alpina;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Saxifraga aizoides;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Saxifraga cernua;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Saxifraga foliolosa;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Saxifraga nivalis;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Saxifraga oppositifolia;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Saxifraga rivularis;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Saxifraga stellaris;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Saxifraga tenuis;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Saxifraga sp.;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Sedum villosum;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Sibbaldia procumbens;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Silene acaulis;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Silene dioica;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Silene wahlbergella;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Solidago virgaurea;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Sorbus aucuparia;"0,A,B1,B2;C";K,f1,f2,f3,f4;uf;V,Vb;gd,g,ed,r;L
-Stellaria borealis;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Stellaria graminea;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Stellaria nemorum;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Taraxacum arcticum;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Taraxacum croceum;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Taraxacum sp.;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Thalictrum alpinum;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Tofieldia pusilla;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Trientalis europaea;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Trifolium pratense;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Trifolium repens;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Trisetum spicatum;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Trollius europaeus;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Tussilago farfara;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Vaccinium myrtillus;"0,A,B1,B2;C";K,f1,f2,f3,f4;uf, rd,rf;none;ed, r;L
-Vaccinium uliginosum;"0,A,B1,B2;C";K,f1,f2,f3,f4;uf, rd,rf;none;ed, r;L
-Vaccinium vitis-idaea;"0,A,B1,B2;C";K,f1,f2,f3,f4;uf, rd,rf;none;none;none
-Veronica alpina;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Veronica fruticans;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Vicia cracca;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
-Viola biflora;Z;K,f1,f2,f3,f4;uf;V,Vb;vd,vt;none
+Achillea millefolium;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Agrostis capillaris;+;K, Rs, Rf, Ra, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Agrostis mertensii;+;K, Rs, Rf, Ra, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Alchemilla sp.;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Andromeda polifolia;"0,A,B1,B2;C";K, b1, b2, b3, b4;uf;V,Vb;none;none
+Angelica archangelica;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Antennaria alpina;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Antennaria dioica;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Antennaria lanata;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Antennaria porsildii;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Antennaria sp.;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Anthoxanthum alpinum;+;K, Rs, Rf, Ra, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Anthriscus sylvestris;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Arabis alpina;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Arabis hirsuta;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Arctostaphylos alpinus;"0,A,B1,B2;C";K, b1, b2, b3, b4;uf, rd,rf;none;ed,r1,r2,r3, vd, vt;L1, L2, L3, L4, 
+Astragalus alpinus;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Astragalus frigidus;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Bartsia alpina ;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Betula nana;"0,A,B1,B2;C";K, b1, b2, b3, b4;uf;V,Vb;ed,r1,r2,r3,gd, g1,g2,g3, vd, vt;L1, L2, L3, L4
+Betula pubescens;"0,A,B1,B2;C";K, b1, b2, b3, b4;uf;V,Vb;gd,g1, g2, g3;L1, L2, L3, L4
+Bistorta vivipara;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Calamagrostis lapponica;+;K, Rs, Rf, Ra, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Calamagrostis neglecta;+;K, Rs, Rf, Ra, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Calamagrostis purpurea;+;K, Rs, Rf, Ra, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Campanula rotundifolia;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Campanula uniflora;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Cardamine bellidifolia;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Cardamine pratensis;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Carex atrata;+;K, As, Af, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Carex atrofusca;+;K, As, Af, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Carex bigelowii;+;K, As, Af, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Carex brunnescens;+;K, As, Af, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Carex capillaris;+;K, As, Af, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Carex capitata;+;K, As, Af, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Carex dioica;+;K, As, Af, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Carex fuliginosa;+;K, As, Af, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Carex glacialis;+;K, As, Af, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Carex lachenalii;+;K, As, Af, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Carex microglochin;+;K, As, Af, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Carex nigra;+;K, As, Af, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Carex norvegica;+;K, As, Af, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Carex rupestris;+;K, As, Af, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Carex saxatilis;+;K, As, Af, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Carex vaginata;+;K, As, Af, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Carex sp.;+;K, As, Af, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Cassiope hypnoides;+;K, b1, b2, b3, b4;uf;V,Vb;none;none
+Cassiope tetragona;+;K, b1, b2, b3, b4;uf;V,Vb;none;none
+Cerastium alpinum;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Cerastium glabratum;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Cerastium cerastoides;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Cerastium fontanum;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Cerastium nigrescens;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Cerastium sp.;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Cicerbita alpina;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Cirsium helenioides;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Corallorhiza trifida;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Cornus suecica;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Dactylorhiza viride;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Deschampsia cespitosa;+;K, Rs, Rf, Ra, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Deschampsia flexuosa;+;K, Rs, Rf, Ra, b1, b2, b3, b5;uf;V,Vb;vd,vt;none
+Diapensia lapponica;"0,A,B1,B2;C";K, b1, b2, b3, b4;uf;V,Vb;none;none
+Diphasiastrum alpinum;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Draba alpina;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Draba daurica;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Draba lactea;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Draba nivalis;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Draba norvegica;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Draba sp.;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Dryas octopetala;"0,A,B1,B2;C";K, b1, b2, b3, b4;uf;V,Vb;none;none
+Empetrum nigrum;"0,A,B1,B2;C";K, b1, b2, b3, b4;uf, rd,rf;none;none;none
+Epilobium alsinifolium;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Epilobium anagallidifolium;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Epilobium angustifolium;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Epilobium hornemannii;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Epilobium lactiflorum;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Erigeron borealis;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Erigeron humilis;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Erigeron sp.;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Eriophorum angustifolium ;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Erigeron uniflorus;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Eriophorum scheuchzeri;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Eriophorum vaginatum;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Euphrasia frigida;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Euphrasia stricta;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Euphrasia salisburgensis;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Festuca ovina;+;K, Rs, Rf, Ra, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Festuca rubra;+;K, Rs, Rf, Ra, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Festuca vivipara;+;K, Rs, Rf, Ra, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Festuca sp.;+;K, Rs, Rf, Ra, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Gentiana nivalis;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Gentianella tenella;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Geranium sylvaticum;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Geum rivale;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Gnaphalium norvegicum;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Gnaphalium supinum;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Gnaphalium sylvaticum;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Hieracium alpinum;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Hieracium hieracium;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Hieracium subalpina;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Hieracium sp.;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Hierochloe alpina;+;K, Rs, Rf, Ra, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Hierochloe odorata;+;K, Rs, Rf, Ra, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Juncus alpinoarticulatus;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Juncus biglumis;+;K, Rs, Rf, Ra, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Juncus trifidus;+;K, Rs, Rf, Ra, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Juncus triglumis;+;K, Rs, Rf, Ra, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Juniperus communis ;"0,A,B1,B2;C";K, b1, b2, b3, b4;uf, rd,rf;none;none;none
+Leucanthemum vulgare;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Linnaea borealis;0, A, B1, B2, C;K, b1, b2, b3, b4;uf;V, Vb;none;none
+Listera cordata;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Loiseleuria procumbens;"0,A,B1,B2;C";K, b1, b2, b3, b4;uf;V,Vb;none;none
+Luzula arcuata ;+;K, Rs, Rf, Ra, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Luzula confusa;+;K, Rs, Rf, Ra, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Luzula multiflora;+;K, Rs, Rf, Ra, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Luzula parviflora;+;K, Rs, Rf, Ra, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Luzula pilosa;+;K, Rs, Rf, Ra, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Luzula spicata;+;K, Rs, Rf, Ra, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Luzula sudetica;+;K, Rs, Rf, Ra, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Luzula wahlenbergii;+;K, Rs, Rf, Ra, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Luzula sp.;+;K, Rs, Rf, Ra, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Melampyrum pratense;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Melampyrum sylvaticum;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Milium effusum;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Minuartia biflora;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Minuartia stricta;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Moneses uniflora;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Myosotis decumbens;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Nardus stricta;+;K, As, Af, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Orthilia secunda;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Oxyria digyna;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Paris quadrifolia;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Parnassia palustris;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Pedicularis hirsuta;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Pedicularis lapponica;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Petasites frigidus;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Phleum alpinum;+;K, Rs, Rf, Ra, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Phyllodoce caerulea;"0,A,B1,B2;C";K, b1, b2, b3, b4;uf;V,Vb;none;none
+Pinguicula alpina;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Pinguicula vulgaris;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Pinus sylvestris;"0,A,B1,B2;C";K, b1, b2, b3, b4;uf;V,Vb;none;none
+Poa alpina;+;K, Rs, Rf, Ra, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Poa annua;+;K, Rs, Rf, Ra, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Poa vivipara;+;K, Rs, Rf, Ra, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Poa arctica;+;K, Rs, Rf, Ra, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Poa glauca;+;K, Rs, Rf, Ra, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Poa nemoralis;+;K, Rs, Rf, Ra, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Poa pratensis;+;K, Rs, Rf, Ra, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Poa sp.;+;K, Rs, Rf, Ra, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Populus tremula;"0,A,B1,B2;C";K, b1, b2, b3, b4;uf;V,Vb;gd,g1,g2,g3, vd, vt;L1, L2, L3, L4
+Potentilla crantzii;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Pyrola minor;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Pyrola rotundifolia;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Ranunculus acris;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Ranunculus auricomus;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Ranunculus glacialis;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Ranunculus hyperboreus;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Ranunculus nivalis;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Ranunculus pygmaeus;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Ranunculus repens;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Ranunculus sp.;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Rhinanthus minor;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Rhodiola rosea ;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Rhododendron lapponicum;"0,A,B1,B2;C";K, b1, b2, b3, b4;uf;V,Vb;none;none
+Ribes spicatum;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Rubus arcticus;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Rubus chamaemorus;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Rubus saxatilis;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Rumex acetosa;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Rumex acetosella;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Sagina caespitosa;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Sagina nivalis;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Sagina saginoides;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Salix arbuscula;"0,A,B1,B2;C";K, b1, b2, b3, b4;uf;V,Vb;gd,g1,g2,g3,vd,vt;L1, L2, L3, L4
+Salix caprea;"0,A,B1,B2;C";K, b1, b2, b3, b4;uf;V,Vb;gd,g1,g2,g3,vd,vt;L1, L2, L3, L4
+Salix glauca;"0,A,B1,B2;C";K, b1, b2, b3, b4;uf;V,Vb;gd,g1,g2,g3,vd,vt;L1, L2, L3, L4
+Salix hastata;"0,A,B1,B2;C";K, b1, b2, b3, b4;uf;V,Vb;gd,g1,g2,g3,vd,vt;L1, L2, L3, L4
+Salix herbacea;"0,A,B1,B2;C";K, b1, b2, b3, b4;uf;V,Vb;gd,g1,g2,g3,vd,vt;L1, L2, L3, L4
+Salix lanata;"0,A,B1,B2;C";K, b1, b2, b3, b4;uf;V,Vb;gd,g1,g2,g3,vd,vt;L1, L2, L3, L4
+Salix lapponum;"0,A,B1,B2;C";K, b1, b2, b3, b4;uf;V,Vb;gd,g1,g2,g3,vd,vt;L1, L2, L3, L4
+Salix myrsinifolia;"0,A,B1,B2;C";K, b1, b2, b3, b4;uf;V,Vb;gd,g1,g2,g3,vd,vt;L1, L2, L3, L4
+Salix myrsinites;"0,A,B1,B2;C";K, b1, b2, b3, b4;uf;V,Vb;gd,g1,g2,g3,vd,vt;L1, L2, L3, L4
+Salix phylicifolia;"0,A,B1,B2;C";K, b1, b2, b3, b4;uf;V,Vb;gd,g1,g2,g3,vd,vt;L1, L2, L3, L4
+Salix polaris;"0,A,B1,B2;C";K, b1, b2, b3, b4;uf;V,Vb;gd,g1,g2,g3,vd,vt;L1, L2, L3, L4
+Salix reticulata;"0,A,B1,B2;C";K, b1, b2, b3, b4;uf;V,Vb;gd,g1,g2,g3,vd,vt;L1, L2, L3, L4
+Salix sp.;"0,A,B1,B2;C";K, b1, b2, b3, b4;uf;V,Vb;gd,g1,g2,g3,vd,vt;L1, L2, L3, L4
+Saussurea alpina;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Saxifraga aizoides;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Saxifraga cernua;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Saxifraga foliolosa;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Saxifraga nivalis;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Saxifraga oppositifolia;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Saxifraga rivularis;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Saxifraga stellaris;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Saxifraga tenuis;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Saxifraga sp.;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Sedum villosum;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Sibbaldia procumbens;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Silene acaulis;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Silene dioica;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Silene wahlbergella;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Solidago virgaurea;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Sorbus aucuparia;"0,A,B1,B2;C";K, b1, b2, b3, b4;uf;V,Vb;gd,g1,g2,g3,ed,r1,r2,r3, vd, vt;L1, L2, L3, L4
+Stellaria borealis;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Stellaria graminea;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Stellaria nemorum;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Taraxacum arcticum;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Taraxacum croceum;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Taraxacum sp.;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Thalictrum alpinum;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Tofieldia pusilla;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Trientalis europaea;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Trifolium pratense;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Trifolium repens;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Trisetum spicatum;+;K, Rs, Rf, Ra, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Trollius europaeus;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Tussilago farfara;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Vaccinium myrtillus;"0,A,B1,B2;C";K, b1, b2, b3, b4;uf, rd,rf;none;ed, r1,r2,r3, vd, vt;L1, L2, L3, L4
+Vaccinium uliginosum;"0,A,B1,B2;C";K, b1, b2, b3, b4;uf, rd,rf;none;ed, r1,r2,r3, vd, vt;L1, L2, L3, L4
+Vaccinium vitis-idaea;"0,A,B1,B2;C";K, b1, b2, b3, b4;uf, rd,rf;none;none;none
+Veronica alpina;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Veronica fruticans;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Vicia cracca;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Viola biflora;+;K, b1, b2, b3, b4;uf;V,Vb;vd,vt;none
+Lycopodium annotinum;+;none;none;none;;none
+Equisetum scirpoides;+;none;none;none;;none
+Salix spp.;"0,A,B1,B2;C";K, b1, b2, b3, b4;uf;V, Vb;;L1, L2, L3, L4
+Alchemilla spp.;+;K, b1, b2, b3, b4;uf;V, Vb;;none
+Huperzia selago;+;none;none;none;;none
+Gymnocarpium dryopteris;+;none;none;none;;none
+Lycopodium clavatum;+;none;none;none;;none
+Botrychium lunaria;+;none;none;none;;none
+Dryopteris sp.;+;none;none;none;;none
+Diphasiastrum complanatum;+;none;none;none;;none
+Equisetum arvense;+;none;none;none;;none
+Equisetum pratense;+;none;none;none;;none
+Equisetum sylvaticum;+;none;none;none;;none
+Equisetum variegatum;+;none;none;none;;none
+Dryopteris expansa;+;none;none;none;;none
+Equisetum palustre;+;none;none;none;;none
+Phalaris arundinacea;+;K, Rs, Rf, Ra, b1, b2, b3, b4;uf;V, Vb;;none
+Goodyera repens;+;none;none;none;;none
+Alchemilla wichurae;+;K, b1, b2, b3, b4;uf;V, Vb;;none
+Alchemilla glomerulans;+;K, b1, b2, b3, b4;uf;V, Vb;;none
+Alchemilla murbeckiana;+;K, b1, b2, b3, b4;uf;V, Vb;;none

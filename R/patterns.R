@@ -109,6 +109,10 @@ PhenologyValidator <- R6Class("PhenologyValidator",
 						    self$ACCEPTABLE_CODES$Species <- gsub("\\s+$", "", self$ACCEPTABLE_CODES$Species)
 						    # change codes into array split on "," and ";"
 						    self$ACCEPTABLE_CODES$Code <- strsplit(as.character(self$ACCEPTABLE_CODES$Code), ",|;")
+						    # remove leading spaces
+						    self$ACCEPTABLE_CODES$Code <- lapply(self$ACCEPTABLE_CODES$Code, function(x) gsub("^\\s+", "", x))
+						    # handle '+' for regex
+						    self$ACCEPTABLE_CODES$Code <- lapply(self$ACCEPTABLE_CODES$Code, function(x) gsub("\\+", "\\\\+", x))
 						    # remove dublicate codes
 						    self$ACCEPTABLE_CODES <- self$ACCEPTABLE_CODES %>%
 							    group_by(Species) %>%
@@ -183,36 +187,24 @@ PhenologyValidator <- R6Class("PhenologyValidator",
 						    }
 
 						    valid_code <- str_detect(line$code, codes)
-						    # combine all codes boolean
+						    # remove NA from valid_code
+						    valid_code <- valid_code[!is.na(valid_code)]
 						    valid_code <- any(valid_code)
 						    if (!valid_code) {
-							    # code <- FALSE
-							    # return (list(
-							    # species = valid_species,
-							    # date = valid_date,
-							    # subplot = valid_subplot,
-							    # code = code
-							    # ))
-						    }
-						    valid_code_len <- str_detect(tolower(line$code), tolower(codes))
-						    valid_code_len <- any(valid_code_len)
-						    # check if code is in the acceptable codes
-						    if (!valid_code_len) {
 							    return (list(
 									 species = valid_species,
 									 date = valid_date,
 									 subplot = valid_subplot,
-									 code = valid_code_len
+									 code = valid_code
 									 ))
 						    }
-
 
 						    list(
 							 species = valid_species,
 							 date = valid_date,
 							 subplot = valid_subplot,
 							 # code = valid_code
-							 code = valid_code_len
+							 code = valid_code
 						    )
 						    # }, error = {
 						    # return (list(

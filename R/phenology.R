@@ -77,13 +77,12 @@ read_phenology_data <- function(dir, all=FALSE) {
 		answer = paths[as.numeric(answer)]
 		if(answer %in% paths){
 			paths <- answer
+			print(paths)
 			break;
 		} else {
 			print("Invalid selection. Please try again.");
 		}
 	}
-	# filter NA values
-	# paths <- paths[!is.na(paths)]
 	paths <- paths[grepl("Nuolja_Data_\\d{4}.csv$", paths)]
 
 	combined_data <- bind_rows(lapply(paths, function(path) {

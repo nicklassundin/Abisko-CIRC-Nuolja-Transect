@@ -77,6 +77,9 @@ read_phenology_data <- function(dir, all=FALSE) {
 		if (grepl("-", answer)){
 			# split on -
 			answer = unlist(strsplit(answer, "-"))
+			# cap the first and last number
+			answer = c(min(as.numeric(answer)), min(max(as.numeric(answer)), length(paths)))
+
 			# convert to numeric to if 2 convert to interval a:b
 			answer = as.numeric(answer[1]):as.numeric(answer[2])
 		}else{

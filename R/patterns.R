@@ -81,6 +81,7 @@ SnowValidator <- R6Class("SnowValidator",
 
 OBSERVED_SPECIES_LIST_FILE_NAME = "descriptions/Nuolja Master Documents/Plant List and Phenology Codes Master.xlsx"
 ACCEPTABLE_CODES_FILE_NAME = "descriptions/Nuolja Master Documents/Accepted_PhenoCodes_Species_CURRENT.csv"
+
 #' Phenology Validator Class
 #' inherits from R6Class
 #' @description This class is used to validate phenology data.
@@ -126,7 +127,7 @@ PhenologyValidator <- R6Class("PhenologyValidator",
 							    ungroup()
 						    phenology_structures <- list()
 						    phenology_species_patterns <- list()
-					            
+
 						    # Species Previously Observed
 						    # load second sheet in .xlsx file
 						    species <- read.xlsx(OBSERVED_SPECIES_LIST_FILE_NAME, sheet = 2, colNames = TRUE) 
@@ -138,24 +139,37 @@ PhenologyValidator <- R6Class("PhenologyValidator",
 						    species <- unique(species)
 						    self$PREVIOUS_SPECIES <- species;
 						    # write header on log/missing.phen.log
-						    if (!file.exists("log/missing.phen.log")) {
-							    file.create("log/missing.phen.log")
-							    # write header Species Acceptable Code missing in Master Document
-							    cat("Species in Acceptable Code Species that are missing in Master Species List", file = "log/missing.phen.log")
-							    missing <- self$ACCEPTABLE_CODES[!self$ACCEPTABLE_CODES$Species %in% species,]$Species
-							    # paste together with \n
-							    missing <- paste(missing, collapse = "\n")
-							    # write missing species to file
-							    if (length(missing) > 0) {
-								    cat("\n", file = "log/missing.phen.log", append = TRUE)
-								    cat(missing, file = "log/missing.phen.log", append = TRUE)
-							    }
-							    # write --- breakline and new header for missing species in 
+						    file.create("log/missing.phen.log")
+						    # write header Species Acceptable Code missing in Master Document
+						    cat("Species in Acceptable Code Species that are missing in Master Species List", file = "log/missing.phen.log")
+						    missing <- self$ACCEPTABLE_CODES[!self$ACCEPTABLE_CODES$Species %in% species,]$Species
+						    # paste together with \n
+						    missing <- paste(missing, collapse = "\n")
+						    # write missing species to file
+						    if (length(missing) > 0) {
 							    cat("\n", file = "log/missing.phen.log", append = TRUE)
-							    cat("---------------------", file = "log/missing.phen.log", append = TRUE)
-							    cat("\n", file = "log/missing.phen.log", append = TRUE)
-							    cat("Species in Data that are missing in Acceptable Code", file = "log/missing.phen.log", append = TRUE)
+							    cat(missing, file = "log/missing.phen.log", append = TRUE)
 						    }
+						    # write --- breakline and new header for missing species in 
+						    cat("\n", file = "log/missing.phen.log", append = TRUE)
+						    cat("---------------------", file = "log/missing.phen.log", append = TRUE)
+						    cat("\n", file = "log/missing.phen.log", append = TRUE)
+						    # reverse check
+						    cat("Species in Master Document that are missing in Acceptable Code Species", file = "log/missing.phen.log", append = TRUE)
+						    # check if species in master document is in acceptable codes
+						    missing <- species[!species %in% self$ACCEPTABLE_CODES$Species]
+						    # paste together with \n
+						    missing <- paste(missing, collapse = "\n")
+						    # write missing species to file
+						    if (length(missing) > 0) {
+							    cat("\n", file = "log/missing.phen.log", append = TRUE)
+							    cat(missing, file = "log/missing.phen.log", append = TRUE)
+						    }
+
+						    cat("\n", file = "log/missing.phen.log", append = TRUE)
+						    cat("---------------------", file = "log/missing.phen.log", append = TRUE)
+						    cat("\n", file = "log/missing.phen.log", append = TRUE)
+						    cat("Species in Data that are missing in Acceptable Code", file = "log/missing.phen.log", append = TRUE)
 					    },
 
 					    validate = function(line) {

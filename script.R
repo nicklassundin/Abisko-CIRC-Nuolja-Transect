@@ -107,9 +107,10 @@ for (i in 1:length(datatypes)){
 		print("Processing Phenology Data")
 		# reorder dir_phenology
 		# put first poistion last
-		df <- read_phenology_data(dir_phenology, all=survey)
+		output <- read_phenology_data(dir_phenology, all=survey)
+
 		# filter out none may date for all years
-		df_may <- df %>%
+		df_may <- output$data %>%
 			  filter(month(Date) == 5)
 		if(survey){
 			df_full <- build_species_list(df)
@@ -121,7 +122,7 @@ for (i in 1:length(datatypes)){
 			# Data entry Segments Sheet
 			build_data_entry_segments(df_full$species_list, df_full$poles, file_name = "out/Plant Phenology Survey/Nuolja Transect Phenology Data Entry Segments 01 to 79.xlsx")
 		}else{
-			process_phenology_data(df, dir_phenology)
+			process_phenology_data(output, dir_phenology)
 		}
 	}else if(datatypes[i] == "Nuolja Snow Data"){
 		print("Processing Snow Data")

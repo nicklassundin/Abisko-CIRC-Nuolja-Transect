@@ -77,7 +77,7 @@ read_phenology_data <- function(dir, all=FALSE) {
 		answer = paths[as.numeric(answer)]
 		if(answer %in% paths){
 			paths <- answer
-			print(paths)
+			print(paste("You selected:", paths))
 			break;
 		} else {
 			print("Invalid selection. Please try again.");
@@ -96,15 +96,15 @@ read_phenology_data <- function(dir, all=FALSE) {
 						  colnames(data) <- c(DEF_COLS, "Year")
 						  return(data)
 }))
-	return(combined_data)
+	return(list(data=combined_data, paths=paths))
 }
 
-process_phenology_data <- function(combined_data, dirs){
+process_phenology_data <- function(input, dirs){
 	# read only .csv files from path
 	# filter NA values
 	dirs <- dirs[!is.na(dirs)]
-	paths <- list.files(dirs, pattern = ".csv", full.names = TRUE, recursive = FALSE)
-
+	combined_data <- input$data
+	paths <- input$paths
 	validator = PhenologyValidator$new()
 	# create log files and save old log in backup.*.log
 	create_file_structure("phen.log")

@@ -50,7 +50,8 @@ create_file_structure <- function(log_file) {
 	create_backup(warnings_file)
 	error_count_file = paste0("count.", log_file)
 	create_backup(error_count_file)
-	# print files in log directory
+	error_missing_file = paste0("missing.", log_file)
+	create_backup(error_missing_file)
 }
 
 #' Count and Log Errors for Each File and Type of Error
@@ -166,7 +167,6 @@ printValidationError <- function(line, validation, file = NA, line_number = NA, 
 #' @export
 validateFile <- function(file_path, silent = FALSE, validator, log_file="log/error.log", head=FALSE) {
 	# Create the file structure
-	# create_file_structure(log_file)
 	error_list <- list()
 	# Read the file line by line
 	tryCatch(

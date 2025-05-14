@@ -113,9 +113,9 @@ process_phenology_data <- function(input, dirs){
 	dirs <- dirs[!is.na(dirs)]
 	combined_data <- input$data
 	paths <- input$paths
+	create_file_structure("phen.log")
 	validator = PhenologyValidator$new()
 	# create log files and save old log in backup.*.log
-	create_file_structure("phen.log")
 	valid = lapply(paths, (function(x) {
 		return(validateFile(x, validator=validator, log_file="phen.log", head=TRUE))
 	}))

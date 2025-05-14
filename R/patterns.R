@@ -76,6 +76,11 @@ SnowValidator <- R6Class("SnowValidator",
 			 )
 )
 
+
+
+
+OBSERVED_SPECIES_LIST_FILE_NAME = "descriptions/Nuolja Master Documents/Plant List and Phenology Codes Master.xlsx"
+ACCEPTABLE_CODES_FILE_NAME = "descriptions/Nuolja Master Documents/Accepted_PhenoCodes_Species_CURRENT.csv"
 #' Phenology Validator Class
 #' inherits from R6Class
 #' @description This class is used to validate phenology data.
@@ -99,6 +104,7 @@ PhenologyValidator <- R6Class("PhenologyValidator",
 							    subplot = "\\d{1,2} to \\d{1,2}"
 							    ),
 					    ACCEPTABLE_CODES = NULL,
+					    PREVIOUS_SPECIES = NULL,
 
 					    initialize = function(csv_path = "descriptions/Nuolja Master Documents/Accepted_PhenoCodes_Species_CURRENT.csv") {
 						    acceptable_codes <- read.csv(csv_path, stringsAsFactors = FALSE, sep = ";")
@@ -120,7 +126,16 @@ PhenologyValidator <- R6Class("PhenologyValidator",
 							    ungroup()
 						    phenology_structures <- list()
 						    phenology_species_patterns <- list()
-
+					            
+						    # Species Previously Observed
+						    # load second sheet in .xlsx file
+						    species <- read.xlsx(OBSERVED_SPECIES_LIST_FILE_NAME, sheet = 2, colNames = TRUE) 
+						    species <- species[,1]
+						    # remove NA
+						    species <- species[!is.na(species)]
+						    # unique species
+						    species <- unique(species)
+						    self$PREVIOUS_SPECIES <- species;
 					    },
 
 					    validate = function(line) {
@@ -151,6 +166,8 @@ PhenologyValidator <- R6Class("PhenologyValidator",
 							    # load log/missing.phen.txt
 							    if (!file.exists("log/missing.phen.txt")) {
 								    file.create("log/missing.phen.txt")
+								    # write header; Species; Acceptable Code Entry; Master Document Entry
+								    # cat("Species; Acceptable Code Entry; Master Document Entry", file = "log/missing.phen.txt")
 							    }
 							    # read file
 							    missing_phen <- readLines("log/missing.phen.txt")

@@ -70,10 +70,18 @@ read_phenology_data <- function(dir, all=FALSE) {
 		for(i in 1:length(paths)){
 			print(paste(i, ") ", paths[i], sep=""))
 		}
-		print("Please select a file by entering the corresponding number:")
+		print("Select the files to process (separated by ; or ,; Alt. n-m for interval):")
 		answer = readLines(file("stdin"), n = 1)
 		# split on ; and ,
-		answer = unlist(strsplit(answer, "[;,]"))
+		# if contain -
+		if (grepl("-", answer)){
+			# split on -
+			answer = unlist(strsplit(answer, "-"))
+			# convert to numeric to if 2 convert to interval a:b
+			answer = as.numeric(answer[1]):as.numeric(answer[2])
+		}else{
+			answer = unlist(strsplit(answer, "[;,]"))
+		}
 		answer = paths[as.numeric(answer)]
 		if(answer %in% paths){
 			paths <- answer

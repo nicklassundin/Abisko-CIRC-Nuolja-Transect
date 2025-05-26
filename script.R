@@ -108,6 +108,7 @@ for (i in 1:length(datatypes)){
 		# reorder dir_phenology
 		# put first poistion last
 		output <- read_phenology_data(dir_phenology, all=survey)
+		df <- output$data
 
 		# filter out none may date for all years
 		df_may <- output$data %>%

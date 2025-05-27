@@ -256,8 +256,10 @@ build_spring_data_sheets <- function(species_list, poles, file_name = "out/Plant
 	
 	top_header <- matrix(c("Date:", "Surveyors:", ""), nrow = 1)
 	# iterate over the poles by pair neigboors
-	for (i in seq(1, length(poles)  - 14, 14)){
-		sheet = paste0(substr(poles[i],1,2), "-", substr(poles[i+12],7,8))
+	for (i in seq(1, length(poles), 14)){
+		print(poles[i])
+		j <- min(i + 13, length(poles) - 1)
+		sheet = paste0(substr(poles[i],1,2), "-", substr(poles[j],7,8))
 		addWorksheet(wb, sheet);
 		# Create a centering style
 		centerStyle <- createStyle(halign = "center", valign = "center")

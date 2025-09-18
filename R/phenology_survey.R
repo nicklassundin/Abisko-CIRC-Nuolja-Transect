@@ -27,7 +27,8 @@ survey_data_sheet_get <- function(species_list, poles, i){
 					   `Poles` == poles[i + 1] ~ "2")) %>%
 		left_join(datasheet_info, by = c("Synonym Current" = "Species")) %>%
 		group_by(`Synonym Current`) %>%
-		summarise(
+		reframe(
+		# summarise(
 			  PoleNums = sort(unique(PoleNum)),
 			  num_poles = n_distinct(PoleNum),
 			  W = any(W == "Y", na.rm = TRUE),
@@ -63,7 +64,8 @@ build_species_list <- function(df){
 		count(`Synonym Current`, Poles);
 	species_list <- df %>% 
 		group_by(`Synonym Current`, Poles, Year) %>% 
-		summarise(n = n(), .groups = "drop") %>%
+		# summarise(n = n(), .groups = "drop") %>%
+		reframe(n = n(), .groups = "drop") %>%
 		select(-n)
 	species_list <- species_list %>%
 		left_join(species_counts, by = c("Synonym Current", "Poles")) %>%
@@ -255,7 +257,8 @@ spring_survey_names <- function(species_list, poles, i){
 					   `Poles` == poles[i + 1] ~ "2")) %>%
 		left_join(datasheet_info, by = c("Synonym Current" = "Species")) %>%
 		group_by(`Synonym Current`) %>%
-		summarise(
+		reframe(
+		# summarise(
 			  PoleNums = sort(unique(PoleNum)),
 			  num_poles = n_distinct(PoleNum),
 			  W = any(W == "Y", na.rm = TRUE),

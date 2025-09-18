@@ -134,3 +134,4 @@ for (i in 1:length(datatypes)){
 }
 
 close(inout)
+warnings()

@@ -25,7 +25,6 @@ project_directory/
 | ├── out
 | ├── R
 | │   ├── helper.R
-| │   ├── legacy.R
 | │   ├── patterns.R
 | │   ├── phenology.R
 | │   ├── phenology_survey.R

@@ -37,8 +37,10 @@ print("0) Exit");
 print("1) Build CSV files");
 print("2) Produce Survey Excel files");
 # loop until vallid input is given
+inout <- file("stdin")
+
 while(TRUE){
-	answer <- readLines(file("stdin"), 1);
+	answer <- readLines(inout, 1);
 	# replace ) with empty string
 	answer <- gsub("\\)", "", answer);
 	# replace none numeric with empty string
@@ -72,7 +74,7 @@ while(TRUE){
 	}
 	# TODO FIXME OR REMOVE
 	# print(paste(length(datatypes)+1,") All data", sep=""));
-	answer <- readLines(file("stdin"), 1);
+	answer <- readLines(inout, 1);
 	answer <- gsub("\\)", "", answer);
 	answer <- gsub("\\D", "", answer);
 	if(answer == "0"){
@@ -130,3 +132,5 @@ for (i in 1:length(datatypes)){
 		dataframe <- process_snow_data(paths_snow, dirs_snow)
 	}
 }
+
+close(inout)

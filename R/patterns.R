@@ -21,8 +21,14 @@ library(stringr)
 #' @importFrom stringr str_detect
 SnowValidator <- R6Class("SnowValidator",
 			 public = list(
+				       #' @field STRICT_PATTERN Regular expression patterns for strict validation'
+				       #' @description Regular expression patterns for strict validation
 				       STRICT_PATTERN = NULL,
+				       #' @field LENIENT_PATTERN Regular expression patterns for lenient validation
+				       #' @description Regular expression patterns for strict validation
 				       LENIENT_PATTERN = NULL,
+				       #' @field PATTERNS Regular expression patterns for validating individual fields
+				       #' @description Regular expression patterns for validating individual fields
 				       PATTERNS = list(
 						       prefix_pattern = "^NS-",
 						       datetime_pattern = "\\d{8}-\\d{3}",
@@ -33,6 +39,8 @@ SnowValidator <- R6Class("SnowValidator",
 						       lenient_latitude_pattern = "\\d+\\.\\d+N",
 						       lenient_longitude_pattern = "\\d+\\.\\d+E"
 						       ),
+				       #' @description Initialize the SnowValidator class
+				       #' @return None
 				       initialize = function() {
 					       # self$STRICT_PATTERN <- list(prefix_pattern, datetime_pattern, latitude_pattern,
 					       # longitude_pattern, elevation_pattern, obs_code_pattern,
@@ -53,6 +61,9 @@ SnowValidator <- R6Class("SnowValidator",
 									     sep = "[ , ]+")
 
 				       },
+				       #' @description Validate a line of snow data
+				       #' @param line A string representing a line of snow data
+				       #' @return A list with lenient and strict validation results
 				       validate = function(line) {
 					       fields <- self$validateField(line)
 					       list(
@@ -61,6 +72,9 @@ SnowValidator <- R6Class("SnowValidator",
 						    fields = fields
 					       )
 				       },
+				       #' @description Validate individual fields in a line of snow data
+				       #' @param line A string representing a line of snow data
+				       #' @return A list indicating the validity of each field
 				       validateField = function(line) {
 					       # check that all patterns are present
 					       list(
@@ -98,15 +112,28 @@ ACCEPTABLE_CODES_FILE_NAME = "descriptions/Nuolja Master Documents/Accepted_Phen
 #' @importFrom tidyr separate
 PhenologyValidator <- R6Class("PhenologyValidator",
 			      public = list(
+					    #' @field LENIENT_PATTERN Regular expression patterns for lenient validation
+					    #' @description Regular expression patterns for strict validation
 					    LENIENT_PATTERN = NULL,
+					    #' @field STRUCT Regular expression patterns for strict validation'
+					    #' @description Regular expression patterns for strict validation
 					    STRUCT = NULL,
+					    #' @field PATTERNS Regular expression patterns for validating individual fields
+					    #' @description Regular expression patterns for validating individual fields
 					    PATTERNS = list(
 							    date = "\\d{4}-\\d{2}-\\d{2}",
 							    subplot = "\\d{1,2} to \\d{1,2}"
 							    ),
+					    #' @field ACCEPTABLE_CODES Data frame of acceptable phenology codes and species
+					    #' @description Data frame of acceptable phenology codes and species
 					    ACCEPTABLE_CODES = NULL,
+					    #' @field PREVIOUS_SPECIES List of previously observed species
+					    #' @description List of previously observed species
 					    PREVIOUS_SPECIES = NULL,
-
+					
+					    #' @description Initialize the PhenologyValidator class
+					    #' @param csv_path Path to the CSV file containing acceptable phenology codes and species
+					    #' @return None
 					    initialize = function(csv_path = "descriptions/Nuolja Master Documents/Accepted_PhenoCodes_Species_CURRENT.csv") {
 						    acceptable_codes <- read.csv(csv_path, stringsAsFactors = FALSE, sep = ";")
 						    acceptable_codes$Code <- apply(acceptable_codes[, -1], 1, function(x) paste(x, collapse = ","))
@@ -171,7 +198,9 @@ PhenologyValidator <- R6Class("PhenologyValidator",
 						    cat("\n", file = "log/missing.phen.log", append = TRUE)
 						    cat("Species in Data that are missing in Acceptable Code", file = "log/missing.phen.log", append = TRUE)
 					    },
-					
+					    #' @description Validate a line of phenology data
+					    #' @param line A string representing a line of phenology data
+					    #' @return A list with lenient validation results and field-wise validation
 					    validate = function(line) {
 						    valid <- self$validateField(line)
 						    return(list(
@@ -179,7 +208,12 @@ PhenologyValidator <- R6Class("PhenologyValidator",
 								fields = valid
 								))
 					    },
+					    #' @field missing_species List of species that were found in data but are not in the acceptable codes
+					    #' @description List of species that were found in data but are not in the acceptable codes
 					    missing_species = c(),
+					    #' @description Validate individual fields in a line of phenology data
+					    #' @param strLine A string representing a line of phenology data
+					    #' @return A list indicating the validity of each field
 					    validateField = function(strLine) {
 						    # tryCatch({
 						    # # remove \"

@@ -15,6 +15,7 @@ This section introduces the overall structure of the codebase</summary>
 ```
 project_directory/
 | ├── bash
+| │   ├── build.doc.R
 | ├── build.docs.R
 | ├── data
 | │   ├── DATAHERE.md

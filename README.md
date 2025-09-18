@@ -5,7 +5,7 @@ The Nuolja Transect project organizes, processes, and validates ecological trans
 The Nuolja Transect project involves processing data from transect surveys conducted in the Nuolja region. The key components of the project include:
 <details>
 <summary>
-This section introduces the overall goals of the project, outlines the directory layout, describes data-processing steps, and highlights known issues in the datasets (e.g., date inconsistencies and geotagging).</summary>
+This section introduces the overall structure of the codebase</summary> 
 
 ### Directory structure
 <details>

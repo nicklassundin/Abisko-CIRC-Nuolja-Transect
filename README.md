@@ -58,7 +58,6 @@ An example of the data format used in this project can be found in the `descript
 
 ## Operations
 Core functions handle directory navigation, data filtering, date handling, reading, validation, and visualization.
-
 <summary>This section explains the purpose of each key function in the project, showing how they interact to transform raw survey data into structured, validated outputs for further analysis.</summary>
 <details>
 
@@ -101,8 +100,7 @@ To run the project, ensure the following are installed and configured on your sy
 
 ## Instructions
 The workflow guides you from preparing data to executing scripts and selecting operations interactively in RStudio.
-<summary>
-This section provides step-by-step instructions for setting up the working environment, running the main script, and navigating the project’s interactive menu to process and validate datasets.</summary>
+<summary>This section provides step-by-step instructions for setting up the working environment, running the main script, and navigating the project’s interactive menu to process and validate datasets.</summary>
 <details>
    1. Place your data directories into the `data` directory.
 2. Run `Rscript script.r` to process the data. This will generate files in the `/repack` directory and output files in the `/out` directory.

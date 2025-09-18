@@ -58,10 +58,40 @@
 <div class="section level1">
 <div class="page-header"><h1 id="nuolja-transect">Nuolja Transect<a class="anchor" aria-label="anchor" href="#nuolja-transect"></a>
 </h1></div>
+<p>The Nuolja Transect project organizes, processes, and validates ecological transect survey data, focusing on snow and phenology observations.</p>
 <div class="section level2">
 <h2 id="project-overview">Project Overview<a class="anchor" aria-label="anchor" href="#project-overview"></a>
-</h2>
-<p>The Nuolja Transect project involves processing data from transect surveys conducted in the Nuolja region. The key components of the project include:</p>
+</h2>The Nuolja Transect project involves processing data from transect surveys conducted in the Nuolja region. The key components of the project include:<details><p><summary> This section introduces the overall structure of the codebase</summary></p>
+<div class="section level3">
+<h3 id="directory-structure">Directory structure<a class="anchor" aria-label="anchor" href="#directory-structure"></a>
+</h3>
+<details><!-- TREE START --><div class="section level4">
+<h4 id="directory-tree">Directory Tree<a class="anchor" aria-label="anchor" href="#directory-tree"></a>
+</h4>
+<pre><code>project_directory/
+| ├── build.docs.R
+| ├── data
+| │   ├── DATAHERE.md
+| ├── descriptions
+| │   ├── Nuolja Master Documents
+| ├── docs
+| │   ├── reference
+| ├── man
+| ├── out
+| ├── R
+| │   ├── helper.R
+| │   ├── patterns.R
+| │   ├── phenology.R
+| │   ├── phenology_survey.R
+| │   ├── repack.R
+| │   ├── snow.R
+| │   └── validation.R
+| ├── README.md
+| ├── repack
+| ├── script.R</code></pre>
+<!-- TREE END -->
+</div></details>
+</div>
 <div class="section level3">
 <h3 id="data-processing">Data Processing<a class="anchor" aria-label="anchor" href="#data-processing"></a>
 </h3>
@@ -81,12 +111,12 @@
 </h3>
 <div class="section level4">
 <h4 id="validation">Validation<a class="anchor" aria-label="anchor" href="#validation"></a>
-</h4>
-<p>Validate the data in and log the errors into directory log/</p>
+</h4>Validate the data in and log the errors into directory log/ ### Example Data An example of the data format used in this project can be found in the <code>descriptions/transect_description.csv</code> file. This file contains information about the transect points, including plot numbers, coordinates (latitude and longitude), and elevations. #### Notes about Data - There are inconsistencies in date naming within the dataset. - One entry from 2022 is missing a valid date. - Geotaging are inconsistent throught the dataset</div>
+</div></details>
 </div>
-<div class="section level4">
-<h4 id="operations">Operations<a class="anchor" aria-label="anchor" href="#operations"></a>
-</h4>
+<div class="section level2">
+<h2 id="operations">Operations<a class="anchor" aria-label="anchor" href="#operations"></a>
+</h2>Core functions handle directory navigation, data filtering, date handling, reading, validation, and visualization.<details><p><summary>This section explains the purpose of each key function in the project, showing how they interact to transform raw survey data into structured, validated outputs for further analysis.</summary></p>
 <ul>
 <li>
 <strong>getPaths()</strong>: Retrieves the paths of directories within a specified directory, optionally matching a pattern.</li>
@@ -114,37 +144,107 @@
 <strong>drawPlots()</strong>: Generates and saves plots based on the provided data frame.</li>
 <li>
 <strong>dataframeBuilder()</strong>: Builds a data frame by accumulating rows from provided data.</li>
+</ul></details>
+</div>
+<div class="section level2">
+<h2 id="prerequisites">Prerequisites<a class="anchor" aria-label="anchor" href="#prerequisites"></a>
+</h2>Running the project requires R, Rtools (on Windows), and a set of data analysis and documentation packages.<details><p><summary>Here you’ll find the necessary system and package requirements to ensure the project runs smoothly. Installing these dependencies ensures that scripts and documentation build correctly.</summary></p>
+<p>To run the project, ensure the following are installed and configured on your system: 1. <strong>R and Rtools</strong><br>
+- Install the latest version of R from <a href="https://cran.r-project.org/" class="external-link">CRAN</a>.<br>
+- If on Windows, install Rtools for building and compiling packages.</p>
+<ol start="2" style="list-style-type: decimal"><li>
+<strong>Required R Packages</strong><br>
+These will be install when running the script<ul>
+<li><code>dplyr</code></li>
+<li><code>ggplot2</code></li>
+<li><code>tidyr</code></li>
+<li><code>lubridate</code></li>
+<li><code>readr</code></li>
+<li><code>devtools</code></li>
+<li><code>roxygen2</code></li>
+<li><code>pkgdown</code></li>
 </ul>
-</div>
-</div>
-<div class="section level3">
-<h3 id="example-data">Example Data<a class="anchor" aria-label="anchor" href="#example-data"></a>
-</h3>
-<p>An example of the data format used in this project can be found in the <code>descriptions/transect_description.csv</code> file. This file contains information about the transect points, including plot numbers, coordinates (latitude and longitude), and elevations.</p>
-</div>
+</li></ol></details>
 </div>
 <div class="section level2">
 <h2 id="instructions">Instructions<a class="anchor" aria-label="anchor" href="#instructions"></a>
-</h2>
-<ol style="list-style-type: decimal">
-<li>Place your data directories into the <code>data</code> directory.</li>
-<li>Run <code>Rscript script.r</code> to process the data. This will generate files in the <code>/repack</code> directory and output files in the <code>/out</code> directory.</li>
-<li>Follow the prompted options to validate or generate files as required.</li>
-</ol>
+</h2>The workflow guides you from preparing data to executing scripts and selecting operations interactively in RStudio.<details><p><summary>This section provides step-by-step instructions for setting up the working environment, running the main script, and navigating the project’s interactive menu to process and validate datasets.</summary> 1. Place your data directories into the <code>data</code> directory. 2. Run <code>Rscript script.r</code> to process the data. This will generate files in the <code>/repack</code> directory and output files in the <code>/out</code> directory. 3. Follow the prompted options to validate or generate files as required.</p>
+<div class="section level3">
+<h3 id="running-an-interactive-r-session-in-rstudio-terminal">Running an Interactive R Session in RStudio Terminal<a class="anchor" aria-label="anchor" href="#running-an-interactive-r-session-in-rstudio-terminal"></a>
+</h3>
+<p>Follow these steps to run your R script interactively in RStudio’s terminal, ensuring the working directory is set correctly:</p>
+</div></details>
 </div>
 <div class="section level2">
-<h2 id="notes-about-data">Notes about Data<a class="anchor" aria-label="anchor" href="#notes-about-data"></a>
+<h2 id="running-an-interactive-r-session-in-rstudio-terminal-1">Running an Interactive R Session in RStudio Terminal<a class="anchor" aria-label="anchor" href="#running-an-interactive-r-session-in-rstudio-terminal-1"></a>
 </h2>
-<ul>
-<li>There are inconsistencies in date naming within the dataset.</li>
-<li>One entry from 2022 is missing a valid date.</li>
-<li>Geotaging are inconsistent throught the dataset</li>
+<p>Follow these steps to run your R script interactively in RStudio’s terminal, ensuring the working directory is set correctly:</p>
+<div class="section level3">
+<h3 id="step-0-make-sure-datasets-are-placed-inside-data">Step 0: Make sure datasets are placed inside <code>data/</code>
+<a class="anchor" aria-label="anchor" href="#step-0-make-sure-datasets-are-placed-inside-data"></a>
+</h3>
+<pre><code># Example
+project_directory/
+...
+| ├── data
+| │   ├── DATAHERE.md
+| │   ├── Plant Phenology Data/
+| │   ├── Nuolja Snow Data/
+...</code></pre>
+</div>
+<div class="section level3">
+<h3 id="step-1-change-the-working-directory-in-rstudio">Step 1: Change the Working Directory in RStudio<a class="anchor" aria-label="anchor" href="#step-1-change-the-working-directory-in-rstudio"></a>
+</h3>
+<p>Before opening the terminal, set the working directory in RStudio using one of these methods:</p>
+<div class="section level4">
+<h4 id="option-1-use-the-gui">Option 1: Use the GUI<a class="anchor" aria-label="anchor" href="#option-1-use-the-gui"></a>
+</h4>
+<ol style="list-style-type: decimal">
+<li>Click on <code>Session &gt; Set Working Directory &gt; Choose Directory...</code>.</li>
+<li>Navigate to the folder containing your R script and click <code>Open</code>.</li>
+</ol>
+</div>
+<div class="section level4">
+<h4 id="option-2-use-the-console">Option 2: Use the Console<a class="anchor" aria-label="anchor" href="#option-2-use-the-console"></a>
+</h4>
+<ol style="list-style-type: decimal"><li>
+<p>In the RStudio console, set the working directory manually by typing:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">setwd</a></span><span class="op">(</span><span class="st">"path/to/your/script"</span><span class="op">)</span></span></code></pre></div>
+<h3 id="step-2-open-the-terminal-in-rstudio">Step 2: Open the Terminal in RStudio</h3>
+</li></ol>
+<ul><li>In RStudio, go to <code>Tools &gt; Terminal &gt; New Terminal</code>.<br>
+Alternatively, use the shortcut:<ul>
+<li>
+<strong>Windows/Linux</strong>: <code>Shift + Alt + T</code><br>
+</li>
+<li>
+<strong>Mac</strong>: <code>Shift + Option + T</code>
+</li>
 </ul>
+</li></ul>
+</div>
+</div>
+<div class="section level3">
+<h3 id="section"></h3>
+<ul>
+<li>type <code>r    Rscript script.R</code>
+</li>
+<li>This will run the script</li>
+</ul>
+</div>
+<div class="section level3">
+<h3 id="step-3-selection-operations-to-perform">Step 3: Selection operations to perform<a class="anchor" aria-label="anchor" href="#step-3-selection-operations-to-perform"></a>
+</h3>
+<div class="section level4">
+<h4 id="0-exit">0) Exit<a class="anchor" aria-label="anchor" href="#0-exit"></a>
+</h4>quit process #### 1) Build CSV files Build and Validate, will produce Files in <code>out\</code> and Log files in <code>log\</code> #### 2) Construct Survey Constructing Survey Tables for next year, will produce files in <code>out\Plant Phenology Survey</code>. ### Step 4: Select data to process #### 0) Exit quit process #### n) Data to be processed List of data sets placed in <code>data\</code>
+</div>
+</div>
 </div>
 <div class="section level2">
 <h2 id="documentation">Documentation<a class="anchor" aria-label="anchor" href="#documentation"></a>
-</h2>
-<p>The full documentation for this project is available as a GitHub Pages site. You can access it <a href="https://nicklassundin.github.io/Abisko-CIRC-Nuolja-Transect/" class="external-link">here</a>.</p>
+</h2>Project documentation is generated with roxygen2 and pkgdown and is available online.<details><p><summary>Here you’ll learn where to access full documentation for functions and workflows, as well as how to rebuild and publish updated documentation manually to GitHub Pages.</summary> The full documentation for this project is available as a GitHub Pages site. You can access it <a href="https://nicklassundin.github.io/Abisko-CIRC-Nuolja-Transect/" class="external-link">here</a>.</p>
 <p>This documentation includes detailed information about the project’s structure, data processing steps, and usage examples. It is generated automatically from the source code comments using <code>roxygen2</code> and <code>pkgdown</code>.</p>
 <div class="section level3">
 <h3 id="how-to-update-documentation">How to Update Documentation<a class="anchor" aria-label="anchor" href="#how-to-update-documentation"></a>
@@ -164,19 +264,22 @@
 </ol>
 <!-- #### Github workflow --><!-- 1. Ensure your code is properly documented using `roxygen2` comments. --><!-- 2. Push your changes to the `beta` branch. --><!-- 3. The GitHub Actions workflow will automatically generate and deploy the updated documentation to GitHub Pages. -->
 </div>
-</div>
+</div></details>
 </div>
 <div class="section level2">
 <h2 id="data-formating">Data Formating<a class="anchor" aria-label="anchor" href="#data-formating"></a>
-</h2>
+</h2>Processed outputs follow strict CSV schemas for snow and phenology data, ensuring consistency and clarity.<details><p><summary>This section defines the structure and meaning of each dataset produced by the pipeline, with column descriptions, file usage notes, and example data to illustrate expected formats.</summary></p>
 <div class="section level3">
 <h3 id="file-format-specification-for-repack">File Format Specification for <code>repack/</code>
 <a class="anchor" aria-label="anchor" href="#file-format-specification-for-repack"></a>
 </h3>
 <p>The files in the <code>repack/</code> directory are structured as CSV files with detailed information about geographical plots and their associated data. Each file adheres to the following schema:</p>
 <div class="section level4">
-<h4 id="column-descriptions">Column Descriptions<a class="anchor" aria-label="anchor" href="#column-descriptions"></a>
+<h4 id="snow-data">Snow Data<a class="anchor" aria-label="anchor" href="#snow-data"></a>
 </h4>
+<div class="section level5">
+<h5 id="column-descriptions">Column Descriptions<a class="anchor" aria-label="anchor" href="#column-descriptions"></a>
+</h5>
 <table class="table">
 <colgroup>
 <col width="14%">
@@ -250,9 +353,9 @@
 </tbody>
 </table>
 </div>
-<div class="section level4">
-<h4 id="file-characteristics">File Characteristics<a class="anchor" aria-label="anchor" href="#file-characteristics"></a>
-</h4>
+<div class="section level5">
+<h5 id="file-characteristics">File Characteristics<a class="anchor" aria-label="anchor" href="#file-characteristics"></a>
+</h5>
 <ul>
 <li>
 <strong>CSV Format</strong>: The files are plain-text, comma-separated value files with a header row for column names.</li>
@@ -262,14 +365,51 @@
 <strong>Data Use</strong>: These files are used for analyzing environmental or geographical changes across plots and subplots.</li>
 </ul>
 </div>
-<div class="section level4">
-<h4 id="example-data-1">Example Data<a class="anchor" aria-label="anchor" href="#example-data-1"></a>
-</h4>
+<div class="section level5">
+<h5 id="example-data">Example Data<a class="anchor" aria-label="anchor" href="#example-data"></a>
+</h5>
 <p>Below is an excerpt to illustrate the format:</p>
 <pre class="csv"><code>"plot","subplot","proj_factor","id","date","latitude","longitude","elevation","contemporary","historical"
 20,78,3357.62764497642,"NS-20180506-001","2018-05-06","68.37261122","18.69783956",1180.841,"o","o"
 19,76,3260.95020778743,"NS-20180506-004","2018-05-06","68.37218199","18.69989872",1169.419,"os","s"
 18,69,2957.15889307984,"NS-20180506-011","2018-05-06","68.37041561","18.70585272",1103.361,"s","s"</code></pre>
+</div>
+</div>
+</div>
+<div class="section level3">
+<h3 id="phenology-data">Phenology Data<a class="anchor" aria-label="anchor" href="#phenology-data"></a>
+</h3>
+<div class="section level4">
+<h4 id="column-descriptions-1">Column Descriptions<a class="anchor" aria-label="anchor" href="#column-descriptions-1"></a>
+</h4>
+<table class="table">
+<colgroup>
+<col width="15%">
+<col width="84%">
+</colgroup>
+<thead><tr class="header">
+<th><strong>Column Name</strong></th>
+<th><strong>Description</strong></th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><code>Species</code></td>
+<td>Scientific name of the observed plant species.</td>
+</tr>
+<tr class="even">
+<td><code>Date</code></td>
+<td>Date of observation, formatted as <code>YYYY-MM-DD</code>.</td>
+</tr>
+<tr class="odd">
+<td><code>Subplot</code></td>
+<td>Identifier of the subplot area within the transect (e.g., <code>"20 to 21"</code>).</td>
+</tr>
+<tr class="even">
+<td><code>Code</code></td>
+<td>Phenological code representing the observed developmental stage (e.g., <code>"+"</code>, <code>"B1"</code>, <code>"b2"</code>).</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="section level3">
@@ -278,8 +418,11 @@
 </h3>
 <p>The files in the <code>out/</code> directory include CSV files with data representing daily snow of various plot statuses. Each file adheres to the following schema:</p>
 <div class="section level4">
-<h4 id="column-descriptions-1">Column Descriptions<a class="anchor" aria-label="anchor" href="#column-descriptions-1"></a>
+<h4 id="snow-data-1">Snow Data<a class="anchor" aria-label="anchor" href="#snow-data-1"></a>
 </h4>
+<div class="section level5">
+<h5 id="column-descriptions-2">Column Descriptions<a class="anchor" aria-label="anchor" href="#column-descriptions-2"></a>
+</h5>
 <table class="table">
 <colgroup>
 <col width="15%">
@@ -317,9 +460,9 @@
 </tbody>
 </table>
 </div>
-<div class="section level4">
-<h4 id="file-characteristics-1">File Characteristics<a class="anchor" aria-label="anchor" href="#file-characteristics-1"></a>
-</h4>
+<div class="section level5">
+<h5 id="file-characteristics-1">File Characteristics<a class="anchor" aria-label="anchor" href="#file-characteristics-1"></a>
+</h5>
 <ul>
 <li>
 <strong>CSV Format</strong>: The files are plain-text, comma-separated value files with a header row for column names.</li>
@@ -329,13 +472,133 @@
 <strong>Daily Observations</strong>: Each row corresponds to a specific day and plot.</li>
 </ul>
 </div>
-<div class="section level4">
-<h4 id="example-data-2">Example Data<a class="anchor" aria-label="anchor" href="#example-data-2"></a>
-</h4>
+<div class="section level5">
+<h5 id="example-data-1">Example Data<a class="anchor" aria-label="anchor" href="#example-data-1"></a>
+</h5>
 <p>Below is an excerpt to illustrate the format:</p>
-<p>```csv “DOY”,“plot”,“s”,“so”,“o”,“os” 126,6,0.0540559471516565,0.21497303215613,0.0818149541820005,0.649156066510213 126,7,0,0.318104640512793,0.139848133706484,0.542047225780723 126,8,0.123763616329758,0.876236383670242,0,0 126,9,0,0.863436913617926,0,0.136563086382074 126,10,0.768916411918146,0,0.0997298448068066,0.13135374327</p>
+<pre class="csv"><code>"DOY","plot","s","so","o","os"
+126,6,0.0540559471516565,0.21497303215613,0.0818149541820005,0.649156066510213
+126,7,0,0.318104640512793,0.139848133706484,0.542047225780723
+126,8,0.123763616329758,0.876236383670242,0,0
+126,9,0,0.863436913617926,0,0.136563086382074
+126,10,0.768916411918146,0,0.0997298448068066,0.13135374327</code></pre>
+</div>
+<div class="section level5">
+<h5 id="phenology-data-1">Phenology Data<a class="anchor" aria-label="anchor" href="#phenology-data-1"></a>
+</h5>
+<div class="section level6">
+<h6 id="file-nuolja_annual_species_days_observedcsv">File: Nuolja_Annual_Species_Days_Observed.csv<a class="anchor" aria-label="anchor" href="#file-nuolja_annual_species_days_observedcsv"></a>
+</h6>
+<table class="table">
+<colgroup>
+<col width="22%">
+<col width="77%">
+</colgroup>
+<thead><tr class="header">
+<th><strong>Column Name</strong></th>
+<th><strong>Description</strong></th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><code>Synonym Current</code></td>
+<td>The current accepted scientific name of the species.</td>
+</tr>
+<tr class="even">
+<td><code>Year</code></td>
+<td>The year the observations were made.</td>
+</tr>
+<tr class="odd">
+<td><code>Poles</code></td>
+<td>The transect segment or subplot identifier (e.g., <code>"14 to 15"</code>).</td>
+</tr>
+<tr class="even">
+<td><code>Number of Observations</code></td>
+<td>The total number of days on which the species was observed in that segment.</td>
+</tr>
+</tbody>
+</table>
+<hr>
 </div>
 </div>
+<div class="section level5">
+<h5 id="file-nuolja_annual_species_observationscsv">File: Nuolja_Annual_Species_Observations.csv<a class="anchor" aria-label="anchor" href="#file-nuolja_annual_species_observationscsv"></a>
+</h5>
+<table class="table">
+<colgroup>
+<col width="22%">
+<col width="77%">
+</colgroup>
+<thead><tr class="header">
+<th><strong>Column Name</strong></th>
+<th><strong>Description</strong></th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><code>Synonym Current</code></td>
+<td>The current accepted scientific name of the species.</td>
+</tr>
+<tr class="even">
+<td><code>Year</code></td>
+<td>The year the observations were made.</td>
+</tr>
+<tr class="odd">
+<td><code>Poles</code></td>
+<td>The transect segment or subplot identifier.</td>
+</tr>
+<tr class="even">
+<td><code>Code</code></td>
+<td>Phenological development stage code (e.g., <code>B1</code>, <code>C</code>, <code>K</code>, <code>g1</code>).</td>
+</tr>
+<tr class="odd">
+<td><code>Number of Observations</code></td>
+<td>Count of how many times this code/stage was recorded for the species.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</div>
+<div class="section level5">
+<h5 id="file-nuolja_first_last_observation_datecsv">File: Nuolja_First_Last_Observation_Date.csv<a class="anchor" aria-label="anchor" href="#file-nuolja_first_last_observation_datecsv"></a>
+</h5>
+<table class="table">
+<colgroup>
+<col width="25%">
+<col width="74%">
+</colgroup>
+<thead><tr class="header">
+<th><strong>Column Name</strong></th>
+<th><strong>Description</strong></th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><code>Synonym Current</code></td>
+<td>The current accepted scientific name of the species.</td>
+</tr>
+<tr class="even">
+<td><code>Year</code></td>
+<td>The year the observations were made.</td>
+</tr>
+<tr class="odd">
+<td><code>Code</code></td>
+<td>Phenological development stage code (e.g., <code>+</code>, <code>K</code>, <code>b2</code>, <code>ed</code>).</td>
+</tr>
+<tr class="even">
+<td><code>Poles</code></td>
+<td>The transect segment or subplot identifier.</td>
+</tr>
+<tr class="odd">
+<td><code>First Observation Date</code></td>
+<td>The earliest date that this stage was observed, formatted as <code>YYYY-MM-DD</code>.</td>
+</tr>
+<tr class="even">
+<td><code>Last Observation Date</code></td>
+<td>The latest date that this stage was observed, formatted as <code>YYYY-MM-DD</code>.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div></details>
 </div>
 </div>
   </div>

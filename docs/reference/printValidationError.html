@@ -46,7 +46,13 @@ detailed errors for each field that does not match the expected format.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">printValidationError</span><span class="op">(</span><span class="va">line</span>, file <span class="op">=</span> <span class="cn">NA</span>, line_number <span class="op">=</span> <span class="cn">NA</span>, log_file <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">printValidationError</span><span class="op">(</span></span>
+<span>  <span class="va">line</span>,</span>
+<span>  <span class="va">validation</span>,</span>
+<span>  file <span class="op">=</span> <span class="cn">NA</span>,</span>
+<span>  line_number <span class="op">=</span> <span class="cn">NA</span>,</span>
+<span>  log_file <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -78,7 +84,7 @@ are logged. If NULL, messages are only printed to the console.</p></dd>
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">printValidationError</span> <span class="op">(</span><span class="st">"NS-20220510-001 68.37261219N 18.69783 1195.186 O"</span>, <span class="st">"data.txt"</span>, <span class="fl">5</span>, <span class="st">"log/validation.txt"</span>, <span class="st">"log/warnings.txt"</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in printValidationError("NS-20220510-001 68.37261219N 18.69783 1195.186 O",     "data.txt", 5, "log/validation.txt", "log/warnings.txt"):</span> unused argument ("log/warnings.txt")</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> $ operator is invalid for atomic vectors</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

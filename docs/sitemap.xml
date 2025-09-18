@@ -10,7 +10,19 @@
     <loc>/index.html</loc>
   </url>
   <url>
+    <loc>/reference/PhenologyValidator.html</loc>
+  </url>
+  <url>
+    <loc>/reference/SnowValidator.html</loc>
+  </url>
+  <url>
+    <loc>/reference/addStyleInBlocks.html</loc>
+  </url>
+  <url>
     <loc>/reference/buildCSV.html</loc>
+  </url>
+  <url>
+    <loc>/reference/build_species_list.html</loc>
   </url>
   <url>
     <loc>/reference/closest.html</loc>
@@ -22,6 +34,15 @@
     <loc>/reference/createDateAndFix.html</loc>
   </url>
   <url>
+    <loc>/reference/createDir.html</loc>
+  </url>
+  <url>
+    <loc>/reference/create_backup.html</loc>
+  </url>
+  <url>
+    <loc>/reference/create_file_structure.html</loc>
+  </url>
+  <url>
     <loc>/reference/dataframeBuilder.html</loc>
   </url>
   <url>
@@ -29,6 +50,9 @@
   </url>
   <url>
     <loc>/reference/drawPlots.html</loc>
+  </url>
+  <url>
+    <loc>/reference/exportCSV.html</loc>
   </url>
   <url>
     <loc>/reference/extract_date.html</loc>
@@ -50,6 +74,9 @@
   </url>
   <url>
     <loc>/reference/getPaths.html</loc>
+  </url>
+  <url>
+    <loc>/reference/get_output_path.html</loc>
   </url>
   <url>
     <loc>/reference/historical.html</loc>
@@ -76,13 +103,25 @@
     <loc>/reference/percSeg.html</loc>
   </url>
   <url>
+    <loc>/reference/pheno_codes.html</loc>
+  </url>
+  <url>
+    <loc>/reference/plots_and_subplots.html</loc>
+  </url>
+  <url>
     <loc>/reference/printValidationError.html</loc>
+  </url>
+  <url>
+    <loc>/reference/process_snow_data.html</loc>
   </url>
   <url>
     <loc>/reference/projection.html</loc>
   </url>
   <url>
     <loc>/reference/readFile.html</loc>
+  </url>
+  <url>
+    <loc>/reference/read_phenology_data.html</loc>
   </url>
   <url>
     <loc>/reference/section.html</loc>

@@ -1,12 +1,21 @@
+#' @title phenology_survey
+#' @description This script generates phenology survey datasheets and data entry segments based on species observation data.
 DATA_FILE_PATTERN = "^Nuolja Transect Phenology Data Entry Segments \\d+ to \\d+ \\d{4} CURRENT\\.xlsx$"
 
+#' @title Load required libraries
+#' @description Load the required libraries for the script'
 datasheet_info <- normalizePath('descriptions/Nuolja\ Master\ Documents/Nuolja_Phenology_Datasheet_Information.xlsx')
 species_errors <- normalizePath('descriptions/Nuolja\ Master\ Documents/Nuolja\ Species\ Errors\ and\ Observation\ Notes\ CURRENT.xlsx')
-
 datasheet_info <- read.xlsx(datasheet_info, sheet = 1, colNames = TRUE)
 
 
-
+#' @title survey_data_sheet_get
+#' @description This function creates survey data sheets for the given species list and poles
+#' @param species_list The species list to create survey data sheets for
+#' @param poles The poles to create survey data sheets for
+#' @param i The index of the poles to create survey data sheets for
+#' @return A data frame containing the survey data sheets
+#' @export
 survey_data_sheet_get <- function(species_list, poles, i){
 
 	poles_species <- species_list %>%
@@ -41,6 +50,7 @@ survey_data_sheet_get <- function(species_list, poles, i){
 			distinct(`Synonym Current`);
 	return(poles_species)
 }
+
 #' @title survey_tables
 #' @description This function creates survey tables for the given data frame
 #' @param df The data frame to create survey tables for
@@ -135,7 +145,7 @@ STYLES <- list(
 	),
 	fillStyle = createStyle(fgFill = "#D9D9D9")
 )
-#addStyle in n rows skip n
+
 #' @title addStyleInBlocks
 #' @description This function adds a style to a workbook in blocks of n rows, skipping m rows
 #' @param wb The workbook to add the style to
@@ -152,6 +162,14 @@ addStyleInBlocks <- function(wb, sheet, style, start_row, total_rows, n = 3, ski
 		}
 }
 
+
+#' @title spring_survey_names
+#' @description This function creates spring survey names for the given species list and poles
+#' @param species_list The species list to create spring survey names for
+#' @param poles The poles to create spring survey names for
+#' @param file_name The file name to save the survey data sheets to
+#' @return A data frame containing the survey data sheets
+#' @export
 build_data_sheets <- function(species_list, poles, file_name = "out/Plant Phenology Survey/Nuolja Transect Phenology Datasheets.xlsx"){
 	wb <- createWorkbook()
 	dir.create("out/Plant Phenology Survey", showWarnings = FALSE, recursive = TRUE)
@@ -218,6 +236,13 @@ build_data_sheets <- function(species_list, poles, file_name = "out/Plant Phenol
 	saveWorkbook(wb, file_name, overwrite = TRUE)
 }
 
+#' @title spring_survey_names
+#' @description This function creates spring survey names for the given species list and poles
+#' @param species_list The species list to create spring survey names for
+#' @param poles The poles to create spring survey names for
+#' @param i The index of the poles to create spring survey names for
+#' @return A data frame containing the spring survey names
+#' @export
 spring_survey_names <- function(species_list, poles, i){
 	
 	# filter on poles[i] to poles[i+13]
@@ -250,6 +275,14 @@ spring_survey_names <- function(species_list, poles, i){
 	return(poles_species)
 }
 
+
+#' @title build_spring_data_sheets'
+#' @description This function creates spring data sheets for the given species list and poles
+#' @param species_list The species list to create spring data sheets for
+#' @param poles The poles to create spring data sheets for
+#' @param file_name The file name to save the spring data sheets to
+#' @return A data frame containing the spring data sheets
+#' @export
 build_spring_data_sheets <- function(species_list, poles, file_name = "out/Plant Phenology Survey/Nuolja Transect Phenology Datasheets.xlsx"){
 	wb <- createWorkbook()
 	dir.create("out/Plant Phenology Survey", showWarnings = FALSE, recursive = TRUE)
@@ -314,7 +347,13 @@ build_spring_data_sheets <- function(species_list, poles, file_name = "out/Plant
 	saveWorkbook(wb, file_name, overwrite = TRUE)
 }
 
-
+#' @title build_data_entry_segments
+#' @description This function creates data entry segments for the given species list and poles
+#' @param species_list The species list to create data entry segments for
+#' @param poles The poles to create data entry segments for
+#' @param file_name The file name to save the data entry segments to
+#' @return A data frame containing the data entry segments
+#' @export
 build_data_entry_segments <- function(species_list, poles, file_name){
 	wb <- createWorkbook()
 	dir.create("out/Plant Phenology Survey", showWarnings = FALSE, recursive = TRUE)

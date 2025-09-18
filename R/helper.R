@@ -1,8 +1,10 @@
 
-# Keysets definitions
+#' @title Keyset
+#' @description A list containing the keys for contemporary and historical data.
 keyset <- list(contemporary = c("s", "so", "o", "os"), historical = c("s", "o"))
 
-# Column names for the data
+#' @title Column Names
+#' @description A character vector containing the column names for the output data frame.
 colnames <- c("plot", "subplot", "proj_factor", "id", "date", "latitude", "longitude", "elevation", "contemporary", "historical")
 
 #' @title Delist

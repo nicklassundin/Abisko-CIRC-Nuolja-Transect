@@ -43,25 +43,11 @@ get_output_path <- function(path, filename){
 	return(output_path)
 }
 
-## clear memory of all datasets ##
-# rm(list = ls())
-
-#' @title read_excel_allsheets 
-#' @description This function reads in all sheets from an Excel spreadsheet
-#' @param filename The name of the Excel file
-# read_excel_allsheets <- function(filename) {
-# 	sheets <- readxl::excel_sheets(filename);
-# 	x <- lapply(sheets, function(X) readxl::read_excel(filename, sheet = X, range = ("C140:ED272"),trim_ws = TRUE));
-# 	names(x) <- sheets;
-# 	return(x);
-# }
-
 #' @title process_phenology_data
 #' @description This function reads in all phenology data from the given path and directories and processes it into two files; Observation by Year, Species, Code and Subplot; Second First observation by Year, Species and Code
 #' @param path The path to the directory containing the phenology data
 #' @param dirs The directories to search for the phenology data
 #' @return A data frame containing the phenology data
-
 read_phenology_data <- function(dir, all=FALSE) {
 	# read only .csv files from path
 	paths <- list.files(dir, pattern = ".csv", full.names = TRUE, recursive = FALSE)
@@ -110,6 +96,10 @@ read_phenology_data <- function(dir, all=FALSE) {
 	return(list(data=combined_data, paths=paths))
 }
 
+#' @title process_phenology_data
+#' @description This function processes the phenology data from the given input and directories
+#' @param input The input data frame
+#' @param dirs The directories to search for the phenology data
 process_phenology_data <- function(input, dirs){
 	# read only .csv files from path
 	# filter NA values

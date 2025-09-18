@@ -171,7 +171,7 @@ PhenologyValidator <- R6Class("PhenologyValidator",
 						    cat("\n", file = "log/missing.phen.log", append = TRUE)
 						    cat("Species in Data that are missing in Acceptable Code", file = "log/missing.phen.log", append = TRUE)
 					    },
-
+					
 					    validate = function(line) {
 						    valid <- self$validateField(line)
 						    return(list(

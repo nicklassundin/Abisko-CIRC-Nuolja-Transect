@@ -10,6 +10,9 @@
     <loc>/index.html</loc>
   </url>
   <url>
+    <loc>/reference/DATA_FILE_PATTERN.html</loc>
+  </url>
+  <url>
     <loc>/reference/PhenologyValidator.html</loc>
   </url>
   <url>
@@ -22,10 +25,22 @@
     <loc>/reference/buildCSV.html</loc>
   </url>
   <url>
+    <loc>/reference/build_data_entry_segments.html</loc>
+  </url>
+  <url>
+    <loc>/reference/build_data_sheets.html</loc>
+  </url>
+  <url>
     <loc>/reference/build_species_list.html</loc>
   </url>
   <url>
+    <loc>/reference/build_spring_data_sheets.html</loc>
+  </url>
+  <url>
     <loc>/reference/closest.html</loc>
+  </url>
+  <url>
+    <loc>/reference/colnames.html</loc>
   </url>
   <url>
     <loc>/reference/contemporary.html</loc>
@@ -44,6 +59,9 @@
   </url>
   <url>
     <loc>/reference/dataframeBuilder.html</loc>
+  </url>
+  <url>
+    <loc>/reference/datasheet_info.html</loc>
   </url>
   <url>
     <loc>/reference/delist.html</loc>
@@ -88,6 +106,9 @@
     <loc>/reference/insert.html</loc>
   </url>
   <url>
+    <loc>/reference/keyset.html</loc>
+  </url>
+  <url>
     <loc>/reference/loadTransectDescription.html</loc>
   </url>
   <url>
@@ -112,6 +133,9 @@
     <loc>/reference/printValidationError.html</loc>
   </url>
   <url>
+    <loc>/reference/process_phenology_data.html</loc>
+  </url>
+  <url>
     <loc>/reference/process_snow_data.html</loc>
   </url>
   <url>
@@ -127,10 +151,16 @@
     <loc>/reference/section.html</loc>
   </url>
   <url>
+    <loc>/reference/spring_survey_names.html</loc>
+  </url>
+  <url>
     <loc>/reference/subCalc.html</loc>
   </url>
   <url>
     <loc>/reference/sumPerc.html</loc>
+  </url>
+  <url>
+    <loc>/reference/survey_data_sheet_get.html</loc>
   </url>
   <url>
     <loc>/reference/validateFile.html</loc>

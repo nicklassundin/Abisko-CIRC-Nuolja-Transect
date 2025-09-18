@@ -12,7 +12,4 @@ README.md.bak
 directory_tree.md
 
 ## Ignore files for development
-data_old/
-out_old/
 plots/
-repack_old/

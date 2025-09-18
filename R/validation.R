@@ -190,8 +190,6 @@ validateFile <- function(file_path, silent = FALSE, validator, log_file="log/err
 	}
 	validation_results <- logical(length(lines))
 	# Print file path
-	cat(sprintf("Validating file: %s\n", file_path), "\n")
-	cat("\n")
 	progress_bar <- txtProgressBar(min = 0, max = length(lines), style = 3)
 	# Validate each line and collect errors
 	total <- length(lines)

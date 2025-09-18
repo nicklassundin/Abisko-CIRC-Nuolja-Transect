@@ -1,8 +1,11 @@
 # Nuolja Transect
+The Nuolja Transect project organizes, processes, and validates ecological transect survey data, focusing on snow and phenology observations.
 
 ## Project Overview
-<details>
 The Nuolja Transect project involves processing data from transect surveys conducted in the Nuolja region. The key components of the project include:
+<details>
+<summary>
+This section introduces the overall goals of the project, outlines the directory layout, describes data-processing steps, and highlights known issues in the datasets (e.g., date inconsistencies and geotagging).</summary>
 
 ### Directory structure
 <details>
@@ -54,6 +57,9 @@ An example of the data format used in this project can be found in the `descript
 </details>
 
 ## Operations
+Core functions handle directory navigation, data filtering, date handling, reading, validation, and visualization.
+
+<summary>This section explains the purpose of each key function in the project, showing how they interact to transform raw survey data into structured, validated outputs for further analysis.</summary>
 <details>
 
 - **getPaths()**: Retrieves the paths of directories within a specified directory, optionally matching a pattern.
@@ -73,6 +79,8 @@ An example of the data format used in this project can be found in the `descript
 </details>
 
 ## Prerequisites
+Running the project requires R, Rtools (on Windows), and a set of data analysis and documentation packages.
+<summary>Here you’ll find the necessary system and package requirements to ensure the project runs smoothly. Installing these dependencies ensures that scripts and documentation build correctly.</summary>
 <details>
 To run the project, ensure the following are installed and configured on your system:
 1. **R and Rtools**  
@@ -92,8 +100,10 @@ To run the project, ensure the following are installed and configured on your sy
 </details>
 
 ## Instructions
+The workflow guides you from preparing data to executing scripts and selecting operations interactively in RStudio.
+<summary>
+This section provides step-by-step instructions for setting up the working environment, running the main script, and navigating the project’s interactive menu to process and validate datasets.</summary>
 <details>
-   <summary>Running the Code in interactive enviroment</summary>
    1. Place your data directories into the `data` directory.
 2. Run `Rscript script.r` to process the data. This will generate files in the `/repack` directory and output files in the `/out` directory.
 3. Follow the prompted options to validate or generate files as required.
@@ -157,6 +167,8 @@ List of data sets placed in `data\`
 </details>
 
 ## Documentation
+Project documentation is generated with roxygen2 and pkgdown and is available online.
+<summary>Here you’ll learn where to access full documentation for functions and workflows, as well as how to rebuild and publish updated documentation manually to GitHub Pages.</summary>
 <details>
 <summary>More about documentation</summary>
 The full documentation for this project is available as a GitHub Pages site. You can access it [here](https://nicklassundin.github.io/Abisko-CIRC-Nuolja-Transect/).
@@ -179,8 +191,9 @@ This documentation includes detailed information about the project's structure, 
 </details>
 
 ## Data Formating
+Processed outputs follow strict CSV schemas for snow and phenology data, ensuring consistency and clarity.
 <details>
-<summary>About formating and data produced by the code</summary>
+<summary>This section defines the structure and meaning of each dataset produced by the pipeline, with column descriptions, file usage notes, and example data to illustrate expected formats.</summary>
 
 ### File Format Specification for `repack/`
 

@@ -81,6 +81,9 @@ logErrorCounts <- function(error_list, file, count_log_file) {
 
 	# Prepare the log entry
 	log_entry <- paste0("Error Count Summary for File: ", file, "\n")
+	# Add total number of lines in file
+	numLines <- length(readLines(file))
+	log_entry <- paste0(log_entry, "Total Lines: ", numLines, "\n")
 	log_entry <- paste0(log_entry, "----------------------------------------\n")
 	for (error in names(error_count)) {
 		log_entry <- paste0(log_entry, error, ": ", error_count[[error]], "\n")
@@ -88,8 +91,9 @@ logErrorCounts <- function(error_list, file, count_log_file) {
 	log_entry <- paste0(log_entry, "\n\n")
 
 	# Write the error summary to the log file
-	cat(log_entry, file = count_log_file, append = TRUE)
-
+	if (length(error_count) != 0) {
+		cat(log_entry, file = count_log_file, append = TRUE)
+	}
 }
 
 #' Validate Line and Print Field-Specific Errors
@@ -114,7 +118,6 @@ printValidationError <- function(line, validation, file = NA, line_number = NA, 
 	errors <- c()
 	# Check prefix
 	# iterate over key and value pairs in PATTERNS$STRUCT
-
 	# check if validator is NULL
 	validField <- validation$fields
 	for (key in names(validField)) {
@@ -190,23 +193,9 @@ validateFile <- function(file_path, silent = FALSE, validator, log_file="log/err
 	}
 	validation_results <- logical(length(lines))
 	# Print file path
-	progress_bar <- txtProgressBar(min = 0, max = length(lines), style = 3)
-	# Validate each line and collect errors
 	total <- length(lines)
 	start_time <- Sys.time()
 	for (i in seq_along(lines)) {
-		elapsed <- as.numeric(difftime(Sys.time(), start_time, units = "secs"))
-		est_total <- (elapsed / i) * total
-		remaining <- est_total - elapsed
-		minutes <- floor(remaining / 60)
-		seconds <- round(remaining %% 60, 0)
-
-
-		# Update progress bar with and text with current line
-		setTxtProgressBar(progress_bar, i)
-		cat("\033[F\033[K") # Clear the line
-		cat(sprintf(paste("Time Rem:", minutes, "m", seconds, "s", lines[i])), "\n")
-		
 		validation <- validator$validate(lines[i])
 		errors <- printValidationError(
 					       lines[i], 
@@ -221,12 +210,7 @@ validateFile <- function(file_path, silent = FALSE, validator, log_file="log/err
 		 
 		validation_results[i] <- validation$lenient
 	}
-	close(progress_bar)
-	# Print total elapsed time
-	elapsed <- as.numeric(difftime(Sys.time(), start_time, units = "secs"))
-	minutes <- floor(elapsed / 60)
-	seconds <- round(elapsed %% 60, 0)
-	cat(sprintf("Total elapsed time: %d minutes and %d seconds\n", minutes, seconds), "\n")
+
 	# Log error counts
 	count_log_file = paste0("log/count.", log_file)
 	logErrorCounts(error_list, file_path, count_log_file = count_log_file)

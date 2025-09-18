@@ -58,8 +58,8 @@ An example of the data format used in this project can be found in the `descript
 
 ## Operations
 Core functions handle directory navigation, data filtering, date handling, reading, validation, and visualization.
-<summary>This section explains the purpose of each key function in the project, showing how they interact to transform raw survey data into structured, validated outputs for further analysis.</summary>
 <details>
+<summary>This section explains the purpose of each key function in the project, showing how they interact to transform raw survey data into structured, validated outputs for further analysis.</summary>
 
 - **getPaths()**: Retrieves the paths of directories within a specified directory, optionally matching a pattern.
 - **getDirs()**: Retrieves the names of directories within a specified directory, optionally matching a pattern.
@@ -79,8 +79,9 @@ Core functions handle directory navigation, data filtering, date handling, readi
 
 ## Prerequisites
 Running the project requires R, Rtools (on Windows), and a set of data analysis and documentation packages.
-<summary>Here you’ll find the necessary system and package requirements to ensure the project runs smoothly. Installing these dependencies ensures that scripts and documentation build correctly.</summary>
 <details>
+<summary>Here you’ll find the necessary system and package requirements to ensure the project runs smoothly. Installing these dependencies ensures that scripts and documentation build correctly.</summary>
+
 To run the project, ensure the following are installed and configured on your system:
 1. **R and Rtools**  
    - Install the latest version of R from [CRAN](https://cran.r-project.org/).  
@@ -100,8 +101,8 @@ To run the project, ensure the following are installed and configured on your sy
 
 ## Instructions
 The workflow guides you from preparing data to executing scripts and selecting operations interactively in RStudio.
-<summary>This section provides step-by-step instructions for setting up the working environment, running the main script, and navigating the project’s interactive menu to process and validate datasets.</summary>
 <details>
+<summary>This section provides step-by-step instructions for setting up the working environment, running the main script, and navigating the project’s interactive menu to process and validate datasets.</summary>
    1. Place your data directories into the `data` directory.
 2. Run `Rscript script.r` to process the data. This will generate files in the `/repack` directory and output files in the `/out` directory.
 3. Follow the prompted options to validate or generate files as required.
@@ -166,9 +167,8 @@ List of data sets placed in `data\`
 
 ## Documentation
 Project documentation is generated with roxygen2 and pkgdown and is available online.
-<summary>Here you’ll learn where to access full documentation for functions and workflows, as well as how to rebuild and publish updated documentation manually to GitHub Pages.</summary>
 <details>
-<summary>More about documentation</summary>
+<summary>Here you’ll learn where to access full documentation for functions and workflows, as well as how to rebuild and publish updated documentation manually to GitHub Pages.</summary>
 The full documentation for this project is available as a GitHub Pages site. You can access it [here](https://nicklassundin.github.io/Abisko-CIRC-Nuolja-Transect/).
 
 This documentation includes detailed information about the project's structure, data processing steps, and usage examples. It is generated automatically from the source code comments using `roxygen2` and `pkgdown`.

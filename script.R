@@ -32,10 +32,14 @@ dirs <- getDirs()
 transect_desc = loadTransectDescription();
 plots_and_subplots = read.csv("descriptions/plots_and_subplots.csv", header = TRUE, sep = ",", quote = "\"", dec = ".", fill = TRUE, comment.char = "")
 
+
 print("Select operations to perform");
 print("0) Exit");
-print("1) Build CSV files");
-print("2) Produce Survey Excel files");
+print("1) Build Snow CSV files");
+print("2) Build Phenology CSV files"); 
+print("3) Produce Phenology Survey Excel files");
+# print("1) Build CSV files");
+# print("2) Produce Survey Excel files");
 # loop until vallid input is given
 inout <- file("stdin")
 
@@ -55,7 +59,7 @@ while(TRUE){
 }
 
 survey = FALSE;
-if(answer == "2"){
+if(answer == "3"){
 	survey = TRUE;
 }else{
 	print("Build CSV files");
@@ -65,9 +69,18 @@ if(answer == "2"){
 datatypes <- sapply(strsplit(dirs, "/"), "[", 1)
 datatypes <- unique(datatypes)
 
+
+datatype = "";
 # Select which data to process
 while(TRUE){
-	print("Select data to process");
+	if (answer == "1") {
+		print("Select directory containing Snow Data");
+		datatype = "SNOWDATA";
+	} else if(answer == "2" || answer == "3") {
+		print("Select directory containing Phenology Data");
+		datatype = "PHENDATA";
+	}
+	# print("Select data to process");
 	print("0) Exit");
 	for(i in 1:length(datatypes)){
 		print(paste(i,") ", datatypes[i], sep=""));
@@ -105,7 +118,7 @@ dir_phenology <- paste("data", dirs[1], sep="/")
 for (i in 1:length(datatypes)){
 	print(datatypes)
 	# if datatypes[i] contain Phenology
-	if(grepl("Phenology", datatypes[i], fixed = TRUE)){
+	if(datatype == "PHENDATA"){
 		print("Processing Phenology Data")
 		# reorder dir_phenology
 		# put first poistion last
@@ -127,7 +140,7 @@ for (i in 1:length(datatypes)){
 		}else{
 			process_phenology_data(output, dir_phenology)
 		}
-	}else if(datatypes[i] == "Nuolja Snow Data"){
+	}else if(datatype == "SNOWDATA"){
 		print("Processing Snow Data")
 		dataframe <- process_snow_data(paths_snow, dirs_snow)
 	}

@@ -155,14 +155,15 @@ Before opening the terminal, set the working directory in RStudio using one of t
 ### Step 3: Selection operations to perform
 #### 0) Exit
 quit process
-#### 1) Build CSV files
+#### 1) Build Snow CSV files and 2) Build Phenology CSV files
 Build and Validate, will produce Files in `out\` and Log files in `log\`
-#### 2) Construct Survey 
+
+#### 3) Construct Survey 
 Constructing Survey Tables for next year, will produce files in `out\Plant Phenology Survey`.
 ### Step 4: Select data to process
 #### 0) Exit
 quit process
-#### n) Data to be processed
+#### n) Select location of data type 
 List of data sets placed in `data\`
 </details>
 

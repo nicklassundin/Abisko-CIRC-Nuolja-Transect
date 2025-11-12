@@ -168,8 +168,12 @@ printValidationError <- function(line, validation, file = NA, line_number = NA, 
 #' validateFile("data.txt")
 #' 
 #' @export
-validateFile <- function(file_path, silent = FALSE, validator, log_file="log/error.log", head=FALSE) {
+validateFile <- function(file_path, validator, log_file="log/error.log", head=FALSE, erreta=NA) {
 	# Create the file structure
+	if (!is.na(erreta)) {
+		erreta <- read.csv(paste("erreta/", erreta, sep=""), sep=";")
+	}
+
 	error_list <- list()
 	# Read the file line by line
 	tryCatch(
@@ -196,7 +200,37 @@ validateFile <- function(file_path, silent = FALSE, validator, log_file="log/err
 	total <- length(lines)
 	start_time <- Sys.time()
 	for (i in seq_along(lines)) {
+		line <- read.csv(text=lines[i], sep=",", header=FALSE)
+
+		idx <- with(erreta,
+			      which(Species==line[1] & Date==line[2] & Subplot==line[3] & Code==line[4]))
+		# set <- subset(erreta,
+			      # Species==line[1] & Date==line[2] & Subplot==line[3] & Code==line[4])
+		if(length(idx) > 0) {
+			print("-----")
+			print(line)
+			# print(set[1:4,])
+			# Species
+			set <- erreta[idx,]
+			print(set)
+			line[1][!is.na(set$New.Species)] <-
+				  set$New.Species[!is.na(set$New.Species)]
+
+			# Date
+			line[2][!is.na(set$New.Date)] <-
+				set$New.Date[!is.na(set$New.Date)]
+
+			# Subplot
+			line[3][!is.na(set$New.Subplot)] <-
+				set$New.Subplot[!is.na(set$New.Subplot)]
+			# Code 
+			line[4][!is.na(set$New.Code)] <-
+				set$New.Code[!is.na(set$New.Code)]
+			print(line)
+		}
+		
 		validation <- validator$validate(lines[i])
+	
 		errors <- printValidationError(
 					       lines[i], 
 					       file = file_path, 

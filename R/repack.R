@@ -26,7 +26,7 @@ getDirs <- function(dir = "/data", pattern = "", full.names = FALSE) {
 
 #' @title Get Erreta files
 #' @description Retrieve paths for erreta files in the directory
-getErretas <- function(dir = "/erreta", pattern = "", full.names = FALSE) {
+getErretas <- function(dir = "/errata", pattern = "", full.names = FALSE) {
 	print(paste(getwd(), dir, sep=""))
 	dirs <- list.files(paste(getwd(), dir, sep=""), full.names = full.names)[-1]
 	dirs <- dirs[dirs != "fieldmapping.csv"]

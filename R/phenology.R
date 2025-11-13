@@ -100,7 +100,7 @@ read_phenology_data <- function(dir, all=FALSE) {
 #' @description This function processes the phenology data from the given input and directories
 #' @param input The input data frame
 #' @param dirs The directories to search for the phenology data
-process_phenology_data <- function(input, dirs, erreta=NA){
+process_phenology_data <- function(input, dirs, errata=NA){
 	# read only .csv files from path
 	# filter NA values
 	dirs <- dirs[!is.na(dirs)]
@@ -110,7 +110,7 @@ process_phenology_data <- function(input, dirs, erreta=NA){
 	validator = PhenologyValidator$new()
 	# create log files and save old log in backup.*.log
 	valid = lapply(paths, (function(x) {
-		return(validateFile(x, validator=validator, log_file="phen.log", head=TRUE, erreta=erreta))
+		return(validateFile(x, validator=validator, log_file="phen.log", head=TRUE, errata=errata))
 	}))
 	# length of valid TRUE
 	# keep only valid rows in combined_data

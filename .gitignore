@@ -11,8 +11,8 @@ log
 README.md.bak
 directory_tree.md
 
-erreta/*
-!erreta/fieldmapping.csv
+errata/*
+!errata/fieldmapping.csv
 
 ## Ignore files for development
 plots/

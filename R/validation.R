@@ -168,10 +168,10 @@ printValidationError <- function(line, validation, file = NA, line_number = NA, 
 #' validateFile("data.txt")
 #' 
 #' @export
-validateFile <- function(file_path, validator, log_file="log/error.log", head=FALSE, erreta=NA) {
+validateFile <- function(file_path, validator, log_file="log/error.log", head=FALSE, errata=NA) {
 	# Create the file structure
-	if (!is.na(erreta)) {
-		erreta <- read.csv(paste("erreta/", erreta, sep=""), sep=";")
+	if (!is.na(errata)) {
+		errata <- read.csv(paste("errata/", errata, sep=""), sep=";")
 	}
 
 	error_list <- list()
@@ -202,16 +202,16 @@ validateFile <- function(file_path, validator, log_file="log/error.log", head=FA
 	for (i in seq_along(lines)) {
 		line <- read.csv(text=lines[i], sep=",", header=FALSE)
 
-		idx <- with(erreta,
+		idx <- with(errata,
 			      which(Species==line[1] & Date==line[2] & Subplot==line[3] & Code==line[4]))
-		# set <- subset(erreta,
+		# set <- subset(errata,
 			      # Species==line[1] & Date==line[2] & Subplot==line[3] & Code==line[4])
 		if(length(idx) > 0) {
 			print("-----")
-			print(line)
+			print(lines[i])
 			# print(set[1:4,])
 			# Species
-			set <- erreta[idx,]
+			set <- errata[idx,]
 			print(set)
 			line[1][!is.na(set$New.Species)] <-
 				  set$New.Species[!is.na(set$New.Species)]
@@ -226,10 +226,31 @@ validateFile <- function(file_path, validator, log_file="log/error.log", head=FA
 			# Code 
 			line[4][!is.na(set$New.Code)] <-
 				set$New.Code[!is.na(set$New.Code)]
-			print(line)
+
+			tc <- textConnection("out", "w", local = TRUE)
+			write.table(
+				      line,
+					file      = tc,
+				        sep       = ",",
+					  row.names = FALSE,
+					  col.names = FALSE,
+					    quote     = TRUE
+					  
+			)
+			close(tc)
+
+			lines[i] <- out[1]
+			print(lines[i])
 		}
-		
+
+
+			
 		validation <- validator$validate(lines[i])
+		# if(length(idx) > 0) {
+			# print(validation)
+			# exit
+		# }
+		
 	
 		errors <- printValidationError(
 					       lines[i], 
@@ -245,8 +266,10 @@ validateFile <- function(file_path, validator, log_file="log/error.log", head=FA
 		validation_results[i] <- validation$lenient
 	}
 
+	
 	# Log error counts
 	count_log_file = paste0("log/count.", log_file)
+	# logErrorCounts(error_list, file_path, count_log_file = count_log_file)
 	logErrorCounts(error_list, file_path, count_log_file = count_log_file)
 
 	# Return validation results (TRUE for valid lines, FALSE for invalid)

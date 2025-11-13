@@ -23,7 +23,7 @@ project_directory/
 | │   ├── Nuolja Master Documents
 | ├── docs
 | │   ├── reference
-| ├── erreta
+| ├── errata
 | ├── man
 | ├── out
 | ├── R

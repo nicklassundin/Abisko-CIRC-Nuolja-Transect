@@ -69,6 +69,27 @@ if(answer == "3"){
 	print("Build CSV files");
 }
 
+if(answer == "2"){
+	if(!is.na(errata)){
+		print("Use this errata (Y/N):")
+		print(errata)
+		while(TRUE){
+			respon <- readLines(inout, 1)
+			respon <- gsub("\\)", "", respon);
+			print(respon)
+			if(respon == "Y" || respon == "y"){
+				break;
+			}else if(respon == "N" || respon == "n"){
+				errata <- NA
+				break;
+			}
+			print("Invalid input, please try again");
+		}
+
+	}
+}
+
+
 # split dirs between / and take index 0
 datatypes <- sapply(strsplit(dirs, "/"), "[", 1)
 datatypes <- unique(datatypes)
@@ -142,6 +163,7 @@ for (i in 1:length(datatypes)){
 			# Data entry Segments Sheet
 			build_data_entry_segments(df_full$species_list, df_full$poles, file_name = "out/Plant Phenology Survey/Nuolja Transect Phenology Data Entry Segments 01 to 79.xlsx")
 		}else{
+			print(errata)
 			process_phenology_data(output, dir_phenology, errata)
 		}
 	}else if(datatype == "SNOWDATA"){

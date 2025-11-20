@@ -241,6 +241,7 @@ process_snow_data <- function(paths, dirs){
 		valid = lapply(path, (function(x) {
 			return(validateFile(x, validator=SnowValidator$new(), log_file="snow.log"))
 		}));
+		valid <- lapply(valid, function(x) {return(x$valid)})
 		# filter out invalid files in the list path
 		outputfile = gsub("/Raw Data", "",dirs[i]);
 		data <- exportCSV(path, paste("repack/", outputfile, sep=""), valid);

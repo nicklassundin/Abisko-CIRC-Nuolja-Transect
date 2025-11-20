@@ -6,10 +6,10 @@
 \usage{
 validateFile(
   file_path,
-  silent = FALSE,
   validator,
   log_file = "log/error.log",
-  head = FALSE
+  head = FALSE,
+  errata = NA
 )
 }
 \arguments{

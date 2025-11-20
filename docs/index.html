@@ -78,6 +78,7 @@
 | │   ├── Nuolja Master Documents
 | ├── docs
 | │   ├── reference
+| ├── errata
 | ├── man
 | ├── out
 | ├── R
@@ -240,8 +241,41 @@ Alternatively, use the shortcut:<ul>
 </h3>
 <div class="section level4">
 <h4 id="0-exit">0) Exit<a class="anchor" aria-label="anchor" href="#0-exit"></a>
-</h4>quit process #### 1) Build CSV files Build and Validate, will produce Files in <code>out\</code> and Log files in <code>log\</code> #### 2) Construct Survey Constructing Survey Tables for next year, will produce files in <code>out\Plant Phenology Survey</code>. ### Step 4: Select data to process #### 0) Exit quit process #### n) Data to be processed List of data sets placed in <code>data\</code>
+</h4>
+<p>quit process #### 1) Build Snow CSV files and 2) Build Phenology CSV files Build and Validate, will produce Files in <code>out\</code> and Log files in <code>log\</code></p>
 </div>
+<div class="section level4">
+<h4 id="3-construct-survey">3) Construct Survey<a class="anchor" aria-label="anchor" href="#3-construct-survey"></a>
+</h4>
+<p>Constructing Survey Tables for next year, will produce files in <code>out\Plant Phenology Survey</code>. ### Step 4: Select data to process #### 0) Exit quit process #### n) Select location of data type List of data sets placed in <code>data\</code></p>
+</div>
+</div>
+<div class="section level3">
+<h3 id="optional">Optional<a class="anchor" aria-label="anchor" href="#optional"></a>
+</h3>
+<p>In directory <code>errata</code> place values that correct fields for phenology data, empty fields will be skipped. Observe this will not change the core thata but the output and the error log will reflect the errata.</p>
+<table class="table">
+<thead><tr class="header">
+<th>Species</th>
+<th>Date</th>
+<th>Subplot</th>
+<th>Code</th>
+<th>New Species</th>
+<th>New Date</th>
+<th>New Subplot</th>
+<th>New Code</th>
+</tr></thead>
+<tbody><tr class="odd">
+<td>value</td>
+<td>value</td>
+<td>value</td>
+<td>value</td>
+<td>new value</td>
+<td>(empty)</td>
+<td>(empty)</td>
+<td>(empty)</td>
+</tr></tbody>
+</table>
 </div>
 </div>
 <div class="section level2">

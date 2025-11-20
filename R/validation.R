@@ -168,9 +168,10 @@ printValidationError <- function(line, validation, file = NA, line_number = NA, 
 #' validateFile("data.txt")
 #' 
 #' @export
-validateFile <- function(file_path, validator, log_file="log/error.log", head=FALSE, errata=NA) {
+validateFile <- function(file_path, validator, log_file="log/error.log", head=FALSE, errata_file=NA) {
 	# Create the file structure
-	if (!is.na(errata)) {
+	# check if errata/errata.csv exists
+	if (!is.na(errata_file)) {
 		errata <- read.csv(paste("errata/", errata, sep=""), sep=";")
 	}
 
@@ -196,62 +197,116 @@ validateFile <- function(file_path, validator, log_file="log/error.log", head=FA
 		return(NULL)
 	}
 	validation_results <- logical(length(lines))
-	# Print file path
-	total <- length(lines)
-	start_time <- Sys.time()
+	valid <- c()
+
+	# TODO remove
+	# lines <- lines[1:100]
+		
+	data <- read.csv(file_path, sep=",", header=FALSE)
+	if(!is.na(errata_file)){
+		data <- data %>%
+			left_join(errata, by=c("V1"="Species", "V2"="Date", "V3"="Subplot", "V4"="Code")) %>%
+			mutate(
+				V1 = ifelse(!is.na(New.Species) & New.Species != "", New.Species, V1),
+				V2 = ifelse(!is.na(New.Date) & New.Date != "", New.Date, V2),
+				V3 = ifelse(!is.na(New.Subplot) & New.Subplot != "", New.Subplot, V3),
+				V4 = ifelse(!is.na(New.Code) & New.Code != "", New.Code, V4)
+			) %>%
+			select(starts_with("V"))
+		# print(data_corr[40:70,])
+	}
+
+
 	for (i in seq_along(lines)) {
-		line <- read.csv(text=lines[i], sep=",", header=FALSE)
-
-		idx <- with(errata,
-			      which(Species==line[1] & Date==line[2] & Subplot==line[3] & Code==line[4]))
-		# set <- subset(errata,
-			      # Species==line[1] & Date==line[2] & Subplot==line[3] & Code==line[4])
-		if(length(idx) > 0) {
-			print("-----")
-			print(lines[i])
-			# print(set[1:4,])
-			# Species
-			set <- errata[idx,]
-			print(set)
-			line[1][!is.na(set$New.Species)] <-
-				  set$New.Species[!is.na(set$New.Species)]
-
-			# Date
-			line[2][!is.na(set$New.Date)] <-
-				set$New.Date[!is.na(set$New.Date)]
-
-			# Subplot
-			line[3][!is.na(set$New.Subplot)] <-
-				set$New.Subplot[!is.na(set$New.Subplot)]
-			# Code 
-			line[4][!is.na(set$New.Code)] <-
-				set$New.Code[!is.na(set$New.Code)]
-
-			tc <- textConnection("out", "w", local = TRUE)
-			write.table(
-				      line,
-					file      = tc,
-				        sep       = ",",
-					  row.names = FALSE,
-					  col.names = FALSE,
+		# line <- read.csv(text=lines[i], sep=",", header=FALSE)
+				tc <- textConnection("out", "w", local = TRUE)
+				write.table(
+					    data[i,],
+					    file      = tc,
+					    sep       = ",",
+					    row.names = FALSE,
+					    col.names = FALSE,
 					    quote     = TRUE
-					  
-			)
-			close(tc)
 
-			lines[i] <- out[1]
-			print(lines[i])
+				)
+		close(tc)
+		lines[i] <- out[1]
+		newLine <- line;
+
+		if(!is.na(errata_file)){
+
+
+			# get only the line that matches Species, Date, Subplot, Code	
+			# erra <- errata %>%
+			# 	filter(Species == line[1,1]) %>%
+			# 	filter(Date == line[1,2]) %>%
+			# 	filter(Subplot == line[1,3]) %>%
+			# 	filter(Code == line[1,4])
+
+			# idx <- with(errata,
+				    # which(Species==line[1,1] & Date==line[1,2] & Subplot==line[1,3] & Code==line[1,4]))
+			# set <- subset(errata,
+			# Species==line[1] & Date==line[2] & Subplot==line[3] & Code==line[4])
+			# if(length(idx) > 0) {
+				# set <- errata[idx,]
+				# # newLine[1][!is.na(set$New.Species)] <-
+				# # Specie
+				# if (!is.na(set$New.Species) && set$New.Species != "") {
+				# 	newLine[1] <- set$New.Species
+				# }
+
+				# # Date
+				# if (!is.na(set$New.Date) && set$New.Date != ""){
+				# 	newLine[2] <- set$New.Date
+				# }
+
+				# # Subplot
+				# if (!is.na(set$New.Subplot) && set$New.Subplot != ""){
+				# 	newLine[3] <- set$New.Subplot
+				# }
+
+				# # Code 
+				# if (!is.na(set$New.Code) && set$New.Code != ""){
+				# 	newLine[4] <- set$New.Code
+				# }
+				# tc <- textConnection("out", "w", local = TRUE)
+				# write.table(
+				# 	    newLine,
+				# 	    file      = tc,
+				# 	    sep       = ",",
+				# 	    row.names = FALSE,
+				# 	    col.names = FALSE,
+				# 	    quote     = TRUE
+
+				# )
+				# close(tc)
+				# lines[i] <- out[1]
+			# }
 		}
+		# while(TRUE) {
+		# 	if (length(idx) > 0){
+		# 		print(errata[idx,])
+		# 		print(newLine)
+		# 		print(idx)
+		# 		print(i)
+		# 		print(line)
+		# 		print(newLine)
+		# 		print("press Enter")
+		# 		answer <- readLines(inout, 1);
+		# 	}
+		# 	break;
+		# }
 
 
-			
+
+		# errata <- errata[-idx,]
 		validation <- validator$validate(lines[i])
 		# if(length(idx) > 0) {
-			# print(validation)
-			# exit
+		# print(validation)
+		# exit
 		# }
-		
-	
+
+
 		errors <- printValidationError(
 					       lines[i], 
 					       file = file_path, 
@@ -262,16 +317,22 @@ validateFile <- function(file_path, validator, log_file="log/error.log", head=FA
 		# append errors to error_list
 		error_list <- c(error_list, errors)
 
-		 
+
 		validation_results[i] <- validation$lenient
 	}
 
-	
+
 	# Log error counts
 	count_log_file = paste0("log/count.", log_file)
 	# logErrorCounts(error_list, file_path, count_log_file = count_log_file)
 	logErrorCounts(error_list, file_path, count_log_file = count_log_file)
 
+	#convert lines to document
+	doc <- paste(lines, collapse = "\n")
+	doc <- read.csv(text=doc, sep=",", header=FALSE)
+	# get year from file name
+	doc <- doc %>%
+		mutate(Year = as.numeric(sub(".*(\\d{4}).csv$", "\\1", basename(file_path))))
 	# Return validation results (TRUE for valid lines, FALSE for invalid)
-	return(validation_results)
+	return(list(valid = validation_results, document = doc))
 }

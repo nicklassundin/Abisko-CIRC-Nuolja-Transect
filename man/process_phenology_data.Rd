@@ -4,7 +4,7 @@
 \alias{process_phenology_data}
 \title{process_phenology_data}
 \usage{
-process_phenology_data(input, dirs)
+process_phenology_data(input, dirs, errata = NA)
 }
 \arguments{
 \item{input}{The input data frame}

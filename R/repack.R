@@ -24,15 +24,6 @@ getDirs <- function(dir = "/data", pattern = "", full.names = FALSE) {
 	return(dirs)
 }
 
-#' @title Get Erreta files
-#' @description Retrieve paths for erreta files in the directory
-getErretas <- function(dir = "/errata", pattern = "", full.names = FALSE) {
-	print(paste(getwd(), dir, sep=""))
-	dirs <- list.files(paste(getwd(), dir, sep=""), full.names = full.names)[-1]
-	dirs <- dirs[dirs != "fieldmapping.csv"]
-	return(dirs)
-}
-
 #' @title Get Data Files Paths
 #' @description Retrieve the paths of data files within a given directory, optionally matching a pattern.
 #' @param dir A character string representing the directory to search within.

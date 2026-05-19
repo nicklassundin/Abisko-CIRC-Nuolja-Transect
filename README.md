@@ -169,13 +169,6 @@ quit process
 #### n) Select location of data type 
 List of data sets placed in `data\`
 
-### Optional
-In directory `errata` place values that correct fields for phenology data, empty fields will be skipped. Observe this will not change the core thata but the output and the error log will reflect the errata.
-
-| Species | Date | Subplot | Code | New Species | New Date | New Subplot | New Code |
-| ------- | ---- | ------- | ---- | ----------- | -------- | ----------- | -------- |
-| value   | value | value  | value | new value  | (empty)   |  (empty)   | (empty)  |
-
 </details>
 
 ## Documentation

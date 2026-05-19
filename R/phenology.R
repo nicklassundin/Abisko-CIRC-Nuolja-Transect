@@ -100,7 +100,7 @@ read_phenology_data <- function(dir, all=FALSE) {
 #' @description This function processes the phenology data from the given input and directories
 #' @param input The input data frame
 #' @param dirs The directories to search for the phenology data
-process_phenology_data <- function(input, dirs, errata=NA){
+process_phenology_data <- function(input, dirs){
 	# read only .csv files from path
 	# filter NA values
 	dirs <- dirs[!is.na(dirs)]
@@ -109,27 +109,12 @@ process_phenology_data <- function(input, dirs, errata=NA){
 	create_file_structure("phen.log")
 	validator = PhenologyValidator$new()
 	# create log files and save old log in backup.*.log
-	# valid = lapply(paths, (function(x) {
-		# return(validateFile(x, validator=validator, log_file="phen.log", head=TRUE, errata=errata))
-	# }))
+	valid = lapply(paths, (function(x) {
+		return(validateFile(x, validator=validator, log_file="phen.log", head=TRUE))
+	}))
 	# length of valid TRUE
 	# keep only valid rows in combined_data
-	# combined_data <- combined_data[unlist(valid),]
-
-
-	
-	validations = lapply(paths, (function(x) {
-		return(validateFile(x, validator=validator, log_file="phen.log", head=TRUE, errata=errata))
-	}))
-
-	dataframes <- lapply(validations, function(v) { v$document })
-	# combine all dataframes
-	column_names <- colnames(combined_data)
-	combined_data <- bind_rows(dataframes)
-	colnames(combined_data) <- column_names
-
-
-
+	combined_data <- combined_data[unlist(valid),]
 	# group by "Year" and "Synonym Current" count the number of observations
 	observ_data <- combined_data %>% group_by(`Synonym Current`, Year, `Poles`, Code) %>% summarise(n = n(), .groups = "drop")
 

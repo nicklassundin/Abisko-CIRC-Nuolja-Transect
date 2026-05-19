@@ -29,10 +29,6 @@ createDir("data")
 ## Build paths for the directories
 paths <- getPaths() 
 dirs <- getDirs()
-errata <- getErretas()
-if (length(errata) == 0) {
-	errata <- NA;
-}
 
 transect_desc = loadTransectDescription();
 plots_and_subplots = read.csv("descriptions/plots_and_subplots.csv", header = TRUE, sep = ",", quote = "\"", dec = ".", fill = TRUE, comment.char = "")
@@ -190,8 +186,7 @@ for (i in 1:length(datatypes)){
 			# Data entry Segments Sheet
 			build_data_entry_segments(df_full$species_list, df_full$poles, file_name = "out/Plant Phenology Survey/Nuolja Transect Phenology Data Entry Segments 01 to 79.xlsx")
 		}else{
-			print(errata)
-			process_phenology_data(output, dir_phenology, errata)
+			process_phenology_data(output, dir_phenology)
 		}
 	}else if(datatype == "SNOWDATA"){
 		print("Processing Snow Data")

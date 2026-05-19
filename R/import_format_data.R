@@ -12,10 +12,8 @@ library(stringr)
 
 
 read_excel_allsheets <- function(filename) {
-	print(filename)
+	sheets <- readxl::excel_sheets(filename)
 	x <- lapply(sheets, function(X) readxl::read_excel(filename, sheet = X, trim_ws = TRUE, col_names = FALSE, .name_repair = "minimal"))
-
-	print(x)
 	names(x) <- sheets
 	x
 }

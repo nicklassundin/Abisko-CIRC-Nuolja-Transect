@@ -58,18 +58,22 @@ survey_data_sheet_get <- function(species_list, poles, i){
 #' @return A data frame containing the survey tables
 #' @export
 build_species_list <- function(df){
+	
+	print(df[1:10,])
 
+	print(names(df))
 	species_counts <- df %>%
-		distinct(`Synonym Current`, Poles, Year) %>%
-		count(`Synonym Current`, Poles);
-	species_list <- df %>% 
-		group_by(`Synonym Current`, Poles, Year) %>% 
-		# summarise(n = n(), .groups = "drop") %>%
-		reframe(n = n(), .groups = "drop") %>%
-		select(-n)
-	species_list <- species_list %>%
-		left_join(species_counts, by = c("Synonym Current", "Poles")) %>%
-		filter(n > 1)
+		dplyr::group_by(`Synonym Current`, Poles, Year) %>%
+		dplyr::summarise(
+				 n = dplyr::n(),
+				 .groups = "drop"
+		)
+		# distinct(`Synonym Current`, Poles, Year) %>%
+		# count(`Synonym Current`, Poles);
+	species_list <- species_counts %>%
+		dplyr::filter(n > 1)
+
+	print(species_list[1:10,])
 
 
 	# Observation Error

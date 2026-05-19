@@ -131,50 +131,66 @@ for (i in 1:length(datatypes)){
 		)
 
 		dir.create(
-			     file.path(dir_phenology, "processed"),
-			       showWarnings = FALSE
-			     
+			   file.path(dir_phenology, "processed"),
+			   showWarnings = FALSE
+
 		)
 		# get year from each filename
 		years <- sub(
-			       ".*(20[0-9]{2}).*",
-			         "\\1",
-			         basename(files)
-				 
+			     ".*(20[0-9]{2}).*",
+			     "\\1",
+			     basename(files)
+
 		)
 
-		# process each year separately
-		for (yr in unique(years)) {
+		while(TRUE){
+			print("Process from original .xlsx files? (Y/N)")
+			answer <- readLines(inout, 1);
+			answer <- gsub("\\)", "", answer);
+			answer = tolower(answer) 
+			print(answer)
+			if (answer == "n" || answer == "y"){
+				break;
+			}
+		}
+		if (answer == "y"){
+			# process each year separately
+			for (yr in unique(years)) {
 
-			year_files <- files[years == yr]
+				year_files <- files[years == yr]
 
-			year_data <- do.call(
-				        rbind,
-					lapply(year_files, import_nuolja_phenology)
-					   
-			)
-			output_file <- file.path(
-					     dir_phenology,
-					         "processed",
-					         paste0("Nuolja_Data_", yr, ".csv")
-						   
-			)
-			write.csv(
-				year_data,
-				output_file,
-				row.names = FALSE
-			)
-			message("Saved: ", output_file)
-		
+				year_data <- do.call(
+						     rbind,
+						     lapply(year_files, import_nuolja_phenology)
+
+				)
+				output_file <- file.path(
+							 dir_phenology,
+							 "processed",
+							 paste0("Nuolja_Data_", yr, ".csv")
+
+				)
+				write.csv(
+					  year_data,
+					  output_file,
+					  row.names = FALSE
+				)
+				message("Saved: ", output_file)
+
+			}
+			output <- read_phenology_data(file.path(dir_phenology, "processed"), all=survey)
+
+		}
+		if (answer == "n"){
+			output <- read_phenology_data(dir_phenology, all=survey)
 		}
 
-		
-		output <- read_phenology_data(file.path(dir_phenology, "processed"), all=survey)
+
 		df <- output$data
 
 		# filter out none may date for all years
 		df_may <- output$data %>%
-			  filter(month(Date) == 5)
+			filter(month(Date) == 5)
 		if(survey){
 			df_full <- build_species_list(df)
 			build_data_sheets(df_full$species_list, df_full$poles, file_name = "out/Plant Phenology Survey/Nuolja Transect Phenology Datasheets.xlsx")

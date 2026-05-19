@@ -149,8 +149,8 @@ for (i in 1:length(datatypes)){
 			year_files <- files[years == yr]
 
 			year_data <- do.call(
-				         rbind,
-					     lapply(year_files, import_nuolja_phenology)
+				        rbind,
+					lapply(year_files, import_nuolja_phenology)
 					   
 			)
 			output_file <- file.path(
@@ -163,7 +163,6 @@ for (i in 1:length(datatypes)){
 				year_data,
 				output_file,
 				row.names = FALSE
-				    
 			)
 			message("Saved: ", output_file)
 		

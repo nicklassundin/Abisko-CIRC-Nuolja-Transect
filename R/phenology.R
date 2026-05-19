@@ -116,8 +116,10 @@ process_phenology_data <- function(input, dirs){
 	# keep only valid rows in combined_data
 	combined_data <- combined_data[unlist(valid),]
 	# group by "Year" and "Synonym Current" count the number of observations
-	observ_data <- combined_data %>% group_by(`Synonym Current`, Year, `Poles`, Code) %>% summarise(n = n(), .groups = "drop")
-
+	# observ_data <- combined_data %>% group_by(`Synonym Current`, Year, `Poles`, Code) %>% summarise(n = n(), .groups = "drop")
+	observ_data <- combined_data %>%
+		  dplyr::group_by(`Synonym Current`, Year, `Poles`, Code) %>%
+		    dplyr::summarise(n = dplyr::n(), .groups = "drop")
 	observ_data <- observ_data[order(observ_data$Year, observ_data$`Synonym Current`),]
 	colnames(observ_data) <- DEF_COLS_2
 	# for each Synonym Current
@@ -132,10 +134,18 @@ process_phenology_data <- function(input, dirs){
 	output_path <- get_output_path(dirs[1], "Nuolja_Annual_Species_Observations.csv") 
 	write.csv(observ_data, output_path, row.names=FALSE)
 	# calculate first observation date for each year 
+	print(combined_data[1:10,])
 	first_observation <- combined_data %>%
-		group_by(`Synonym Current`, Year, Code, Poles) %>%
-		summarise(`First Observation Date` = min(Date), `Last Observation Date` = max(Date), .groups = "drop")
+		dplyr::group_by(`Synonym Current`, Year, Code, Poles) %>%
+		dplyr::summarise(
+				 `First Observation Date` = min(Date, na.rm = TRUE),
+				 `Last Observation Date` = max(Date, na.rm = TRUE),
+				 .groups = "drop"
+		)
+	
+	print(first_observation[1:10,])
 	colnames(first_observation) <- c("Synonym Current", "Year", "Code", "Poles", "First Observation Date", "Last Observation Date")
+	print(first_observation[1:10,])
 	# output_path replace the file name with the new file name
 	output_path <- get_output_path(dirs[1], "Nuolja_First_Last_Observation_Date.csv")
 	write.csv(first_observation, output_path, row.names=FALSE)
@@ -145,8 +155,16 @@ process_phenology_data <- function(input, dirs){
 	# add day of the year
 	combined_data$DoY <- as.numeric(strftime(combined_data$Date, "%j"))
 	# filter out unique DoY
-	number_obs <- combined_data %>% group_by(`Synonym Current`, Year, `Poles`, DoY) %>% summarise(n = 1, .groups = "drop")
-	number_obs <- number_obs %>% group_by(`Synonym Current`, Year, `Poles`) %>% summarise(`Number of Observations` = n(), .groups = "drop")
+	number_obs <- combined_data %>%
+		dplyr::group_by(`Synonym Current`, Year, `Poles`, DoY) %>%
+		dplyr::summarise(n = 1, .groups = "drop")
+
+	number_obs <- number_obs %>%
+		dplyr::group_by(`Synonym Current`, Year, `Poles`) %>%
+		dplyr::summarise(
+				 `Number of Observations` = dplyr::n(),
+				 .groups = "drop"
+		)
 
 	# output_path replace the file name with the new file name
 	output_path <- get_output_path(dirs[1], "Nuolja_Annual_Species_Days_Observed.csv")

@@ -148,10 +148,10 @@ PhenologyValidator <- R6Class("PhenologyValidator",
 						    # handle '+' for regex
 						    self$ACCEPTABLE_CODES$Code <- lapply(self$ACCEPTABLE_CODES$Code, function(x) gsub("\\+", "\\\\+", x))
 						    # remove dublicate codes
-						    self$ACCEPTABLE_CODES <- self$ACCEPTABLE_CODES %>%
-							    group_by(Species) %>%
-							    summarise(Code = list(unique(unlist(Code)))) %>%
-							    ungroup()
+						    #self$ACCEPTABLE_CODES <- self$ACCEPTABLE_CODES %>%
+							#    group_by(Species) %>%
+							 #   summarise(Code = list(unique(unlist(Code)))) %>%
+							  #  ungroup()
 						    phenology_structures <- list()
 						    phenology_species_patterns <- list()
 
@@ -229,7 +229,7 @@ PhenologyValidator <- R6Class("PhenologyValidator",
 								 code = line[4]
 						    )
 						    # line$species is in accpetable
-
+							
 						    valid_species <- line$species %in% self$ACCEPTABLE_CODES$Species
 						    if (!valid_species) {
 							    # read file
@@ -265,7 +265,6 @@ PhenologyValidator <- R6Class("PhenologyValidator",
 									 subplot = valid_subplot
 									 ))
 						    }
-
 						    valid_code <- str_detect(line$code, codes)
 						    # remove NA from valid_code
 						    valid_code <- valid_code[!is.na(valid_code)]

@@ -11,96 +11,141 @@ library(plyr)
 library(stringr)
 
 
+read_excel_allsheets <- function(filename) {
+	print(filename)
+	x <- lapply(sheets, function(X) readxl::read_excel(filename, sheet = X, trim_ws = TRUE, col_names = FALSE, .name_repair = "minimal"))
+
+	print(x)
+	names(x) <- sheets
+	x
+}
+
 import_nuolja_phenology <- function(input_file) {
-	## create function to read in all sheets from an Excel spreadsheet ##
-	read_excel_allsheets <- function(filename) {
-		sheets <- readxl::excel_sheets(filename)
-		x <-    lapply(sheets, function(X) readxl::read_excel(filename, sheet = X, range = ("C140:ED272"),trim_ws = TRUE, col_names = FALSE, .name_repair = "minimal"))
-		names(x) <- sheets
-		x
 
-	}
-
-	print(input_file)
-
-	## Import all sheets from each Excel spreadsheet ##
+	## Import all sheets from each Excel spreadsheet
 	Nuolja.Data <- read_excel_allsheets(input_file)
-	
-	## split data in the single column into multiple columns by the comma delimiter ##
-	Nuolja.Data <- setDT(Nuolja.Data)[, list(var = unlist(.SD))][, tstrsplit(var, ",")]
-	
-	## delete all null records, e.g. all data in a record is NA ##
-	Nuolja.Data <- Nuolja.Data[rowSums(is.na(Nuolja.Data))!=ncol(Nuolja.Data), ]
+
+	## Flatten sheets/cells into one column, then split comma-delimited rows
+	Nuolja.Data <- data.table::rbindlist(
+					     lapply(Nuolja.Data, function(x) data.table::as.data.table(x)),
+					     fill = TRUE
+
+	)
+
+	Nuolja.Data <- data.table::data.table(
+					      var = as.character(unlist(Nuolja.Data, use.names = FALSE))
+
+	)
+
+	Nuolja.Data <- Nuolja.Data[
+				   !is.na(var) & trimws(var) != ""
+
+				   ][
+				   , data.table::tstrsplit(var, ",", fixed = TRUE)
+
+				   ]
+
+	## Delete all null records
+	Nuolja.Data <- Nuolja.Data[rowSums(is.na(Nuolja.Data)) != ncol(Nuolja.Data), ]
 
 	required_cols <- 8
 
-	# add missing columns
+	## Add missing columns
 	while (ncol(Nuolja.Data) < required_cols) {
 		Nuolja.Data[, paste0("V", ncol(Nuolja.Data) + 1) := NA_character_]
+
 	}
 
-	## assign names to columns ##
-	## ADD names if new columns needed
-	print(Nuolja.Data)
-	colnames(Nuolja.Data) <- c("Date","Subplot","Species","Code.1","Code.2","Code.3", "Code.4", "Code.5")
-	
+	## Keep only first 8 columns
+	Nuolja.Data <- Nuolja.Data[, 1:8]
 
-	## convert character to date for Date column ##
-	Nuolja.Data$Date <- as.Date(Nuolja.Data$Date, format="%d/%m/%Y")
+	## Assign names
+	colnames(Nuolja.Data) <- c(
+				   "Date", "Subplot", "Species",
+				   "Code.1", "Code.2", "Code.3", "Code.4", "Code.5"
 
-	## remove whitespace at end of species names ##
-	Nuolja.Data$Species <- trimws(Nuolja.Data$Species, which = c("right"))
+	)
 
-	## extract only the species name, not the variety or subspecies ##
-	Nuolja.Data$SpeciesName <- word(Nuolja.Data$Species, start=1, end =2, sep=fixed(" "))
+	## Convert Date
+	Nuolja.Data$Date <- as.Date(Nuolja.Data$Date, format = "%d/%m/%Y")
 
-	## reorder and rename variables ##
-	## ADD COLUMNS HERE IF ERROR APPEARS: ROWS and Code.3 etc.
-	Nuolja.Data <- Nuolja.Data[,c(9,1,2,4,5:8)]
-	colnames(Nuolja.Data) <- c("Species","Date","Subplot","Code.1","Code.2", "Code.3", "Code.4", "Code.5")
+	## Clean species
+	Nuolja.Data$Species <- trimws(Nuolja.Data$Species, which = "right")
 
-	## sort data set by date, Subplot and species ##
-	Nuolja.Data <- Nuolja.Data[with(Nuolja.Data, order(Date, Subplot, Species)), ]
-	
+	## Extract species name
+	Nuolja.Data$SpeciesName <- stringr::word(
+						 Nuolja.Data$Species,
+						 start = 1,
+						 end = 2,
+						 sep = stringr::fixed(" ")
 
-	## restructure dataset splitting files and renaming the 'code' field ##
-	## REMOVE # HERE IF ERROR APPEARS
-	NDa <- Nuolja.Data[,1:4]
-	colnames(NDa) <- c("Species","Date","Subplot","Code")
-	NDb <- Nuolja.Data[,c(1:3,5)]
-	colnames(NDb) <- c("Species","Date","Subplot","Code")
-	NDc <- Nuolja.Data[,c(1:3,6)]
-	colnames(NDc) <- c("Species","Date","Subplot","Code")
-	NDd <- Nuolja.Data[,c(1:3,7)]
-	colnames(NDd) <- c("Species","Date","Subplot","Code")
-	NDe <- Nuolja.Data[,c(1:3,8)]
-	colnames(NDe) <- c("Species","Date","Subplot","Code")
-	#NDf <- Nuolja.Data.2022[,c(1:3,9)]
-	#colnames(ND.2022f) <- c("Species","Date","Subplot","Code")
-	#NDg <- Nuolja.Data.2022[,c(1:3,10)]
-	#colnames(ND.2022g) <- c("Species","Date","Subplot","Code")
+	)
 
-	## merge to create new dataset ##
-	##ADD ND...
-	Nuolja.Data <- rbind(NDa, NDb, NDc)
+	## Reorder variables
+	Nuolja.Data <- Nuolja.Data[, c(
+				       "SpeciesName", "Date", "Subplot",
+				       "Code.1", "Code.2", "Code.3", "Code.4", "Code.5"
 
-	## remove records with no observations
-	Nuolja.Data <- Nuolja.Data[!(is.na(Nuolja.Data$Code) | Nuolja.Data$Code == ""),]
+				       )]
+
+	colnames(Nuolja.Data) <- c(
+				   "Species", "Date", "Subplot",
+				   "Code.1", "Code.2", "Code.3", "Code.4", "Code.5"
+
+	)
+
+	## Sort
+	Nuolja.Data <- Nuolja.Data[
+				   with(Nuolja.Data, order(Date, Subplot, Species)),
+
+				   ]
+
+	## Restructure dataset
+	NDa <- Nuolja.Data[, c("Species", "Date", "Subplot", "Code.1")]
+	colnames(NDa) <- c("Species", "Date", "Subplot", "Code")
+
+	NDb <- Nuolja.Data[, c("Species", "Date", "Subplot", "Code.2")]
+	colnames(NDb) <- c("Species", "Date", "Subplot", "Code")
+
+	NDc <- Nuolja.Data[, c("Species", "Date", "Subplot", "Code.3")]
+	colnames(NDc) <- c("Species", "Date", "Subplot", "Code")
+
+	NDd <- Nuolja.Data[, c("Species", "Date", "Subplot", "Code.4")]
+	colnames(NDd) <- c("Species", "Date", "Subplot", "Code")
+
+	NDe <- Nuolja.Data[, c("Species", "Date", "Subplot", "Code.5")]
+	colnames(NDe) <- c("Species", "Date", "Subplot", "Code")
+
+	## Merge all code columns
+	Nuolja.Data <- data.table::rbindlist(
+					     list(NDa, NDb, NDc, NDd, NDe),
+					     use.names = TRUE,
+					     fill = TRUE
+
+	)
+
+	## Remove records with no observations
+	Nuolja.Data <- Nuolja.Data[
+				   !(is.na(Code) | Code == ""),
+
+				   ]
 
 	## Remove spaces in Code column
 	Nuolja.Data$Code <- gsub(" ", "", Nuolja.Data$Code)
 
-	## sort data set by date, Subplot and species ##
-	Nuolja.Data <- Nuolja.Data[with(Nuolja.Data, order(Date, Subplot, Species)), ]
+	## Sort
+	Nuolja.Data <- Nuolja.Data[
+				   with(Nuolja.Data, order(Date, Subplot, Species)),
 
-	## Rename fields to match Nuolja Project MS Access Database ##
-	colnames(Nuolja.Data) <- c("Synonym Current","Date","Subplot","Code")
+				   ]
 
-	##Create text file of the newly formatted dataset ##
-	# write.csv(Nuolja.Data, output_file, row.names=FALSE)
-	
+	## Rename fields to match MS Access database
+	colnames(Nuolja.Data) <- c(
+				   "Synonym Current", "Date", "Subplot", "Code"
+
+	)
+
 	return(Nuolja.Data)
 
-
-
 }
+

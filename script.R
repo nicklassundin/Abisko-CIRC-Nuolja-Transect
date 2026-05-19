@@ -12,6 +12,7 @@ source("R/snow.R");
 source("R/repack.R");
 source("R/phenology.R");
 source("R/phenology_survey.R");
+source("R/import_format_data.R")
 # source("R/validation/phenology.R");
 source("R/validation.R");
 
@@ -43,8 +44,6 @@ print("1) Build Snow CSV files");
 print("2) Build Phenology CSV files"); 
 print("3) Produce Phenology Survey Excel files");
 
-# print("1) Build CSV files");
-# print("2) Produce Survey Excel files");
 # loop until vallid input is given
 inout <- file("stdin")
 
@@ -67,26 +66,6 @@ if(answer == "3"){
 	survey = TRUE;
 }else{
 	print("Build CSV files");
-}
-
-if(answer == "2"){
-	if(!is.na(errata)){
-		print("Use this errata (Y/N):")
-		print(errata)
-		while(TRUE){
-			respon <- readLines(inout, 1)
-			respon <- gsub("\\)", "", respon);
-			print(respon)
-			if(respon == "Y" || respon == "y"){
-				break;
-			}else if(respon == "N" || respon == "n"){
-				errata <- NA
-				break;
-			}
-			print("Invalid input, please try again");
-		}
-
-	}
 }
 
 
@@ -147,7 +126,55 @@ for (i in 1:length(datatypes)){
 		print("Processing Phenology Data")
 		# reorder dir_phenology
 		# put first poistion last
-		output <- read_phenology_data(dir_phenology, all=survey)
+		print(dir_phenology)
+
+		files <- list.files(
+				    dir_phenology,
+				    pattern = "\\.xlsx$",
+				    full.names = TRUE
+		)
+
+		dir.create(
+			     file.path(dir_phenology, "processed"),
+			       showWarnings = FALSE
+			     
+		)
+		# get year from each filename
+		years <- sub(
+			       ".*(20[0-9]{2}).*",
+			         "\\1",
+			         basename(files)
+				 
+		)
+
+		# process each year separately
+		for (yr in unique(years)) {
+
+			year_files <- files[years == yr]
+
+			year_data <- do.call(
+				         rbind,
+					     lapply(year_files, import_nuolja_phenology)
+					   
+			)
+			output_file <- file.path(
+					     dir_phenology,
+					         "processed",
+					         paste0("Nuolja_Data_", yr, ".csv")
+						   
+			)
+			write.csv(
+				year_data,
+				output_file,
+				row.names = FALSE
+				    
+			)
+			message("Saved: ", output_file)
+		
+		}
+
+		
+		output <- read_phenology_data(file.path(dir_phenology, "processed"), all=survey)
 		df <- output$data
 
 		# filter out none may date for all years

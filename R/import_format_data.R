@@ -7,7 +7,7 @@
 ## required libraries for code ##
 library(readxl)    
 library(data.table)
-library(plyr)
+library(dplyr)
 library(stringr)
 
 

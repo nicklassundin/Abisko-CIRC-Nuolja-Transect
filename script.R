@@ -1,8 +1,16 @@
 # TODO install all dependencies in the script
 ## Install geosphere package if not already install on client
-list.of.packages <- c("geosphere", "dplyr", "data.table", "lubridate", "stringr", "tidyr", "openxlsx")
-new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
-if(length(new.packages)) install.packages(new.packages, repos = "http://cran.us.r-project.org/")
+packages <- c(
+  "geosphere", "dplyr", "data.table", "lubridate",
+  "stringr", "tidyr", "openxlsx", "readxl"
+)
+# Install missing ones
+installed <- rownames(installed.packages())
+missing <- setdiff(packages, installed)
+
+if (length(missing) > 0) {
+  install.packages(missing, repos = "https://cloud.r-project.org")
+}
 library(geosphere);
 library(dplyr);
 library(data.table);
@@ -29,7 +37,7 @@ createDir("data")
 ## Build paths for the directories
 paths <- getPaths() 
 dirs <- getDirs()
-
+# 
 transect_desc = loadTransectDescription();
 plots_and_subplots = read.csv("descriptions/plots_and_subplots.csv", header = TRUE, sep = ",", quote = "\"", dec = ".", fill = TRUE, comment.char = "")
 
@@ -145,15 +153,14 @@ for (i in 1:length(datatypes)){
 
 		while(TRUE){
 			print("Process from original .xlsx files? (Y/N)")
-			answer <- readLines(inout, 1);
-			answer <- gsub("\\)", "", answer);
-			answer = tolower(answer) 
-			print(answer)
-			if (answer == "n" || answer == "y"){
+			org <- readLines(inout, 1);
+			org <- gsub("\\)", "", org);
+			org = tolower(org) 
+			if (org == "n" || org == "y"){
 				break;
 			}
 		}
-		if (answer == "y"){
+		if (org == "y"){
 			# process each year separately
 			for (yr in unique(years)) {
 
@@ -181,7 +188,7 @@ for (i in 1:length(datatypes)){
 			output <- read_phenology_data(file.path(dir_phenology, "processed"), all=survey)
 
 		}
-		if (answer == "n"){
+		if (org == "n"){
 			output <- read_phenology_data(dir_phenology, all=survey)
 		}
 

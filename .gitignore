@@ -16,3 +16,5 @@ errata/*
 
 ## Ignore files for development
 plots/
+.Rproj.user
+.positai

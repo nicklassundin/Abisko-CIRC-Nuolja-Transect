@@ -153,6 +153,7 @@ for (i in 1:length(datatypes)){
 
 		while(TRUE){
 			print("Process from original .xlsx files? (Y/N)")
+		  print("(beta) Will do same as running the import script, but will require that data/[dir]/ contain .xlsx raw data fields")
 			org <- readLines(inout, 1);
 			org <- gsub("\\)", "", org);
 			org = tolower(org) 
